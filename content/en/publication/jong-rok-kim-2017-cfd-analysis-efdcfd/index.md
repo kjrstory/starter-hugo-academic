@@ -1,0 +1,33 @@
+---
+title: CFD Analysis of EFD-CFD Workshop Case 3 Using Commercial and Open Source CFD
+  Codes
+date: '2017-01-01'
+draft: true
+publishDate: '2023-06-05T10:35:56.371447Z'
+authors:
+- Jong Rok Kim
+publication_types:
+- '2'
+abstract: Computational fluid dynamics analysis was performed for the case 3 of the
+  EFD-CFD workshop. Solvers were used for three commercial CFD codes(Star-CCM+, Fluent
+  and CFX) and an open source CFD code(SU2). The grid were generated four types depending
+  on the total cells using commercial grid generation code(Pointwise). Mach number
+  of 0.4 and 0.8, 2 degree angle of attack and Mach number of 0.9, 1 degree angle
+  of attack were calculated. Similar pressure coefficient curve and normal force coefficient
+  were showed from the coarse grid to fine grid of four codes. But there is a difference
+  in the drag coefficient. The position of the shock wave was predicted forward as
+  the discretization order increased in calculations using Star-CCM+ and Fluent. The
+  computation time to converge, Fluent, Star-CCM +, CFX are in order, and SU2 takes
+  much time to converge.
+featured: false
+publication: '*Journal of the Korean Society for Aeronautical & Space Sciences*'
+tags:
+- CFD(전산유체역학)
+- CFX
+- EFD-CFD
+- Fluent
+- RAE-A
+- Star-CCM+
+- SU2
+---
+
