@@ -8,21 +8,15 @@ image:
   focal_point: Smart
   preview_only: false
 ---
-<!--StartFragment-->
+ 이 글은 Spack에 오픈소스 CFD SW 중 화재 시뮬레이션에 특화된 [FDS](https://pages.nist.gov/fds-smv/)(Fire Dynamics Simulator)를 등록한 사례에 대한 글입니다. FDS는 [NIST](https://www.nist.gov/)(미국 국립 표준 기술연구소, National Institute of Standards and Technology)에서 개발한 SW입니다. LES(Large Eddy Simulation)을 사용하고 연기(smoke)의 열전달해석이 가능합니다. 후처리는 자체적으로 개발한 Smokeview란 SW를 사용합니다. 2000년에 정식으로 출시되었으며 화재 시뮬레이션 분야에서는 명성이 있는 오픈소스로 보입니다.
 
-이 글은 Spack에 오픈소스 CFD SW 중 화재 시뮬레이션에 특화된 [FDS](https://pages.nist.gov/fds-smv/)(Fire Dynamics Simulator)를 등록한 사례에 대한 글입니다. FDS는 [NIST](https://www.nist.gov/)(미국 국립 표준 기술연구소, National Institute of Standards and Technology)에서 개발한 SW입니다. LES(Large Eddy Simulation)을 사용하고 연기(smoke)의 열전달해석이 가능합니다. 후처리는 자체적으로 개발한 Smokeview란 SW를 사용합니다. 2000년에 정식으로 출시되었으며 화재 시뮬레이션 분야에서는 명성이 있는 오픈소스로 보입니다.
+## 1. 신규 패키지 생성
 
-## [](https://kjrstory.github.io/posts/spack_new_package_fds/#%ec%8b%a0%ea%b7%9c-%ed%8c%a8%ed%82%a4%ec%a7%80-%ec%83%9d%ec%84%b1)1 신규 패키지 생성
+Spack에서 패키지 생성하는 방법은 두가지입니다. 하나는 Spack CLI 명령을 이용하는 방법이고 하나는 직접 파이썬 파일을 생성하는 방법입니다. 첫번째 방법은 아래와 같이 `create` 명령으로 생성합니다. 소스코드의 다운로드 주소는 패키지에 맞게 바꿔줘야겠죠? 일단 깃헙의 릴리즈 주소를 이용하였습니다
 
-Spack에서 패키지 생성하는 방법은 두가지입니다. 하나는 Spack CLI 명령을 이용하는 방법이고 하나는 직접 파이썬 파일을 생성하는 방법입니다. 첫번째 방법은 아래와 같이 `create` 명령으로 생성합니다. 소스코드의 다운로드 주소는 패키지에 맞게 바꿔줘야겠죠? 일단 깃헙의 릴리즈 주소를 이용하였습니다.
-
-
-
-|     |     |
-| --- | --- |
-|     |     |
-
-`create` 명령이 하는 것은 두가지입니다. 하나는 저 다운로드 주소의 sha256같은 체크섬에 필요한 값을 찾아줍니다. 또 하나는 소스코드를 보고 적합한 빌드시스템을 찾아주어 그 빌드 시스템에 맞는 기본 템플릿으로 레시피 파일을 만들어줍니다. 아래는 spack create의 결과입니다. 그런데 경고 메세지가 하나 있습니다. `Warning: Unable to detect a build system`. 적합한 빌드 시스템을 찾지 못하였다고 합니다. 이건 다음 챕터에서 본격적으로 이야기 하겠습니다.
+```shell
+spack create https://github.com/firemodels/fds/archive/refs/tags/FDS-6.8.0.tar.gz
+```
 
 결과를 더 읽어보면(마지막 줄) spack폴더의 어떤 복잡한 경로 밑에 package.py 파일이 만들어진 것을 알 수 있습니다. 신규 패키지를 생성하는 두번째 방법은 이 package.py 파일을 직접 만드는 것입니다. 패키지 레시피 작성에 익숙해졌다면 create명령을 이용하여 기본 템플릿 파일에서 시작하는것보다 기존에 다른 사람들이 만들었던 레시피 파일을 참고하는 것이 더 유용할 것입니다.
 
@@ -58,8 +52,6 @@ Type make_fds.bat or **make_fds.sh**, depending on your OS.
 
 make_fds.sh 파일을 보면 make 명령어와 makefile등을 이용하는 것을 보아 Makefile 빌드 시스템을 이용하는 것을 알 수 있습니다.
 
-
-
 |     |     |
 | --- | --- |
 |     |     |
@@ -73,8 +65,6 @@ make_fds.sh 파일을 보면 make 명령어와 makefile등을 이용하는 것�
 edit는 makefile을 수정하거나 필요한 환경변수를 입력하는 과정입니다. 예시로 본 make_fds.sh 파일외에 다른 폴더에 있던 make_fds.sh 파일을 살펴보면 intel 컴파일러 선택시 `INTEL_IFORT` 변수를 넣어주는 과정이 있습니다. 디폴트 값은 `ifort`값이 들어가 있습니다. 이건 포트란을 알고 있으면 눈치를 챌 수 있는데요. `ifort`는 인텔 포트란의 명령어 이름입니다. 그런데 인텔이 oneapi를 출시하면서 명령어를 `ifx`로 바꾸어버렸습니다. 그래서 이 부분을 변수에서 지정해줘야 합니다.
 
 `makefile.filter` 부분은 makefile을 바꿔주는 부분으로 리눅스 명령어중 `sed`와 사용법이 유사합니다. make_fds.sh 파일을 실행하는것과 makefile을 바로 make하는것과 경로가 차이가 납니다. 그래서 이와 관련된 경로를 맞게 바꿔주는 것입니다.
-
-
 
 |     |     |
 | --- | --- |
@@ -94,8 +84,6 @@ make –help Usage: make \[options] \[target] …
 
 \-j4는 빌드 시 4개의 쓰레드를 사용하는 것입니다. Spack에는 쓰레드가 알아서 지정이 되고 CPU가 충분할 시 더 많은 쓰레드로 지정이 됩니다. VPATH는 makefile에 VPATH란 변수를 넣어주는것입니다. -f는 makefile의 경로를 지정해주는 것입니다. makefile이 있는 디렉토리에서 빌드할 것이기 때문에 위치는 ../makefile이 아닌 ./makefile입니다. ../는 상위 폴더, ./는 현재 폴더를 의미합니다. 현재 폴더에서 빌드한다면 굳이 -f 옵션은 필요없습니다. 다음 부분은 target인데 여기에는 OS, Compiler, MPI의 값이 들어가게 됩니다. 기존 FDS 방법은 디렉토리가 타겟값이 됩니다. 저는 기존 FDS 방법 처럼 특정 폴더에 들어가지 않고 빌드를 하니 target값을 spack에서 만들어줘야 합니다. property decorator와 build_targets함수로 아래와 같이 target값을 지정할 수 있습니다.
 
-
-
 |     |     |
 | --- | --- |
 |     |     |
@@ -107,8 +95,6 @@ make –help Usage: make \[options] \[target] …
 ### [](https://kjrstory.github.io/posts/spack_new_package_fds/#install)2.3 install
 
 기존 FDS는 Build/ompi_gnu_liunx처럼 빌드한 폴더에 실행파일이 있게되고 그 폴더를 환경변수 PATH에 넣는 방식을 취합니다. 그런데 저는 새로운 빌드 폴더를 쓰기로 했으므로 실행 파일이 설치 될 곳이 필요하고요. 간단히 FDS설치 폴더의 bin파일에 넣으려고 합니다. 아래와 같이 bin 폴더를 만들고 필요한 파일들을 bin폴더에 넣는 install 함수를 만들었습니다.
-
-
 
 |     |     |
 | --- | --- |
@@ -123,15 +109,11 @@ GNU 포트란과 open mpi로 컴파일시 모듈 파일(mod)과 오브젝트 파
 의존성은 FDS에 필요한 사전 패키지들을 정의하는 과정입니다. 먼저 가장 먼저 떠오르는것은 mpi와 mkl입니다. mpi와 mkl은 spack에서는 일반 패키지가 아닌 virtual 패키지로 정의합니다. mpi는 OpenMPI, Intel MPI, MPICH등 다 양한 패키지들이 있습니다. 어떤 패키지에서 mpi가 필요하다고 정의하면 MPI 패키지중 어떤 패키지라도 하나만 있으면 충족이 됩니다.\
 단 FDS는 아직까지는 다양한 MPI, 컴파일러등에서 테스트 되지는 않은것 같습니다. GNU Fortran, OpenMPI, Intel Fortan, OneAPI MPI에서만 빌드하는 방법을 제공하고 있습니다. 그래서 아래와 같이 mpi와 mkl을 `depend_on`으로 의존 관계를 정의하면서 `requires`에 ‘one of’ policy로 gcc(GNU Fortran), intel, oneapi 만을 컴파일러로 쓰도록 정의했습니다.
 
-
-
 |     |     |
 | --- | --- |
 |     |     |
 
 `requires`는 아래와 같이 사용할수도 있습니다. gcc를 사용할때는 openmpi만을 사용하도록 하라는 정의입니다. 아직 FDS에서 GNU Fortan+Intel MPI조합의 빌드는 공식적으로 제공하고 있지 않습니다.
-
-
 
 |     |     |
 | --- | --- |
@@ -142,8 +124,6 @@ GNU 포트란과 open mpi로 컴파일시 모듈 파일(mod)과 오브젝트 파
 PR을 위한 마무리 작업을 해야 합니다. 먼저 docstring에 들어갈 문장을 만들어줍니다. 보통은 패키지 홈페이지에 있는 소개 문구를 그대로 옮겨줍니다.
 
 또 작성한 코드가 리포지토리에서 정한 스타일 조건에 맞는지 체크합니다. spack에서는 CLI 명령을 제공해줘서 고쳐주는 기능까지 제공합니다.
-
-
 
 |     |     |
 | --- | --- |
