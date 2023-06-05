@@ -4,7 +4,7 @@ date: 2023-06-05T07:22:43.471Z
 draft: false
 featured: false
 authors:
-  - jong-rok-kim
+  - admin
 tags:
   - cloud
   - hpc
