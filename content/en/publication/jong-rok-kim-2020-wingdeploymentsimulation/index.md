@@ -1,7 +1,7 @@
 ---
 title: WING DEPLOYMENT SIMULATION USING 2-WAY FLUID STRUCTURE INTERACTION METHOD
 date: '2020-01-01'
-draft: true
+draft: false
 publishDate: '2023-06-05T10:35:56.503970Z'
 authors:
 - Jong Rok Kim
