@@ -1,5 +1,5 @@
 ---
-title: Cloud HPC 서비스 분류 및 목록
+title: Classification and List of Cloud HPC Services
 date: 2023-06-05T07:22:43.471Z
 draft: false
 featured: false
@@ -57,7 +57,7 @@ The third category is SaaS Cloud for HPC, which primarily offers web-based solut
 * PACE on Cloud: <https://landing.pace-on-cloud.com/>
 * Sabalcore: [https://www.sabalcore.com](https://www.sabalcore.com/)
 
-## 4 Job Scheduler형 클라우드
+## 4 Job Scheduler Cloud
 
 Lastly, It is the Job Scheduler Cloud for HPC. In the traditional on-premises HPC middleware market, job scheduler companies have been dominant. However, with the advent of the cloud era, even traditional commercial schedulers like IBM LSF and Altair PBS are offering cloud capabilities within their products. The products in this category have the advantage of being able to easily configure hybrid setups, such as combinations of multiple clouds or a combination of on-premises and cloud usage.
 
