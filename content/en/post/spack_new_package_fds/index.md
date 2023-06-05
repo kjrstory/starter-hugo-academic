@@ -129,8 +129,9 @@ If so, please provide the code or specify the details of the install function so
             install("fds_" + self.build_targets[0], prefix.bin + "/fds")
 ```
 
-
+{{% callout warning %}}
 I am not sure about installing module files (mod) and object files (o) into the bin folder when compiling with GNU Fortran and Open MPI. I have not been able to confirm if these files are necessary or if similar files are generated under different compilation conditions. I plan to review this in the future.
+{{% /callout %}}
 
 ## 3 Dependency
 
