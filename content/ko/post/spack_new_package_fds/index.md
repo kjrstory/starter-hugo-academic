@@ -125,7 +125,9 @@ make 명령어는 아래와 같이 옵션과 타겟으로 나누어집니다. �
             install("fds_" + self.build_targets[0], prefix.bin + "/fds")
 ```
 
+{{% callout warning %}}
 GNU 포트란과 open mpi로 컴파일시 모듈 파일(mod)과 오브젝트 파일(o)을 같이 bin 폴더로 설치하는데 이 부분은 확실하지 않습니다. 이 파일들이 필수로 필요한지 다른 컴파일 조건에서도 같은 파일이 생성되는지등을 확인하지 못했으며 향후 검토할 예정입니다.
+{{% /callout %}}
 
 ## 3. 의존성
 
@@ -175,5 +177,6 @@ spack style --fix
 
 {{% callout info %}}
 Hi. Thanks for the information. I was not familiar with Spack. We always seem to have to wrestle with whatever system we are compiling on, as all the HPC machines tend to have their own intricacies. But if this is somehow becoming less chaotic, that is a nice to hear.
-Spack에 대해 잘 몰랐지만 HPC 환경에서 FDS를 컴파일하는데 애를 먹었었고 Spack이 복잡한 것을 줄여주면 좋겠다고 말하네요. FDS는 보통 일년에 두번정도의 릴리즈를 하는것 같고 신규 버전을 spack에도 반영하면서 추가 기능들을 만들어가야겠습니다.
 {{% /callout %}}
+Spack에 대해 잘 몰랐지만 HPC 환경에서 FDS를 컴파일하는데 애를 먹었었고 Spack이 복잡한 것을 줄여주면 좋겠다고 말하네요. FDS는 보통 일년에 두번정도의 릴리즈를 하는것 같고 신규 버전을 spack에도 반영하면서 추가 기능들을 만들어가야겠습니다.
+
