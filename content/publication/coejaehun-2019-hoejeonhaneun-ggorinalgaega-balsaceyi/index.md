@@ -1,7 +1,7 @@
 ---
 title: 회전하는 꼬리날개가 발사체의 세로 동안정 미계수에 미치는 영향에 관한 수치적 연구
 date: '2019-01-01'
-draft: true
+draft: false
 publishDate: '2023-06-05T08:29:47.687103Z'
 authors:
 - ' 최재훈'

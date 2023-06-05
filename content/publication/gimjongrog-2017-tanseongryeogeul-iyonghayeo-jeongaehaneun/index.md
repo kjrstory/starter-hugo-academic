@@ -1,7 +1,7 @@
 ---
 title: 탄성력을 이용하여 전개하는 날개의 분석을 위한 3차원 유체구조 연계 해석
 date: '2017-01-01'
-draft: true
+draft: false
 publishDate: '2023-06-05T08:29:47.962723Z'
 authors:
 - ' 김종록'

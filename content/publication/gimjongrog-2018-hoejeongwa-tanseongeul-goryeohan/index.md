@@ -1,7 +1,7 @@
 ---
 title: 회전과 탄성을 고려한 날개 전개 해석
 date: '2018-01-01'
-draft: true
+draft: false
 publishDate: '2023-06-05T08:29:48.050955Z'
 authors:
 - ' 김종록'

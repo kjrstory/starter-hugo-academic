@@ -1,7 +1,7 @@
 ---
 title: 오픈소스 CFD 코드 SU2를 이용한 공력 해석
 date: '2015-01-01'
-draft: true
+draft: false
 publishDate: '2023-06-05T08:29:47.787002Z'
 authors:
 - ' 김종록'

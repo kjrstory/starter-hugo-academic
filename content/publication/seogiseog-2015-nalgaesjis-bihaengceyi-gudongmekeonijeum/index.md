@@ -1,7 +1,7 @@
 ---
 title: 날갯짓 비행체의 구동메커니즘 개선에 대한 연구
 date: '2015-01-01'
-draft: true
+draft: false
 publishDate: '2023-06-05T08:29:48.229530Z'
 authors:
 - ' 서기석'

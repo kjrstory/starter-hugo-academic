@@ -1,7 +1,7 @@
 ---
 title: 상용 및 오픈소스 CFD 코드를 이용한 RAE A 날개를 가진 축대칭 동체의 전산유체역학 해석
 date: '2016-01-01'
-draft: true
+draft: false
 publishDate: '2023-06-05T08:29:47.831330Z'
 authors:
 - ' 김종록'

@@ -1,7 +1,7 @@
 ---
 title: Flight Test Measurement and Assessment of a Flapping Micro Air Vehicle
 date: '2012-01-01'
-draft: true
+draft: false
 publishDate: '2023-06-05T08:29:48.140561Z'
 authors:
 - Jong Heon Kim

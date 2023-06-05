@@ -1,7 +1,7 @@
 ---
 title: 양방향 유체 구조 연계 해석 기법을 이용한 날개 전개 해석
 date: '2020-01-01'
-draft: true
+draft: false
 publishDate: '2023-06-05T08:29:48.095450Z'
 authors:
 - ' 김종록'

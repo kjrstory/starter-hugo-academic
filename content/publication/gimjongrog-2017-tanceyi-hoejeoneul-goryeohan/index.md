@@ -1,7 +1,7 @@
 ---
 title: 탄체의 회전을 고려한 지능탄 공력 해석
 date: '2017-01-01'
-draft: true
+draft: false
 publishDate: '2023-06-05T08:29:47.919597Z'
 authors:
 - ' 김종록'

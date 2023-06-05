@@ -1,7 +1,7 @@
 ---
 title: 탄 후방에서 발생하는 기체에 따른 공력특성
 date: '2017-01-01'
-draft: true
+draft: false
 publishDate: '2023-06-05T08:29:48.185852Z'
 authors:
 - ' 노성현'
