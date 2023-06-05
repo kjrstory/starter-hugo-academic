@@ -1,16 +1,23 @@
 ---
 title: 김종록
 avatar_filename: 1409720-greek-kraken.png
+bio: 현재 삼성 SDS에서 클라우드 엔지니어로 활동하고 있습니다.
 social:
   - display:
-      header: false
-    link: https://www.linkedin.com/in/kjrstory/
-    icon_pack: fas
-    icon: fa-github
-superuser: false
+      header: true
+    link: https://github.com/kjrstory
+    icon_pack: fab
+    icon: github
+    label: github
+  - display:
+      header: true
+    link: https://linkedin.com/in/kjrstory
+    icon: linkedin
+    icon_pack: fab
+    label: linkedin
+email: kjrstory@gmail.com
+superuser: true
 ---
-<!--StartFragment-->
-
 이 블로그는 [Hugo](https://gohugo.io/)로 작성하였고 [Doit](https://hugodoit.pages.dev/)테마를 사용합니다.
 
 현재 삼성 SDS에서 클라우드 엔지니어로 활동하고 있습니다.
