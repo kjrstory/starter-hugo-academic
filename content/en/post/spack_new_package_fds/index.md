@@ -1,5 +1,5 @@
 ---
-title: Spack에서 신규 패키지(FDS) 생성 사례
+title: Creating a New Package (FDS) in Spack
 date: 2023-06-05T07:23:41.994Z
 draft: false
 featured: false
@@ -8,19 +8,19 @@ image:
   focal_point: Smart
   preview_only: false
 ---
- 이 글은 Spack에 오픈소스 CFD SW 중 화재 시뮬레이션에 특화된 [FDS](https://pages.nist.gov/fds-smv/)(Fire Dynamics Simulator)를 등록한 사례에 대한 글입니다. FDS는 [NIST](https://www.nist.gov/)(미국 국립 표준 기술연구소, National Institute of Standards and Technology)에서 개발한 SW입니다. LES(Large Eddy Simulation)을 사용하고 연기(smoke)의 열전달해석이 가능합니다. 후처리는 자체적으로 개발한 Smokeview란 SW를 사용합니다. 2000년에 정식으로 출시되었으며 화재 시뮬레이션 분야에서는 명성이 있는 오픈소스로 보입니다.
+
+This article describes a case of registering a new package, FDS (Fire Dynamics Simulator), specialized in fire simulation, in Spack. FDS is an open-source CFD (Computational Fluid Dynamics) software developed by NIST (National Institute of Standards and Technology) in the United States. It utilizes LES (Large Eddy Simulation) and enables thermal analysis of smoke. For post-processing, it uses a self-developed software called Smokeview. It was officially released in 2000 and has gained a reputation as a prominent open-source software in the field of fire simulation.
 
 ## 1. 신규 패키지 생성
 
-Spack에서 패키지 생성하는 방법은 두가지입니다. 하나는 Spack CLI 명령을 이용하는 방법이고 하나는 직접 파이썬 파일을 생성하는 방법입니다. 첫번째 방법은 아래와 같이 `create` 명령으로 생성합니다. 소스코드의 다운로드 주소는 패키지에 맞게 바꿔줘야겠죠? 일단 깃헙의 릴리즈 주소를 이용하였습니다
+Spack provides two methods for creating packages. One is using the Spack CLI commands, and the other is creating a Python file directly. Let's first look at the first method using the create command. You will need to replace the download URL with the appropriate source code for your package. In this example, I used the release URL from GitHub:
 
 ```shell
 spack create https://github.com/firemodels/fds/archive/refs/tags/FDS-6.8.0.tar.gz
 ```
 
-결과를 더 읽어보면(마지막 줄) spack폴더의 어떤 복잡한 경로 밑에 package.py 파일이 만들어진 것을 알 수 있습니다. 신규 패키지를 생성하는 두번째 방법은 이 package.py 파일을 직접 만드는 것입니다. 패키지 레시피 작성에 익숙해졌다면 create명령을 이용하여 기본 템플릿 파일에서 시작하는것보다 기존에 다른 사람들이 만들었던 레시피 파일을 참고하는 것이 더 유용할 것입니다.
+If you continue reading the output (the last line), you can see that a package.py file is created under a complex path within the spack folder. The second method of creating a new package is by directly creating this package.py file. If you are familiar with writing package recipes, it would be more useful to refer to existing recipe files created by others, rather than starting from the default template file, when using the create command.
 
-spack create 결과
 
 \==> Using specified package name: ‘fds’
 
@@ -38,9 +38,9 @@ spack create 결과
 
 \==> Created package file: /root/spack/var/spack/repos/builtin/packages/fds/package.py
 
-## [](https://kjrstory.github.io/posts/spack_new_package_fds/#%eb%b9%8c%eb%93%9c%ec%8b%9c%ec%8a%a4%ed%85%9c-%ec%84%a0%ed%83%9d)2 빌드시스템 선택
+## 2 빌드시스템 선택
 
-먼저 [빌드시스템](https://en.wikipedia.org/wiki/Build_automation)에 대한 이해가 있어야 합니다. 대표적인 빌드시스템으로 Make, CMake, Maven, Meson, Autotools등이 있습니다. 대부분의 큰 오픈소스들은 빌드시스템을 이용하고 있기 때문에 Spack 패키지 레시피를 만들기 위해서는 빌드시스템에 대한 이해가 필수입니다. FDS는 어떤 빌드시스템을 이용하고 있을까요? 앞단락에서 `spack create` 명령으로는 찾을 수 없다고 했습니다. FDS는 깃헙 위키를 운영하고 있어 정보를 얻을 수 있습니다. 이 중 [FDS Compilation](https://github.com/firemodels/fds/wiki/FDS-Compilation)글을 보면 빌드하는 방법을 알 수 있습니다. 아키텍쳐마다 빌드 디렉토리가 따로 있고 자체 bash 스크립트(make_fds.sh)를 쓰도록 되어있습니다.
+First, you need to have an understanding of the [build system](https://en.wikipedia.org/wiki/Build_automation). Some popular build systems include Make, CMake, Maven, Meson, and Autotools. Since most major open-source projects utilize a build system, it is essential to have an understanding of build systems when creating Spack package recipes. So, what build system does FDS use? As mentioned in the previous paragraph, it is not found using the `spack create` command. However, FDS operates a GitHub wiki where you can find information. In the [FDS Compilation article](https://github.com/firemodels/fds/wiki/FDS-Compilation), you can learn how to build FDS. It mentions separate build directories for different architectures and the use of a custom bash script called `make_fds.sh`.
 
 FDS Build
 
