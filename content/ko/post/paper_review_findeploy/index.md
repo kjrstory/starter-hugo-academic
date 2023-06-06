@@ -1,7 +1,7 @@
 ---
 title: 논문 리뷰
 date: 2023-06-06T17:20:56.633Z
-draft: true
+draft: false
 featured: false
 authors:
   - admin
