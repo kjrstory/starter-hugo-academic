@@ -5,6 +5,11 @@ draft: false
 featured: false
 authors:
   - admin
+tags:
+  - spack
+  - fds
+categories:
+  - HPC
 image:
   filename: featured
   focal_point: Smart
