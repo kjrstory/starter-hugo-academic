@@ -3,6 +3,11 @@ title: Creating a New Package (FDS) in Spack
 date: 2023-06-05T07:23:41.994Z
 draft: false
 featured: false
+tags:
+  - spack
+  - fds
+categories:
+  - HPC
 image:
   filename: featured
   focal_point: Smart
