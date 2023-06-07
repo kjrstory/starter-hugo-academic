@@ -1,0 +1,19 @@
+
+ <div style="margin-top: 32px;">
+    <div class="bookshelf">
+      <div class="book">
+        <div class="side spine">
+          <span class="spine-title"> {{ book.title }} </span>
+          <span class="spine-author">
+            {{ book.author | split: " " | first | slice: 0 }}{{ book.author | split: " " | last | slice: 0 }}
+          </span>
+        </div>
+        <div class="side top"></div>
+        <div
+          class="side cover"
+          style="background-image: url({{ book.cover }})"
+        ></div>
+      </div>
+    </div>
+    <hr/>
+  </div>
