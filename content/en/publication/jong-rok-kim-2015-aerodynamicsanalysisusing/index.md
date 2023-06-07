@@ -1,8 +1,8 @@
 ---
-title: AERODYNAMIC ANALYSIS OF SMART MUNITION CONSIDERING ROTATION OF SHELL
-date: '2017-01-01'
-draft: true
-publishDate: '2023-06-05T10:35:56.188362Z'
+title: AERODYNAMICS ANALYSIS USING OPEN SOURCE CFD CODE SU2
+date: '2015-01-01'
+draft: false
+publishDate: '2023-06-05T10:35:56.142920Z'
 authors:
 - J. R. Kim
 publication_types:

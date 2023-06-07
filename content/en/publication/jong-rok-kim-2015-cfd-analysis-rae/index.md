@@ -1,10 +1,10 @@
 ---
 title: CFD Analysis of RAE A Wing with Axisymmetric Body Using Fluent
 date: '2015-01-01'
-draft: true
+draft: false
 publishDate: '2023-06-05T10:35:56.053601Z'
 authors:
-- ' 김종록'
+- ' Jong Rok Kim'
 publication_types:
 - '1'
 abstract: ''

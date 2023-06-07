@@ -1,7 +1,7 @@
 ---
 title: DEPLOYABLE WING ANALYSIS CONSIDERING ROTATION AND ELASTICITY
 date: '2018-01-01'
-draft: true
+draft: false
 publishDate: '2023-06-05T10:35:56.233669Z'
 authors:
 - J. R. Kim

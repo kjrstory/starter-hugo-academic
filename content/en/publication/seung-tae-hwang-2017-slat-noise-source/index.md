@@ -1,7 +1,7 @@
 ---
 title: Slat Noise Source Modeling of Multi-element Airfoil in High-lift Configuration
 date: '2017-01-01'
-draft: true
+draft: false
 publishDate: '2023-06-05T10:35:56.595539Z'
 authors:
 - Seung Tae Hwang

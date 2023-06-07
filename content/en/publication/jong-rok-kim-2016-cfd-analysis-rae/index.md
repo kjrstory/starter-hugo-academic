@@ -2,7 +2,7 @@
 title: CFD Analysis of RAE A Wing with Axisymmetric Body Using Commercial and Open
   Source CFD Codes
 date: '2016-01-01'
-draft: true
+draft: false
 publishDate: '2023-06-05T10:35:56.325425Z'
 authors:
 - Jong Rok Kim

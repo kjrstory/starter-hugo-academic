@@ -2,7 +2,7 @@
 title: Aerodynamic Characteristics of a Projectile According to a Gas Generated from
   the Rear Part of the Projectile
 date: '2017-01-01'
-draft: true
+draft: false
 publishDate: '2023-06-05T10:35:56.549867Z'
 authors:
 - Seonghyeon Noh

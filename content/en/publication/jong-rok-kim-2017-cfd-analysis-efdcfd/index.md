@@ -2,7 +2,7 @@
 title: CFD Analysis of EFD-CFD Workshop Case 3 Using Commercial and Open Source CFD
   Codes
 date: '2017-01-01'
-draft: true
+draft: false
 publishDate: '2023-06-05T10:35:56.371447Z'
 authors:
 - Jong Rok Kim

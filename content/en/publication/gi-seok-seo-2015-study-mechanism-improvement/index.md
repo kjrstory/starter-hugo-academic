@@ -1,7 +1,7 @@
 ---
 title: A Study of Mechanism Improvement for Flapping MAV
 date: '2015-01-01'
-draft: true
+draft: false
 publishDate: '2023-06-05T10:35:55.999881Z'
 authors:
 - Gi-Seok Seo

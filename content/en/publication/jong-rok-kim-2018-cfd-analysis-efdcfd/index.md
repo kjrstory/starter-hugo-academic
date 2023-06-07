@@ -2,7 +2,7 @@
 title: CFD Analysis of EFD-CFD Workshop Case 4 Using Commercial and Various Grid Generation
   Methods
 date: '2018-01-01'
-draft: true
+draft: false
 publishDate: '2023-06-05T10:35:56.461131Z'
 authors:
 - Jong Rok Kim
