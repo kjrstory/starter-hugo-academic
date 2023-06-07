@@ -14,7 +14,7 @@ publication_types:
 - '2'
 abstract: ''
 featured: false
-publication: '*한국전산유체공학회지*'
+publication: '*한국전산유체공학회지, 25(1)*'
 tags:
 - 날개 전개
 - 유체-구조 연계
