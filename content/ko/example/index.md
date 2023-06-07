@@ -1,27 +1,13 @@
 ---
-title: An example title
-summary: Here we describe how to add a page to your site.
-date: "2018-06-28T00:00:00Z"
+# Replace <USERNAME> and <BLOCK-NAME> with your GitHub username and block name, respectively.
+widget: 'github.kjrstory.alices-wowchemy-blocks'
 
-reading_time: false  # Show estimated reading time?
-share: false  # Show social sharing links?
-profile: false  # Show author profile?
-comments: false  # Show comments?
+# This file represents a page section.
 
-# Optional header image (relative to `assets/media/` folder).
-header:
-  caption: ""
-  image: ""
+# Order that this section appears on the page.
+weight: 1
+
+title: Hello
 ---
 
-    <div class="bookshelf">
-      <div class="book">
-        <div class="side spine">
-          <span class="spine-title"> Book Title </span>
-          <span class="spine-author"> PG </span>
-        </div>
-        <div class="side top"></div>
-        <div class="side cover"></div>
-      </div>
-    </div>
-    
+Welcome to my new block!
