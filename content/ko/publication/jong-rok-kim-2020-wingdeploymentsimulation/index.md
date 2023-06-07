@@ -26,11 +26,11 @@ abstract: Fluid-structure interaction analysis was performed to predict a time o
 
 유도탄이 항공기와의 다른 점 중 하나는 날개를 위한 공간이 없다는 것입니다. 그래서 어쩔 수 없이 날개의 크기는 최소화되어 어딘가에 수납이 되어있어야 하는 경우가 많습니다. 수납이 되어 있다면 반드시 날개가 전개가 되어야 합니다. 전개는 탄성력을 가진 스프링을 이용하거나 원심력을 이용하는 경우가 많습니다. 이 논문에서도 탄성력을 이용하는데 스프링같은 장치가 있는 것이 아니라 날개 자체가 하나의 스프링처럼 휘어진 채로 수납이 되고 그 탄성력으로 날개 전개가 됩니다. 이런 날개를 가지기 위해서는 얇으면서도 튼튼한 강도를 가지고 있어야 되고요. 또 회전을 하고 있어 원심력도 작용을 합니다. 공력(공기역학)은 댐퍼의 역할로 쓰이게 됩니다. 아래 그림은 이 논문에서 참조한 논문에서 발췌한 그림입니다.
 
-![](FinDeploy.png "Example: fin deployment simultation"[^1])
+![](FinDeploy.png "Example: fin deployment simultation")[^1]
 
 정리하면 날개 전개의 시뮬레이션을 위해서 탄성력을 모사하기 위한 구조 해석, 원심력을 모사하기 위한 동역학 해석, 공력을 모사하기 위한 전산유체역학 해석이 필요합니다. 보통 이런 해석은 난이도가 굉장히 높은 해석입니다. 왜냐하면 각각의 역학을 해석하기 위한 SW가 별도로 있고 그것을 연동하기 위한 것이 쉬운 것이 아니기 때문입니다. 그래서 세가지 해석을 동시에 하기 어렵기 때문에 보통은 한가지 역학의 해석 SW를 정하고 다른 역학은 여러 가정을 들어 단순화하여 반영합니다. 저는 호기롭게 이 세가지 해석을 동시에 하기로 마음을 먹었습니다. 특히 유체와 구조를 연동하여 해석하는 경우를 [유체구조 연계해석](https://www.banditong.com/cae-dict/fluid_structure_coupled_analysis)(Fluid Structure Interaction, FSI)이라고 하며 전산유체역학 해석분야에서 가장 난이도가 높은 해석중에 손꼽히는 해석입니다. 저는 학생이던 시절부터 FSI해석을 매우 좋아했고 열심히 했던 분야였습니다.
 
-![](tutorials-turek-hron-fsi3-setup.png "Example of fluid structure interaction simulation(Turek-Hron FSI case)"[^2]
+![](tutorials-turek-hron-fsi3-setup.png "Example of fluid structure interaction simulation(Turek-Hron FSI case")[^2]
 
 본격적으로 논문을 진행하기 위해 해석 SW의 선정이 필요했는데요. 먼저 유체 해석에서는 가장 자신 있었던 [Ansys Fluent](https://www.ansys.com/products/fluids/ansys-fluent)를 선택했습니다. Fluent를 선택하게 되면 구조 해석 SW는 같은 회사의 제품인 [Ansys Mechanical](https://www.ansys.com/products/structures/ansys-mechanical)을 선택하는 것이 정신건강에 이롭기 때문에 선택했습니다. 동역학 SW도 필요한데 별도의 SW를 사용하지 않았습니다. 그 이유는 간단한 동역학의 경우 Fluent, Ansys Mechanical에서도 지원하기 때문입니다. 저는 원심력을 부여하거나 힌지를 모사하기 위한 것은 모두 Ansys Mechanical로 구현하였습니다.
 
