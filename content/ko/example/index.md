@@ -1,6 +1,6 @@
 ---
 # Replace <USERNAME> and <BLOCK-NAME> with your GitHub username and block name, respectively.
-widget: 'github.kjrstory.alices-wowchemy-blocks'
+widget: 'github.kjrstory.wowchemy-block-pokemon'
 
 # This file represents a page section.
 
