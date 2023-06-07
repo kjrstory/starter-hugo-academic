@@ -2,15 +2,15 @@
     <div class="bookshelf">
       <div class="book">
         <div class="side spine">
-          <span class="spine-title"> {{ title }} </span>
+          <span class="spine-title"> {{ .Params.title }} </span>
           <span class="spine-author">
-            {{ author | split: " " | first | slice: 0 }}{{ author | split: " " | last | slice: 0 }}
+            {{ .Params.author | split: " " | first | slice: 0 }}{{ .Params.author | split: " " | last | slice: 0 }}
           </span>
         </div>
         <div class="side top"></div>
         <div
           class="side cover"
-          style="background-image: url({{ cover }})"
+          style="background-image: url({{ .Params.cover }})"
         ></div>
       </div>
     </div>
