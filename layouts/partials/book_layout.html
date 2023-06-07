@@ -1,9 +1,8 @@
-
 <div style="margin-top: 32px;">
     <div class="bookshelf">
       <div class="book">
         <div class="side spine">
-          <span class="spine-title"> {{ book.title }} </span>
+          <span class="spine-title"> {{ title }} </span>
           <span class="spine-author">
             {{ author | split: " " | first | slice: 0 }}{{ author | split: " " | last | slice: 0 }}
           </span>
