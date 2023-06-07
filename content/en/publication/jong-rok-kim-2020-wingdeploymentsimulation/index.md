@@ -23,7 +23,7 @@ abstract: Fluid-structure interaction analysis was performed to predict a time o
   addition, pressure field on each wing varied depending on the angle of attack, which
   caused each wing to have different deployment time.
 featured: false
-publication: '*Journal of Computational Fluids Engineering*'
+publication: '*Journal of Computational Fluids Engineering, 25(1)*'
 tags:
 - Wing Deployment
 - Fluid-Structure Interaction
