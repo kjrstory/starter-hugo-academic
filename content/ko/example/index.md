@@ -1,13 +1,9 @@
 ---
-# Replace <USERNAME> and <BLOCK-NAME> with your GitHub username and block name, respectively.
-widget: 'github.kjrstory.wowchemy-block-pokemon'
+title: Old Man's War
+year: 2022
+author: John Scalzi
+cover: https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1509467059l/36510196._SY475_.jpg
 
-# This file represents a page section.
-
-# Order that this section appears on the page.
-weight: 1
-
-title: Hello
 ---
 
 Welcome to my new block!
