@@ -11,9 +11,10 @@ tags:
 categories:
   - HPC
 image:
-  filename: featured
+  filename: fds_example.png
   focal_point: Smart
   preview_only: false
+  caption: "Figure by [fdstutorial](https://fdstutorial.com/what-is-fds)"
 ---
  이 글은 Spack에 오픈소스 CFD SW 중 화재 시뮬레이션에 특화된 [FDS](https://pages.nist.gov/fds-smv/)(Fire Dynamics Simulator)를 등록한 사례에 대한 글입니다. FDS는 [NIST](https://www.nist.gov/)(미국 국립 표준 기술연구소, National Institute of Standards and Technology)에서 개발한 SW입니다. LES(Large Eddy Simulation)을 사용하고 연기(smoke)의 열전달해석이 가능합니다. 후처리는 자체적으로 개발한 Smokeview란 SW를 사용합니다. 2000년에 정식으로 출시되었으며 화재 시뮬레이션 분야에서는 명성이 있는 오픈소스로 보입니다.
 

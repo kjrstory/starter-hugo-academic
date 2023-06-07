@@ -9,9 +9,10 @@ tags:
 categories:
   - HPC
 image:
-  filename: featured
+  filename: fds_example.png
   focal_point: Smart
   preview_only: false
+  caption: "Figure by [fdstutorial](https://fdstutorial.com/what-is-fds)"
 ---
 
 This article describes a case of registering a new package, FDS (Fire Dynamics Simulator), specialized in fire simulation, in Spack. FDS is an open-source CFD (Computational Fluid Dynamics) software developed by NIST (National Institute of Standards and Technology) in the United States. It utilizes LES (Large Eddy Simulation) and enables thermal analysis of smoke. For post-processing, it uses a self-developed software called Smokeview. It was officially released in 2000 and has gained a reputation as a prominent open-source software in the field of fire simulation.
