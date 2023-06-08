@@ -1,9 +1,9 @@
 ---
-title: Old Man's War
-year: 2022
-author: John
-cover: https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1509467059l/36510196._SY475_.jpg
-link: http://www.daum.net
+title: Structure Meshing for CFD
+year: 2023
+author: Ideen Sadrehaghighi
+cover: StructureMeshing_smallpreview.png
+link: https://www.researchgate.net/publication/339295881_Structure_Meshing_for_CFD
 type: bookshelf
 ---
 
