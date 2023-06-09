@@ -26,8 +26,6 @@ Spack에서 패키지 생성하는 방법은 두가지입니다. 하나는 Spack
 spack create https://github.com/firemodels/fds/archive/refs/tags/FDS-6.8.0.tar.gz
 ```
 
-결과를 더 읽어보면(마지막 줄) spack폴더의 어떤 복잡한 경로 밑에 package.py 파일이 만들어진 것을 알 수 있습니다. 신규 패키지를 생성하는 두번째 방법은 이 package.py 파일을 직접 만드는 것입니다. 패키지 레시피 작성에 익숙해졌다면 create명령을 이용하여 기본 템플릿 파일에서 시작하는것보다 기존에 다른 사람들이 만들었던 레시피 파일을 참고하는 것이 더 유용할 것입니다.
-
 {{% callout info %}}
  ==> Using specified package name: ‘fds’
 
@@ -44,9 +42,11 @@ spack create https://github.com/firemodels/fds/archive/refs/tags/FDS-6.8.0.tar.g
  ==> Created package file: /root/spack/var/spack/repos/builtin/packages/fds/package.py
 {{% /callout %}}
 
+결과를 더 읽어보면(마지막 줄) spack폴더의 어떤 복잡한 경로 밑에 package.py 파일이 만들어진 것을 알 수 있습니다. 신규 패키지를 생성하는 두번째 방법은 이 package.py 파일을 직접 만드는 것입니다. 패키지 레시피 작성에 익숙해졌다면 create명령을 이용하여 기본 템플릿 파일에서 시작하는것보다 기존에 다른 사람들이 만들었던 레시피 파일을 참고하는 것이 더 유용할 것입니다.
+
 ## 2 빌드시스템 선택
 
-먼저 [빌드시스템](https://en.wikipedia.org/wiki/Build_automation)에 대한 이해가 있어야 합니다. 대표적인 빌드시스템으로 Make, CMake, Maven, Meson, Autotools등이 있습니다. 대부분의 큰 오픈소스들은 빌드시스템을 이용하고 있기 때문에 Spack 패키지 레시피를 만들기 위해서는 빌드시스템에 대한 이해가 필수입니다. FDS는 어떤 빌드시스템을 이용하고 있을까요? 앞단락에서 `spack create` 명령으로는 찾을 수 없다고 했습니다. FDS는 깃헙 위키를 운영하고 있어 정보를 얻을 수 있습니다. 이 중 [FDS Compilation](https://github.com/firemodels/fds/wiki/FDS-Compilation)글을 보면 빌드하는 방법을 알 수 있습니다. 아키텍쳐마다 빌드 디렉토리가 따로 있고 자체 bash 스크립트(`make_fds.sh`)를 쓰도록 되어있습니다.
+먼저 [빌드시스템](https://en.wikipedia.org/wiki/Build_automation)에 대한 이해가 있어야 합니다. 대표적인 빌드시스템으로 Make, CMake, Maven, Meson, Autotools등이 있습니다. 대부분의 큰 오픈소스들은 빌드시스템을 이용하고 있기 때문에 Spack 패키지 레시피를 만들기 위해서는 빌드시스템에 대한 이해가 필수입니다. FDS는 어떤 빌드시스템을 이용하고 있을까요? 앞 단락에서 `spack create` 명령으로는 찾을 수 없다고 했습니다. FDS는 깃헙 위키를 운영하고 있어 정보를 얻을 수 있습니다. 이 중 [FDS Compilation](https://github.com/firemodels/fds/wiki/FDS-Compilation)글을 보면 빌드하는 방법을 알 수 있습니다. 아키텍쳐마다 빌드 디렉토리가 따로 있고 자체 bash 스크립트(`make_fds.sh`)를 쓰도록 되어있습니다.
 
 {{% callout info %}}
 
@@ -77,7 +77,7 @@ make -j4 VPATH="../../Source" -f ../makefile $target
 
 edit는 makefile을 수정하거나 필요한 환경변수를 입력하는 과정입니다. 예시로 본 `make_fds.sh` 파일외에 다른 폴더에 있던 `make_fds.sh` 파일을 살펴보면 intel 컴파일러 선택시 `INTEL_IFORT` 변수를 넣어주는 과정이 있습니다. 디폴트 값은 `ifort`값이 들어가 있습니다. 이건 포트란을 알고 있으면 눈치를 챌 수 있는데요. `ifort`는 인텔 포트란의 명령어 이름입니다. 그런데 인텔이 oneapi를 출시하면서 명령어를 `ifx`로 바꾸어버렸습니다. 그래서 이 부분을 변수에서 지정해줘야 합니다.
 
-`makefile.filter` 부분은 makefile을 바꿔주는 부분으로 리눅스 명령어중 `sed`와 사용법이 유사합니다. make_fds.sh 파일을 실행하는것과 makefile을 바로 make하는것과 경로가 차이가 납니다. 그래서 이와 관련된 경로를 맞게 바꿔주는 것입니다.
+`makefile.filter` 부분은 makefile을 바꿔주는 부분으로 리눅스 명령어중 `sed`와 사용법이 유사합니다. `make_fds.sh` 파일을 실행하는것과 `makefile`을 바로 make하는것과 경로가 차이가 납니다. 그래서 이와 관련된 경로를 맞게 바꿔주는 것입니다.
 
 ```python
     def edit(self, spec, prefix):
@@ -90,7 +90,7 @@ edit는 makefile을 수정하거나 필요한 환경변수를 입력하는 과�
 ```
 
 {{% callout warning %}}
-`MKL_ROOT` 환경변수를 입력해주는 부분은 검토가 필요합니다. FDS에서 `MKL_ROOT`대신 `MKLROOT` 변수를 쓰는것으로 확인이 됩니다. MKL과 ROOT사이에 ‘_‘가 없어야 합니다. 틀렸던 이유는 위키의 내용과 실제 makefile이 다르기 때문입니다. `MKLROOT`는 spack에서 oneapi 설치 시 환경변수로 들어가게 되는데 특정 옵션이 켜진 상태에서만 들어가게 됩니다. 이 옵션은 디폴트가 켜져있는 상태이긴 하지만 사용자가 끌수도 있으므로 확실한 정의가 필요합니다.
+`MKL_ROOT` 환경변수를 입력해주는 부분은 검토가 필요합니다. FDS에서 `MKL_ROOT`대신 `MKLROOT` 변수를 쓰는것으로 확인이 됩니다. MKL과 ROOT사이에 밑줄이 없어야 합니다. 틀렸던 이유는 위키의 내용과 실제 `makefile`이 다르기 때문입니다. `MKLROOT`는 spack에서 oneapi 설치 시 환경변수로 들어가게 되는데 특정 옵션이 켜진 상태에서만 들어가게 됩니다. 이 옵션은 디폴트가 켜져있는 상태이긴 하지만 사용자가 끌수도 있으므로 확실한 정의가 필요합니다.
 {{% /callout %}}
 
 ### 2.2 build
@@ -99,7 +99,7 @@ make 명령어는 아래와 같이 옵션과 타겟으로 나누어집니다. �
 
 > make –help Usage: make \[options] \[target] …
 
-\-j4는 빌드 시 4개의 쓰레드를 사용하는 것입니다. Spack에는 쓰레드가 알아서 지정이 되고 CPU가 충분할 시 더 많은 쓰레드로 지정이 됩니다. VPATH는 makefile에 VPATH란 변수를 넣어주는것입니다. -f는 makefile의 경로를 지정해주는 것입니다. makefile이 있는 디렉토리에서 빌드할 것이기 때문에 위치는 ../makefile이 아닌 ./makefile입니다. ../는 상위 폴더, ./는 현재 폴더를 의미합니다. 현재 폴더에서 빌드한다면 굳이 -f 옵션은 필요없습니다. 다음 부분은 target인데 여기에는 OS, Compiler, MPI의 값이 들어가게 됩니다. 기존 FDS 방법은 디렉토리가 타겟값이 됩니다. 저는 기존 FDS 방법 처럼 특정 폴더에 들어가지 않고 빌드를 하니 target값을 spack에서 만들어줘야 합니다. property decorator와 build_targets함수로 아래와 같이 target값을 지정할 수 있습니다.
+\-j4는 빌드 시 4개의 쓰레드를 사용하는 것입니다. Spack에는 쓰레드가 알아서 지정이 되고 CPU가 충분할 시 더 많은 쓰레드로 지정이 됩니다. VPATH는 makefile에 VPATH란 변수를 넣어주는것입니다. -f는 makefile의 경로를 지정해주는 것입니다. makefile이 있는 디렉토리에서 빌드할 것이기 때문에 위치는 ../makefile이 아닌 ./makefile입니다. ../는 상위 폴더, ./는 현재 폴더를 의미합니다. 명령을 실행하는 폴더와 빌드폴더가 동일하다면 굳이 -f 옵션은 필요없습니다. 다음 부분은 target인데 여기에는 OS, Compiler, MPI의 값이 들어가게 됩니다. 기존 FDS 방법은 디렉토리가 타겟값이 됩니다. 저는 기존 FDS 방법 처럼 특정 디렉토리에 들어가지 않고 빌드를 하니 target값을 spack에서 만들어줘야 합니다. property decorator와 build_targets함수로 아래와 같이 target값을 지정할 수 있습니다.
 
 ```python
     @property
@@ -116,7 +116,7 @@ make 명령어는 아래와 같이 옵션과 타겟으로 나누어집니다. �
 
 리턴해주는 값은 `["{}_{}_{}".format(mpi_prefix, compiler_prefix, platform_prefix)]` 으로 mpi, 컴파일러, 플랫폼(OS)값을 주게 됩니다. spack의 명칭과 FDS의 명칭이 다르니 mapping해주는 딕셔너리를 만들었습니다.
 
-즉 기존에 Build 디렉토리 밑에 타겟값으로 쓰일 디렉토리로 들어가 make_fds.sh 파일로 빌드 하는 방법을 Build 디렉토리에서 바로 빌드하되 target값은 spack에서 받는 값으로 대체한것입니다.
+즉 기존에 Build 디렉토리 밑에 타겟값으로 쓰일 디렉토리로 들어가 `make_fds.sh` 파일로 빌드 하는 방법을 Build 디렉토리에서 바로 빌드하되 target값은 spack에서 받는 값으로 대체한것입니다.
 
 ### 2.3 install
 
@@ -137,8 +137,8 @@ GNU 포트란과 open mpi로 컴파일시 모듈 파일(mod)과 오브젝트 파
 
 ## 3. 의존성
 
-의존성은 FDS에 필요한 사전 패키지들을 정의하는 과정입니다. 먼저 가장 먼저 떠오르는것은 mpi와 mkl입니다. mpi와 mkl은 spack에서는 일반 패키지가 아닌 virtual 패키지로 정의합니다. mpi는 OpenMPI, Intel MPI, MPICH등 다 양한 패키지들이 있습니다. 어떤 패키지에서 mpi가 필요하다고 정의하면 MPI 패키지중 어떤 패키지라도 하나만 있으면 충족이 됩니다.\
-단 FDS는 아직까지는 다양한 MPI, 컴파일러등에서 테스트 되지는 않은것 같습니다. GNU Fortran, OpenMPI, Intel Fortan, OneAPI MPI에서만 빌드하는 방법을 제공하고 있습니다. 그래서 아래와 같이 mpi와 mkl을 `depend_on`으로 의존 관계를 정의하면서 `requires`에 ‘one of’ policy로 gcc(GNU Fortran), intel, oneapi 만을 컴파일러로 쓰도록 정의했습니다.
+의존성은 FDS에 필요한 사전 패키지들을 정의하는 과정입니다. 먼저 가장 먼저 떠오르는것은 mpi와 mkl입니다. mpi와 mkl은 spack에서는 일반 패키지가 아닌 virtual 패키지로 정의합니다. mpi는 OpenMPI, Intel MPI, MPICH등 다 양한 패키지들이 있습니다. 어떤 패키지에서 mpi가 필요하다고 정의하면 MPI 패키지중 어떤 패키지라도 하나만 있으면 충족이 됩니다.
+단 FDS는 아직까지는 다양한 MPI, 컴파일러등에서 테스트 되지는 않은것 같습니다. GNU Fortran, OpenMPI, Intel Fortan, OneAPI MPI에서만 빌드하는 방법을 제공하고 있습니다. 그래서 아래와 같이 mpi와 mkl을 `depend_on`으로 의존 관계를 정의하고 `requires`에 ‘one of’ policy로 gcc(GNU Fortran), intel, oneapi만을 컴파일러로 쓰도록 정의했습니다.
 
 ```python
     depends_on("mpi")
@@ -172,9 +172,7 @@ spack style --fix
 ```
 
 이렇게 명령을 주면 내가 작성한 코드도 스타일이 바뀌어집니다.
-
 다음으로 PR에 사용할 설명글입니다. 변경 사항은 무엇이고 어떻게 테스트했다라는 설명을 자세하게 적는것이 좋습니다. 물론 영어로 작성해야 하기에 영어가 익숙하지 않으면 번거로운 과정입니다. 저는 ChatGPT를 사용하여 약간의 번역+글짓기를 같이 작성하게 했습니다.
-
 위의 사항들을 정리하여 [PR](https://github.com/spack/spack/pull/37850)을 신청했습니다. 거의 하루만에 [Merge](https://github.com/spack/spack/commit/bf4fccee15853153c8346bd26328524195b603f9)가 되었습니다. 내용에 비해서는 굉장히 빨리 Merge가 된 사례입니다. 기존 패키지들은 작은 수정도 쉽지 않았는데 신규 패키지라 좀 더 쉽게 신청이 된 느낌도 있습니다. 좀 더 신규 신청건이 많아지면 확실히 이야기할 수 있을듯 합니다.
 
 ## 5. 홍보
