@@ -221,7 +221,6 @@ div.alert-example > div {
   color: #111111;
   background-color: #d8c7fc;
   border-color: #4c5f26;
-  line-height: 0.5rem;
 }
 
 div.alert-example > div:first-child::before {
@@ -235,16 +234,17 @@ div.alert-example > div:first-child::before {
   content: '\f005';
   width: 1.5rem;
   text-align: center;
+  background-color: #d8c7fc;
 }
 
 .dark div.alert-example > div {
   position: relative;
   display: block;
-  font-size: 1.8rem;
+  font-size: 0.5rem;
   margin-left: 2rem;
   margin-top: 0;
   margin-bottom: 0;
   color: #f5f5f5;
-  background-color: #222222;
+  background-color: #d8c7fc;
   border-color: #969c86;
 }
