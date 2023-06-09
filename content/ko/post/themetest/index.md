@@ -9,9 +9,6 @@ categories:
   - Blog
 ---
 
-{{% alert example %}}
-This is an example text.
-{{% /alert %}}
 
 {{% callout example %}}
 This is an example text.
