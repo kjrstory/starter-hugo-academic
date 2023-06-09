@@ -211,19 +211,22 @@
       translateX(-30px);
   }
 
-div.alert > div {
+div.alert-example > div {
   position: relative;
   display: block;
-  font-size: 0.5rem;
-  margin-left: 2rem;
+  font-size: 0.8rem;
+  margin-left: 0.5rem;
   margin-top: 0;
   margin-bottom: 0;
+  color: #111111;
+  background-color: #ccddaa;
+  border-color: #4c5f26;
 }
 
-div.alert > div:first-child::before {
+div.alert-example > div:first-child::before {
   position: absolute;
   top: -0.5rem;
-  left: -2rem;
+  left: 0.5rem;
   font-size: 0.5rem;
   color: #1976d2;
   font-family: 'Font Awesome 5 Free';
@@ -231,10 +234,4 @@ div.alert > div:first-child::before {
   content: '';
   width: 1.5rem;
   text-align: center;
-}
-
-.alert-example {
-  color: #111111;
-  background-color: #ccddaa;
-  border-color: #4c5f26;
 }
