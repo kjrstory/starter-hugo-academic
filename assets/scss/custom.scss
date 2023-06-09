@@ -214,13 +214,14 @@
 div.alert-example > div {
   position: relative;
   display: block;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   margin-left: 2rem;
   margin-top: 0;
   margin-bottom: 0;
   color: #111111;
   background-color: #d8c7fc;
   border-color: #4c5f26;
+  line-height: 0.5rem;
 }
 
 div.alert-example > div:first-child::before {
@@ -231,7 +232,7 @@ div.alert-example > div:first-child::before {
   color: #1976d2;
   font-family: 'Font Awesome 5 Free';
   font-weight: 900;
-  content: '   ';
+  content: '\f005';
   width: 1.5rem;
   text-align: center;
 }
@@ -243,7 +244,7 @@ div.alert-example > div:first-child::before {
   margin-left: 2rem;
   margin-top: 0;
   margin-bottom: 0;
-  color: #111111;
-  background-color: #d8c7fc;
-  border-color: #4c5f26;
+  color: #f5f5f5;
+  background-color: #222222;
+  border-color: #969c86;
 }
