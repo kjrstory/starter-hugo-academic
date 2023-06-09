@@ -12,4 +12,4 @@ categories:
 
 {{% callout example %}}
 This is an example text.
-{{% callout %}}
+{{% /callout %}}
