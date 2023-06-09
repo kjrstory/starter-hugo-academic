@@ -83,10 +83,10 @@ features:
     commento:
       url: ''
     giscus:
-      repo: ''
-      repo_id: ''
-      category: ''
-      category_id: ''
+      repo: 'kjrstory/blog_giscus'
+      repo_id: 'R_kgDOJtZ7gg'
+      category: 'General'
+      category_id: 'DIC_kwDOJtZ7gs4CXFvm'
   search:
     provider: wowchemy
     algolia:
