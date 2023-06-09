@@ -212,7 +212,6 @@
   }
 
 
-.article-style aside p::before,
 div.alert > div:first-child::before {
   position: absolute;
   top: -0.5rem;
@@ -225,4 +224,10 @@ div.alert > div:first-child::before {
   width: 1.5rem;
   text-align: center;
   line-height: 0.5;
+}
+
+.alert-example {
+  color: #111111;
+  background-color: #ccddaa;
+  border-color: #4c5f26;
 }
