@@ -76,9 +76,9 @@ features:
     gravatar: false
     shape: circle
   comment:
-    provider: 'giscus'
+    provider: 'disqus'
     disqus:
-      shortname: ''
+      shortname: 'engineerstory'
       show_count: true
     commento:
       url: ''
