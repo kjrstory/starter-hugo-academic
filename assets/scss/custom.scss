@@ -231,8 +231,19 @@ div.alert-example > div:first-child::before {
   color: #1976d2;
   font-family: 'Font Awesome 5 Free';
   font-weight: 900;
-  content: '';
+  content: '   ';
   width: 1.5rem;
   text-align: center;
+}
+
+.dark div.alert-example > div {
+  position: relative;
+  display: block;
+  font-size: 1.8rem;
+  margin-left: 2rem;
+  margin-top: 0;
+  margin-bottom: 0;
+  color: #111111;
   background-color: #d8c7fc;
+  border-color: #4c5f26;
 }
