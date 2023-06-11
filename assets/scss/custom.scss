@@ -218,6 +218,10 @@ div.alert-info2 > div:first-child::before {
   content: '\f05a';
 }
 
+.dark .div.alert-info2 > div:first-child::before {
+  color: #f5f5f5;
+}
+
 .alert-info2 {
   font-size: 0.9rem;
   color: #111111;
@@ -239,6 +243,10 @@ div.alert-warning2 > div:first-child::before {
   content: '\f071';
 }
 
+.dark .div.alert-warning2 > div:first-child::before {
+  color: #f5f5f5;
+}
+
 .alert-warning2 {
   font-size: 0.9rem;
   color: #111111;
@@ -257,7 +265,11 @@ div.alert-quote > div:first-child::before {
   font-family: 'Font Awesome 5 Free';
   font-weight: 900;
   color: #4c5f26;
-  content: '\f0eb';
+  content: '\f10e';
+}
+
+.dark .div.alert-quote > div:first-child::before {
+  color: #f5f5f5;
 }
 
 .alert-quote {
