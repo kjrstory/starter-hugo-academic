@@ -245,15 +245,15 @@ $callout-background-color-map: (
   .alert-#{$key} {
     background-color: $color;
   }
-}
-
-@each $key, $color in $callout-background-color-map {
-  div.alert-#{$key} {
-     font-size: 0.9rem;
+  
+  .dark .alert-#{$key} {
+    background-color: adjust-color($color, $lightness: -20%);
   }
-}
-
-@each $key, $color in $callout-background-color-map {
+  
+  div.alert-#{$key} {
+    font-size: 0.9rem;
+  }
+  
   div.alert-#{$key} > div:first-child::before{
     color: $color;
   }
@@ -266,9 +266,7 @@ $callout-background-color-map: (
     font-size: 0.9rem;
     top: 0.0rem;
   }
-}
-
-@each $key, $icon in $callout-icon {
+  
   .dark div.alert-#{$key} > div:first-child::before{
     color: #f5f5f5;
   }
