@@ -218,7 +218,7 @@ div.alert-info2 > div:first-child::before {
   content: '\f05a';
 }
 
-.dark .div.alert-info2 > div:first-child::before {
+.dark div.alert-info2 > div:first-child::before {
   color: #f5f5f5;
 }
 
@@ -243,7 +243,7 @@ div.alert-warning2 > div:first-child::before {
   content: '\f071';
 }
 
-.dark .div.alert-warning2 > div:first-child::before {
+.dark div.alert-warning2 > div:first-child::before {
   color: #f5f5f5;
 }
 
@@ -262,13 +262,13 @@ div.alert-warning2 > div:first-child::before {
 }
 
 div.alert-quote > div:first-child::before {
-  font-family: 'Font Awesome 5 Free';
-  font-weight: 900;
+  font-size: 0.9rem;
+  top: 0.0rem;
   color: #4c5f26;
   content: '\f10e';
 }
 
-.dark .div.alert-quote > div:first-child::before {
+.dark div.alert-quote > div:first-child::before {
   color: #f5f5f5;
 }
 
