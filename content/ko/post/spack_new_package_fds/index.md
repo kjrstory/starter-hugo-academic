@@ -45,7 +45,9 @@ spack create https://github.com/firemodels/fds/archive/refs/tags/FDS-6.8.0.tar.g
 
 {{% callout note %}}
 cd to the directory in the fds repository called **Build**.
-cd to the appropriate directory within Build, such as **ompi_intel_linux** for the Intel compiler and Open MPI libraries under linux
+
+cd to the appropriate directory within Build, such as **ompi_intel_linux** for the Intel compiler and Open MPI libraries under linux.
+
 Type make_fds.bat or **make_fds.sh**, depending on your OS.
 {{% /callout %}}
 
