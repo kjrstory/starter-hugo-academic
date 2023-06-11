@@ -229,7 +229,7 @@ div.alert-info2 > div:first-child::before {
   font-size: 0.9rem;
   color: #f5f5f5;
   background-color: #336ca3;
-  border-color: #fafbfc;
+  border-color: #87B9DE;
 }
 
 div.alert-warning2 > div:first-child::before {
@@ -250,28 +250,8 @@ div.alert-warning2 > div:first-child::before {
   font-size: 0.9rem;
   color: #f5f5f5;
   background-color: #FF6666;
-  border-color: #fafbfc;
+  border-color: #FF7F7F;
 }
-
-div.alert-example > div:first-child::before {
-  font-family: 'Font Awesome 5 Free';
-  font-weight: 900;
-  color: #4c5f26;
-  content: '\f0eb';
-}
-
-.alert-example {
-  color: #111111;
-  background-color: #ccddaa;
-  border-color: #4c5f26;
-}
-
-.dark .alert-example {
-  color: #111111;
-  background-color: #ccddaa;
-  border-color: #4c5f26;
-}
-
 
 div.alert-quote > div:first-child::before {
   font-family: 'Font Awesome 5 Free';
@@ -287,7 +267,7 @@ div.alert-quote > div:first-child::before {
 }
 
 .dark .alert-quote {
-  color: #111111;
-  background-color: #666666;
+  color: #f5f5f5;
+  background-color: #333333;
   border-color: #4c5f26;
 }
