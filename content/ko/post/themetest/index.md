@@ -10,6 +10,11 @@ categories:
 ---
 
 
-{{% callout example %}}
+{{% callout note %}}
 This is an example text.
 {{% /callout %}}
+
+{{% callout warning2 %}}
+This is an example text.
+{{% /callout %}}
+  
