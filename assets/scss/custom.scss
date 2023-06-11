@@ -248,7 +248,7 @@ $callout-background-color-map: (
   
   .dark .alert-#{$key} {
     color: #FFFFFF,
-    background-color: darken($color, 40);
+    background-color: darken($color, 60%);
   }
   
   div.alert-#{$key} {
