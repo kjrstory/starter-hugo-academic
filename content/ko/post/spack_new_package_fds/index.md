@@ -43,7 +43,7 @@ spack create https://github.com/firemodels/fds/archive/refs/tags/FDS-6.8.0.tar.g
 
 먼저 [빌드시스템](https://en.wikipedia.org/wiki/Build_automation)에 대한 이해가 있어야 합니다. 대표적인 빌드시스템으로 Make, CMake, Maven, Meson, Autotools등이 있습니다. 대부분의 큰 오픈소스들은 빌드시스템을 이용하고 있기 때문에 Spack 패키지 레시피를 만들기 위해서는 빌드시스템에 대한 이해가 필수입니다. FDS는 어떤 빌드시스템을 이용하고 있을까요? 앞 단락에서 `spack create` 명령의 출력을 읽어보면 찾을 수 없다고 합니다(Warning: Unable to detect a build system). FDS는 깃헙 위키를 운영하고 있어 정보를 얻을 수 있습니다. 이 중 [FDS Compilation](https://github.com/firemodels/fds/wiki/FDS-Compilation)글을 보면 빌드하는 방법을 알 수 있습니다. 아키텍쳐마다 빌드 디렉토리가 따로 있고 자체 bash 스크립트인 `make_fds.sh`를 쓰도록 되어있습니다.
 
-{{% callout info2 %}}
+{{% callout info %}}
 cd to the directory in the fds repository called **Build**.
 
 cd to the appropriate directory within Build, such as **ompi_intel_linux** for the Intel compiler and Open MPI libraries under linux.
@@ -127,7 +127,7 @@ make –help Usage: make \[options] \[target] …
             install("fds_" + self.build_targets[0], prefix.bin + "/fds")
 ```
 
-{{% callout warning2 %}}
+{{% callout newwarning %}}
 GNU 포트란과 open mpi로 컴파일시 모듈 파일(mod)과 오브젝트 파일(o)을 같이 bin 폴더로 설치하는데 이 부분은 확실하지 않습니다. 이 파일들이 필수로 필요한지 다른 컴파일 조건에서도 같은 파일이 생성되는지등을 확인하지 못했으며 향후 검토할 예정입니다.
 {{% /callout %}}
 
