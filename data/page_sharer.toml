@@ -47,8 +47,8 @@
   title = "Weibo"
   icon_pack = "fab"
   icon = "weibo"
-  enable = true
-
+  enable = false
+  
 [[buttons]]
   id = "reddit"
   url = "https://reddit.com/submit?url={url}&title={title}"
