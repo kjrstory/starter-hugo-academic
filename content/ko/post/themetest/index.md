@@ -25,3 +25,7 @@ This is an example text.
 This is an example text.
 {{% /callout %}}
   
+{{% callout warni %}}
+This is an example text.
+{{% /callout %}}
+  
