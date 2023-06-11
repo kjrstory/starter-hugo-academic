@@ -243,13 +243,12 @@ $callout-background-color-map: (
 
 @each $key, $color in $callout-background-color-map {
   .alert-#{$key} {
-    background-color: adjust-color($color, $lightness: 20%);
+    border-color: $color;
+    background-color: adjust-color($color, $lightness: 25%);
   }
   
   .dark .alert-#{$key} {
-    color: #FFFFFF;
-    background-color: adjust-color($color, $lightness: -20%);
-    border-color: $color;
+    background-color: adjust-color($color, $lightness: -25%);
   }
   
   div.alert-#{$key} > div {
@@ -257,18 +256,14 @@ $callout-background-color-map: (
   }
   
   div.alert-#{$key} > div:first-child::before {
-    color: #01060f;
+    color: $color;
+    font-size: 0.9rem;
+    top: 0.0rem;
   }
 }
 
 @each $key, $icon in $callout-icon {
   div.alert-#{$key} > div:first-child::before {
     content: $icon;
-    font-size: 0.9rem;
-    top: 0.0rem;
-  }
-  
-  .dark div.alert-#{$key} > div:first-child::before {
-    color: #f5f5f5;
   }
 }
