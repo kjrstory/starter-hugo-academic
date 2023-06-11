@@ -307,37 +307,37 @@ $callout-background-color-map: (
 );
 
 .alert-note {
-  background-color: map-get($callout-color-map, 'note');
+  background-color: map-get($callout-background-color-map, 'note');
 }
 
 .alert-abstract {
-  background-color: map-get($callout-color-map, 'abstract');
+  background-color: map-get($callout-background-color-map, 'abstract');
 }
 
 .alert-tip {
-  background-color: map-get($callout-color-map, 'tip');
+  background-color: map-get($callout-background-color-map, 'tip');
 }
 
 .alert-success {
-  background-color: map-get($callout-color-map, 'success');
+  background-color: map-get($callout-background-color-map, 'success');
 }
 
 .alert-question {
-  background-color: map-get($callout-color-map, 'question');
+  background-color: map-get($callout-background-color-map, 'question');
 }
 
 .alert-failure {
-  background-color: map-get($callout-color-map, 'failure');
+  background-color: map-get($callout-background-color-map, 'failure');
 }
 
 .alert-danger {
-  background-color: map-get($callout-color-map, 'danger');
+  background-color: map-get($callout-background-color-map, 'danger');
 }
 
 .alert-bug {
-  background-color: map-get($callout-color-map, 'bug');
+  background-color: map-get($callout-background-color-map, 'bug');
 }
 
 .alert-example {
-  background-color: map-get($callout-color-map, 'example');
+  background-color: map-get($callout-background-color-map, 'example');
 }
