@@ -253,12 +253,18 @@ $callout-background-color-map: (
   }
 }
 
+@each $key, $color in $callout-background-color-map {
+  div.alert-#{$key} > div:first-child::before{
+    color: opacify($color, 0.15);
+  }
+}
+
+
 @each $key, $icon in $callout-icon {
   div.alert-#{$key} > div:first-child::before{
     content: $icon;
     font-size: 0.9rem;
     top: 0.0rem;
-    color: opacify($color, 0.15);
   }
 }
 
