@@ -225,6 +225,7 @@ div.alert-info2 > div:first-child::before {
   text-align: center;
 }
 
+.article-style aside,
 div.alert-info2 > div {
   position: relative;
   display: block;
@@ -236,6 +237,7 @@ div.alert-info2 > div {
   background-color: #E6F4FF;
   border-color: #87B9DE;
 }
+
 
 .dark div.alert-info2 > div {
   position: relative;
@@ -275,6 +277,7 @@ div.alert-warning2 > div {
   border-color: #FF7F7F;
 }
 
+.article-style aside,
 .dark div.alert-warning2 > div {
   position: relative;
   display: block;
