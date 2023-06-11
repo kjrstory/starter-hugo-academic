@@ -248,27 +248,26 @@ $callout-background-color-map: (
   
   .dark .alert-#{$key} {
     color: #FFFFFF;
-    background-color: adjust-color($color, $lightness: -40%);
+    background-color: adjust-color($color, $lightness: -20%);
   }
   
-  div.alert-#{$key} {
+  div.alert-#{$key} > div {
     font-size: 0.9rem;
   }
   
-  div.alert-#{$key} > div:first-child::before{
+  div.alert-#{$key} > div:first-child::before {
     color: #01060f;
   }
 }
 
-
 @each $key, $icon in $callout-icon {
-  div.alert-#{$key} > div:first-child::before{
+  div.alert-#{$key} > div:first-child::before {
     content: $icon;
     font-size: 0.9rem;
     top: 0.0rem;
   }
   
-  .dark div.alert-#{$key} > div:first-child::before{
+  .dark div.alert-#{$key} > div:first-child::before {
     color: #f5f5f5;
   }
 }
