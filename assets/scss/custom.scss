@@ -265,7 +265,7 @@ div.alert-warning2 > div:first-child::before {
   text-align: center;
 }
 
-div.alert-warning2 > div {
+.alert-warning2 {
   position: relative;
   display: block;
   font-size: 0.9rem;
@@ -277,7 +277,7 @@ div.alert-warning2 > div {
   border-color: #FF7F7F;
 }
 
-.dark div.alert-warning2 > div {
+.dark alert-warning2 {
   position: relative;
   display: block;
   font-size: 0.9rem;
@@ -298,6 +298,12 @@ div.alert-example > div:first-child::before {
 }
 
 .alert-example {
+  color: #111111;
+  background-color: #ccddaa;
+  border-color: #4c5f26;
+}
+
+.dark .alert-example {
   color: #111111;
   background-color: #ccddaa;
   border-color: #4c5f26;
