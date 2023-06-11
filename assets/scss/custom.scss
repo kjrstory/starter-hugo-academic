@@ -212,7 +212,7 @@
   }
 
 div.alert-info2 > div:first-child::before {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   top: 0.0rem;
   color: #1976d2;
   content: '\f05a';
@@ -223,21 +223,21 @@ div.alert-info2 > div:first-child::before {
 }
 
 .alert-info2 {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: #111111;
   background-color: #E6F4FF;
   border-color: #87B9DE;
 }
 
 .dark .alert-info2 {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: #f5f5f5;
-  background-color: #000066;
+  background-color: #9999CC;
   border-color: #87B9DE;
 }
 
 div.alert-warning2 > div:first-child::before {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   top: 0.0rem;
   color: #FF3333;
   content: '\f071';
@@ -248,21 +248,21 @@ div.alert-warning2 > div:first-child::before {
 }
 
 .alert-warning2 {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: #111111;
   background-color: #FFEBEB;
   border-color: #FF7F7F;
 }
 
 .dark .alert-warning2 {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: #f5f5f5;
-  background-color: #660000;
+  background-color: #996666;
   border-color: #FF7F7F;
 }
 
 div.alert-quote > div:first-child::before {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   top: 0.0rem;
   color: #4c5f26;
   content: '\f10e';
