@@ -275,11 +275,13 @@ div.alert-quote > div:first-child::before {
   border-color: #999999;
 }
 
+div.alert-newnote > div,
 div.alert-abstract > div,
 div.alert-info > div,
 div.alert-tip > div,
 div.alert-success > div,
 div.alert-question > div,
+div.alert-newwarning > div,
 div.alert-failure > div,
 div.alert-danger > div,
 div.alert-bug > div,
@@ -303,42 +305,39 @@ $callout-background-color-map: (
   'quote': #9e9e9e,
 );
 
-.alert-note {
+.alert-newnote {
   background-color: map-get($callout-background-color-map, 'note');
 }
-
 .alert-abstract {
   background-color: map-get($callout-background-color-map, 'abstract');
 }
-
+.alert-info {
+  background-color: map-get($callout-background-color-map, 'info');
+}
 .alert-tip {
   background-color: map-get($callout-background-color-map, 'tip');
 }
-
 .alert-success {
   background-color: map-get($callout-background-color-map, 'success');
 }
-
 .alert-question {
   background-color: map-get($callout-background-color-map, 'question');
 }
-
+.alert-newwarning {
+  background-color: map-get($callout-background-color-map, 'warning');
+}
 .alert-failure {
   background-color: map-get($callout-background-color-map, 'failure');
 }
-
 .alert-danger {
   background-color: map-get($callout-background-color-map, 'danger');
 }
-
 .alert-bug {
   background-color: map-get($callout-background-color-map, 'bug');
 }
-
 .alert-example {
   background-color: map-get($callout-background-color-map, 'example');
 }
-
 .alert-queto {
   background-color: map-get($callout-background-color-map, 'queto');
 }
