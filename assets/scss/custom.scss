@@ -212,22 +212,20 @@
   }
 
 
-
-div.alert-note > div:first-child::before {
+div.alert-info > div:first-child::before {
   position: absolute;
-  top: -0.5rem;
+  top: -0.0rem;
   left: -2.0rem;
   font-size: 0.9rem;
   color: #1976d2;
   font-family: 'Font Awesome 5 Free';
   font-weight: 900;
-  content: '\f303';
+  content: '\f2f7';
   width: 1.8rem;
   text-align: center;
-  background-color: #FFEBEB;
 }
 
-div.alert-note > div {
+div.alert-info > div {
   position: relative;
   display: block;
   font-size: 0.9rem;
@@ -239,7 +237,7 @@ div.alert-note > div {
   border-color: #87B9DE;
 }
 
-.dark div.alert-note > div {
+.dark div.alert-info > div {
   position: relative;
   display: block;
   font-size: 0.9rem;
@@ -254,10 +252,10 @@ div.alert-note > div {
 
 div.alert-warning2 > div:first-child::before {
   position: absolute;
-  top: -0.5rem;
+  top: -0.0rem;
   left: -2.0rem;
   font-size: 0.9rem;
-  color: #1976d2;
+  color: #FF3333;
   font-family: 'Font Awesome 5 Free';
   font-weight: 900;
   content: '\f071';
@@ -285,6 +283,6 @@ div.alert-warning2 > div {
   margin-top: 0;
   margin-bottom: 0;
   color: #f5f5f5;
-  background-color: #400000;
-  border-color: #800000;
+  background-color: #FF6666;
+  border-color: #fafbfc;
 }
