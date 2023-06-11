@@ -243,7 +243,7 @@ $callout-background-color-map: (
 
 @each $key, $color in $callout-background-color-map {
   .alert-#{$key} {
-    background-color: opacify($color, 0.15);
+    background-color: $color;
   }
 }
 
