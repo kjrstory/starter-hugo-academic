@@ -213,11 +213,12 @@
 
 div.alert-info2 > div:first-child::before {
   font-size: 0.9rem;
+  top: 0.5rem;
   color: #1976d2;
   content: '\f05a';
 }
 
-div.alert-info2 > div {
+alert-info2 {
   font-size: 0.9rem;
   color: #111111;
   background-color: #E6F4FF;
@@ -233,9 +234,9 @@ div.alert-info2 > div {
 
 div.alert-warning2 > div:first-child::before {
   font-size: 0.9rem;
+  top: -0.5rem;
   color: #FF3333;
   content: '\f071';
-  text-align: center;
 }
 
 .alert-warning2 {
