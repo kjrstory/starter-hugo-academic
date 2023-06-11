@@ -276,12 +276,23 @@ div.alert-quote > div:first-child::before {
   font-size: 0.7rem;
   color: #111111;
   background-color: #cccccc;
-  border-color: #4c5f26;
+  border-color: #999999;
 }
 
 .dark .alert-quote {
   font-size: 0.7rem;
   color: #f5f5f5;
   background-color: #333333;
-  border-color: #4c5f26;
+  border-color: #999999;
+}
+
+div.alert-info2 > div {
+  font-size: 0.7rem;
+}
+
+div.alert-warning2 > div {
+  font-size: 0.8rem;
+}
+div.alert-quote > div {
+  font-size: 1.2rem;
 }
