@@ -211,84 +211,46 @@
       translateX(-30px);
   }
 
-
 div.alert-info2 > div:first-child::before {
-  position: absolute;
-  top: -0.0rem;
-  left: -2.0rem;
   font-size: 0.9rem;
   color: #1976d2;
-  font-family: 'Font Awesome 5 Free';
-  font-weight: 900;
   content: '\f05a';
-  width: 1.8rem;
-  text-align: center;
 }
 
-
 div.alert-info2 > div {
-  position: relative;
-  display: block;
   font-size: 0.9rem;
-  margin-left: 2rem;
-  margin-top: 0;
-  margin-bottom: 0;
   color: #111111;
   background-color: #E6F4FF;
   border-color: #87B9DE;
 }
 
-
-.dark div.alert-info2 > div {
-  position: relative;
-  display: block;
+.dark alert-info2 {
   font-size: 0.9rem;
-  margin-left: 2rem;
-  margin-top: 0;
-  margin-bottom: 0;
   color: #f5f5f5;
   background-color: #336ca3;
   border-color: #fafbfc;
 }
 
-
 div.alert-warning2 > div:first-child::before {
-  position: absolute;
-  top: -0.0rem;
-  left: -2.0rem;
   font-size: 0.9rem;
   color: #FF3333;
-  font-family: 'Font Awesome 5 Free';
-  font-weight: 900;
   content: '\f071';
-  width: 1.8rem;
   text-align: center;
 }
 
 .alert-warning2 {
-  position: relative;
-  display: block;
   font-size: 0.9rem;
-  margin-left: 2rem;
-  margin-top: 0;
-  margin-bottom: 0;
   color: #111111;
   background-color: #FFEBEB;
   border-color: #FF7F7F;
 }
 
 .dark alert-warning2 {
-  position: relative;
-  display: block;
   font-size: 0.9rem;
-  margin-left: 2rem;
-  margin-top: 0;
-  margin-bottom: 0;
   color: #f5f5f5;
   background-color: #FF6666;
   border-color: #fafbfc;
 }
-
 
 div.alert-example > div:first-child::before {
   font-family: 'Font Awesome 5 Free';
