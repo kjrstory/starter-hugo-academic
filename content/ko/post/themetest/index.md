@@ -29,3 +29,37 @@ This is an example text.
 This is an example text.
 {{% /callout %}}
   
+
+{{% callout abstract %}}
+이것은 abstarct 타입입니다.
+{{% /callout %}}
+
+
+{{% callout tip %}}
+이것은 tip 타입입니다.
+{{% /callout %}}
+
+
+{{% callout success %}}
+이것은 success 타입입니다.
+{{% /callout %}}
+
+
+{{% callout failure %}}
+이것은 failure 타입입니다.
+{{% /callout %}}
+
+
+{{% callout danger %}}
+이것은 danger 타입입니다.
+{{% /callout %}}
+
+
+{{% callout  bug %}}
+이것은 bug 타입입니다.
+{{% /callout %}}
+
+
+{{% callout example %}}
+이것은 example 타입입니다.
+{{% /callout %}}
