@@ -224,6 +224,7 @@ div.alert-note > div:first-child::before {
   content: '\f303';
   width: 1.8rem;
   text-align: center;
+  background-color: #FFEBEB;
 }
 
 div.alert-note > div {
@@ -246,12 +247,12 @@ div.alert-note > div {
   margin-top: 0;
   margin-bottom: 0;
   color: #f5f5f5;
-  background-color: #21384E;
-  border-color: #4C7996;
+  background-color: #336ca3;
+  border-color: #fafbfc;
 }
 
 
-div.alert-warining2 > div:first-child::before {
+div.alert-warning2 > div:first-child::before {
   position: absolute;
   top: -0.5rem;
   left: -2.0rem;
@@ -264,7 +265,7 @@ div.alert-warining2 > div:first-child::before {
   text-align: center;
 }
 
-div.alert-warining2 > div {
+div.alert-warning2 > div {
   position: relative;
   display: block;
   font-size: 0.9rem;
@@ -276,7 +277,7 @@ div.alert-warining2 > div {
   border-color: #FF7F7F;
 }
 
-.dark div.alert-warining2 > div {
+.dark div.alert-warning2 > div {
   position: relative;
   display: block;
   font-size: 0.9rem;
