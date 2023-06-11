@@ -211,67 +211,19 @@
       translateX(-30px);
   }
 
-
-
-
-div.alert-newnote > div:first-child::before,
-div.alert-abstract > div:first-child::before,
-div.alert-info > div:first-child::before,
-div.alert-tip > div:first-child::before,
-div.alert-success > div:first-child::before,
-div.alert-question > div:first-child::before,
-div.alert-newwarning > div:first-child::before,
-div.alert-failure > div:first-child::before,
-div.alert-danger > div:first-child::before,
-div.alert-bug > div:first-child::before,
-div.alert-example > div:first-child::before,
-div.alert-quote > div:first-child::before {
-  font-size: 0.9rem;
-  top: 0.0rem;
-}
-
-.dark div.alert-newnote > div:first-child::before,
-.dark div.alert-abstract > div:first-child::before,
-.dark div.alert-info > div:first-child::before,
-.dark div.alert-tip > div:first-child::before,
-.dark div.alert-success > div:first-child::before,
-.dark div.alert-question > div:first-child::before,
-.dark div.alert-newwarning > div:first-child::before,
-.dark div.alert-failure > div:first-child::before,
-.dark div.alert-danger > div:first-child::before,
-.dark div.alert-bug > div:first-child::before,
-.dark div.alert-example > div:first-child::before,
-.dark div.alert-quote > div:first-child::before {
-  color: #f5f5f5;
-}
-div.alert-newnote > div,
-div.alert-abstract > div,
-div.alert-info > div,
-div.alert-tip > div,
-div.alert-success > div,
-div.alert-question > div,
-div.alert-newwarning > div,
-div.alert-failure > div,
-div.alert-danger > div,
-div.alert-bug > div,
-div.alert-example > div,
-div.alert-quote > div {
-  font-size: 0.9rem;
-}
-
 $callout-icon: (
   'newnote': '\f071',
   'abstract': '\f071',
-  'info': '\f071',
+  'info': '\f129',
   'tip': '\f071',
-  'success': '\f071',
-  'question': '\f071',
+  'success': '\f164',
+  'question': '\f128',
   'newwarning': '\f071',
   'failure': '\f071',
   'danger': '\f071',
-  'bug': '\f071',
+  'bug': '\f188',
   'example': '\f071',
-  'quote': '\f071',
+  'quote': '\f10e',
 );
 
 $callout-background-color-map: (
@@ -295,8 +247,24 @@ $callout-background-color-map: (
   }
 }
 
-@each $key, $icon in $callout-background-color-map {
+@each $key, $color in $callout-background-color-map {
+  div.alert-#{$key} {
+     font-size: 0.9rem;
+  }
+}
+
+@each $key, $icon in $callout-icon {
   div.alert-#{$key} > div:first-child::before{
     content: $icon;
+    font-size: 0.9rem;
+    top: 0.0rem;
+  }
+}
+
+@each $key, $icon in $callout-icon {
+  .dark div.alert-#{$key} > div:first-child::before{
+    content: $icon;
+    font-size: 0.9rem;
+    color: #f5f5f5;
   }
 }
