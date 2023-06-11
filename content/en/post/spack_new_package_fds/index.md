@@ -44,7 +44,7 @@ If you continue reading the output (the last line), you can see that a package.p
 
 First, you need to have an understanding of the [build system](https://en.wikipedia.org/wiki/Build_automation). Some popular build systems include Make, CMake, Maven, Meson, and Autotools. Since most major open-source projects utilize a build system, it is essential to have an understanding of build systems when creating Spack package recipes. So, what build system does FDS use? As mentioned in the previous paragraph, it is not found using the `spack create` command. However, FDS operates a GitHub wiki where you can find information. In the [FDS Compilation article](https://github.com/firemodels/fds/wiki/FDS-Compilation), you can learn how to build FDS. It mentions separate build directories for different architectures and the use of a custom bash script called `make_fds.sh`.
 
-{{% callout info2 %}}
+{{% callout info %}}
 cd to the directory in the fds repository called **Build**.
 
 cd to the appropriate directory within Build, such as **ompi_intel_linux** for the Intel compiler and Open MPI libraries under linux
@@ -83,7 +83,7 @@ The `makefile.filter` section is responsible for modifying the Makefile. It uses
         makefile.filter(r"\.\.\\Scripts", ".\\Scripts")
 ```
 
-{{% callout warning2 %}}
+{{% callout newwarning %}}
 It is necessary to review the part where the MKL_ROOT environment variable is set. It appears that FDS uses the MKLROOT variable instead of MKL_ROOT. There should be no underscore between "MKL" and "ROOT". The reason for the mistake is that the information in the wiki differs from the actual Makefile. MKLROOT is an environment variable that is set by Spack during the installation of oneAPI. However, it is only set if a specific option is enabled. Although this option is enabled by default, users have the ability to disable it, so a clear definition is needed.
 {{% /callout %}}
 
@@ -131,7 +131,7 @@ I have decided to use a new build directory instead of the existing FDS build st
             install("fds_" + self.build_targets[0], prefix.bin + "/fds")
 ```
 
-{{% callout warning2 %}}
+{{% callout newwarning %}}
 I am not sure about installing module files (mod) and object files (o) into the bin folder when compiling with GNU Fortran and Open MPI. I have not been able to confirm if these files are necessary or if similar files are generated under different compilation conditions. I plan to review this in the future.
 {{% /callout %}}
 
