@@ -9,6 +9,11 @@ categories:
   - Blog
 ---
 
+
+"Callout"이란 블로그에서 글을 작성하는 중에 특별히 강조하고 싶은 문구들을 블록으로 만들어서 강조 처리하는 것을 의미합니다.
+Wowchemy의 [Callout문서](https://wowchemy.com/docs/content/writing-markdown-latex/#callouts)를 읽어보면 note와 warning만을 지원합니다.
+아래는 Wowchemy에서 지원하는 Callout입니다.
+
 {{% callout note %}}
 This is an example text.
 {{% /callout %}}
@@ -35,7 +40,7 @@ This is an example text.
 {{% callout question %}}
 이것은 question 타입입니다.
 {{% /callout %}}
-{{% callout warning %}}
+{{% callout newwarning %}}
 이것은 warning 타입입니다.
 {{% /callout %}}
 {{% callout failure %}}
