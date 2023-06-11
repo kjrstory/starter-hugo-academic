@@ -9,6 +9,13 @@ categories:
   - Blog
 ---
 
+{{% callout note %}}
+This is an example text.
+{{% /callout %}}
+
+{{% callout warning %}}
+This is an example text.
+{{% /callout %}}
 
 {{% callout info2 %}}
 This is an example text.
