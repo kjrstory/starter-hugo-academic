@@ -10,7 +10,7 @@ categories:
 ---
 
 
-{{% callout note %}}
+{{% callout info %}}
 This is an example text.
 {{% /callout %}}
 
