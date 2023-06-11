@@ -162,14 +162,16 @@ GNU 포트란과 open mpi로 컴파일시 모듈 파일(mod)과 오브젝트 파
 
 PR을 위한 마무리 작업을 해야 합니다. 먼저 docstring에 들어갈 문장을 만들어줍니다. 보통은 패키지 홈페이지에 있는 소개 문구를 그대로 옮겨줍니다.
 
-{{% callout note %}}
+```python
+    """
     Fire Dynamics Simulator (FDS) is a large-eddy simulation (LES) code for low-speed flows,
     with an emphasis on smoke and heat transport from fires.
     FDS and Smokeview are free and open-source software tools provided by the National Institute
     of Standards and Technology (NIST) of the United States Department of Commerce. Pursuant
     to Title 17, Section 105 of the United States Code, this software is not subject to copyright
-    protection and is in the public domain. View the full disclaimer for NIST-developed software
-{{% /callout %}}
+    protection and is in the public domain. View the full disclaimer for NIST-developed software.
+    """
+```
 
 또 작성한 코드가 리포지토리에서 정한 스타일 조건에 맞는지 체크합니다. spack에서는 CLI 명령을 제공해줘서 고쳐주는 기능까지 제공합니다.
 ```bash
@@ -187,5 +189,6 @@ spack style --fix
 {{% callout quote %}}
 Hi. Thanks for the information. I was not familiar with Spack. We always seem to have to wrestle with whatever system we are compiling on, as all the HPC machines tend to have their own intricacies. But if this is somehow becoming less chaotic, that is a nice to hear.
 {{% /callout %}}
+
 Spack에 대해 잘 몰랐지만 HPC 환경에서 FDS를 컴파일하는데 애를 먹었었고 Spack이 복잡한 것을 줄여주면 좋겠다고 말하네요. FDS는 보통 일년에 두번 정도의 릴리즈를 하는것 같고 신규 버전을 spack에도 반영하면서 추가 기능들을 만들어가야겠습니다.
 
