@@ -225,7 +225,7 @@ div.alert-info2 > div:first-child::before {
   text-align: center;
 }
 
-.article-style aside,
+
 div.alert-info2 > div {
   position: relative;
   display: block;
@@ -277,7 +277,6 @@ div.alert-warning2 > div {
   border-color: #FF7F7F;
 }
 
-.article-style aside,
 .dark div.alert-warning2 > div {
   position: relative;
   display: block;
@@ -291,24 +290,15 @@ div.alert-warning2 > div {
 }
 
 
-
-div.alert-warn > div:first-child::before {
-  top: -0.0rem;
-  font-size: 0.9rem;
-  color: #FF3333;
-  content: '\f071';
+div.alert-example > div:first-child::before {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  color: #4c5f26;
+  content: '\f0eb';
 }
 
-div.alert-warn > div {
-  font-size: 0.9rem;
+.alert-example {
   color: #111111;
-  background-color: #FFEBEB;
-  border-color: #FF7F7F;
-}
-
-.dark div.alert-warn > div {
-  font-size: 0.9rem;
-  color: #f5f5f5;
-  background-color: #FF6666;
-  border-color: #fafbfc;
+  background-color: #ccddaa;
+  border-color: #4c5f26;
 }
