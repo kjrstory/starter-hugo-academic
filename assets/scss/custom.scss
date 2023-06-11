@@ -212,17 +212,17 @@
   }
 
 $callout-icon: (
-  'newnote': '\f071',
-  'abstract': '\f071',
+  'newnote': '\f304',
+  'abstract': '\f1ea',
   'info': '\f129',
-  'tip': '\f071',
+  'tip': '\f084',
   'success': '\f164',
   'question': '\f128',
   'newwarning': '\f071',
-  'failure': '\f071',
-  'danger': '\f071',
+  'failure': '\f7a9',
+  'danger': '\f12a',
   'bug': '\f188',
-  'example': '\f071',
+  'example': '\f0d0',
   'quote': '\f10e',
 );
 
@@ -258,13 +258,12 @@ $callout-background-color-map: (
     content: $icon;
     font-size: 0.9rem;
     top: 0.0rem;
+    color: opacify($color, 0.15);
   }
 }
 
 @each $key, $icon in $callout-icon {
   .dark div.alert-#{$key} > div:first-child::before{
-    content: $icon;
-    font-size: 0.9rem;
     color: #f5f5f5;
   }
 }
