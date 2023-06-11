@@ -25,7 +25,7 @@ This is an example text.
 This is an example text.
 {{% /callout %}}
   
-{{% callout example %}}
+{{% callout quote %}}
 This is an example text.
 {{% /callout %}}
   
