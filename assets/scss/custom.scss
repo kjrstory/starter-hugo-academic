@@ -268,11 +268,6 @@ div.alert-quote > div:first-child::before {
   color: #f5f5f5;
 }
 
-.alert-quote {
-  color: #111111;
-  background-color: #cccccc;
-  border-color: #999999;
-}
 
 .dark .alert-quote {
   color: #f5f5f5;
@@ -280,13 +275,15 @@ div.alert-quote > div:first-child::before {
   border-color: #999999;
 }
 
-div.alert-info2 > div {
-  font-size: 0.9rem;
-}
-
-div.alert-warning2 > div {
-  font-size: 0.9rem;
-}
+div.alert-abstract > div,
+div.alert-info > div,
+div.alert-tip > div,
+div.alert-success > div,
+div.alert-question > div,
+div.alert-failure > div,
+div.alert-danger > div,
+div.alert-bug > div,
+div.alert-example > div,
 div.alert-quote > div {
   font-size: 0.9rem;
 }
@@ -340,4 +337,8 @@ $callout-background-color-map: (
 
 .alert-example {
   background-color: map-get($callout-background-color-map, 'example');
+}
+
+.alert-queto {
+  background-color: map-get($callout-background-color-map, 'queto');
 }
