@@ -213,7 +213,7 @@
 
 div.alert-info2 > div:first-child::before {
   font-size: 0.9rem;
-  top: 0.5rem;
+  top: 0.0rem;
   color: #1976d2;
   content: '\f05a';
 }
@@ -234,7 +234,7 @@ alert-info2 {
 
 div.alert-warning2 > div:first-child::before {
   font-size: 0.9rem;
-  top: -0.5rem;
+  top: 0.0rem;
   color: #FF3333;
   content: '\f071';
 }
