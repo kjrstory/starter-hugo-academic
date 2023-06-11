@@ -82,7 +82,7 @@ edit는 makefile을 수정하거나 필요한 환경변수를 입력하는 과�
         makefile.filter(r"\.\.\\Scripts", ".\\Scripts")
 ```
 
-{{% callout warning2 %}}
+{{% callout newwarning %}}
 MKL_ROOT 환경변수를 입력해주는 부분은 검토가 필요합니다. FDS에서 MKL_ROOT 대신 MKLROOT 변수를 쓰는것으로 확인이 됩니다. MKL과 ROOT사이에 밑줄이 없어야 합니다. 틀렸던 이유는 위키의 내용과 실제 makefile이 다르기 때문입니다. MKLROOT는 spack에서 oneapi 설치 시 환경변수로 들어가게 되는데 특정 옵션이 켜진 상태에서만 들어가게 됩니다. 이 옵션은 디폴트가 켜져있는 상태이긴 하지만 사용자가 끌수도 있으므로 확실한 정의가 필요합니다.
 {{% /callout %}}
 
