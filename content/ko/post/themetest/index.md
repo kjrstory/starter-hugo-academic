@@ -22,6 +22,12 @@ This is an example text.
 This is an example text.
 {{% /callout %}}
 
+종류가 두 개 밖에 없다는것이 매우 아쉽습니다. 아래 그림은 Doit테마에서 Callout과 비슷하게 사용되는 admornition에  관한것입니다. 12개를 지원하는 것을 알 수 있습니다.
+일단 Wowchemy에서 비슷한 시도가 있는지 검색해보았습니다. 이 [이슈](https://github.com/wowchemy/wowchemy-hugo-themes/issues/1698#issuecomment-637773325)를 읽어보면 Custom으로 추가가 가능하다고 합니다.
+하지만 Custom은 Hugo 테마라면 대부분 되는것 이기 때문에 큰 장점은 아닙니다.
+
+아쉬운대로 Cusotom하게 Callout을 추가해보았습니다. 
+
 {{% callout newnote %}}
 이것은 note 타입입니다.
 {{% /callout %}}
