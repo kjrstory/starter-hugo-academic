@@ -247,7 +247,8 @@ $callout-background-color-map: (
   }
   
   .dark .alert-#{$key} {
-    background-color: adjust-color($color, $lightness: -20%);
+    color: #FFFFFF,
+    background-color: darken($color, 40);
   }
   
   div.alert-#{$key} {
@@ -255,7 +256,7 @@ $callout-background-color-map: (
   }
   
   div.alert-#{$key} > div:first-child::before{
-    color: $color;
+    color: #01060f;
   }
 }
 
