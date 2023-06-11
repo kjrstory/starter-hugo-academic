@@ -196,7 +196,7 @@ I summarized the above points and submitted a PR, which can be found [here](http
 
 It seems that FDS users are still not familiar with Spack, so it would be helpful to inform them. While there is a Spack community, it would be a good idea to post about it in the FDS community as well. FDS operates a separate [forum](https://groups.google.com/g/fds-smv), where I have posted a promotional [message](https://groups.google.com/g/fds-smv/c/SKyKgzHXDzo/m/WKhecl2rAQAJ). Randy McDermott provided the following response:
 
-{{% callout quote2 %}}
+{{% callout quote %}}
 Hi. Thanks for the information. I was not familiar with Spack. We always seem to have to wrestle with whatever system we are compiling on, as all the HPC machines tend to have their own intricacies. But if this is somehow becoming less chaotic, that is a nice to hear.
 {{% /callout %}}
 
