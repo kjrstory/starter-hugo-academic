@@ -211,28 +211,6 @@
       translateX(-30px);
   }
 
-div.alert-info2 > div:first-child::before {
-  font-size: 0.9rem;
-  top: 0.0rem;
-  color: #1976d2;
-  content: '\f05a';
-}
-
-.dark div.alert-info2 > div:first-child::before {
-  color: #f5f5f5;
-}
-
-.alert-info2 {
-  color: #111111;
-  background-color: #CCFFFF;
-  border-color: #87B9DE;
-}
-
-.dark .alert-info2 {
-  color: #f5f5f5;
-  background-color: #336699;
-  border-color: #87B9DE;
-}
 
 div.alert-warning2 > div:first-child::before {
   font-size: 0.9rem;
@@ -241,40 +219,36 @@ div.alert-warning2 > div:first-child::before {
   content: '\f071';
 }
 
-.dark div.alert-warning2 > div:first-child::before {
-  color: #f5f5f5;
-}
-
-.alert-warning2 {
-  color: #111111;
-  background-color: #FFEBEB;
-  border-color: #FF7F7F;
-}
-
-.dark .alert-warning2 {
-  color: #f5f5f5;
-  background-color: #663333;
-  border-color: #FF7F7F;
-}
-
+div.alert-newnote > div:first-child::before,
+div.alert-abstract > div:first-child::before,
+div.alert-info > div:first-child::before,
+div.alert-tip > div:first-child::before,
+div.alert-success > div:first-child::before,
+div.alert-question > div:first-child::before,
+div.alert-newwarning > div:first-child::before,
+div.alert-failure > div:first-child::before,
+div.alert-danger > div:first-child::before,
+div.alert-bug > div:first-child::before,
+div.alert-example > div:first-child::before,
 div.alert-quote > div:first-child::before {
   font-size: 0.9rem;
   top: 0.0rem;
-  color: #4c5f26;
-  content: '\f10e';
 }
 
+.dark div.alert-newnote > div:first-child::before,
+.dark div.alert-abstract > div:first-child::before,
+.dark div.alert-info > div:first-child::before,
+.dark div.alert-tip > div:first-child::before,
+.dark div.alert-success > div:first-child::before,
+.dark div.alert-question > div:first-child::before,
+.dark div.alert-newwarning > div:first-child::before,
+.dark div.alert-failure > div:first-child::before,
+.dark div.alert-danger > div:first-child::before,
+.dark div.alert-bug > div:first-child::before,
+.dark div.alert-example > div:first-child::before,
 .dark div.alert-quote > div:first-child::before {
   color: #f5f5f5;
 }
-
-
-.dark .alert-quote {
-  color: #f5f5f5;
-  background-color: #333333;
-  border-color: #999999;
-}
-
 div.alert-newnote > div,
 div.alert-abstract > div,
 div.alert-info > div,
@@ -338,6 +312,6 @@ $callout-background-color-map: (
 .alert-example {
   background-color: map-get($callout-background-color-map, 'example');
 }
-.alert-queto {
-  background-color: map-get($callout-background-color-map, 'queto');
+.alert-quote {
+  background-color: map-get($callout-background-color-map, 'quote');
 }
