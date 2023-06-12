@@ -64,3 +64,22 @@ This is an example text.
 {{% callout quote %}}
 이것은 quote 타입입니다.
 {{% /callout %}}
+
+
+
+
+
+
+
+
+{{% admornition warning %}}
+admornition warning
+{{% /admornition %}}
+
+{{% admornition %}}
+admornition 
+{{% /admornition %}}
+
+
+
+
