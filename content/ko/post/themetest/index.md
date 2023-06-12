@@ -67,7 +67,7 @@ This is an example text.
 
 
 
-{{% admonition note-admon %}}
+{{% admonition note_admon %}}
 admonition note
 {{% /admonition %}}
 {{% admonition abstract %}}
@@ -85,7 +85,7 @@ admonition success
 {{% admonition question %}}
 admonition question
 {{% /admonition %}}
-{{% admonition warning-admon %}}
+{{% admonition warning_admon %}}
 admonition warning
 {{% /admonition %}}
 {{% admonition failure %}}
