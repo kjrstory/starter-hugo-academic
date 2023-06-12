@@ -1,44 +1,100 @@
-@mixin admon-color($color) {
-  color: darken($color, 15%);
-  background-color: lighten($color, 25%);
-  border-color: $color;
+// Callout styles for the Callout shortcode
+
+/* Style asides as Bootstrap alerts. */
+.article-style aside {
+  @extend .alert;
 }
 
-.admonition {
-  padding: 0 15px;
-  margin-bottom: 20px;
-  border: 1px solid transparent;
-  border-radius: 4px;
-  text-align: left;
-  &-title {
-    font-weight: bold;
-    text-align: left;
+/* Asides use <p> block element whereas alerts use <div>. */
+.article-style aside p,
+div.alert > div {
+  position: relative;
+  display: block;
+  font-size: 0.9rem;
+  margin-left: 2rem;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+div.alert div > * {
+  margin-bottom: 0.5rem; /* Use smaller paragraph spacing than usual. */
+}
+
+div.alert div > :last-child {
+  margin-bottom: 0;
+}
+
+.article-style aside p::before,
+div.alert > div:first-child::before {
+  position: absolute;
+  top: 0.0rem;
+  left: -2rem;
+  font-size: 0.9rem;
+  color: #1976d2;
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  content: '\f05a';
+  width: 1.5rem;
+  text-align: center;
+}
+
+.article-style aside a,
+div.alert a {
+  color: currentcolor;
+  text-decoration: none;
+  border-bottom: solid 1px currentcolor;
+}
+
+
+$admonition-icon: (
+  'note': '\f304',
+  'abstract': '\f1ea',
+  'info': '\f129',
+  'tip': '\f084',
+  'success': '\f164',
+  'question': '\f128',
+  'warning': '\f071',
+  'failure': '\f7a9',
+  'danger': '\f12a',
+  'bug': '\f188',
+  'example': '\f0d0',
+  'quote': '\f10e',
+);
+
+$admonition-color-map: (
+  'note': #448aff,
+  'abstract': #00b0ff,
+  'info': #00b8d4,
+  'tip': #00bfa5,
+  'success': #00c853,
+  'question': #64dd17,
+  'warning': #ff9100,
+  'failure': #ff5252,
+  'danger': #ff1744,
+  'bug': #f50057,
+  'example': #651fff,
+  'quote': #9e9e9e,
+);
+
+@each $key, $color in $admonition-color-map {
+  .alert-#{$key} {
+    border-color: $color;
+    background-color: adjust-color($color, $lightness: 25%);
   }
-  &.note,
-  &.info,
-  &.tips {
-    $base-blue: #3498db;
-    @include admon-color($base-blue);
+
+  .dark .alert-#{$key} {
+    color: #FFFFFF;
+    background-color: adjust-color($color, $lightness: -25%);
   }
-  &.warning,
-  &.warn,
-  &.important {
-    $base-carrot: #e67e22;
-    @include admon-color($base-carrot);
-  }
-  &.danger,
-  &.critical {
-    $base-alizarin: #e74c3c;
-    @include admon-color($base-alizarin);
+
+  div.alert-#{$key} > div:first-child::before {
+    color: $color;
   }
 }
 
-.admonition > div {
-  // 내부 요소 스타일
-  margin-bottom: 5px;
+@each $key, $icon in $admonition-icon {
+  div.alert-#{$key} > div:first-child::before {
+    content: $icon;
+  }
 }
 
-.admonition > div p {
-  // 내부 단락 스타일
-  margin: 0;
-}
