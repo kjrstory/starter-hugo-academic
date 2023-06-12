@@ -55,7 +55,7 @@ This is an example text.
 {{% callout danger %}}
 이것은 danger 타입입니다.
 {{% /callout %}}
-{{% callout  bug %}}
+{{% callout bug %}}
 이것은 bug 타입입니다.
 {{% /callout %}}
 {{% callout example %}}
@@ -67,10 +67,7 @@ This is an example text.
 
 
 
-{{% admonition warning %}}
-admonition warning
-{{% /admonition %}}
-{{% admonition note %}}
+{{% admonition note-admon %}}
 admonition note
 {{% /admonition %}}
 {{% admonition abstract %}}
@@ -85,9 +82,11 @@ admonition tip
 {{% admonition success %}}
 admonition success
 {{% /admonition %}}
-
 {{% admonition question %}}
 admonition question
+{{% /admonition %}}
+{{% admonition warning-admon %}}
+admonition warning
 {{% /admonition %}}
 {{% admonition failure %}}
 admonition failure
@@ -95,7 +94,6 @@ admonition failure
 {{% admonition danger %}}
 admonition danger
 {{% /admonition %}}
-
 {{% admonition bug %}}
 admonition bug
 {{% /admonition %}}

@@ -47,13 +47,13 @@ div.alert a {
 
 
 $admonition-icon: (
-  'note': '\f304',
+  'note-admon': '\f304',
   'abstract': '\f1ea',
   'info': '\f129',
   'tip': '\f084',
   'success': '\f164',
   'question': '\f128',
-  'warning': '\f071',
+  'warning-admon': '\f071',
   'failure': '\f7a9',
   'danger': '\f12a',
   'bug': '\f188',
@@ -62,13 +62,13 @@ $admonition-icon: (
 );
 
 $admonition-color-map: (
-  'note': #448aff,
+  'note-admon': #448aff,
   'abstract': #00b0ff,
   'info': #00b8d4,
   'tip': #00bfa5,
   'success': #00c853,
   'question': #64dd17,
-  'warning': #ff9100,
+  'warning-admon': #ff9100,
   'failure': #ff5252,
   'danger': #ff1744,
   'bug': #f50057,
