@@ -77,23 +77,23 @@ $admonition-color-map: (
 );
 
 @each $key, $color in $admonition-color-map {
-  .alert-#{$key} {
+  .admonition-#{$key} {
     border-color: $color;
     background-color: adjust-color($color, $lightness: 25%);
   }
 
-  .dark .alert-#{$key} {
+  .dark .admonition-#{$key} {
     color: #FFFFFF;
     background-color: adjust-color($color, $lightness: -25%);
   }
 
-  div.alert-#{$key} > div:first-child::before {
+  div.admonition-#{$key} > div:first-child::before {
     color: $color;
   }
 }
 
 @each $key, $icon in $admonition-icon {
-  div.alert-#{$key} > div:first-child::before {
+  div.admonition-#{$key} > div:first-child::before {
     content: $icon;
   }
 }

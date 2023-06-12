@@ -68,30 +68,40 @@ This is an example text.
 
 
 {{% admonition warning %}}
-admornition warning
+admonition warning
 {{% /admonition %}}
 {{% admonition note %}}
-admornition note
+admonition note
 {{% /admonition %}}
 {{% admonition abstract %}}
-admornition abstract
+admonition abstract
 {{% /admonition %}}
 {{% admonition info %}}
-admornition info
+admonition info
 {{% /admonition %}}
 {{% admonition tip %}}
-admornition tip
+admonition tip
 {{% /admonition %}}
 {{% admonition success %}}
-admornition success
+admonition success
 {{% /admonition %}}
 
 {{% admonition question %}}
-admornition question
+admonition question
 {{% /admonition %}}
 {{% admonition failure %}}
-admornition failure
+admonition failure
 {{% /admonition %}}
 {{% admonition danger %}}
-admornition danger
+admonition danger
+{{% /admonition %}}
+
+{{% admonition bug %}}
+admonition bug
+{{% /admonition %}}
+{{% admonition example %}}
+admonition example
+{{% /admonition %}}
+{{% admonition quote %}}
+admonition quote
 {{% /admonition %}}
