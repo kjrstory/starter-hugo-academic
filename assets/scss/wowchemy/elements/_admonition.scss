@@ -32,3 +32,13 @@
     @include admon-color($base-alizarin);
   }
 }
+
+.admonition > div {
+  // 내부 요소 스타일
+  margin-bottom: 5px;
+}
+
+.admonition > div p {
+  // 내부 단락 스타일
+  margin: 0;
+}
