@@ -28,7 +28,7 @@ This is an example text.
 
 아쉬운대로 Cusotom하게 Callout을 추가해보았습니다. 
 
-{{% callout newnote %}}
+{{% callout note-admon %}}
 이것은 note 타입입니다.
 {{% /callout %}}
 {{% callout abstract %}}
@@ -46,7 +46,7 @@ This is an example text.
 {{% callout question %}}
 이것은 question 타입입니다.
 {{% /callout %}}
-{{% callout newwarning %}}
+{{% callout warning-admon %}}
 이것은 warning 타입입니다.
 {{% /callout %}}
 {{% callout failure %}}
@@ -65,21 +65,3 @@ This is an example text.
 이것은 quote 타입입니다.
 {{% /callout %}}
 
-{{% github_kjrstory_admonition note %}}
-admonition note
-{{% /github_kjrstory_admonition %}}
-{{% github_kjrstory_admonition abstract %}}
-admonition abstract
-{{% /github_kjrstory_admonition %}}
-{{% github_kjrstory_admonition info %}}
-admonition info
-{{% /github_kjrstory_admonition %}}
-{{% github_kjrstory_admonition tip %}}
-admonition tip
-{{% /github_kjrstory_admonition %}}
-{{% github_kjrstory_admonition success %}}
-admonition success
-{{% /github_kjrstory_admonition %}}
-{{% github_kjrstory_admonition question %}}
-admonition question
-{{% /github_kjrstory_admonition %}}
