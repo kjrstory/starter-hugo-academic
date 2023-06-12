@@ -72,13 +72,13 @@ This is an example text.
 
 
 
-{{% admornition warning %}}
+{{% admonition warning %}}
 admornition warning
-{{% /admornition %}}
+{{% /admonition %}}
 
-{{% admornition %}}
+{{% admonition %}}
 admornition 
-{{% /admornition %}}
+{{% /admonition %}}
 
 
 
