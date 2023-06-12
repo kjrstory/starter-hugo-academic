@@ -67,12 +67,13 @@ This is an example text.
 
 
 
-{{% admonition noteadmon %}}
+/*{{% github_kjrstory_admonition noteadmon %}}
 admonition note
-{{% /admonition %}}
-{{% admonition abstract %}}
+{{% /github_kjrstory_admonition %}}*/
+{{% github_kjrstory_admonition abstract %}}
 admonition abstract
-{{% /admonition %}}
+{{% /github_kjrstory_admonition %}}
+/* 
 {{% admonition info %}}
 admonition info
 {{% /admonition %}}
@@ -102,4 +103,4 @@ admonition example
 {{% /admonition %}}
 {{% admonition quote %}}
 admonition quote
-{{% /admonition %}}
+{{% /admonition %}} */
