@@ -1,6 +1,6 @@
 ---
-title: 테마테스트
-date: 2023-05-05T07:22:43.471Z
+title: Wowchemy 테마에서 Callout 추가
+date: 2023-05-25T07:22:43.471Z
 draft: false
 featured: false
 authors:
