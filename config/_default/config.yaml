@@ -77,6 +77,17 @@ minify:
 
 
 cascade:
+  # Configure publications
+  - _target:
+      path: /publication/** 
+    pager: true
+    editable: false
+    reading_time: true
+    commentable: true
+    show_related: true
+    show_breadcrumb: true
+    share: true
+
   # Configure blog posts
   - _target:
       path: /post/**
@@ -88,14 +99,4 @@ cascade:
     show_breadcrumb: true
     share: true
 
-cascade:
-  # Configure publications
-  - _target:
-      path: /publication/**
-    pager: true
-    editable: false
-    reading_time: true
-    commentable: true
-    show_related: true
-    show_breadcrumb: true
-    share: true
+      

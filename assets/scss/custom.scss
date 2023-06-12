@@ -243,6 +243,7 @@ $callout-color-map: (
 
 @each $key, $color in $callout-color-map {
   .alert-#{$key} {
+    font-size: 0.9rem;  
     border-color: $color;
     background-color: adjust-color($color, $lightness: 25%);
   }
@@ -253,6 +254,8 @@ $callout-color-map: (
   }
 
   div.alert-#{$key} > div:first-child::before {
+    font-size: 0.9rem;  
+    top: 0.0rem;
     color: $color;
   }
 }
