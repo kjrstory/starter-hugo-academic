@@ -73,7 +73,7 @@ admonition abstract
 {{% /github_kjrstory_admonition %}}
 {{% github_kjrstory_admonition info %}}
 admonition info
-{{% /github_kjrstory_admonitio %}}
+{{% /github_kjrstory_admonition %}}
 {{% github_kjrstory_admonition tip %}}
 admonition tip
 {{% /github_kjrstory_admonition %}}
