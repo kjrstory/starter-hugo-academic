@@ -75,11 +75,15 @@ This is an example text.
 {{% admonition warning %}}
 admornition warning
 {{% /admonition %}}
-
-{{% admonition %}}
-admornition 
+{{% admonition note %}}
+admornition note
 {{% /admonition %}}
-
-
-
-
+{{% admonition abstract %}}
+admornition abstract
+{{% /admonition %}}
+{{% admonition info %}}
+admornition info
+{{% /admonition %}}
+{{% admonition tip %}}
+admornition tip
+{{% /admonition %}}
