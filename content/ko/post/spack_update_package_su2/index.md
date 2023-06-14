@@ -16,14 +16,16 @@ image:
   preview_only: false
 ---
 
- [SU2](https://su2code.github.io)는 스탠포드 대학교의 항공우주공학과 연구실에서 개발한 오픈소스 CFD SW입니다. 저는 2010년대 초반부터 SU2에 관심이 많아서 [논문](ko/publication/jong-rok-kim-2017-cfd-analysis-efdcfd)에도 SU2를 이용하여 해석을 했었습니다. Spack에도 2년전에 업데이트를 했었고 Maintainer로 지원을 했습니다. Spack에서는 모든 패키지마다 [maintainer](https://spack.readthedocs.io/en/latest/packaging_guide.html#maintainers) 제도를 운영하고 있습니다. maintainer가 되면 누군가 그 패키지 레시피 파일에 PR이나 Issue를 남길 경우 승인하고 review를 할 수 있습니다. 하지만 SU2의 maintainer가 되고도 그동안 업데이트를 하지 못했습니다. 2년전에 볼 때는 보완하기 어려웠던 것이 다시 보니 어떻게 고쳐야 될지 보이기 시작했고 고칠 수 있었습니다. 그동안 알게 모르게 실력이 성장한 것 같습니다.  
+ [SU2](https://su2code.github.io)는 스탠포드 대학교의 항공우주공학과 연구실에서 개발한 오픈소스 CFD SW입니다. 저는 2010년대 초반부터 SU2에 관심이 많아서 [논문](/ko/publication/jong-rok-kim-2017-cfd-analysis-efdcfd)에도 SU2를 이용하여 해석을 했었습니다. 그래서 Spack에도 2년전에 업데이트를 했었고 maintainer로 지원을 했습니다. Spack에서는 모든 패키지마다 [maintainer](https://spack.readthedocs.io/en/latest/packaging_guide.html#maintainers) 제도를 운영하고 있습니다. maintainer가 되면 누군가 그 패키지 레시피 파일에 PR이나 Issue를 남길 경우 승인하고 review를 할 수 있습니다. 하지만 SU2의 maintainer가 되고도 그동안 업데이트를 하지 못했습니다. 2년전에 볼 때는 보완하기 어려웠던 것이 지금 다시 보니 어떻게 고쳐야 될지 보이기 시작했고 고칠 수 있었습니다. 그 동안 알게 모르게 실력이 성장한 것 같습니다.  
  
-# 1.Pull Request 첫 
-기존 레시피에는 아무런 variant가 없었습니다. 실제 SU2에 variant가 없었던 것은 아니고 어떻게 적용하는지를 몰랐기 때문입니다. 이번에 다시 [SU2빌드 방법](https://su2code.github.io/docs_v7/Build-SU2-Linux-MacOS/)을 읽어보고 variant를 적용하기로 하였습니다.
+# 1.Pull Request  
+기존 레시피에는 아무런 variant가 없었습니다. 실제 SU2에 variant가 없었던 것은 아니고 어떻게 적용하는지를 몰랐기 때문입니다. 이번에 다시 [SU2 빌드 방법](https://su2code.github.io/docs_v7/Build-SU2-Linux-MacOS/)을 읽어보고 variant를 적용하기로 하였습니다.
 
-SU2에는 다음과 같은 옵셥을 지원합니다.
+SU2에는 다음과 같은 옵션을 지원합니다.
 
 {{% callout quote %}}
+
+
 | Option | Default value | Description |
 |---| --- | --- |
 | `-Denable-autodiff`  | `false`   |   enable AD (reverse) support (needed for discrete adjoint solver)  |
@@ -40,7 +42,7 @@ SU2에는 다음과 같은 옵셥을 지원합니다.
 | `-Denable-mixedprec` | `false`      |    enable the use of single precision on linear solvers and preconditioners |
 {{% /callout %}}
 
-이것을 패키지 레시피에 모두 적용시켰습니다.
+이것을 패키지 레시피에 적용하였습니다.
 ```python
     variant("mpi", default=False, description="enable MPI support")
     variant("openmp", default=False, description="enable OpenMP support")
@@ -73,7 +75,7 @@ SU2에는 다음과 같은 옵셥을 지원합니다.
 ```
 이제 중요한 부분은 Variant의 내용을 어떻게 적용시킬지입니다. 그걸 하기 위해서는 SU2의 빌드시스템인 [Meson](https://mesonbuild.com)에 대해서 알아야 합니다. 
 Meson은 비교적 최신의 빌드시스템으로 Python으로 되어있습니다. Meson은 [Ninja](https://ninja-build.org)와 커플되어 빌드하는 도구입니다. 
-CMake보다 쉽고 빌드가 빠르다고 하는 빌드시스템입니다.
+CMake보다 쉽고 빌드 속도가 빠르다고 하는 빌드시스템입니다.
 Spack의 [Meson 빌드](https://spack.readthedocs.io/en/latest/build_systems/mesonpackage.html) 설명도 읽어봐야 합니다.
 결국 SU2빌드 시 필요했던 옵션들은 Meson의 argument이고 이것은 meson_args함수로 적용시킬 수 있습니다. 아래와 같이 코드를 작성하였습니다.
 
@@ -103,11 +105,7 @@ Spack의 [Meson 빌드](https://spack.readthedocs.io/en/latest/build_systems/mes
         return args
 ```
 
-# 2.테스트
-
-
-
-# 3.리뷰1 Meson
+# 2.리뷰 1: Meson
 SU2의 7.4.0부터 7.5.1버전은 Meson의 버전을 0.61.1로 고정시켰습니다.
 그런데 Spack의 Meson패키지는 0.61.1버전이 등록되어 있지 않아 등록하는 [PR](https://github.com/spack/spack/pull/37770)을 요청했습니다.
 eli-schwartz님에게 부정적인 리뷰를 받았습니다.
@@ -122,12 +120,11 @@ Furthermore, SU2 no longer needs this due to su2code/SU2#1951
 0.61.1은 현재 버전에 비해 너무 낮고 SU2에서도 지원하지 않을거라고 하네요.
 더 찾아보니 Meson의 최신 버전은 1.1.0이라 0.61.1버전이 너무 낮았었고요. 저 SU2의 [PR](https://github.com/su2code/SU2/pull/1951)을 또 읽어봐야 합니다.
 PR을 읽어보면 Meson의 버전 제한을 0.61.1 고정에서 이상으로 바뀌고 몇 가지 빌드 옵션들도 손을 보는 것 같습니다.
-그런데 이 PR은 SU2의 develop브랜치의 PR이었고 eli-schwartz님이 이 PR의 리뷰어라 알고 있었습니다.
-배포된 버전에서는 아직 반영이 안된 PR이었습니다.
+그런데 이 PR은 SU2의 develop브랜치의 PR이었고 eli-schwartz님이 이 PR의 리뷰어라 알고 있던 것이었습니다.
+배포된 버전에서는 아직 반영이 안 된 PR이었습니다.
 여기서 어떻게 할 지 고민을 하였는데 결국 Meson의 버전을 제한할 필요는 없다고 생각했습니다. 
-SU2 설치 시 Meson버전이 0.61.1이 아니면 에러가 나게 되어있는데 체크하는 부분을 없애는 패치를 하기로 하였습니다.
-다시 Meson 1.1.0버전으로 제대로 테스트 되는지 확인을 하였습니다.
-정상적으로 설치가 되는 것을 확인하고 패치를 적용하기로 확정했습니다.
+그래서 SU2 설치 시 Meson버전이 0.61.1이 아니면 에러가 나게 되어있는데 체크하는 부분을 없애는 패치를 하기로 하였습니다.
+Meson 1.1.0버전으로 정상적으로 설치가 되는 것을 확인하고 패치를 적용하기로 확정했습니다.
 
 패치를 적용하고 의견을 남겼습니다.
 {{% callout quote %}}
@@ -152,3 +149,61 @@ But for software that locks itself to an exact bugfix release, the best solution
 
 eli-schwartz님은 meson빌드시스템도 개발하시는 분이었고 어찌보면 버전 고정의 한 줄이었는데도 이렇게 상세히 피드백을 받을 수 있었습니다. 
 여러 오픈소스 개발자에게 배우고 의견 교환할 수 있다는 것이 PR에서 얻는 배움인 것 같습니다. 
+
+# 3.리뷰 2: minor requests
+그 후 alalazo님이 몇 가지 요청을 하였습니다.
+1. 패치에 간단한 주석을 달 것
+2. cmake는 빌드에만 필요한 dependency이므로 이를 반영
+3. swig도 빌드에만 필요한 dependency이므로 이를 반영
+
+2번과 3번은 비슷한 요청입니다. dependency에서 build시에 필요한것인지 run에 필요한 것인지 구분해야 합니다.
+빌드시에만 필요한 dependency의 경우 아래과  같이 ```type="build"```문구를 추가해주면 됩니다.
+```python
+   depends_on("swig", type="build", when="+pywrapper")
+```
+
+3가지 요청사항을 모두 반영하한후 드디어 승인이 되었습니다.
+
+# 4. 테스트
+
+사실 테스트는 PR을 진행하기전에 해야 하고 테스트를 수행하여 제대로 설치가 되는 것을 확인하였습니다.
+단 처음 PR후에 몇가지 수정사항이 있어서 이 블로그에 글 쓰는 목적으로 한번 더 테스트를 해보았습니다.
+테스트는 저 옵션들도 설치를 하는 것이 되겠습니다. 여러 아키텍쳐, 컴파일러에서 테스트를 하는것이 최선이겠으나 테스트 조건이 다 확보된것이 아니므로 gcc9, ubuntu20-cascadelake환경에서만 테스트 하였습니다.
+디폴트 옵션에서 각각의 variant옵션을 바꿔가면서 아래와 같이 테스트 케이스를 정하였습니다.
+테스트의 성공여부는 빌드 로그를 보고 판단하였습니다.
+SU2의 빌드로그 중에는 아래와 같이 작성이 되고 정상적으로 설치된 것을 확인했습니다???
+
+# 5. 할 일
+
+이 PR은 사실 변경사항이 꽤 많은 PR이었다고 생각합니다. 
+미처 하지 못했던 일이 있었고 모든 것을 다 적용하는 PR보다는 작게 쪼개서 하는것이 더 낫다고 생각했기 때문에 현재 수준에서 PR을 요청하였습니다.
+단 이제 부터 할 일들을 확실히 정리해야겠습니다.
+
+## 5-1. Git submodule 기능 배제
+
+Spack을 사용하지 않는 기존의  SU2 빌드하는 방법에서 Git submodule을 이용하는 기능이 있습니다. 
+예를 들어 dependency중 [codipack](https://github.com/SciCompKL/CoDiPack)이란 패키지는 별도의 리포지토리가 있고요.
+SU2에서는 이 리포지토리에서 특정 버전에 해당하는 커밋을 다운로드받게 되어있습니다. 
+그런데 이런 것은 Spack의 설치 방식과는 다릅니다. Spack에서는 dependency들도 Spack으로 설치할 수 있어야 합니다.
+submodule을 이용하는 외부패키지는 아래와 같습니다.
+ - codipack
+ - medipack
+ - opdilib
+ - MEL
+ - ninja
+ - meson
+ - coolprop
+ - mutationpp
+ 
+이 중에 meson과 ninja는 이미 spack을 이용하여 설치할 수 있게 되어 있습니다.
+codipack, medipack, opdilib, MEL등은 Spack에 등록이 안되어있어 등록을 해야합니다.
+
+coolprop??
+mutationpp는 Spack패키지에 있지만? 왜 안했지??
+
+## 5-2. 테스트 시 실제 해석문제 테스트
+4절에서 설명한 것 처럼 테스트의 성공여부는 빌드로그만을 보고 판단하였습니다.
+실제로 SU2를 이용하여 테스트를 한 것은 아닙니다. 
+물론 SU2를 사용하여 여러 해석을 했던 경험은 있지만 Spack에 맞춰 여러 옵션들을 다 해본 것은 아닙니다.
+이것을 준비하려면 각 variant에 맞는 해석 파일이 필요하여 쉽게 준비할 일은 아닙니다.
+예를 들어 AD(reverse) support 는 특별한 해석에만 사용되는 것이므로 그 해석 문제를 준비해서 해석을 해봐야 설치가 제대로 된 것인지 확인할 수 있습니다.
