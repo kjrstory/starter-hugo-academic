@@ -15,7 +15,7 @@ While I acknowledge that the academic value of these papers may be limited, I th
 
 I understand that it is quite rare to find cases where someone with a master's degree consistently publishes papers in a company setting, regardless of the research topic and without being affiliated with a government-funded research institute. Given this fact, I can see why you take pride in your achievement and would like to be recognized for it.
 
-In your blog, you can categorize your papers under the [Publication](/ko/publication) menu.
+In your blog, you can categorize your papers under the [Publication](/en/publication) menu.
 
 When you click on each paper, instead of being directed to the paper's link, a page similar to the blog will open, allowing me to share additional insights about each paper. For example, I have written a post about the first paper, which was also my final paper before switching jobs, titled [WING DEPLOYMENT SIMULATION USING 2-WAY FLUID STRUCTURE INTERACTION METHOD.](/en/publication/jong-rok-kim-2020-wingdeploymentsimulation) You can read the post by following this link.
 
