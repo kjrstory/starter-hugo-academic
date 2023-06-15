@@ -11,9 +11,10 @@ tags:
 categories:
   - HPC
 image:
-  filename: ''
+  filename: 'SU2_hl_crm_01.png'
   focal_point: Smart
   preview_only: false
+  caption: "Figure by [SU2 Homepage](https://su2code.github.io)"
 ---
 
  [SU2](https://su2code.github.io)는 스탠포드 대학교의 항공우주공학과 연구실에서 개발한 오픈소스 CFD SW입니다. 저는 2010년대 초반부터 SU2에 관심이 많아서 [논문](/ko/publication/jong-rok-kim-2017-cfd-analysis-efdcfd)에도 SU2를 이용하여 해석을 했었습니다. 그래서 Spack에도 2년전에 업데이트를 했었고 maintainer로 지원을 했습니다. Spack에서는 모든 패키지마다 [maintainer](https://spack.readthedocs.io/en/latest/packaging_guide.html#maintainers) 제도를 운영하고 있습니다. maintainer가 되면 누군가 그 패키지 레시피 파일에 PR이나 Issue를 남길 경우 승인하고 review를 할 수 있습니다. 하지만 SU2의 maintainer가 되고도 그동안 업데이트를 하지 못했습니다. 2년전에 볼 때는 보완하기 어려웠던 것이 지금 다시 보니 어떻게 고쳐야 될지 보이기 시작했고 고칠 수 있었습니다. 그 동안 알게 모르게 실력이 성장한 것 같습니다.  

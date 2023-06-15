@@ -11,9 +11,10 @@ tags:
 categories:
   - HPC
 image:
-  filename: ''
+  filename: 'SU2_hl_crm_01.png'
   focal_point: Smart
   preview_only: false
+  caption: "Figure by [SU2 Homepage](https://su2code.github.io)"
 ---
 
  [SU2](https://su2code.github.io) is an open-source CFD (Computational Fluid Dynamics) software developed by the Aerospace Design Lab at Stanford University. I have been interested in SU2 since the early 2010s, and I have used SU2 for analysis in [my paper](/ko/publication/jong-rok-kim-2017-cfd-analysis-efdcfd). I also updated it on Spack two years ago and provided support as a maintainer.
