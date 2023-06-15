@@ -7,6 +7,14 @@ authors:
   - admin
 categories:
   - Blog
+tags:
+  - hugo
+  - callout
+image:
+  filename: Custom_Callout.png
+  focal_point: Smart
+  preview_only: false
+  caption: "Custom Callout"
 ---
 
 "Callout" refers to the practice of creating blocks of text in a blog post to emphasize specific phrases or statements. In Wowchemy, [the Callout feature](https://wowchemy.com/docs/content/writing-markdown-latex/#callouts) supports only two types: "note" and "warning."

@@ -7,6 +7,14 @@ authors:
   - admin
 categories:
   - Blog
+tags:
+  - hugo
+  - callout  
+image:  
+  filename: Custom_Callout.png
+  focal_point: Smart
+  preview_only: false
+  caption: "Custom Callout" 
 ---
 
 
