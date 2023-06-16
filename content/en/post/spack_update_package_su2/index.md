@@ -17,10 +17,10 @@ image:
   caption: "Figure by [SU2 Homepage](https://su2code.github.io)"
 ---
 
- [SU2](https://su2code.github.io) is an open-source CFD (Computational Fluid Dynamics) software developed by the Aerospace Design Lab at Stanford University. I have been interested in SU2 since the early 2010s, and I have used SU2 for analysis in [my paper](/ko/publication/jong-rok-kim-2017-cfd-analysis-efdcfd). I also updated it on Spack two years ago and provided support as a maintainer.
+ [SU2](https://su2code.github.io) is an open-source CFD (Computational Fluid Dynamics) software developed by the Aerospace Design Lab at Stanford University. I have been interested in SU2 since the early 2010s, and I have used SU2 for analysis in [my paper](/en/publication/jong-rok-kim-2017-cfd-analysis-efdcfd). I also updated it on Spack two years ago and provided support as a maintainer.
 At Spack, [the maintainer system](https://spack.readthedocs.io/en/latest/packaging_guide.html#maintainers) is in place for every package. Once you become a maintainer, you have the authority to approve and review PRs (Pull Requests) or issues submitted to the package recipe file. However, even though I became a maintainer for SU2, I was unable to provide updates during that time. When I looked back at it two years ago, the issues that were difficult to address seemed clearer now, and I was able to make the necessary fixes. In the process, I believe my skills have unknowingly grown.
  
-# 1.Pull Request  
+# 1. Pull Request  
 
  The existing recipe didn't have any variants because I didn't know how to apply them, although SU2 itself does support options. This time, after reading [the SU2 build instructions](https://su2code.github.io/docs_v7/Build-SU2-Linux-MacOS/), I decided to apply variants.
 
@@ -76,8 +76,8 @@ Now, the crucial part is how to apply the content of the variants. To do that, w
 
 Meson is a relatively modern build system written in Python. It works in conjunction with [Ninja](https://ninja-build.org) to build projects. It is known to be easier to use and faster in terms of build speed compared to CMake.
 
-I need to read the explanation of [Meson Build] (https://spack.readthedocs.io/en/latest/build_systems/mesonpackage.html)in Spack.
-In the end, the options required for building SU2 are Meson arguments, and these can be applied using the meson_args function. I have written the code as f
+I need to read the explanation of [Meson Build](https://spack.readthedocs.io/en/latest/build_systems/mesonpackage.html) in Spack.
+In the end, the options required for building SU2 are Meson arguments, and these can be applied using the meson_args function. I have written the code as follow.
 
 ```python
     def meson_args(self):
@@ -105,7 +105,7 @@ In the end, the options required for building SU2 are Meson arguments, and these
         return args
 ```
 
-# 2.Review 1: Meson
+# 2. Review 1: Meson
  Starting from version 7.4.0 to 7.5.1, SU2 fixed the Meson version to 0.61.1. However, the Meson package in Spack does not have version 0.61.1 registered, so I requested a [pull request](https://github.com/spack/spack/pull/37770) to add it.
 I received a negative review from eli-schwartz.
 To be honest, receiving a negative review or having a PR rejected can initially be disheartening. However, there are always reasons for such rejections, so it's important to calmly read the review again and respond accordingly.
@@ -145,10 +145,9 @@ As an upstream meson maintainer, I want to push people to always upgrade to the 
 But for software that locks itself to an exact bugfix release, the best solution is to backport an upstream change that removes the locked dependency. That's what the other PR does, so this PR won't be needed even for SU2 anymore. :)
 {{% /callout %}}
 
-
 eli-schwartz being a developer of the Meson build system may have contributed to the detailed feedback provided, even for a seemingly simple version constraint change. It's true that one of the valuable aspects of pull requests is the opportunity to learn from and exchange opinions with other open-source developers.
 
-# 3.Review 2: minor requests
+# 3. Review 2: minor requests
 
 After that, alalazo made a few requests:
 
@@ -169,7 +168,7 @@ After incorporating all three requested changes, the patch has finally been appr
 
 Actually, tests should be conducted before carrying out the PR, and I have performed tests to ensure proper installation. However, after the initial PR, there were a few modifications, so I conducted another test for the purpose of writing an article on this blog.
 
-While it would be ideal to conduct tests across multiple architectures and compilers, the testing conditions have not been fully secured. Therefore, I have performed tests only in the gcc9 and Ubuntu20-Cascadelake environment.
+While it would be ideal to conduct tests across multiple architectures and compilers, the testing conditions have not been fully secured. Therefore, I have performed tests only in the gcc v9 and Ubuntu20 Intel Cascadelake environment.
 
 Using the default options, I have selected the following test cases by varying each variant option:
 
@@ -189,7 +188,7 @@ Each installation option was successfully installed without any errors. Lastly, 
 
  - +autodiff+directdiff+mpi+mpp+openblas+openmp+pywrapper
 
-If you have any specific questions or need further assistance regarding the test results or the installation process, please let me know.
+The success of the test was determined by reviewing the build logs.
 
 ```
 SU2 7.5.1 "Blackbird"
@@ -237,13 +236,13 @@ However, this approach differs from the installation method used in Spack. In Sp
  - coolprop
  - mutationpp
 
-Among these packages, meson and ninja are already available for installation using Spack. However, codipack, medipack, opdilib, MEL, coolprop, and mutationpp are not currently registered in Spack and need to be added. While mutationpp is registered in Spack, there have been some errors when applying it, so it has been incorporated as a submodule instead.
+Among these packages, meson and ninja are already available for installation using Spack. However, codipack, medipack, opdilib, MEL, and coolprop are not currently registered in Spack and need to be added. While mutationpp is registered in Spack, there have been some errors when applying it, so it has been incorporated as a submodule instead.
 
 ## 5-2. Testing with actual analysis problems
 
-As mentioned in section 4, the determination of test success was based solely on the build log, without actually conducting tests using SU2. While there has been experience using SU2 for various analyses, it does not necessarily cover all the options and configurations specifically tailored for Spack.
+As mentioned in section 4, the determination of test success was based solely on the build log, without actually conducting tests using SU2. While there has been experience using SU2 for various simulations, it does not necessarily cover all the options and configurations specifically tailored for Spack.
 
-To prepare for this, specific analysis files corresponding to each variant are required, making it not easily prepared. For example, AD(reverse) support is used only for specific analyses, so it is necessary to prepare and run an analysis problem using it to confirm if the installation has been properly completed.
+To prepare for this, specific simulation files corresponding to each variant are required, making it not easily prepared. For example, AD(reverse) support is used only for specific simulation, so it is necessary to prepare and run an simulation using it to confirm if the installation has been properly completed.
 
 ## 5-3. Setting environment variables during runtime
 
