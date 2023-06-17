@@ -46,16 +46,16 @@ tags:
 
 이 글에서는 논문에 실었던 4개의 CFD SW들의 이야기를 해보려고 합니다.
 
-# 1. Ansys Fluent
+## 1. Ansys Fluent
 일단 Ansys사의 [Fluent](https://www.ansys.com/products/fluids/ansys-fluent)는 제가 주력으로 사용하던 SW였고 가장 자신있게 할 수 있었습니다.
-Ansys에 인수된것은 2006년이고 이 때 부터는 "Ansys Fluent"이 정확한 Full Name입니다.
+Ansys에 인수된것은 2006년이고 이 때 부터는 "Ansys Fluent"가 정확한 Full Name입니다.
 Fluent는 CFD 업계에서 수십년동안 마켓쉐어 1등을 지키고 있는 제품입니다.
 명성답게 수많은 유체분야의 해석이 가능하고 강력한 병렬 성능도 가지고 있습니다.
 사실 이 논문을 썼던 2017년만 하더라도 솔버는 강력하나 UI적으로는 불편한 면이 있었으나 매년 업데이트로 UI적인면도 크게 개선하여 2020년쯤에는 크게 특별히 불편하지 않았습니다.
 2020년 이후로도 눈에 띄는 업데이트를 해왔는데 그 중 저와 관련이 있고 큰 관심이 있는 것만 아래에 간략히 담아보았습니다.
 각각의 항목도 하나씩 이야기할거리가 있겠지만 현재 회사에서는 Fluent를 할 라이센스가 없어 제대로 된 분석을 할수는 없겠네요.
 
-- Python 도입
+### Python 도입
 CFD 코드는 계산속도가 매우 중요한 분야이기 때문에 코어 영역은 C++이나 Fortran으로 하는 경우가 대부분입니다.
 그런데 오로지 C++같은 코드로만 만들면 코드를 이용한 활용이 어려워집니다.
 예를 들면 이 코드를 이용한 배치 작업을 만든다든지 표를 만든다느지 하는 외부작업과의 연결이 어려워집니다.
@@ -63,37 +63,38 @@ CFD 코드는 계산속도가 매우 중요한 분야이기 때문에 코어 영
 보통 CFD를 전공한 사람들은 인하우스 CFD 코드를 접하므로 코드에 익숙하지만 회사에서 상용 SW만을 쓰게 되면 코드를 직접 볼 일이 없으므로 코딩 능력이 퇴화하게 됩니다.
 그러나 상용 SW도 고급 단계의 숙련도를 가지려면 그 SW에서 지원하는 스크립트 언어를 익혀서 SW를 자유자재로 쓸 줄 알아야 합니다.
 다시 손놓았던 코드를 해야되고(그것도 익숙하지 않은 프로그래밍언어일 것입니다) 여기서 일부 해석 인력들은 도태되고 맙니다.
+
 Fluent는 이 스크립트 지원에 문제가 있었는데요.
-Fluent의 스크립크 언어는 [Scheme](https://en.wikipedia.org/wiki/Scheme_(programming_language)입니다.
+Fluent의 스크립크 언어는 [Scheme](https://en.wikipedia.org/wiki/Scheme_(programming_language))입니다.
 Scheme은 함수형언어인 Lisp의 일종인데 프로그래밍 언어의 역사적으로는 큰 의미가 있는 언어이나 현재는 사용률이 매우 떨어진 언어입니다.
 게다가 CFD하는 사람들은 컴퓨터 공학의 전공자가 아니므로 이런 함수형 언어를 잘 다룰 가능성은 제로에 가깝습니다.
 웹에서의 자료도 매우 적고요. 이것이 Fluent가 갖고 있는 몇 안되는 약점이었습니다.
 이번에 Python으로 지원을 하면서 이 약점마저 극복하는 모습입니다.
 저는 Python을 꽤 오래전부터 해왔고 매우 좋아했습니다.
-제가 계속 Fluent를 할 수 있더라면 Python지원은 날개를 다는 수준이었을텐데 아쉬움이 남습니다.
-[Providing Open-Source Access to Ansys Fluent with PyFluent](https://www.ansys.com/blog/open-source-access-to-fluent-with-pyfluent)  
+제가 계속 Fluent를 할 수 있더라면 Python지원은 날개를 다는 수준이었을텐데 아쉬움이 남습니다. 
+관련 내용은 Ansys 블로그 [Providing Open-Source Access to Ansys Fluent with PyFluent](https://www.ansys.com/blog/open-source-access-to-fluent-with-pyfluent)에 자세히 설명이 되어 있습니다.
 
-- GPU 지원
+### GPU 지원
 
 AI/ML분야에서는 GPU를 가속기로 사용하는 것이 일반화되어있습니다.
 하지만 CFD 분야에서는 GPU 가속이 어려운 분야였습니다.
 매우 쉽게 설명하면 이렇습니다.
 CPU의 스펙을 이야기할 때 보통 아키텍쳐 세대, 클럭수와 코어수를 이야기합니다.
 CFD로 사용하는 서버는 일반적으로 3.0MHz이상의 클럭수와 30코어이상의 서버를 사용합니다.
-GPU는 아키텍쳐 세대, 메모리로 많이 이야기하지만 GPU도 사실 코어를 갖고 있습니다. Nvidia에서는 CUda 코어라고 따로 부릅니다.
+GPU는 아키텍쳐 세대, 메모리로 많이 이야기하지만 GPU도 사실 코어를 갖고 있습니다. Nvidia에서는 Cuda 코어라고 따로 부릅니다.
 예를 들어 Nvidia V100 1장에는 5210 Cuda코어가 있습니다.
 물론 CPU의 코어와 GPU의 코어가 같은 역할, 성능을 보여주는건 아닙니다.
 비유를 하면 CPU의 코어가 대학생이라면 GPU의 코어는 초등학생입니다.
 서로 싸움을 하는데 줄다리기 같은거라면 아무리 대학생 1명이 힘이 세더라도 초등학생 100명을 이길 수는 없습니다.
 그런데 미적분 문제 같은거였다면 어떨까요? 100, 1000명의 초등학생이 와도 풀 수가 없습니다.
-기존 CFD 문제는 미적분문제 같은거였다고 합시다. GPU의 코어로는 제대로 성능을 낼 수가 없었던 것입니다.
-이것을 해결하려면 문제를 매우 쪼개서 초등학생도 할 수 있게 만들어야 합니다.
+기존 CFD 문제는 미적분문제 같은거였다고 합시다. 그래서 초등학생에 해당하는 GPU의 코어로는 제대로 성능을 낼 수가 없었던 것입니다.
+이것을 해결하려면 문제를 매우 쉽게 쪼개서 초등학생도 할 수 있게 만들어야 합니다.
 그런데 지금까지는 기존 레거시 코드를 이리 저리 바꿔도 성공하는 사람은 거의 없었습니다.
 그래서 해결한 방법은 차라리 코드를 새로 짜는것 이었습니다.
 사실 위에서 설명한 초등학생,대학생,미적분과 같은 비유는 실제 CFD 수치해석 기법과 딱 들어맞는 이야기는 아닙니다.
 제가 말하고 싶은 것은 제대로 된 GPU 가속을 위해서는 CFD 코드를 처음부터 다시 짜는 수밖에 없는 것 처럼 보인다는 것입니다. 
 Fluent의 GPU솔버의 자세한 세부 코드는 알 수가 없지만 아마 새롭게 코드를 만들었을 것이고 그래서 생각보다 릴리즈하는데 시간이 걸린 것 같습니다.
-[Unleashing the Power of Multiple GPUs for CFD Simulations](https://www.ansys.com/blog/unleashing-the-power-of-multiple-gpus-for-cfd-simulations)
+관련 내용은 Ansys 블로그 [Unleashing the Power of Multiple GPUs for CFD Simulations](https://www.ansys.com/blog/unleashing-the-power-of-multiple-gpus-for-cfd-simulations)에 자세히 설명이 되어 있습니다.
 
 # 2. Ansys CFX
 같은 회사의 CFX란 SW는 주로 터보기계에 사용하는 SW인데 저는 대학원에서 접했었고요.
