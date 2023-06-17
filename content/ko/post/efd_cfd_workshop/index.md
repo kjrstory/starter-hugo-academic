@@ -6,6 +6,11 @@ authors:
   - admin
 categories:
   - Paper
+image:
+  filename: 'RAE Wing Body.png'
+  focal_point: Smart
+  preview_only: false
+  caption: "Figure by AGARD-AR-138"
 ---
 
 제가 전공했던 유체역학은 크게 실험과 전산 유체역학으로 나뉩니다. 
@@ -23,10 +28,8 @@ categories:
 그래서 워크샵에서는 문제를 통일해 서로의 해석 결과를 보고 어느 해석 코드가 더 맞는지 공통적인 특성이 있는지들을 살펴보기 위한 목적이라고 보면 됩니다.
 
 워크샵에는 총 5개의 케이스가 있었습니다.
-
-![]("RAE Wing Body.png")
-
-
+저는 이 중 3번째 케이스인 천음속 영역에서 날개를 가진 동체 해석을 하기로 하였습니다.
+![](RAE Wing Body.png)
 이 워크샵은 2014년 정도부터 2~3년 정도 항공우주 학술대회에서 진행이 된 후 2017년 3월에 학술지에 특집논문으로 논문을 모아 게재하기까지 했습니다.
 저도 워크샵에 발표도 하고 듣기도 하면서 관심있게 바라보다 저 특별호에 논문을 게재할 수 있었습니다.
 논문은 [상용 및 오픈소스 CFD 코드를 이용한 EFD-CFD 워크샵 Case 3 해석](/ko/publication/jong-rok-kim-2017-cfd-analysis-efdcfd)입니다.
