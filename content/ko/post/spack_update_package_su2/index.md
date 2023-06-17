@@ -19,7 +19,7 @@ image:
 
  [SU2](https://su2code.github.io)는 스탠포드 대학교의 항공우주공학과 연구실에서 개발한 오픈소스 CFD SW입니다. 저는 2010년대 초반부터 SU2에 관심이 많아서 [논문](/ko/publication/jong-rok-kim-2017-cfd-analysis-efdcfd)에도 SU2를 이용하여 해석을 했었습니다. 그래서 Spack에도 2년전에 업데이트를 했었고 maintainer로 지원을 했습니다. Spack에서는 모든 패키지마다 [maintainer](https://spack.readthedocs.io/en/latest/packaging_guide.html#maintainers) 제도를 운영하고 있습니다. maintainer가 되면 누군가 그 패키지 레시피 파일에 PR이나 Issue를 남길 경우 승인하고 review를 할 수 있습니다. 하지만 SU2의 maintainer가 되고도 그동안 업데이트를 하지 못했습니다. 2년전에 볼 때는 보완하기 어려웠던 것이 지금 다시 보니 어떻게 고쳐야 될지 보이기 시작했고 고칠 수 있었습니다. 그 동안 알게 모르게 실력이 성장한 것 같습니다.  
  
-# 1.Pull Request  
+# 1. Pull Request  
 기존 레시피에는 아무런 variant가 없었습니다. 실제 SU2에 variant가 없었던 것은 아니고 어떻게 적용하는지를 몰랐기 때문입니다. 이번에 다시 [SU2 빌드 방법](https://su2code.github.io/docs_v7/Build-SU2-Linux-MacOS/)을 읽어보고 variant를 적용하기로 하였습니다.
 
 SU2에는 다음과 같은 옵션을 지원합니다.
@@ -102,7 +102,7 @@ Spack의 [Meson 빌드](https://spack.readthedocs.io/en/latest/build_systems/mes
         return args
 ```
 
-# 2.리뷰 1: Meson
+# 2. 리뷰 1: Meson
 SU2의 7.4.0부터 7.5.1버전은 Meson의 버전을 0.61.1로 고정시켰습니다.
 그런데 Spack의 Meson패키지는 0.61.1버전이 등록되어 있지 않아 등록하는 [PR](https://github.com/spack/spack/pull/37770)을 요청했습니다.
 eli-schwartz님에게 부정적인 리뷰를 받았습니다.
@@ -147,7 +147,7 @@ But for software that locks itself to an exact bugfix release, the best solution
 eli-schwartz님은 meson빌드시스템도 개발하시는 분이었고 어찌보면 버전 고정의 한 줄이었는데도 이렇게 상세히 피드백을 받을 수 있었습니다. 
 여러 오픈소스 개발자에게 배우고 의견 교환할 수 있다는 것이 PR에서 얻는 배움인 것 같습니다. 
 
-# 3.리뷰 2: minor requests
+# 3. 리뷰 2: minor requests
 그 후 alalazo님이 몇 가지 요청을 하였습니다.
 1. 패치에 간단한 주석을 달 것
 2. cmake는 빌드에만 필요한 dependency이므로 이를 반영
