@@ -1,0 +1,16 @@
+{{ partial "page_edit" . }}
+{{ partial "tags" . }}
+{{ partial "components/page_sharer" . }}
+{{ partial "page_author" . }}
+{{ partial "comments" . }}
+
+{{ if .Params.pager }}
+<div class="article-widget">
+  {{ partial "components/pager" . }}
+</div>
+{{ end }}
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2639180757747269"
+     crossorigin="anonymous"></script>
+
+{{ partial "page_related" . }}
