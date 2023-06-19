@@ -54,7 +54,7 @@ Fluent는 CFD 업계에서 수십년동안 마켓쉐어 1등을 지키고 있는
 사실 이 논문을 썼던 2017년만 하더라도 솔버는 강력하나 UI적으로는 불편한 면이 있었으나 매년 업데이트로 UI적인면도 크게 개선하여 2020년쯤에는 크게 특별히 불편하지 않았습니다.
 2020년 이후로도 눈에 띄는 업데이트를 해왔는데 그 중 저와 관련이 있고 큰 관심이 있는 것만 아래에 간략히 담아보았습니다.
 각각의 항목도 하나씩 이야기할거리가 있겠지만 현재 회사에서는 Fluent를 할 라이센스가 없어 제대로 된 분석을 할수는 없겠네요.
-
+![](fluent-2023r1-highlight1.webp)
 ### Python 도입
 CFD 코드는 계산속도가 매우 중요한 분야이기 때문에 코어 영역은 C++이나 Fortran으로 하는 경우가 대부분입니다.
 그런데 오로지 C++같은 코드로만 만들면 코드를 이용한 활용이 어려워집니다.
@@ -97,9 +97,53 @@ Fluent의 GPU솔버의 자세한 세부 코드는 알 수가 없지만 아마 �
 관련 내용은 Ansys 블로그 [Unleashing the Power of Multiple GPUs for CFD Simulations](https://www.ansys.com/blog/unleashing-the-power-of-multiple-gpus-for-cfd-simulations)에 자세히 설명이 되어 있습니다.
 
 # 2. Ansys CFX
-같은 회사의 CFX란 SW는 주로 터보기계에 사용하는 SW인데 저는 대학원에서 접했었고요.
+CFX도 Fluent와 같이 Ansys사가 보유한 CFD SW입니다.
+왜 같은 회사에 CFD SW가 두개인지에 대해 의문이 있을 수 있습니다.
+보통 일반적으로 대부분의 분야에서는 Fluent를 사용하고 터보기계분야에서는 CFX로 하라는 조언이 많습니다.
+그런데 사실 Fluent(2006년)보다도 CFX(2003년)가 먼저 Ansys사에 인수되었습니다.
+어쩌면 늦게 들어온 Fluent에 의해 2인자로 물러난 것입니다.  
+현재는 CFX는 거의 업데이트가 되지 않고 Fluent 위주로 업데이트가 되고 있습니다.
+그런데 이렇게만 설명하기에는 뭔가 부족합니다.
+사실 CFX는 굉장히 독특한 수치해석 기법을 갖고 있습니다.
+
+## Pressure Based Coupled Solver
+유체역학은 결국 유체의 압력, 속도, 밀도등을 풀어내는 것입니다. 
+이 방정식이 내비어 스톡스 방정식인데 워낙 복잡한 관계로 여러가지 풀이법이 있습니다.
+크게 압력 기반이냐 밀도 기반이냐 나눌 수 있습니다.
+압력 기반으로 가게 되면 방정식은 압력, 속도 3개외 다른 변수들을 각각의 독립된 방정식에서 풀어냅니다.
+그래서 방정식이 나누어져 있으므로 Segregated Solver라고도 합니다.
+밀도 기반은 이에 반해 밀도, 운동량(속도)를 동시에 풀 수 있습니다.
+그래서 밀도 기반 솔버는 Coupled Solver라고 합니다.
+압력기반 솔버는 비압축성(마하수가 낮은 영역), 밀도기반 솔버는 압축성(마하수가 높은 영역)영역에 맞도록 개발되어 왔습니다.
+그 하위의 수치해석기법들도 서로 다르게 개발이 된것도 많습니다.
+
+CFX는 이와 또 다르게 압력 기반으로 되어 있으면서 방정식은 커플되어 있는 Coupled Solver입니다. 
+이렇게 한 이유는 압력기반 솔버임에도 압축성 영역을 잘 해결할 수 있도록 한 것입니다.
+Fluent는 이와 다르게 압력기반 솔버와 밀도기반 솔버 두개가 모두 내장되어 선택하여 쓸 수 있습니다.
+
+## Node based(cell-vertex code)
+Flunet나 다른 솔버들은 Cell Centered 솔버인데 CFX는 Node(vertex) based 솔버라고 합니다.
+이것은 그림으로 가장 잘 설명한 것은 아래 그림입니다.
+먼저 격자점을 Node=Vertex라고 하고 Node 4개(hexa), 3개(tetra)로 Cell이 구성됩니다.
+Cell Center방식은 이 Cell에 유동 데이터를 저장합니다.
+Node Center방식은 Node에 유동 데이터를 저장합니다. 
+대신 이 Node들에서 별도의 Polyhedral을 생성하여 계산이 됩니다.
+이러면 적은 격자를 쓰더라도 충분히 정확한 결과를 보여준다고 합니다.
+
+![])(cellCentredVertexCentred.png)
+
+CFX의 특별한 점은 아래 링크에 더 자세한 설명이 있습니다.
+[CFX vs. FLUENT(cfd-online)](https://www.cfd-online.com/Forums/cfx/166388-cfx-vs-fluent.html)
+[SOLVER SETTING FOR CFD SIMULATIONS](http://www.cfdyna.com/CFDHT/SolverSetting.html)
+[Ansys CFX 수치해석 기법 및 특징(태성에스엔이)](https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=tsne1234&logNo=221193360368)
+
+이런 독특한 점에도 불구하고 현재는 많이 사용되고 있지않은 아쉬운 SW입니다. 
+압축성 영역(마하수가 높은 영역)에서 밀도기반 솔버에 비해 생각만큼 해석이 잘 되는 것은 아닙니다.
+여기서 해석이 잘된다는 의미는 해석의 속도가 빠른가? 성긴 격자에서도 수렴이 잘되는가 같은 특징에서입니다.
+물론 이런 특징은 독특한 수치 기법에 따른 것도 있겠지만 제 개인적인 생각으로 같은 회사에 1등 SW인 Fluent가 있어
+개발에 제한이 있는 이유가 더 큰 이유라고 생각합니다.
 같은 라이센스로 두 SW가 가능하지만 Ansys사가 Fluent 위주로 개발을 해서 회사에서는 거의 사용한 적은 없었습니다.
-이번에 옛 기억을 되살려서 CFX도 해보기로 하였습니다.
+저는 대학원에서 접했었고 이번에 옛 기억을 되살려서 CFX도 해보기로 하였습니다.
 
 # 3. Star-CCM+
 다음은 지멘스의 Star-CCM+입니다. Star-CCM+은 Fluent에 이어 CFD 분야에서 가장 많이 사용하는 SW중 하나입니다.
