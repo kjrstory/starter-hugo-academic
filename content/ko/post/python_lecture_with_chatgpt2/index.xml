@@ -10,7 +10,7 @@ categories:
 ---
 
 지난 글을 읽어보십시오
-[A post]({{< relref "ko/post/python_lecture_with_chatgpt2" >}})
+[A post]("ko/post/python_lecture_with_chatgpt2")
 
 {{< hl >}}**User**{{< /hl >}}
 
