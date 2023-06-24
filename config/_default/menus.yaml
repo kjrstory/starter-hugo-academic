@@ -11,6 +11,6 @@ main:
     url: '/publication'
     weight: 20
   - name: Python Cli Click
-    PageRef: course/python_click/_index.md
+    PageRef: "/course/python_click/_index.md"
     weight: 30
-    parent: courses
+    parent: Courses
