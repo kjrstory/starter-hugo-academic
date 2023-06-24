@@ -41,7 +41,10 @@ help 매개변수는 각 옵션의 help 메세지를 정의하는 것입니다.
 length옵션으로 받은 입력은 length 변수에 들어가게 됩니다.
 
 help 메세지는 아래 명령으로 확인이 가능합니다.
-`python length_converter.py --help`
+
+```bash_session
+python length_converter.py --help`
+```
 
 ```bash_session
 Usage: length_converter.py [OPTIONS]
@@ -60,6 +63,7 @@ Options:
 help, type 매개 변수와 함수의 docstring들로 충분히 좋은 help 메세지를 보여줍니다.
 
 length 옵션은 float타입만 받기로 하였는데 float로 변환이 불가능한 문자가 들어가면 아래와 같이 에러메세지를 출력합니다.
+
 ```bash_session
 $ python length_converter.py --length abc --from-unit cm --to-unit mm
 Error: Invalid value for '--length': 'abc' is not a valid float.
