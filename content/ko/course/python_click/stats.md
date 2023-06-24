@@ -7,7 +7,7 @@ tags:
   - current
 ---
 
-```
+```python
 import click
 
 @click.command()
@@ -39,4 +39,41 @@ help 매개변수는 각 옵션의 help 메세지를 정의하는 것입니다.
 
 함수 아래에서는 option명대로 변수가 들어가게 됩니다.
 length옵션으로 받은 입력은 length 변수에 들어가게 됩니다.
+
+help 메세지는 아래 명령으로 확인이 가능합니다.
+`python length_converter.py --help`
+
+```bash_session
+Usage: length_converter.py [OPTIONS]
+
+  Convert length between different units
+
+Options:
+  --length FLOAT    Length value to convert
+  --from-unit [m|cm|mm]
+                    Unit to convert from
+  --to-unit [m|cm|mm]
+                    Unit to convert to
+  --help            Show this message and exit.
+```
+
+help, type 매개 변수와 함수의 docstring들로 충분히 좋은 help 메세지를 보여줍니다.
+
+length 옵션은 float타입만 받기로 하였는데 float로 변환이 불가능한 문자가 들어가면 아래와 같이 에러메세지를 출력합니다.
+```bash_session
+$ python length_converter.py --length abc --from-unit cm --to-unit mm
+Error: Invalid value for '--length': 'abc' is not a valid float.
+```
+
+click.Choice타입을 사용한 옵션에서 리스트에 벗어나는 입력을 넣게 되면 역시 에러메세지를 출력합니다.
+```bash_session
+$ python length_converter.py --length 10 --from-unit inch --to-unit mm
+Error: Invalid value for '--from-unit': invalid choice: inch. (choose from m, cm, mm)
+```
+
+제대로 된 사용은 아래와 같습니다.
+```
+$ python length_converter.py --length 10 --from-unit cm --to-unit mm
+10.0 cm is equal to 100.0 mm
+```
 
