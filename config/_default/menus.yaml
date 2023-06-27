@@ -10,7 +10,7 @@ main:
   - name: Publications
     url: '/publication'
     weight: 20
-  - name: Abiyt
+  - name: About
     url: '/about'
     weight: 30
 #  - name: Python Cli Click
