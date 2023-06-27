@@ -10,7 +10,9 @@ main:
   - name: Publications
     url: '/publication'
     weight: 20
-    
+  - name: Abiyt
+    url: '/about'
+    weight: 30
 #  - name: Python Cli Click
 #    PageRef: course/python_click/_index.md
 #    weight: 30
