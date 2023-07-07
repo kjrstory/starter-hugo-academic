@@ -17,18 +17,14 @@ The field of fluid dynamics, which I majored in, can be broadly divided into exp
 
 The workshop seems to have drawn inspiration from the workshops organized by the American Institute of Aeronautics and Astronautics (AIAA). It involved selecting a common fluid dynamics problem and having researchers from experimental fluid dynamics and computational fluid dynamics individually conduct experiments and simulations to compare and match their results. Essentially, the experimental data was considered as the reference solution, and the discussions focused on how well the computational analyses matched the experimental results.
 
-Of course, as a society gathering, the workshop provided a platform for researchers to present and debate their research findings. However, due to differences in how each researcher interpreted the problem, it was challenging to compare their results. Therefore, the workshop aimed to standardize the problem and compare the interpretations to determine which computational analysis was more accurate and identify common characteristics.
+Of course, a conference itself is a place where researchers present their findings and engage in lively discussions.
+However, due to differences in how each researcher interpreted the problem, it was challenging to compare their results. Therefore, the workshop aimed to standardize the problem and compare the interpretations to determine which computational analysis was more accurate and identify common characteristics.
 
 The workshop consisted of a total of five cases, and I chose to work on the third case, which involved analyzing a winged body in the transonic regime.
 
-![](RAE_Wing_Body.png)
-
 This workshop has been conducted at aerospace academic conferences for about 2-3 years since around 2014, and the collected papers were published as a special issue in a scholarly journal in March 2017. I had the opportunity to present and attend the workshop, and I was able to contribute my paper to the special issue, which I observed with great interest.
 
-The paper is titled "Analysis of EFD-CFD Workshop Case 3 Using Commercial and Open-Source CFD Codes." You can find the paper at the following link: [CFD Analysis of EFD-CFD Workshop Case 3 Using Commercial and Open Source CFD Codes](/en/publication/jong-rok-kim-2017-cfd-analysis-efdcfd)
+The paper is titled "CFD Analysis of EFD-CFD Workshop Case 3 Using Commercial and Open Source CFD Codes". You can find the paper at the following [link](/en/publication/jong-rok-kim-2017-cfd-analysis-efdcfd)
 
 In addition, I included a series of articles in the link [Writing Papers as a Corporate Employee](/en/post/mypaper_review1/), which shares stories that couldn't be included in the paper.
-
-
-
 
