@@ -159,7 +159,7 @@ Star-CCM+은 Fluent에 비해 차별화되는 장점이 있었고 그런 장점�
 단 Star-CCM+과 Fluent가 서로의 장점을 흡수하면서 현재는 어떤 것을 선택해도 무방한 상황이 아닌가 싶습니다.
 그럼에도 두가지의 특징을 추려봤습니다.
 
-# 3-1. Overset Mesh
+## 3-1. Overset Mesh
 Overset Mesh는 격자끼리 겹침을 허용하는 격자입니다. 
 보통은 격자들끼리 겹쳐있을 필요는 없으나 움직이는 물체에 대해서 비정상 해석을 하거나 정상 해석을 하더라도 형상이 아주 복잡할 경우 격자 생성이 매우 어렵습니다.
 이럴 때 Overset Mesh를 활용하면 쉽게 격자를 생성 할 수 있습니다.
@@ -170,7 +170,7 @@ Star-CCM+은 2010년대 초반부터 Overset Mesh를 적용하였습니다.
 세부 고급 기능 중의 하나가 이 블로그 글 [Overset mesh with AMR, some interesting notes](https://volupe.se/overset-mesh-with-amr-some-interesting-notes)에 소개되어 있습니다.
 ![](Pic1_the_case.webp)
 
-# 3-2. 구조 해석 솔버
+## 3-2. 구조 해석 솔버
 3-1의 Overset처럼 이제 Fluent와 Star-CCM+은 단순 기능 비교로는 거의 동등하게 보여 우열을 가리기 힘들게 되었습니다. 
 그래서 Star-CCM+만의 차별성이 무엇일까에 대해서 고민을 했는데요. 
 Ansys의 Fluent와 확실히 차이되는점이 있습니다.
