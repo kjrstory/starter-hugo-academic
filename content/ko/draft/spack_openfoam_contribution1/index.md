@@ -35,6 +35,7 @@ spack info openfoam
 ```
 
 {{% callout note %}}
+
   Package:   openfoam
 
   Description:
@@ -108,6 +109,7 @@ spack info openfoam
 
   Run Dependencies:
     None
+    
 {{% /callout %}}
 
 Openfoam 패키지에 대한 옵션들이 기술되어 있습니다. 버전 1612부터 2206까지 선택할 수 있고 다양한 의존 패키지(Dependencies) 및 설치 옵션(Variants)들이 기술되어 있습니다. 
@@ -119,6 +121,7 @@ spack spec openfoam
 ```
 
 {{% callout note %}}
+
   Input spec
   --------------------------------
   openfoam
@@ -184,6 +187,7 @@ spack spec openfoam
               ^libevent@=2.1.12%gcc@=9.4.0+openssl build_system=autotools arch=linux-ubuntu20.04-cascadelake
       ^scotch@=7.0.3%gcc@=9.4.0+compression~esmumps~int64~ipo~metis+mpi+shared build_system=cmake build_type=Release generator=make arch=linux-ubuntu20.04-cascadelake
       ^zlib@=1.2.13%gcc@=9.4.0+optimize+pic+shared build_system=makefile arch=linux-ubuntu20.04-cascadelake
+
 {{% /callout %}}
 
 Openfoam을 위해 flex, openmpi, boost, cgal, cmake, scotch등의 패키지가 설치되는 것을 알 수 있습니다. 아마 Openfoam을 컴파일하여 설치해본 경험이 있더라도 하위의 몇몇 패키지들은 rpm이나 deb같은 바이너리 패키지를 설치했을 것입니다. Spack은 하위의 모든 패키지들을 컴파일하여 설치하는 것이 기본입니다. 물론 컴파일 하지 않고 이미 다른 방법(yum/dnf, apt등)으로 설치한 패키지 파일이 있다면 그것을 활용하게 할 수도 있습니다.
@@ -192,6 +196,7 @@ Openfoam을 위해 flex, openmpi, boost, cgal, cmake, scotch등의 패키지가 
 ```bash
   spack install openfoam@2206~float32~int64~kahip~knl~metis~mgridgen~paraview+scotch+source~spdp~vtk~zoltan build_system=generic %gcc@9.4.0
 ```
+
 이 명령은 모든 옵션을 쓴 것이라 복잡해 보이는데 defalut옵션과 동일하다면 그 옵션을 생략할 수 있고 보통 설치할 패키지의 버전과 컴파일러를 선택하여 설치하게 됩니다.
 
 ```bash
@@ -229,6 +234,7 @@ class Openjpeg(CMakePackage):
         ]
         return args
 ```
+
 Example of package recipe[^2]
 
 Spack 커뮤니티에서는 Spack을 사용하는 사용자를 일반 사용자, 개발자, 패키저(Packager)로 정의를 합니다. 패키저는 패키지 레시피를 개발하는 사람들로 코어 개발자와 구분하기 위한 것입니다. 오폰소스에 기여하고 싶은 사람들은 코어 영역에 기여하고 싶은 욕심도 있을 것입니다. 그러나 보통 유명한 오픈소스들의 코어 영역까지 건드리려면 그 오폰소스의 구조를 다 파악하고 있어야 하며 보수적인 테스트들과 리뷰가 통과되어야 적용이 되는데 처음 오픈소스에 기여하고 싶은 사람들에게는 올바른 접근이 아니라고 생각합니다. 작은 부분에 기여하거나 문서화 같은 부분도 오픈소스에 기여하는 것이라고 생각합니다. 그런 차원에서 Spack의 패키지 레시피에 기여하는 것도 오픈소스에 기여하는 것이라고 생각합니다.
@@ -298,6 +304,7 @@ Spack에서도 각각의 배포판이 모두 별개의 패키지로 등록이 �
       )
       ...
 ```
+
 여러 버전이 명시되어있고 sha256정보와 url 정보가 있습니다. 그런데 Spack 공식 문서를 보면 url을 스마트하게 찾아주기도 합니다.
 아래의 코드와 설명을 읽어보면 url이 버전에 따라 정해진 형식이라면 알아서 찾아줍니다. Openfoam-org처럼 버전마다 url을 명시하는 것은 지저분하기 때문에 코드를 깔끔하게 바꿔줄 필요가 있습니다.
 
@@ -310,8 +317,11 @@ Spack에서도 각각의 배포판이 모두 별개의 패키지로 등록이 �
       version("8.2.0", md5="1c9f62f0778697a09d36121ead88e08e")
       version("8.1.2", md5="d47dd09ed7ae6e7fd6f9a816d7f5fdf6")
 ```
+
 {{% callout note %}}
+
 By default, each version’s URL is extrapolated from the url field in the package. For example, Spack is smart enough to download version 8.2.1 of the Foo package above from [http://example.com/foo-8.2.1.tar.gz](http://example.com/foo-8.2.1.tar.gz).
+
 {{% /callout %}}
 
 그런데 한가지 규칙에 어긋나는 부분이 5.0이하의 버전에서는 url의 suffix 중에 5.x같이 .x가 들어가는 특별한 규칙이 있는 것입니다. 이를 위해 함수 하나를 만들어서 해결하기로 합니다.
