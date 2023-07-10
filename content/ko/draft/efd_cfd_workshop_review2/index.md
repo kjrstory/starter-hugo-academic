@@ -1,3 +1,17 @@
+---
+title: EFD-CFD 워크샵 논문 리뷰2
+date: 2023-05-25T07:22:43.471Z
+draft: false
+featured: false
+authors:
+  - admin
+categories:
+  - CFD
+tags:
+  - CFD
+  - OpenFoam
+---
+  
 # 5. OpenFoam
 그리고 오픈소스에서 하나쯤은 넣어야겠다고 생각했습니다. 
 CFD분야의 오픈소스는 OpenFoam이 가장 유명합니다.
