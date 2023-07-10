@@ -2,11 +2,15 @@
 title: "오픈소스 Spack의 설치 레시피 기여 사례: Openfoam (1)"
 date: 2023-05-17T11:52:56+09:00
 draft: true
-tags: [ spack, openfoam ]
-categories: [ HPC ]
-lightgallery: true
-toc:
-   auto: false
+featured: false
+authors:
+  - admin
+tags: 
+ - spack
+ - openfoam
+categories:
+ - HPC
+
 ---
 
 [Spack](https://spack.io)은 HPC에서 쓰이는 오픈소스 어플리케이션들의 설치를 도와주는 도구입니다. 현재의 오픈소스 SW들은 하나의 패키지(라이브러리)로 되어있는 것이 아니라 그림과  같은 많은 수의 패키지들이 복잡하게 상호 관계를 갖고 있습니다.
@@ -30,7 +34,7 @@ spack version # 0.20.0.dev0
 spack info openfoam
 ```
 
-{{< admonition type=note title="spack info openfoam 결과" open=false >}}
+{{% callout note %}}
   Package:   openfoam
 
   Description:
@@ -104,7 +108,7 @@ spack info openfoam
 
   Run Dependencies:
     None
-{{< /admonition >}}
+{{% /callout %}}
 
 Openfoam 패키지에 대한 옵션들이 기술되어 있습니다. 버전 1612부터 2206까지 선택할 수 있고 다양한 의존 패키지(Dependencies) 및 설치 옵션(Variants)들이 기술되어 있습니다. 
 
@@ -114,7 +118,7 @@ Openfoam 패키지에 대한 옵션들이 기술되어 있습니다. 버전 1612
 spack spec openfoam
 ```
 
-{{< admonition type=note title="spack spec openfoam 결과" open=false >}}
+{{% callout note %}}
   Input spec
   --------------------------------
   openfoam
@@ -180,7 +184,7 @@ spack spec openfoam
               ^libevent@=2.1.12%gcc@=9.4.0+openssl build_system=autotools arch=linux-ubuntu20.04-cascadelake
       ^scotch@=7.0.3%gcc@=9.4.0+compression~esmumps~int64~ipo~metis+mpi+shared build_system=cmake build_type=Release generator=make arch=linux-ubuntu20.04-cascadelake
       ^zlib@=1.2.13%gcc@=9.4.0+optimize+pic+shared build_system=makefile arch=linux-ubuntu20.04-cascadelake
-{{< /admonition >}}
+{{% /callout %}}
 
 Openfoam을 위해 flex, openmpi, boost, cgal, cmake, scotch등의 패키지가 설치되는 것을 알 수 있습니다. 아마 Openfoam을 컴파일하여 설치해본 경험이 있더라도 하위의 몇몇 패키지들은 rpm이나 deb같은 바이너리 패키지를 설치했을 것입니다. Spack은 하위의 모든 패키지들을 컴파일하여 설치하는 것이 기본입니다. 물론 컴파일 하지 않고 이미 다른 방법(yum/dnf, apt등)으로 설치한 패키지 파일이 있다면 그것을 활용하게 할 수도 있습니다.
 설치 설정 시 각 의존 패키지들의 설정과 옵션 및 컴파일러를 선택할 수 있습니다.
@@ -306,9 +310,9 @@ Spack에서도 각각의 배포판이 모두 별개의 패키지로 등록이 �
       version("8.2.0", md5="1c9f62f0778697a09d36121ead88e08e")
       version("8.1.2", md5="d47dd09ed7ae6e7fd6f9a816d7f5fdf6")
 ```
-{{< admonition >}}
+{{% callout note %}}
 By default, each version’s URL is extrapolated from the url field in the package. For example, Spack is smart enough to download version 8.2.1 of the Foo package above from [http://example.com/foo-8.2.1.tar.gz](http://example.com/foo-8.2.1.tar.gz).
-{{< /admonition >}}
+{{% /callout %}}
 
 그런데 한가지 규칙에 어긋나는 부분이 5.0이하의 버전에서는 url의 suffix 중에 5.x같이 .x가 들어가는 특별한 규칙이 있는 것입니다. 이를 위해 함수 하나를 만들어서 해결하기로 합니다.
 
