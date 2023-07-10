@@ -1,7 +1,7 @@
 ---
 title: "오픈소스 Spack의 설치 레시피 기여 사례: Openfoam (1)"
 date: 2023-05-17T11:52:56+09:00
-draft: true
+draft: false
 featured: false
 authors:
   - admin
