@@ -106,6 +106,7 @@ To determine if "LP" is available in all versions, it is essential to check the 
 `WM_PRECISION_OPTION = SP | DP | LP`
 
 A relevant commit was found here, indicating that this feature was added from version 6 onwards.
+
 [OpenFOAM: Added support for extended precision scalar](https://github.com/OpenFOAM/OpenFOAM-dev/commit/d82cc36c5af97e799a82fadf455e06d192ae1e65)
 
 
@@ -128,7 +129,7 @@ Here, instead of "LP," the name "LDP" is used, and it was added from version 3.2
 In summary, there are three improvement points:
 
 1. Add precision variants.
-2. Include the missing precision options (LP, LDP) in both Foundation and Extend versions.
+2. Include the missing precision options (LP, LDP) in both Foundation and Foam-Extend distributions.
 3. Make the specific Precision (SPDP, LP, LDP) applicable only after certain versions for each distribution.
 
 
