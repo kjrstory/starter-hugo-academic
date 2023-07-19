@@ -357,7 +357,7 @@ sha256sum ./version-6.tar.gz
 Hmmm. I confirmed/re-confirmed all of the explicit package versions.
 
 While this works I am hesitant to approve because the url_for_version method is normally "complete" in that it provides a single location to determine the "standard" URLs for the package.
-{{% callout %}}
+{{% /callout %}}
 
 url_for_version 방법을 쓴다면 모든 버전을 쓰도록 만들어야 하는데 if문이 하나만 있으니 완벽한 방법이 아니라는 것입니다.
 
