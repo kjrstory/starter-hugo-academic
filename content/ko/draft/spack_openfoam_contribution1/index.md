@@ -25,7 +25,7 @@ Spack에 대한 사용법으로도 글을 별도로 쓸 수 있지만 이 글에
 ```bash
 git clone -c feature.manyFiles=true https://github.com/spack/spack.git
 . spack/share/spack/setup-env.sh
-spack version # 0.20.0.dev0
+spack version
 ```
 
 `spack info` 명령으로 패키지에 대한 설명을 볼 수 있습니다.
@@ -34,7 +34,7 @@ spack version # 0.20.0.dev0
 spack info openfoam
 ```
 
-{{% callout note %}}
+{{< spoiler text="Result of `spack info openfoam`" >}}
 ```bash
   Package:   openfoam
 
@@ -110,10 +110,6 @@ spack info openfoam
   Run Dependencies:
     None
 ```    
-{{% /callout %}}
-
-{{< spoiler text="Click to view the spoiler" >}}
-You found me!
 {{< /spoiler >}}
 
 
@@ -125,8 +121,7 @@ Openfoam 패키지에 대한 옵션들이 기술되어 있습니다. 버전 1612
 spack spec openfoam
 ```
 
-{{% callout note %}}
-
+{{< spoiler text="Result of `spack spec openfoam`" >}}
 ```bash
   Input spec
   --------------------------------
@@ -194,7 +189,7 @@ spack spec openfoam
       ^scotch@=7.0.3%gcc@=9.4.0+compression~esmumps~int64~ipo~metis+mpi+shared build_system=cmake build_type=Release generator=make arch=linux-ubuntu20.04-cascadelake
       ^zlib@=1.2.13%gcc@=9.4.0+optimize+pic+shared build_system=makefile arch=linux-ubuntu20.04-cascadelake
 ```
-{{% /callout %}}
+{{< /spoiler >}}
 
 Openfoam을 위해 flex, openmpi, boost, cgal, cmake, scotch등의 패키지가 설치되는 것을 알 수 있습니다. 아마 Openfoam을 컴파일하여 설치해본 경험이 있더라도 하위의 몇몇 패키지들은 rpm이나 deb같은 바이너리 패키지를 설치했을 것입니다. Spack은 하위의 모든 패키지들을 컴파일하여 설치하는 것이 기본입니다. 물론 컴파일 하지 않고 이미 다른 방법(yum/dnf, apt등)으로 설치한 패키지 파일이 있다면 그것을 활용하게 할 수도 있습니다.
 설치 설정 시 각 의존 패키지들의 설정과 옵션 및 컴파일러를 선택할 수 있습니다.
@@ -212,7 +207,7 @@ Openfoam을 위해 flex, openmpi, boost, cgal, cmake, scotch등의 패키지가 
 명령을 실행하게 되면 `spec` 명령으로 확인했던 패지들이 모두 설치되며 컴파일하여 설치하므로 서버 환경에 따라 장시간(몇십분에서 몇시간) 소요가 됩니다.
 
 ## Spack 패키지 레시피 소개
-그럼 info에 있던 버전 정의, 의존 패키지, variants정의는 어떻게 했을까요? 그건 Openfoam 커뮤니티에서  하지 않고 [Spack 리포지토리](https://github.com/spack/spack)에서 합니다. 이 설치에 대한 것은  `spack edit openfoam`명령으로 레시피 코드를 볼 수 있으며 파이썬 파일로 되어 있습니다. 파이썬이지만 DSL(Domain Specific Language)이라고 생각하면 됩니다. Spack 커뮤니티에서는 이를 패키지 레시피라고 하며 아래에 Spack 문서에서 제공하는 예제를 인용하였습니다. 다시 Spack을 정의내리면 오폰소스 SW의 설치 방법을 독자적인 언어로 레시피로 만들어 놓은 도구라고 할 수 있겠습니다. 
+그럼 info에 있던 버전 정의, 의존 패키지, variants정의는 어떻게 했을까요? 그건 Openfoam 커뮤니티에서  하지 않고 [Spack 리포지토리](https://github.com/spack/spack)에서 합니다. 이 설치에 대한 것은  `spack edit openfoam`명령으로 레시피 코드를 볼 수 있으며 파이썬 파일로 되어 있습니다. 파이썬이지만 DSL(Domain Specific Language)이라고 생각하면 됩니다. Spack 커뮤니티에서는 이를 패키지 레시피라고 하며 아래에 Spack 문서에서 제공하는 예제를 인용하였습니다. 다시 Spack을 정의내리면 오픈픈소스 SW의 설치 방법을 독자적인 언어로 레시피로 만들어 놓은 도구라고 할 수 있겠습니다. 
 
 ```python
 class Openjpeg(CMakePackage):
@@ -247,7 +242,7 @@ Spack 커뮤니티에서는 Spack을 사용하는 사용자를 일반 사용자,
 
 
 ## Openfoam 배포판 소개 및 패키지 레시피 현황
-여기서 하나 Openfoam이 다른 오픈소스와 다른 점이 있습니다. Openfoam은 크게 세가지 버전으로 배포되고 각 버전을 관리하는 기관이 다릅니다. OpenFoam의 초기 개발자인 Henry Weller의 주관으로 OpenFoam Foundation([openfoam.org](openfoam.org)에서 배포하는 버전과 ESI에서 배포하는 OpenFoam Plus([openfoam.com](openfoam.com)버전이 있고 Hrvoje Jasak이 주관하는 [Foam-Extend](https://sourceforge.net/projects/foam-extend/)가 있습니다. 이글에서는 각각 Fundation 배포판, ESI 배포판, Extend 배포판으로 명명하겠습니다. 
+여기서 하나 Openfoam이 다른 오픈소스와 다른 점이 있습니다. Openfoam은 크게 세가지 버전으로 배포되고 각 버전을 관리하는 기관이 다릅니다. OpenFoam의 초기 개발자인 Henry Weller의 주관으로 [OpenFoam Foundation](http://openfoam.org)에서 배포하는 버전과 ESI에서 배포하는 [OpenFoam Plus](http://openfoam.com)버전이 있고 Hrvoje Jasak이 주관하는 [Foam-Extend](https://sourceforge.net/projects/foam-extend/)가 있습니다. 이 글에서는 각각 Fundation 배포판, ESI 배포판, Extend 배포판으로 명명하겠습니다. 
 Spack에서도 각각의 배포판이 모두 별개의 패키지로 등록이 되어있습니다. 그런데 패키지 레시피 코드를 뜯어 보면 ESI 배포판 코드의 개발자가 다른 배포판도 개발하였습니다. 하지만 ESI 배포판은 수시로 업데이트를 하는 반면에 다른 배포판은 업데이트가 잘 안되고 있었습니다. 그래서 저는 Foundation 배포판의 패키지 레시피를 주로 보완하기로 했습니다. 이제부터는 코드에 기여한 사례 별로 정리하였습니다.
 
 ### 첫번째 기여 (버전 정의)
@@ -362,6 +357,7 @@ While this works I am hesitant to approve because the url_for_version method is 
 url_for_version 방법을 쓴다면 모든 버전을 쓰도록 만들어야 하는데 if문이 하나만 있으니 완벽한 방법이 아니라는 것입니다.
 
 그래서 아래와 같이 코드를 수정했습니다.
+
 ```python
     def url_for_version(self, version):
         """If the version number is 5.0 or lower, the returned URL includes
@@ -379,7 +375,7 @@ url_for_version 방법을 쓴다면 모든 버전을 쓰도록 만들어야 하�
             version_prefix, version
         )
         return url
-```python
+```
 
 조건문을 보완하여 모든 조건에 대해 출력값을 주게 바꾸어 좀 더 코드가 완결성을 갖게 만들었습니다. 이렇게 보완을 하고나니 리뷰가 통과되어 머지가 되었습니다. 처음 리뷰를 제가 정확하게 이해한것이네요. 기여한 코드가 별거 아니라고 생각할 수도 있지만 어쩌면 그래서 예시로 보여주기 적절한 것 같습니다. 이런 작은 기여도 실제 반영하려면 까다로운 절차를 겪게 됩니다. 버전 명시 외에 더 개선 해야할 작업들이 보이기 시작했습니다. 이제부터는 다소 까다롭고 최소한 Openfoam을 직접 컴파일해서 설치해 본 적도 있어야 알 수 있는 부분을 해보겠습니다. 추가적으로 기여한 부분들에 대해서는 2편에 작성하겠습니다.
 
