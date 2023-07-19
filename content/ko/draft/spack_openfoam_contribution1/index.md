@@ -243,7 +243,7 @@ Spack 커뮤니티에서는 Spack을 사용하는 사용자를 일반 사용자,
 
 
 ## Openfoam 배포판 소개 및 패키지 레시피 현황
-여기서 하나 Openfoam이 다른 오픈소스와 다른 점이 있습니다. Openfoam은 크게 세가지 버전으로 배포되고 각 버전을 관리하는 기관이 다릅니다. OpenFoam의 초기 개발자인 Henry Weller의 주관으로 [OpenFoam Foundation](http://openfoam.org)에서 배포하는 버전과 ESI에서 배포하는 [OpenFoam Plus](http://openfoam.com)버전이 있고 Hrvoje Jasak이 주관하는 [Foam-Extend](https://sourceforge.net/projects/foam-extend/)가 있습니다. 이 글에서는 각각 Fundation 배포판, ESI 배포판, Extend 배포판으로 명명하겠습니다. 
+여기서 하나 Openfoam이 다른 오픈소스와 다른 점이 있습니다. Openfoam은 크게 세가지 버전으로 배포되고 각 버전을 관리하는 기관이 다릅니다. OpenFoam의 초기 개발자인 Henry Weller의 주관으로 [OpenFoam Foundation](http://openfoam.org)에서 배포하는 버전과 ESI OpenCFD에서 배포하는 [OpenFoam Plus](http://openfoam.com)버전이 있고 Hrvoje Jasak이 주관하는 [Foam-Extend](https://sourceforge.net/projects/foam-extend/)가 있습니다. 이 글에서는 각각 Fundation 배포판, OpenCFD 배포판, Extend 배포판으로 명명하겠습니다. 
 Spack에서도 각각의 배포판이 모두 별개의 패키지로 등록이 되어있습니다. 그런데 패키지 레시피 코드를 뜯어 보면 ESI 배포판 코드의 개발자가 다른 배포판도 개발하였습니다. 하지만 ESI 배포판은 수시로 업데이트를 하는 반면에 다른 배포판은 업데이트가 잘 안되고 있었습니다. 그래서 저는 Foundation 배포판의 패키지 레시피를 주로 보완하기로 했습니다. 이제부터는 코드에 기여한 사례 별로 정리하였습니다.
 
 ### 첫번째 기여 (버전 정의)
