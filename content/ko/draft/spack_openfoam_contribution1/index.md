@@ -13,11 +13,11 @@ categories:
 
 ---
 
-[Spack](https://spack.io)은 HPC에서 쓰이는 오픈소스 어플리케이션들의 설치를 도와주는 도구입니다. 현재의 오픈소스 SW들은 하나의 패키지(라이브러리)로 되어있는 것이 아니라 그림과  같은 많은 수의 패키지들이 복잡하게 상호 관계를 갖고 있습니다.
+[Spack](https://spack.io)은 HPC에서 쓰이는 오픈소스 어플리케이션들의 설치를 도와주는 도구입니다. 현재의 오픈소스 SW들은 하나의 패키지(라이브러리)로 되어있는 것이 아니라 그림과 같이 많은 수의 패키지들이 복잡하게 상호 관계를 갖고 있습니다.
 
 ![Dependency_Ares](Ares_Spack.png "Dependency graph of one configuration of ARES")[^1]
 
-또 사용하는 HW의 컴파일러, CPU 아키텍처에 따라 컴파일하는 옵션이 달라져야 하는 경우도 있습니다. 이런 복잡성을 체계적으로 관리하기 위한 도구로 Spack이 개발되었습니다. 이 글은 Spack의 튜토리얼이나 사용자 가이드의 목적으로 작성하지 않았습니다. 대신 Spack에 개발자로 기여하는 사례를 소개하고자 합니다. Spack은 수많은 오픈소스 SW(v0.19.2, '23년 4월 기준으로 약 7000개)를 설치할 수 있는데 이 글에서는 오픈소스 CFD SW중 하나인 Openfoam을 집중적으로 다루려고 합니다.
+또 사용하는 HW의 컴파일러, CPU 아키텍처에 따라 컴파일하는 옵션이 달라져야 하는 경우도 있습니다. 이런 복잡성을 체계적으로 관리하기 위한 도구로 [Spack](https://spack.io) 이 개발되었습니다. 이 글은 Spack의 튜토리얼이나 사용자 가이드의 목적으로 작성하지 않았습니다. 대신 Spack에 개발자로 기여하는 사례를 소개하고자 합니다. Spack은 수많은 오픈소스 SW(v0.19.2, '23년 4월 기준으로 약 7000개)를 설치할 수 있는데 이 글에서는 오픈소스 CFD SW중 하나인 Openfoam을 집중적으로 다루려고 합니다.
 
 ## Spack의 간단한 사용법
 Spack에 대한 사용법으로도 글을 별도로 쓸 수 있지만 이 글에서는 정말 간략한 설명만 하겠습니다. Spack은 설치 과정이 간단합니다. 깃헙 리포지토리를 클론하고 환경변수 설정을 해주면 됩니다.
@@ -35,7 +35,7 @@ spack info openfoam
 ```
 
 {{% callout note %}}
-
+```bash
   Package:   openfoam
 
   Description:
@@ -109,8 +109,13 @@ spack info openfoam
 
   Run Dependencies:
     None
-    
+```    
 {{% /callout %}}
+
+{{< spoiler text="Click to view the spoiler" >}}
+You found me!
+{{< /spoiler >}}
+
 
 Openfoam 패키지에 대한 옵션들이 기술되어 있습니다. 버전 1612부터 2206까지 선택할 수 있고 다양한 의존 패키지(Dependencies) 및 설치 옵션(Variants)들이 기술되어 있습니다. 
 
@@ -122,6 +127,7 @@ spack spec openfoam
 
 {{% callout note %}}
 
+```bash
   Input spec
   --------------------------------
   openfoam
@@ -187,7 +193,7 @@ spack spec openfoam
               ^libevent@=2.1.12%gcc@=9.4.0+openssl build_system=autotools arch=linux-ubuntu20.04-cascadelake
       ^scotch@=7.0.3%gcc@=9.4.0+compression~esmumps~int64~ipo~metis+mpi+shared build_system=cmake build_type=Release generator=make arch=linux-ubuntu20.04-cascadelake
       ^zlib@=1.2.13%gcc@=9.4.0+optimize+pic+shared build_system=makefile arch=linux-ubuntu20.04-cascadelake
-
+```
 {{% /callout %}}
 
 Openfoam을 위해 flex, openmpi, boost, cgal, cmake, scotch등의 패키지가 설치되는 것을 알 수 있습니다. 아마 Openfoam을 컴파일하여 설치해본 경험이 있더라도 하위의 몇몇 패키지들은 rpm이나 deb같은 바이너리 패키지를 설치했을 것입니다. Spack은 하위의 모든 패키지들을 컴파일하여 설치하는 것이 기본입니다. 물론 컴파일 하지 않고 이미 다른 방법(yum/dnf, apt등)으로 설치한 패키지 파일이 있다면 그것을 활용하게 할 수도 있습니다.
@@ -206,7 +212,7 @@ Openfoam을 위해 flex, openmpi, boost, cgal, cmake, scotch등의 패키지가 
 명령을 실행하게 되면 `spec` 명령으로 확인했던 패지들이 모두 설치되며 컴파일하여 설치하므로 서버 환경에 따라 장시간(몇십분에서 몇시간) 소요가 됩니다.
 
 ## Spack 패키지 레시피 소개
-그럼 info에 있던 버전 정의, 의존 패키지, variants정의는 어떻게 했을까요? 그건 Openfoam 커뮤니티에서  하지 않고 [Spack 리포지토리](https://github.com/spack/spack)에서 합니다. 이 설치에 대한 것은  `spack edit openfoam`명령으로 코드를 볼 수 있으며 파이썬 파일로 되어 있습니다. 파이썬이지만 DSL(Domain Specific Language)이라고 생각하면 됩니다. Spack 커뮤니티에서는 이를 패키지 레시피라고 하며 아래에 Spack 문서에서 제공하는 예제를 인용하였습니다. 다시 Spack을 정의내리면 오폰소스 SW의 설치 방법을 독자적인 언어로 레시피로 만들어 놓은 도구라고 할 수 있겠습니다. 
+그럼 info에 있던 버전 정의, 의존 패키지, variants정의는 어떻게 했을까요? 그건 Openfoam 커뮤니티에서  하지 않고 [Spack 리포지토리](https://github.com/spack/spack)에서 합니다. 이 설치에 대한 것은  `spack edit openfoam`명령으로 레시피 코드를 볼 수 있으며 파이썬 파일로 되어 있습니다. 파이썬이지만 DSL(Domain Specific Language)이라고 생각하면 됩니다. Spack 커뮤니티에서는 이를 패키지 레시피라고 하며 아래에 Spack 문서에서 제공하는 예제를 인용하였습니다. 다시 Spack을 정의내리면 오폰소스 SW의 설치 방법을 독자적인 언어로 레시피로 만들어 놓은 도구라고 할 수 있겠습니다. 
 
 ```python
 class Openjpeg(CMakePackage):
@@ -237,7 +243,7 @@ class Openjpeg(CMakePackage):
 
 Example of package recipe[^2]
 
-Spack 커뮤니티에서는 Spack을 사용하는 사용자를 일반 사용자, 개발자, 패키저(Packager)로 정의를 합니다. 패키저는 패키지 레시피를 개발하는 사람들로 코어 개발자와 구분하기 위한 것입니다. 오폰소스에 기여하고 싶은 사람들은 코어 영역에 기여하고 싶은 욕심도 있을 것입니다. 그러나 보통 유명한 오픈소스들의 코어 영역까지 건드리려면 그 오폰소스의 구조를 다 파악하고 있어야 하며 보수적인 테스트들과 리뷰가 통과되어야 적용이 되는데 처음 오픈소스에 기여하고 싶은 사람들에게는 올바른 접근이 아니라고 생각합니다. 작은 부분에 기여하거나 문서화 같은 부분도 오픈소스에 기여하는 것이라고 생각합니다. 그런 차원에서 Spack의 패키지 레시피에 기여하는 것도 오픈소스에 기여하는 것이라고 생각합니다.
+Spack 커뮤니티에서는 Spack을 사용하는 사용자를 일반 사용자, 개발자, 패키저(Packager)로 정의를 합니다. 패키저는 패키지 레시피를 개발하는 사람들로 코어 개발자와 구분하기 위한 것입니다. 오폰소스에 기여하고 싶은 사람들은 코어 영역에 기여하고 싶은 욕심도 있을 것입니다. 그러나 보통 유명한 오픈소스들의 코어 영역까지 건드리려면 그 오픈소스의 구조를 다 파악하고 있어야 하며 보수적인 테스트들과 리뷰가 통과되어야 적용이 되는데 처음 오픈소스에 기여하고 싶은 사람들에게는 올바른 접근이 아니라고 생각합니다. 작은 부분에 기여하거나 문서화 같은 부분도 오픈소스에 기여하는 것이라고 생각합니다. 그런 차원에서 Spack의 패키지 레시피에 기여하는 것도 오픈소스에 기여하는 것이라고 생각합니다.
 
 
 ## Openfoam 배포판 소개 및 패키지 레시피 현황
@@ -272,31 +278,13 @@ Spack에서도 각각의 배포판이 모두 별개의 패키지로 등록이 �
           sha256="94ba11cbaaa12fbb5b356e01758df403ac8832d69da309a5d79f76f42eb008fc",
           url=baseurl + "/OpenFOAM-8/archive/version-8.tar.gz",
       )
-      version(
-          "7",
-          sha256="12389cf092dc032372617785822a597aee434a50a62db2a520ab35ba5a7548b5",
-          url=baseurl + "/OpenFOAM-7/archive/version-7.tar.gz",
-      )
-      version(
-          "6",
-          sha256="32a6af4120e691ca2df29c5b9bd7bc7a3e11208947f9bccf6087cfff5492f025",
-          url=baseurl + "/OpenFOAM-6/archive/version-6.tar.gz",
-      )
+      ...
       version(
           "5.0",
           sha256="9057d6a8bb9fa18802881feba215215699065e0b3c5cdd0c0e84cb29c9916c89",
           url=baseurl + "/OpenFOAM-5.x/archive/version-5.0.tar.gz",
       )
-      version(
-          "4.1",
-          sha256="2de18de64e7abdb1b649ad8e9d2d58b77a2b188fb5bcb6f7c2a038282081fd31",
-          url=baseurl + "/OpenFOAM-4.x/archive/version-4.1.tar.gz",
-      )
-      version(
-          "2.4.0",
-          sha256="9529aa7441b64210c400c019dcb2e0410fcfd62a6f62d23b6c5994c4753c4465",
-          url=baseurl + "/OpenFOAM-2.4.x/archive/version-2.4.0.tar.gz",
-      )
+      ...
       version(
           "2.3.1",
           sha256="2bbcf4d5932397c2087a9b6d7eeee6d2b1350c8ea4f455415f05e7cd94d9e5ba",
@@ -318,7 +306,7 @@ Spack에서도 각각의 배포판이 모두 별개의 패키지로 등록이 �
       version("8.1.2", md5="d47dd09ed7ae6e7fd6f9a816d7f5fdf6")
 ```
 
-{{% callout note %}}
+{{% callout quote %}}
 
 By default, each version’s URL is extrapolated from the url field in the package. For example, Spack is smart enough to download version 8.2.1 of the Foo package above from [http://example.com/foo-8.2.1.tar.gz](http://example.com/foo-8.2.1.tar.gz).
 
@@ -339,13 +327,7 @@ By default, each version’s URL is extrapolated from the url field in the packa
       version("develop", branch="master")
       version("10", sha256="59d712ba798ca44b989b6ac50bcb7c534eeccb82bcf961e10ec19fc8d84000cf")
       version("9", sha256="0c48fb56e2fbb4dd534112811364d3b2dc12106e670a6486b361e4f864b435ee")
-      version("8", sha256="94ba11cbaaa12fbb5b356e01758df403ac8832d69da309a5d79f76f42eb008fc")
-      version("7", sha256="12389cf092dc032372617785822a597aee434a50a62db2a520ab35ba5a7548b5")
-      version("6", sha256="32a6af4120e691ca2df29c5b9bd7bc7a3e11208947f9bccf6087cfff5492f025")
-      version("5.0", sha256="9057d6a8bb9fa18802881feba215215699065e0b3c5cdd0c0e84cb29c9916c89")
-      version("4.1", sha256="2de18de64e7abdb1b649ad8e9d2d58b77a2b188fb5bcb6f7c2a038282081fd31")
-      version("3.0.1", sha256="4b7d25a17f5fb075e206d7fbdf863253335f705538df6404c6ca44f6147953c3")
-      version("2.4.0", sha256="9529aa7441b64210c400c019dcb2e0410fcfd62a6f62d23b6c5994c4753c4465")
+      ...
     ...
 
       def url_for_version(self, version):
@@ -367,17 +349,39 @@ sha256sum ./version-6.tar.gz
 32a6af4120e691ca2df29c5b9bd7bc7a3e11208947f9bccf6087cfff5492f025  ./version-6.tar.gz
 ```
 
+이제 PR(Pull Request)을 시도 하겠습니다. 깃에 대한 설명을 이 글에서 하지는 않을건데요. PR은 내가 바꾼 부분을 공식 리포지토리에 요청하는 것입니다. 오폰소스는 많은 사람이 같이 개발하는 것이기 때문에 각자 개발한 것을 서로 바꾸려고 하면 금방 스파게티 코드가 됩니다. 그래서 오픈소스에도 주관 기관 또는 주 개발자가 있고 그 사람들이 최종적인 merge 권한이 있습니다. 오픈소스마다 PR에 대한 규칙, 철학이 다를 것입니다. 생각보다 merge하는 과정이 까다로운 오픈소스도 있어서 마냥 오픈소스면 자유로운 건지 알고 접근했다가 실망하는 사람도 있습니다. 저는 오픈소스라 하더라도 초기에 구조를 설계하고 리포지토리를 운영하는 초기 개발자들(보통 이 분들이 리포지토리의 주인이 됩니다)이 대단하다고 생각하고 하고 그 사람들의 방식을 따르는 것이 맞다고 생각합니다.
 
+그런데 바로 통과 될 것이라고 생각과 달리 부정적인 리뷰가 달렸습니다.
 
-------------------------------------------------------------
-#TODO Draft
+{{% callout quote %}}
+Hmmm. I confirmed/re-confirmed all of the explicit package versions.
 
-이제 PR(Pull Request)을 시도 하겠습니다. 깃에 대한 설명을 이 글에서 하지는 않을건데요. PR은 내가 바꾼 부분을 공식 리포지토리에 요청하는 것입니다. 오폰소스는 많은 사람이 같이 개발하는 것이기 때문에 각자 개발한 것을 서로 바꾸려고 하면 금방 스파게티 코드가 됩니다. 그래서 오픈소스에도 주관 기관 또는 주 개발자가 있고 그 사람들이 최종적인 merge 권한이 있습니다. 오픈소스마다 PR에 대한 규칙, 철학이 다를 것입니다. 생각보다 merge하는 과정이 까다로운 코드도 있어서 마냥 오픈소스면 자유로운 건지 알고 접근했다가 실망하는 사람도 있습니다. 저는 오픈소스라 하더라도 초기에 구조를 설계하고 리포지토리를 운영하는 초기 개발자들(보통 이 분들이 리포지토리의 주인이 됩니다)이 대단하다고 생각하고 하고 그 사람들의 방식을 따르는 것이 맞다고 생각합니다.
+While this works I am hesitant to approve because the url_for_version method is normally "complete" in that it provides a single location to determine the "standard" URLs for the package.
+{{% callout quote %}}
 
-Openfoam-org 레시피에는 운영자(maintainer)가 없어서 직접 메인테이너 하라고 물어보는건데 일단 힘들 것 같으므로 패스합니다. 만약 어떤 패키징 레시피의 운영자가 되면 그 패키지에 관련된 PR이 있을시 의견을 낼 수 있고 사용자의 Merge 요청을 거부하면 Merge가 안되는 권한을 갖게 됩니다.
-PR이 완료되어 머지했습니다. 이제 오픈소스에 기여한것입니다.
+url_for_version 방법을 쓴다면 모든 버전을 쓰도록 만들어야 하는데 if문이 하나만 있으니 완벽한 방법이 아니라는 것입니다.
 
-기여한 코드가 별거 아니라고 생각할 수도 있지만 어쩌면 그래서  예시로 보여주기 적절한 것 같습니다. 이런 작은 기여도 실제 반영하려면 나름 까다로운 절차를 겪게 됩니다. 버전 명시 외에 더 개선 해야할 작업들이 보이기 시작했습니다. 이제부터는 다소 까다롭고 최소한 Openfoam을 직접 컴파일해서 설치해 본 적도 있어야 알 수 있는 부분도 있습니다. 추가적으로 기여한 부분들에 대해서는 2편에 작성하겠습니다.
+그래서 아래와 같이 코드를 수정했습니다.
+```python
+    def url_for_version(self, version):
+        """If the version number is 5.0 or lower, the returned URL includes
+        the ".x" suffix in the OpenFOAM directory name to reflect
+        the old directory naming convention for these versions.
+        """
+        if version == Version("2.3.1"):
+            return "http://downloads.sourceforge.net/foam/OpenFOAM-2.3.1.tgz"
+        elif version <= Version("5.0"):
+            version_prefix = str(version.up_to(-1)) + ".x"
+        else:
+            version_prefix = version
+
+        url = "https://github.com/OpenFOAM/OpenFOAM-{}/archive/version-{}.tar.gz".format(
+            version_prefix, version
+        )
+        return url
+```python
+
+조건문을 보완하여 모든 조건에 대해 출력값을 주게 바꾸어 좀 더 코드가 완결성을 갖게 만들었습니다. 이렇게 보완을 하고나니 리뷰가 통과되어 머지가 되었습니다. 처음 리뷰를 제가 정확하게 이해한것이네요. 기여한 코드가 별거 아니라고 생각할 수도 있지만 어쩌면 그래서 예시로 보여주기 적절한 것 같습니다. 이런 작은 기여도 실제 반영하려면 까다로운 절차를 겪게 됩니다. 버전 명시 외에 더 개선 해야할 작업들이 보이기 시작했습니다. 이제부터는 다소 까다롭고 최소한 Openfoam을 직접 컴파일해서 설치해 본 적도 있어야 알 수 있는 부분을 해보겠습니다. 추가적으로 기여한 부분들에 대해서는 2편에 작성하겠습니다.
 
 To be Continued :pray:
 
