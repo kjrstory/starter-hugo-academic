@@ -77,6 +77,7 @@ foam-extend 배포판 의 variant
 
  
 역시 OpenCFD 배포판이 압도적으로 많습니다. 실제 배포판의 차이일 수도 있겠지만 제가 알고 있는 바로는 이 정도로 기능의 차이가 나지는 않는 걸로 알고 있고 단순히 레시피를 만드는 차이라고 보면 되겠습니다.
+
 먼저 float32 옵션을 보면 single precision을 사용하는 옵션입니다. 여기서 precision은 시뮬레이션 결과의 소수점 자릿수를 결정하는 옵션으로 결과의 정밀도를 나타냅니다. single, double precision(SP,DP)이 있고 long double precision도 있습니다.
 
 그런데 OpenCFD 배포판에서는 spdp란 variants도 있습니다. 이는 single precision과 double precision을 섞어 쓰는 것입니다. CFD 시뮬레이션도 내부에서는 수많은 수치해석 기법이 쓰이며 정확도가 중요한 부분에서는 double precision을 쓰고 덜 중요한 부분에서는 single을 쓰는 방법입니다. 그런데 이 옵션이 다른 배포판에서는 없네요. 이제 각 배포판의 실제 소스코드를 뒤져봐야 합니다. Openfoam의 설치 설정파일은 여러 개 있는데 가장 대표적인 것은 `[source폴더]/etc/bashrc` 입니다.  이 정보는 사실 Openfoam을 직접 컴파일해서 설치하지 않았다면 알기 어려운 정보이며 CFD에 대한 기본적인 지식도 있어야 합니다.
@@ -108,13 +109,15 @@ Precision 옵션은 반드시 3개중에 하나가 선택되어야 하는 옵션
 [OpenFOAM: Added support for extended precision scalar](https://github.com/OpenFOAM/OpenFOAM-dev/commit/d82cc36c5af97e799a82fadf455e06d192ae1e65)
 
 
-그런데 다시 돌아가 그럼 ESI 배포판은 옛날 버전도 spdp가 될까요? 보통 sp와 dp는 기본적으로 지원하고 그 외의 옵션은 나중에 개발이 됩니다. ESI 배포판의 깃 리포지토리는 [여기](https://develop.openfoam.com/Development/openfoam)입니다. 깃헙이 아닌 깃랩(Gitlab)으로 구축했네요. 역시 마찬가지로 blame으로 찾아낼 수 있습니다.
+그런데 다시 돌아가 그럼 OpenCFD 배포판은 옛날 버전도 spdp가 될까요? 보통 sp와 dp는 기본적으로 지원하고 그 외의 옵션은 나중에 개발이 됩니다. ESI 배포판의 깃 리포지토리는 [여기](https://develop.openfoam.com/Development/openfoam)입니다. 깃헙이 아닌 깃랩(Gitlab)으로 구축했네요. 역시 마찬가지로 blame으로 찾아낼 수 있습니다.
+
 [ENH: add primitives support for mixed precision](https://develop.openfoam.com/Development/openfoam/-/blob/46bc808261ef44cb29b512cb0c93acabdc09153a/etc/bashrc)
 
 태그를 보면 1906버전부터 적용이 된 것을 알 수 있습니다. 이렇게 특정 버전만 적용되는 것이라면 반드시 레시피에 조건문을 달아야 합니다. 
 그리고 옵션 설명에도 명시를 해서 사용자에게 혼선이 없도록 해야 합니다.
 
 Foam-Extend도 살펴보겠습니다. Foam-Extend의 리포지토리는 소스포지네요. 
+
 [Feature: Single precision and long double precision port](https://sourceforge.net/p/foam-extend/foam-extend-3.2/ci/6b022758d1b15a8d08718a78d3f68879e95bcf90)
 
 `WM_PRECISION_OPTION = LDP | DP | SP`
@@ -161,7 +164,7 @@ Foam-Extend도 살펴보겠습니다. Foam-Extend의 리포지토리는 소스�
 
 그 후 PR을 하였습니다. 이 패키지에는 maintainer가 있었는데 다행히 큰 의견 없이 승인이 되었습니다. 보통 maintainer가 있는 패키지들은 spack의 주 개발자들도 그 사람들을 믿고 반영하는 듯 합니다.
 
-## OpenFoundation 배포판 Precision Variant 변경
+## Foundation 배포판 Precision Variant 변경
 다음으로 Open Foundation 배포판도 변경을 하였습니다.
 역시 float32란 variants는 지우고 
 
@@ -181,7 +184,7 @@ Foundation 배포판의 레시피에는 OpenCFD 배포판의 클래스와 함수
 클래스끼리는 상속을 받아 사용하게 되는데 이 개념은 객체지향에 나오는 개념으로 관련 지식이 필요합니다.
 상속을 받되 달라지는 부분만 바꿔서 사용하는데 객체지향개념과 파이썬에 대해 잘 모른다면 어려울수도 있는 부분입니다.
 아래는 OpenfoamOrgArch 클래스는 OpenfoamArch 클래스(OpenCFD버전에서 사용되는 클래스)를 상속받고 있습니다.
-생성자(__init__)에서는 먼저, 부모 클래스인 OpenfoamArch의 생성자를 호출하여 초기화합니다. 이를 위해 super().__init__(spec, **kwargs)를 사용합니다.
+생성자(`__init__`)에서는 먼저, 부모 클래스인 OpenfoamArch의 생성자를 호출하여 초기화합니다. 이를 위해 `super().__init__(spec, **kwargs)`를 사용합니다.
 그리고 OpenfoamArch와 다른 precision옵션을 써주면 됩니다.
 
 ```python
