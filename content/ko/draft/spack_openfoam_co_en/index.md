@@ -363,7 +363,7 @@ However, my PR did not receive an immediate approval as I had initially thought.
 Hmmm. I confirmed/re-confirmed all of the explicit package versions.
 
 While this works I am hesitant to approve because the url_for_version method is normally "complete" in that it provides a single location to determine the "standard" URLs for the package.
-{{% callout %}}
+{{% /callout %}}
 
 The reviewer pointed out that using the url_for_version method requires providing all versions, making it not a complete solution with just one if statement.
 
