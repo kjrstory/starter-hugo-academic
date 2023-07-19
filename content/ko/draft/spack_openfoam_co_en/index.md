@@ -17,7 +17,7 @@ categories:
 
 ![Dependency_Ares](Ares_Spack.png "Dependency graph of one configuration of ARES")[^1]
 
-Additionally, depending on the compiler and CPU architecture used, the compilation options may vary. To manage such complexity systematically, Spack was developed. This article does not aim to serve as a tutorial or user guide for Spack. Instead, it intends to showcase cases where developers contribute to Spack. Spack can install a vast number of open-source software (approximately 7000 packages as of version 0.19.2 in April 2023). In this article, we will focus on one of the open-source CFD (Computational Fluid Dynamics) software, Openfoam.
+Additionally, depending on the compiler and CPU architecture used, the compilation options may vary. To manage such complexity systematically, [Spack](https://spack.io) was developed. This article does not aim to serve as a tutorial or user guide for Spack. Instead, it intends to showcase cases where developers contribute to Spack. Spack can install a vast number of open-source software (approximately 7000 packages as of version 0.19.2 in April 2023). In this article, we will focus on one of the open-source CFD (Computational Fluid Dynamics) software, Openfoam.
 
 ## Basic Usage of Spack
 Although a separate article could be dedicated to explaining how to use Spack, this article will provide a brief explanation. The installation process of Spack is simple. You need to clone the GitHub repository and set up the environment variables.
@@ -25,7 +25,7 @@ Although a separate article could be dedicated to explaining how to use Spack, t
 ```bash
 git clone -c feature.manyFiles=true https://github.com/spack/spack.git
 . spack/share/spack/setup-env.sh
-spack version # 0.20.0.dev0
+spack version 
 ```
 
 You can view package descriptions using the spack info command.
@@ -34,7 +34,7 @@ You can view package descriptions using the spack info command.
 spack info openfoam
 ```
 
-{{% callout note %}}
+{{< spoiler text="Result of `spack info openfoam`" >}}
 ```bash
   Package:   openfoam
 
@@ -110,10 +110,6 @@ spack info openfoam
   Run Dependencies:
     None
 ```    
-{{% /callout %}}
-
-{{< spoiler text="Click to view the spoiler" >}}
-You found me!
 {{< /spoiler >}}
 
 
@@ -125,8 +121,7 @@ Before installation, you can use the spack spec command to determine which packa
 spack spec openfoam
 ```
 
-{{% callout note %}}
-
+{{< spoiler text="Result of `spack spec openfoam`" >}}
 ```bash
   Input spec
   --------------------------------
@@ -194,7 +189,7 @@ spack spec openfoam
       ^scotch@=7.0.3%gcc@=9.4.0+compression~esmumps~int64~ipo~metis+mpi+shared build_system=cmake build_type=Release generator=make arch=linux-ubuntu20.04-cascadelake
       ^zlib@=1.2.13%gcc@=9.4.0+optimize+pic+shared build_system=makefile arch=linux-ubuntu20.04-cascadelake
 ```
-{{% /callout %}}
+{{< /spoiler >}}
 
 For OpenFOAM, packages such as flex, openmpi, boost, cgal, cmake, and scotch will be installed. Typically, when compiling and installing OpenFOAM, some of these packages might have been installed as binary packages (e.g., rpm or deb) if you have prior experience with OpenFOAM installations. However, Spack's default behavior is to compile and install all the required packages from source. Of course, if you already have package files installed using other methods like yum, dnf, or apt, you can utilize those as well.
 
@@ -212,9 +207,9 @@ However, if you prefer the default options, you can omit them and specify only t
 
 Once you execute the command, all the packages that were previously checked with the spec command will be installed, compiling them from source. The installation time may vary depending on the server environment, taking anywhere from several minutes to several hours.
 
-
-The version definitions, dependencies, and variant definitions for OpenFOAM are specified in the Spack repository, not by the OpenFOAM community. 
-You can view the installation details in the recipe code using the spack edit openfoam command, which is written in Python and considered a Domain Specific Language (DSL). 
+## Introduction to Spack Package Recipes
+The version definitions, dependencies, and variant definitions for OpenFOAM are specified in the [Spack repository](https://github.com/spack/spack), not by the OpenFOAM community. 
+You can view the installation details in the recipe code using the `spack edit openfoam` command, which is written in Python and considered a Domain Specific Language (DSL). 
 In the Spack community, these recipe codes are referred to as package recipes. 
 Below is an example quoted from the Spack documentation:
 In summary, Spack can be defined as a tool that provides package recipes, which are self-contained language-specific representations of how to install open-source software packages.
@@ -251,12 +246,12 @@ Example of package recipe[^2]
 
 The Spack community defines users of Spack as general users, developers, and packagers. Packagers are individuals who develop package recipes, separate from core developers, to distinguish their roles. Contributing to the core of well-known open-source projects often requires a deep understanding of the project's structure and passing rigorous tests and reviews, which might not be suitable for newcomers. In this context, even contributing to small parts or documentation can be considered as valuable contributions to open-source projects, including contributing to Spack's package recipes.
 
-##Introduction to OpenFOAM Distributions and Package Recipes Status
-OpenFOAM stands out from other open-source projects in that it is distributed in three main versions, each managed by different entities. The versions are: OpenFOAM Foundation (distributed at openfoam.org), OpenFOAM Plus (distributed by ESI at openfoam.com), and Foam-Extend (managed by Hrvoje Jasak and available at Foam-Extend SourceForge). In this article, we refer to them as Foundation distribution, ESI distribution, and Extend distribution, respectively. In Spack, each of these distributions is registered as a separate package.
+## Introduction to OpenFOAM Distributions and Package Recipes Status
+OpenFOAM stands out from other open-source projects in that it is distributed in three main versions, each managed by different entities. The versions are: [OpenFoam Foundation](http://openfoam.org), [OpenFoam Plus](http://openfoam.com) (distributed by ESI at openfoam.com), and [Foam-Extend](https://sourceforge.net/projects/foam-extend/) (managed by Hrvoje Jasak and available at Foam-Extend SourceForge). In this article, we refer to them as Foundation distribution, ESI distribution, and Extend distribution, respectively. In Spack, each of these distributions is registered as a separate package.
 
 Interestingly, when examining the package recipe code, it is evident that the developer of the ESI distribution has contributed to the code for other distributions as well. However, while the ESI distribution is frequently updated, the other distributions receive updates less frequently. To address this, the focus is primarily on enhancing the package recipe for the Foundation distribution. From now on, I will provide cases where contributions have been made to the code.
 
-### First Contribution (Version Definition)
+## First Contribution (Version Definition)
 Below is an excerpt of the package recipe file, specifically the part related to version definitions:
 
 ```python
@@ -299,9 +294,7 @@ Below is an excerpt of the package recipe file, specifically the part related to
       ...
 ```
 
-You are correct. The Spack official documentation mentions that Spack can automatically determine the URL if it follows a specific pattern based on the version. In cases like OpenFOAM where the URL format is version-specific (e.g., https://sourceforge.net/projects/openfoamplus/files/v1912/OpenFOAM-v1912.tgz), explicitly specifying the URL for each version can be cumbersome and messy. Instead, it is better to modify the code to allow Spack to handle the URL automatically based on a known pattern.
-
-The code can be refactored to use the url_for_version() method, which helps generate the URL based on a template and the version. This makes the recipe code cleaner and more maintainable. By following this approach, you can significantly simplify the code and avoid repeating the same URL pattern for each version.
+In the official Spack documentation, it is mentioned that Spack can intelligently find the URL if it follows a specific format based on the version. When looking at the code and explanation below, if the URL format is version-specific, Spack automatically detects the appropriate URL for each version. Explicitly specifying URLs for each version, as in the case of OpenFOAM-org, can lead to messy code, so it is necessary to refactor the code to make it more streamlined.
 
 ```python
   class Foo(Package):
@@ -355,7 +348,7 @@ sha256sum ./version-6.tar.gz
 32a6af4120e691ca2df29c5b9bd7bc7a3e11208947f9bccf6087cfff5492f025  ./version-6.tar.gz
 ```
 
-Now, I will attempt to create a Pull Request (PR). Without providing a detailed explanation of Git in this article, a PR is a request to merge the changes you made into the official repository. Since open-source projects involve collaboration from many people, trying to change each other's code directly can quickly lead to spaghetti code. Therefore, in open-source projects, there are usually main organizations or lead developers who have the final authority to merge changes. Each open-source project may have different rules and philosophies regarding PRs. Merging can be a challenging process for some open-source projects, and some people might be disappointed if they approach open-source with the expectation of complete freedom. I personally believe that even in open-source projects, the initial developers who design the structure and maintain the repository (often referred to as the repository owner) are remarkable, and it is essential to follow their approach.
+Now, I will attempt to create a [PR(Pull Request)](https://github.com/spack/spack/pull/37587). Without providing a detailed explanation of Git in this article, a PR is a request to merge the changes you made into the official repository. Since open-source projects involve collaboration from many people, trying to change each other's code directly can quickly lead to spaghetti code. Therefore, in open-source projects, there are usually main organizations or lead developers who have the final authority to merge changes. Each open-source project may have different rules and philosophies regarding PRs. Merging can be a challenging process for some open-source projects, and some people might be disappointed if they approach open-source with the expectation of complete freedom. I personally believe that even in open-source projects, the initial developers who design the structure and maintain the repository (often referred to as the repository owner) are remarkable, and it is essential to follow their approach.
 
 However, my PR did not receive an immediate approval as I had initially thought. Instead, it received some negative feedback:
 
@@ -385,7 +378,7 @@ As a result, I made the following code modifications to address the concern:
             version_prefix, version
         )
         return url
-```python
+```
 
 
 I further improved the code by enhancing the conditional statements to cover all cases, making the code more complete and satisfying the reviewer's concern. With these enhancements, the PR was approved and merged. Initially, I might not have fully grasped the review, but after making these adjustments, it was well-received.
