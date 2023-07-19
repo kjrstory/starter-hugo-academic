@@ -389,6 +389,8 @@ Moving forward, I plan to explore more complex aspects that often require firsth
 
 To be Continued :pray:
 
+Part 2 Link: (/ko/post/spack_openfoam_contribution2)
+
 [^1]: "Spack: A Flexible Package Manager for HPC Software", [https://computing.llnl.gov/projects/spack-hpc-package-manager](https://computing.llnl.gov/projects/spack-hpc-package-manager)
 [^2]: Main Spack Documentation, https://spack.readthedocs.io
 
