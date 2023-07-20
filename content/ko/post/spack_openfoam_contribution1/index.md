@@ -1,6 +1,6 @@
 ---
 title: "오픈소스 Spack의 설치 레시피 기여 사례: Openfoam (1)"
-date: 2023-05-17T11:52:56+09:00
+date: 2023-07-19T11:52:56+09:00
 draft: false
 featured: false
 authors:
@@ -382,7 +382,7 @@ url_for_version 방법을 쓴다면 모든 버전을 쓰도록 만들어야 하�
 
 To be Continued :pray:
 
-2편 링크: (/ko/post/spack_openfoam_contribution2)
+[2편 링크](/ko/post/spack_openfoam_contribution2)
 
 [^1]: "Spack: A Flexible Package Manager for HPC Software", [https://computing.llnl.gov/projects/spack-hpc-package-manager](https://computing.llnl.gov/projects/spack-hpc-package-manager)
 [^2]: Main Spack Documentation, https://spack.readthedocs.io

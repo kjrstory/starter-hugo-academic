@@ -1,6 +1,6 @@
 ---
 title: "Contributions to Open Source Spack Installation Recipes: OpenFOAM (1)"
-date: 2023-05-17T11:52:56+09:00
+date: 2023-07-19T11:52:56+09:00
 draft: false
 featured: false
 authors:
@@ -389,7 +389,7 @@ Moving forward, I plan to explore more complex aspects that often require firsth
 
 To be Continued :pray:
 
-Part 2 Link: (/ko/post/spack_openfoam_contribution2)
+[Part 2 Link](/ko/post/spack_openfoam_contribution2)
 
 [^1]: "Spack: A Flexible Package Manager for HPC Software", [https://computing.llnl.gov/projects/spack-hpc-package-manager](https://computing.llnl.gov/projects/spack-hpc-package-manager)
 [^2]: Main Spack Documentation, https://spack.readthedocs.io

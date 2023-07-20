@@ -1,6 +1,6 @@
 ---
 title: "오픈소스 Spack의 설치 레시피 기여 사례: Openfoam (2)"
-date: 2023-05-24T11:52:56+09:00
+date: 2023-07-20T11:52:56+09:00
 draft: false
 featured: false
 authors:
@@ -12,7 +12,7 @@ categories:
   - HPC
 ---
 
-1편 링크: [](/ko/post/spack_openfoam_contribution1)
+[1편 링크](/ko/post/spack_openfoam_contribution1)
 
 전편에 이어서 기여 사례에 대해 설명하겠습니다. 사실 버전에 관련된 부분이 레시피에 관한 것 중 가장 쉬운 부분에 해당합니다. version이후에는 variant와 dependency에 대한 설정이 나오고 patch 설정 후 컴파일하게 되는 절차들을 레시피에 작성합니다. 먼저 variants부터 보기로 합니다.
 

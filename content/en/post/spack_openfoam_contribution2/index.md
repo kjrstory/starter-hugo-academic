@@ -1,6 +1,6 @@
 ---
 title: "Contributions to Open Source Spack Installation Recipes: OpenFOAM (2)"
-date: 2023-05-24T11:52:56+09:00
+date: 2023-07-20T11:52:56+09:00
 draft: false
 featured: false
 authors:
@@ -12,7 +12,7 @@ categories:
   - HPC
 ---
 
-Part1 Link: [](/en/post/spack_openfoam_contribution1)
+[Part1 Link](/en/post/spack_openfoam_contribution1)
 
 
 Continuing from the previous part, I will now explain about contributions. In fact, the version-related part is the easiest aspect concerning the recipe. After the version, settings for variants and dependencies are presented, and the procedures for compiling after patching are described in the recipe. Let's start by looking at the variants.
