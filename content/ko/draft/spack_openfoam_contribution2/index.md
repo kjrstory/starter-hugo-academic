@@ -12,7 +12,7 @@ categories:
   - HPC
 ---
 
-Part1 Link: (/en/post/spack_openfoam_contribution1)
+Part1 Link: [](/en/post/spack_openfoam_contribution1)
 
 
 Continuing from the previous part, I will now explain about contributions. In fact, the version-related part is the easiest aspect concerning the recipe. After the version, settings for variants and dependencies are presented, and the procedures for compiling after patching are described in the recipe. Let's start by looking at the variants.
@@ -168,6 +168,23 @@ Then, I will find and replace the parts where the compilation (or build) options
 
 After modifying the recipe file, I performed tests with the following command.
 
+```
+spack install openfoam@2206 precision=dp %gcc@9.4.0
+spack install openfoam@2206 precision=spdp %gcc@9.4.0
+spack install openfoam@2206 precision=sp %gcc@9.4.0
+```
+
+In version 1812, when the "spdp" option is given, it also results in an error.
+
+```
+$ spack spec openfoam@1812 precision=spdp %gcc@9.4.0
+  
+==> Error: concretization failed for the following reasons:
+  1. Cannot select a single "version" for package "openfoam"
+	2. Cannot satisfy 'openfoam@1906:'
+	3. Cannot satisfy 'openfoam@1812'
+```
+
 Then, I submitted a PR (Pull Request). Fortunately, this package had a maintainer, and they approved the changes without significant objections. For packages with maintainers, it seems that Spack's main developers tend to trust and incorporate changes from those maintainers.
 
 ## Changing Precision Variant in Foundation Distribution
@@ -205,6 +222,24 @@ class OpenfoamOrgArch(OpenfoamArch):
 
 
 I also confirmed that the variants were successfully applied using the command mentioned earlier.
+
+```
+spack install openfoam-org@10 precision=dp %gcc@9.4.0
+spack install openfoam-org@10 precision=lp %gcc@9.4.0
+spack install openfoam-org@10 precision=sp %gcc@9.4.0
+```
+
+In version 5 as well, when the "lp" option is given, it also results in an error.
+
+```
+spack install openfoam-org@5 precision=lp
+==> Error: concretization failed for the following reasons:
+
+   1. Cannot select a single "version" for package "openfoam-org"
+   2. Cannot satisfy 'openfoam-org@6:'
+   3. Cannot satisfy 'openfoam-org@5'
+```
+
 
 I submitted a PR and attached the OpenCFD's [PR](https://github.com/spack/spack/pull/38746) in the commit message. Since there were already similar cases of PRs, it was approved without special reviews.
 
