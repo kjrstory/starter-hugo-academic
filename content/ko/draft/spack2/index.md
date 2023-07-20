@@ -12,7 +12,7 @@ categories:
   - HPC
 ---
 
-1편 링크: (/ko/post/spack_openfoam_contribution1)
+1편 링크: [](/ko/post/spack_openfoam_contribution1)
 
 전편에 이어서 기여 사례에 대해 설명하겠습니다. 사실 버전에 관련된 부분이 레시피에 관한 것 중 가장 쉬운 부분에 해당합니다. version이후에는 variant와 dependency에 대한 설정이 나오고 patch 설정 후 컴파일하게 되는 절차들을 레시피에 작성합니다. 먼저 variants부터 보기로 합니다.
 
@@ -162,6 +162,23 @@ Foam-Extend도 살펴보겠습니다. Foam-Extend의 리포지토리는 소스�
 
 이렇게 레시피 파일을 변경한 후 아래 명령어로 테스트를 수행하였습니다.
 
+```
+spack install openfoam@2206 precision=dp %gcc@9.4.0
+spack install openfoam@2206 precision=spdp %gcc@9.4.0
+spack install openfoam@2206 precision=sp %gcc@9.4.0
+```
+
+아래 명령으로 1812버전에서는 spdp 옵션을 주면 에러가 나는것도 확인합니다.
+
+```
+$ spack spec openfoam@1812 precision=spdp %gcc@9.4.0
+  
+==> Error: concretization failed for the following reasons:
+  1. Cannot select a single "version" for package "openfoam"
+	2. Cannot satisfy 'openfoam@1906:'
+	3. Cannot satisfy 'openfoam@1812'
+```
+
 그 후 PR을 하였습니다. 이 패키지에는 maintainer가 있었는데 다행히 큰 의견 없이 승인이 되었습니다. 보통 maintainer가 있는 패키지들은 spack의 주 개발자들도 그 사람들을 믿고 반영하는 듯 합니다.
 
 ## Foundation 배포판 Precision Variant 변경
@@ -201,6 +218,24 @@ class OpenfoamOrgArch(OpenfoamArch):
 ```
 
 역시 아래 명령어로 variants가 성공적으로 적용된것을 확인합니다.
+
+```
+spack install openfoam-org@10 precision=dp %gcc@9.4.0
+spack install openfoam-org@10 precision=lp %gcc@9.4.0
+spack install openfoam-org@10 precision=sp %gcc@9.4.0
+```
+
+또 5버전에서는 lp 옵션을 주면 에러가 나는것을 마찬가지로 확인합니다.
+
+```
+spack install openfoam-org@5 precision=lp
+==> Error: concretization failed for the following reasons:
+
+   1. Cannot select a single "version" for package "openfoam-org"
+   2. Cannot satisfy 'openfoam-org@6:'
+   3. Cannot satisfy 'openfoam-org@5'
+```
+
 
 [PR](https://github.com/spack/spack/pull/38746)을 하였고 커밋메세지에 OpenCFD의 PR도 첨부하였습니다. 이미 비슷한 PR 사례가 있다보니 이번에는 특별한 리뷰없이 바로 승인이 되었습니다.
 
