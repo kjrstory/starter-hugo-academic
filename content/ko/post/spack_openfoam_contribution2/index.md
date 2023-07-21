@@ -14,7 +14,7 @@ categories:
 
 [1편 링크](/ko/post/spack_openfoam_contribution1)
 
-전편에 이어서 기여 사례에 대해 설명하겠습니다. 사실 버전에 관련된 부분이 레시피에 관한 것 중 가장 쉬운 부분에 해당합니다. version이후에는 variant와 dependency에 대한 설정이 나오고 patch 설정 후 컴파일하게 되는 절차들을 레시피에 작성합니다. 먼저 variants부터 보기로 합니다.
+전편에 이어서 기여 사례에 대해 설명하겠습니다. 사실 전편에 기여한 버전에 관련된 부분은 레시피에 관한 것 중 가장 쉬운 부분에 해당합니다. version이후에는 variant와 dependency에 대한 설정이 나오고 patch 설정 후 컴파일하게 되는 절차들을 레시피에 작성합니다. 먼저 variants부터 보기로 합니다.
 
 {{% callout info %}}
   ```
@@ -105,7 +105,8 @@ Precision 옵션은 반드시 3개중에 하나가 선택되어야 하는 옵션
 
 `WM_PRECISION_OPTION = SP | DP | LP`
 
-아래와 같은 커밋을 찾았습니다. tag가 version6부터 있는 것으로 봐서 6 버전부터 적용이 되었군요.
+아래와 같은 커밋을 찾았습니다. tag가 version6부터 있는 것으로 봐서 *6 버전부터* 적용이 되었군요.
+
 [OpenFOAM: Added support for extended precision scalar](https://github.com/OpenFOAM/OpenFOAM-dev/commit/d82cc36c5af97e799a82fadf455e06d192ae1e65)
 
 
@@ -113,14 +114,14 @@ Precision 옵션은 반드시 3개중에 하나가 선택되어야 하는 옵션
 
 [ENH: add primitives support for mixed precision](https://develop.openfoam.com/Development/openfoam/-/blob/46bc808261ef44cb29b512cb0c93acabdc09153a/etc/bashrc)
 
-태그를 보면 1906버전부터 적용이 된 것을 알 수 있습니다. 이렇게 특정 버전만 적용되는 것이라면 반드시 레시피에 조건문을 달아야 합니다. 
+태그를 보면 *1906버전부터* 적용이 된 것을 알 수 있습니다. 이렇게 특정 버전만 적용되는 것이라면 반드시 레시피에 조건문을 달아야 합니다. 
 그리고 옵션 설명에도 명시를 해서 사용자에게 혼선이 없도록 해야 합니다.
 
 Foam-Extend도 살펴보겠습니다. Foam-Extend의 리포지토리는 소스포지네요. 
 
-[Feature: Single precision and long double precision port](https://sourceforge.net/p/foam-extend/foam-extend-3.2/ci/6b022758d1b15a8d08718a78d3f68879e95bcf90)
-
 `WM_PRECISION_OPTION = LDP | DP | SP`
+
+[Feature: Single precision and long double precision port](https://sourceforge.net/p/foam-extend/foam-extend-3.2/ci/6b022758d1b15a8d08718a78d3f68879e95bcf90)
 
 여기는 LP란 이름 대신 LDP를 쓰고 3.2버전부터 적용이 되었네요.
 정리를 하면 3가지 개선 사항이 있겠네요.
@@ -131,7 +132,7 @@ Foam-Extend도 살펴보겠습니다. Foam-Extend의 리포지토리는 소스�
 
 ## OpenCFD 배포판 Precision Variant 변경
 먼저 OpenCFD 배포판부터 변경하기로 하였습니다.
-아래 옵션들은 지우기로 합니다.
+아래 variant들은 지우기로 합니다.
 ```python
     variant("float32", default=False, description="Use single-precision")
     variant("spdp", default=False, description="Use single/double mixed precision")
@@ -170,7 +171,7 @@ spack install openfoam@2206 precision=sp %gcc@9.4.0
 
 아래 명령으로 1812버전에서는 spdp 옵션을 주면 에러가 나는것도 확인합니다.
 
-```
+```bash
 $ spack spec openfoam@1812 precision=spdp %gcc@9.4.0
   
 ==> Error: concretization failed for the following reasons:
@@ -227,7 +228,7 @@ spack install openfoam-org@10 precision=sp %gcc@9.4.0
 
 또 5버전에서는 lp 옵션을 주면 에러가 나는것을 마찬가지로 확인합니다.
 
-```
+```bash
 spack install openfoam-org@5 precision=lp
 ==> Error: concretization failed for the following reasons:
 
