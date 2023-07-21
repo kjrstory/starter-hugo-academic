@@ -15,7 +15,7 @@ categories:
 [Part1 Link](/en/post/spack_openfoam_contribution1)
 
 
-Continuing from the previous part, I will now explain about contributions. In fact, the version-related part is the easiest aspect concerning the recipe. After the version, settings for variants and dependencies are presented, and the procedures for compiling after patching are described in the recipe. Let's start by looking at the variants.
+Continuing from the previous part, I will now explain about contributions. The part related to the version I contributed in the previous episode pertains to the easiest section of the recipe. After the version, settings for variants and dependencies are presented, and the procedures for compiling after patching are described in the recipe. Let's start by looking at the variants.
 
 {{% callout info %}}
   ```
@@ -79,7 +79,7 @@ As expected, the OpenCFD distribution is overwhelmingly diverse. While the actua
 
 Firstly, the "float32" option refers to using single precision. Precision here determines the decimal places in the simulation results, representing the accuracy of the results. There are single precision (SP), double precision (DP), and even long double precision options.
 
-However, the OpenCFD distribution also includes the "spdp" variant, which mixes single and double precision. In CFD simulations, numerous numerical analysis techniques are utilized, and for crucial aspects where accuracy is vital, double precision is used, while single precision is used for less critical parts. Surprisingly, this option is not present in other distributions. Now, it is necessary to delve into the actual source code of each distribution. One of the most prominent configuration files for OpenFOAM installation is in the [source folder]/etc/bashrc. This information is, in fact, difficult to discern unless you compile and install OpenFOAM yourself, and it requires a fundamental understanding of CFD.
+However, the OpenCFD distribution also includes the "spdp" variant, which mixes single and double precision. In CFD simulations, numerous numerical analysis techniques are utilized, and for crucial aspects where accuracy is vital, double precision is used, while single precision is used for less critical parts. Surprisingly, this option is not present in other distributions. Now, it is necessary to delve into the actual source code of each distribution. One of the most prominent configuration files for OpenFOAM installation is in the `[source folder]/etc/bashrc`. This information is, in fact, difficult to discern unless you compile and install OpenFOAM yourself, and it requires a fundamental understanding of CFD.
 
 (Note: The above translation reflects the content provided and does not include the final sentence of the original text that instructs not to explain but translate.)
 
