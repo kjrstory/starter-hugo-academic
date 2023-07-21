@@ -17,7 +17,7 @@ categories:
 
 ![Dependency_Ares](Ares_Spack.png "Dependency graph of one configuration of ARES")[^1]
 
-Additionally, depending on the compiler and CPU architecture used, the compilation options may vary. To manage such complexity systematically, [Spack](https://spack.io) was developed. This article does not aim to serve as a tutorial or user guide for Spack. Instead, it intends to showcase cases where developers contribute to Spack. Spack can install a vast number of open-source software (approximately 7000 packages as of version 0.19.2 in April 2023). In this article, we will focus on one of the open-source CFD (Computational Fluid Dynamics) software, Openfoam.
+Additionally, depending on the compiler and CPU architecture used, the compilation options may vary. To manage such complexity systematically, [Spack](https://spack.io) was developed. This article does not aim to serve as a tutorial or user guide for Spack. Instead, it intends to showcase cases where developers contribute to Spack. Spack can install a vast number of open-source software (approximately 7000 packages as of version 0.19.2 in April 2023). In this article, I will focus on one of the open-source CFD (Computational Fluid Dynamics) software, Openfoam.
 
 ## Basic Usage of Spack
 Although a separate article could be dedicated to explaining how to use Spack, this article will provide a brief explanation. The installation process of Spack is simple. You need to clone the GitHub repository and set up the environment variables.
@@ -28,7 +28,7 @@ git clone -c feature.manyFiles=true https://github.com/spack/spack.git
 spack version 
 ```
 
-You can view package descriptions using the spack info command.
+You can view package descriptions using the `spack info` command.
 
 ```bash
 spack info openfoam
@@ -115,7 +115,7 @@ spack info openfoam
 
 The OpenFOAM package provides options for versions from 1612 to 2206, along with various dependencies and installation variants.
 
-Before installation, you can use the spack spec command to determine which packages will be installed.
+Before installation, you can use the `spack spec` command to determine which packages will be installed.
 
 ```bash
 spack spec openfoam
@@ -205,7 +205,7 @@ However, if you prefer the default options, you can omit them and specify only t
   spack install openfoam@2206 %gcc@9.4.0
 ```
 
-Once you execute the command, all the packages that were previously checked with the spec command will be installed, compiling them from source. The installation time may vary depending on the server environment, taking anywhere from several minutes to several hours.
+Once you execute the command, all the packages that were previously checked with the `spack spec` command will be installed, compiling them from source. The installation time may vary depending on the server environment, taking anywhere from several minutes to several hours.
 
 ## Introduction to Spack Package Recipes
 The version definitions, dependencies, and variant definitions for OpenFOAM are specified in the [Spack repository](https://github.com/spack/spack), not by the OpenFOAM community. 
@@ -247,7 +247,7 @@ Example of package recipe[^2]
 The Spack community defines users of Spack as general users, developers, and packagers. Packagers are individuals who develop package recipes, separate from core developers, to distinguish their roles. Contributing to the core of well-known open-source projects often requires a deep understanding of the project's structure and passing rigorous tests and reviews, which might not be suitable for newcomers. In this context, even contributing to small parts or documentation can be considered as valuable contributions to open-source projects, including contributing to Spack's package recipes.
 
 ## Introduction to OpenFOAM Distributions and Package Recipes Status
-OpenFOAM stands out from other open-source projects in that it is distributed in three main versions, each managed by different entities. The versions are: [OpenFoam Foundation](http://openfoam.org), [OpenFoam Plus](http://openfoam.com) (distributed by ESI Open CFD), and [Foam-Extend](https://sourceforge.net/projects/foam-extend/) (managed by Hrvoje Jasak and available at Foam-Extend SourceForge). In this article, we refer to them as Foundation distribution, OpenCFD distribution, and Extend distribution, respectively. In Spack, each of these distributions is registered as a separate package.
+OpenFOAM stands out from other open-source projects in that it is distributed in three main distributions, each managed by different entities. The versions are: [OpenFoam Foundation](http://openfoam.org), [OpenCFD](http://openfoam.com) (distributed by ESI Open CFD), and [Foam-Extend](https://sourceforge.net/projects/foam-extend/) (managed by Hrvoje Jasak and available at Foam-Extend SourceForge). In this article, we refer to them as Foundation distribution, OpenCFD distribution, and Extend distribution, respectively. In Spack, each of these distributions is registered as a separate package.
 
 Interestingly, when examining the package recipe code, it is evident that the developer of the ESI distribution has contributed to the code for other distributions as well. However, while the ESI distribution is frequently updated, the other distributions receive updates less frequently. To address this, the focus is primarily on enhancing the package recipe for the Foundation distribution. From now on, I will provide cases where contributions have been made to the code.
 
