@@ -208,7 +208,7 @@ Openfoam을 위해 flex, openmpi, boost, cgal, cmake, scotch등의 패키지가 
 명령을 실행하게 되면 `spec` 명령으로 확인했던 패지들이 모두 설치되며 컴파일하여 설치하므로 서버 환경에 따라 장시간(몇십분에서 몇시간) 소요가 됩니다.
 
 ## Spack 패키지 레시피 소개
-그럼 info에 있던 버전 정의, 의존 패키지, variants정의는 어떻게 했을까요? 그건 Openfoam 커뮤니티에서  하지 않고 [Spack 리포지토리](https://github.com/spack/spack)에서 합니다. 이 설치에 대한 것은  `spack edit openfoam`명령으로 레시피 코드를 볼 수 있으며 파이썬 파일로 되어 있습니다. 파이썬이지만 DSL(Domain Specific Language)이라고 생각하면 됩니다. Spack 커뮤니티에서는 이를 패키지 레시피라고 하며 아래에 Spack 문서에서 제공하는 예제를 인용하였습니다. 다시 Spack을 정의내리면 오픈픈소스 SW의 설치 방법을 독자적인 언어로 레시피로 만들어 놓은 도구라고 할 수 있겠습니다. 
+그럼 info에 있던 버전 정의, 의존 패키지, variants정의는 어떻게 했을까요? 그건 Openfoam 커뮤니티에서  하지 않고 [Spack 리포지토리](https://github.com/spack/spack)에서 합니다. 이 설치에 대한 것은  `spack edit openfoam`명령으로 레시피 코드를 볼 수 있으며 파이썬 파일로 되어 있습니다. 파이썬이지만 DSL(Domain Specific Language)이라고 생각하면 됩니다. Spack 커뮤니티에서는 이를 패키지 레시피라고 하며 아래에 Spack 문서에서 제공하는 예제를 인용하였습니다. 다시 Spack을 정의내리면 오픈소스 SW의 설치 방법을 독자적인 언어로 레시피로 만들어 놓은 도구라고 할 수 있겠습니다. 
 
 ```python
 class Openjpeg(CMakePackage):
@@ -243,7 +243,7 @@ Spack 커뮤니티에서는 Spack을 사용하는 사용자를 일반 사용자,
 
 
 ## Openfoam 배포판 소개 및 패키지 레시피 현황
-여기서 하나 Openfoam이 다른 오픈소스와 다른 점이 있습니다. Openfoam은 크게 세가지 버전으로 배포되고 각 버전을 관리하는 기관이 다릅니다. OpenFoam의 초기 개발자인 Henry Weller의 주관으로 [OpenFoam Foundation](http://openfoam.org)에서 배포하는 버전과 ESI OpenCFD에서 배포하는 [OpenFoam Plus](http://openfoam.com)버전이 있고 Hrvoje Jasak이 주관하는 [Foam-Extend](https://sourceforge.net/projects/foam-extend/)가 있습니다. 이 글에서는 각각 Foundation 배포판, OpenCFD 배포판, Extend 배포판으로 명명하겠습니다. 
+여기서 하나 Openfoam이 다른 오픈소스와 다른 점이 있습니다. Openfoam은 크게 세가지 버전으로 배포되고 각 버전을 관리하는 기관이 다릅니다. OpenFoam의 초기 개발자인 Henry Weller의 주관으로 [OpenFoam Foundation](http://openfoam.org)에서 배포하는 버전과 ESI OpenCFD에서 배포하는 [OpenCFD](http://openfoam.com) 배포이 있고 Hrvoje Jasak이 주관하는 [Foam-Extend](https://sourceforge.net/projects/foam-extend/)가 있습니다. 이 글에서는 각각 Foundation 배포판, OpenCFD 배포판, Extend 배포판으로 명명하겠습니다. 
 Spack에서도 각각의 배포판이 모두 별개의 패키지로 등록이 되어있습니다. 그런데 패키지 레시피 코드를 뜯어 보면 OpenCFD 배포판 코드의 개발자가 다른 배포판도 개발하였습니다. 하지만 OpenCFD 배포판은 수시로 업데이트를 하는 반면에 다른 배포판은 업데이트가 잘 안되고 있었습니다. 그래서 저는 Foundation 배포판의 패키지 레시피를 주로 보완하기로 했습니다. 이제부터는 코드에 기여한 사례 별로 정리하였습니다.
 
 ### 첫번째 기여 (버전 정의)
@@ -345,7 +345,7 @@ sha256sum ./version-6.tar.gz
 32a6af4120e691ca2df29c5b9bd7bc7a3e11208947f9bccf6087cfff5492f025  ./version-6.tar.gz
 ```
 
-이제 [PR(Pull Request)](https://github.com/spack/spack/pull/37587)을 시도하겠습니다. 깃에 대한 설명을 이 글에서 하지는 않을건데요. PR은 내가 바꾼 부분을 공식 리포지토리에 요청하는 것입니다. 오폰소스는 많은 사람이 같이 개발하는 것이기 때문에 각자 개발한 것을 서로 바꾸려고 하면 금방 스파게티 코드가 됩니다. 그래서 오픈소스에도 주관 기관 또는 주 개발자가 있고 그 사람들이 최종적인 merge 권한이 있습니다. 오픈소스마다 PR에 대한 규칙, 철학이 다를 것입니다. 생각보다 merge하는 과정이 까다로운 오픈소스도 있어서 마냥 오픈소스면 자유로운 건지 알고 접근했다가 실망하는 사람도 있습니다. 저는 오픈소스라 하더라도 초기에 구조를 설계하고 리포지토리를 운영하는 초기 개발자들(보통 이 분들이 리포지토리의 주인이 됩니다)이 대단하다고 생각하고 하고 그 사람들의 방식을 따르는 것이 맞다고 생각합니다.
+이제 [PR(Pull Request)](https://github.com/spack/spack/pull/37587)을 시도하겠습니다. 깃에 대한 설명을 이 글에서 하지는 않을건데요. PR은 내가 바꾼 부분을 공식 리포지토리에 요청하는 것입니다. 오픈소스는 많은 사람이 같이 개발하는 것이기 때문에 각자 개발한 것을 서로 바꾸려고 하면 금방 스파게티 코드가 됩니다. 그래서 오픈소스에도 주관 기관 또는 주 개발자가 있고 그 사람들이 최종적인 merge 권한이 있습니다. 오픈소스마다 PR에 대한 규칙, 철학이 다를 것입니다. 생각보다 merge하는 과정이 까다로운 오픈소스도 있어서 마냥 오픈소스면 자유로운 건지 알고 접근했다가 실망하는 사람도 있습니다. 저는 오픈소스라 하더라도 초기에 구조를 설계하고 리포지토리를 운영하는 초기 개발자들(보통 이 분들이 리포지토리의 주인이 됩니다)이 대단하다고 생각하고 하고 그 사람들의 방식을 따르는 것이 맞다고 생각합니다.
 
 그런데 바로 통과 될 것이라고 생각과 달리 부정적인 리뷰가 달렸습니다.
 
