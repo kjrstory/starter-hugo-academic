@@ -80,7 +80,7 @@ foam-extend 배포판 의 variant
 
 먼저 float32 옵션을 보면 single precision을 사용하는 옵션입니다. 여기서 precision은 시뮬레이션 결과의 소수점 자릿수를 결정하는 옵션으로 결과의 정밀도를 나타냅니다. single, double precision(SP,DP)이 있고 long double precision도 있습니다.
 
-그런데 OpenCFD 배포판에서는 spdp란 variants도 있습니다. 이는 single precision과 double precision을 섞어 쓰는 것입니다. CFD 시뮬레이션도 내부에서는 수많은 수치해석 기법이 쓰이며 정확도가 중요한 부분에서는 double precision을 쓰고 덜 중요한 부분에서는 single을 쓰는 방법입니다. 그런데 이 옵션이 다른 배포판에서는 없네요. 이제 각 배포판의 실제 소스코드를 뒤져봐야 합니다. Openfoam의 설치 설정파일은 여러 개 있는데 가장 대표적인 것은 `[source폴더]/etc/bashrc` 입니다.  이 정보는 사실 Openfoam을 직접 컴파일해서 설치하지 않았다면 알기 어려운 정보이며 CFD에 대한 기본적인 지식도 있어야 합니다.
+그런데 OpenCFD 배포판에서는 spdp란 variants도 있습니다. 이는 single precision과 double precision을 섞어 쓰는 것입니다. CFD 시뮬레이션도 내부에서는 수많은 수치해석 기법이 쓰이며 정확도가 중요한 부분에서는 double precision을 쓰고 덜 중요한 부분에서는 single precision을 쓰는 방법입니다. 그런데 이 variant가가 다른 배포판에서는 없네요. 이제 각 배포판의 실제 소스코드를 뒤져봐야 합니다. Openfoam의 설치 설정파일은 여러 개 있는데 가장 대표적인 것은 `[source폴더]/etc/bashrc` 입니다.  이 정보는 사실 Openfoam을 직접 컴파일해서 설치하지 않았다면 알기 어려운 정보이며 CFD에 대한 기본적인 지식도 있어야 합니다.
 
 {{% callout info %}}
 ```
@@ -180,7 +180,7 @@ $ spack spec openfoam@1812 precision=spdp %gcc@9.4.0
 	3. Cannot satisfy 'openfoam@1812'
 ```
 
-그 후 PR을 하였습니다. 이 패키지에는 maintainer가 있었는데 다행히 큰 의견 없이 승인이 되었습니다. 보통 maintainer가 있는 패키지들은 spack의 주 개발자들도 그 사람들을 믿고 반영하는 듯 합니다.
+그 후 [PR](https://github.com/spack/spack/pull/37736)을 하였습니다. 이 패키지에는 maintainer가 있었는데 다행히 큰 의견 없이 승인이 되었습니다. 보통 maintainer가 있는 패키지들은 spack의 주 개발자들도 그 사람들을 믿고 반영하는 듯 합니다.
 
 ## Foundation 배포판 Precision Variant 변경
 다음으로 Open Foundation 배포판도 변경을 하였습니다.
@@ -198,9 +198,9 @@ $ spack spec openfoam@1812 precision=spdp %gcc@9.4.0
 
 그 후 이 옵션이 들어가는 부분을 빌드 옵션에서 바꿔저야 합니다. 이 부분이 OpenCFD하고 약간의 차이가 있습니다.
 1편에서 설명을 했듯이 OpenCFD 배포판의 패키지레시피를 기반으로 Foundation 배포판의 패키지 레시피 파일이 만들어져있습니다.
-Foundation 배포판의 레시피에는 OpenCFD 배포판의 클래스와 함수들을 그대로 갖고와서 사용하는 경우가 많습니다.
+Foundation 배포판의 레시피에는 OpenCFD 배포판의 클래스와 함수들을 그대로 갖고 와서 사용하는 경우가 많습니다.
 클래스끼리는 상속을 받아 사용하게 되는데 이 개념은 객체지향에 나오는 개념으로 관련 지식이 필요합니다.
-상속을 받되 달라지는 부분만 바꿔서 사용하는데 객체지향개념과 파이썬에 대해 잘 모른다면 어려울수도 있는 부분입니다.
+상속을 받되 달라지는 부분만 바꿔서 사용하는데 객체지향 개념과 파이썬에 대해 잘 모른다면 어려울수도 있는 부분입니다.
 아래는 OpenfoamOrgArch 클래스는 OpenfoamArch 클래스(OpenCFD버전에서 사용되는 클래스)를 상속받고 있습니다.
 생성자(`__init__`)에서는 먼저, 부모 클래스인 OpenfoamArch의 생성자를 호출하여 초기화합니다. 이를 위해 `super().__init__(spec, **kwargs)`를 사용합니다.
 그리고 OpenfoamArch와 다른 precision옵션을 써주면 됩니다.
