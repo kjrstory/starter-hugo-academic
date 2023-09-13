@@ -1,6 +1,6 @@
 ---
 title: ChatGPT와 함께 파이썬 강의 만들기 (2)
-date: 2023-06-20T07:23:41.994Z
+date: 2023-09-13T07:23:41.994Z
 draft: false
 featured: false
 authors:
