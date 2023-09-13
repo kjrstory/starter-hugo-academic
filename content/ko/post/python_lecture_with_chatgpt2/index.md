@@ -9,7 +9,7 @@ categories:
   - Python
 ---
 
-[ChatGPT와 함께 파이썬 강의 만들기 (1)](/ko/post/python_lecture_with_chatgpt)
+[ChatGPT와 함께 파이썬 강의 만들기 (1)](/ko/post/python_lecture_with_chatgpt1)
 
 지난 글에 이어 글을 작성합니다.
 지난 글에서 파이썬 강의를 ChatGPT와 함께 사용하기로 하였고 기본 가이드 수준의 강의에서 좀 더 차별화를 위해 예제 위주의 강의를 하는게 좋겠다고 생각하였습니다.
