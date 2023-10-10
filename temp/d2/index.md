@@ -1,62 +1,102 @@
-- **D2** is a diagram scripting language that turns text to diagrams.
-- 리포지토리: https://github.com/terrastruct/d2
--
-- 한국인 개발자가 개발한 Dirgrams(https://diagrams.mingrammer.com)는 나름대로 활발하게 사용이 되나 한동안 유지보수가 안되고 있다. **D2**는 더 많은 사용자를 확보했고 golang기반이나 클라우드 아키텍처에 쓰이는 데는 아직까지 불편함이 있다. 그래서 D2를 클라우드 아키텍처 Tool로 적합한지 알아보려고 한다.
--
--
-  ```python
-  from diagrams import Diagram
-  from diagrams.aws.compute import EC2
-  from diagrams.aws.database import RDS
-  from diagrams.aws.network import ELB
-  from diagrams.aws.storage import S3
+---
+title: "D2"
+date: 2023-10-19T11:52:56+09:00
+draft: false
+featured: false
+authors:
+  - admin
+tags:
+ - d2
+ - cloud
+categories:
+ - Cloud
+
+---
+
+
+클라우드의 솔루션 아키텍트는 아키텍쳐 다이어그램을 자주 그리게 됩니다.
+다이어그램을 그리는 도구는 여러가지가 있는데 [Draw.io](https://www.drawio.com)같은 서비스가 대표적입니다.
+이런 도구는 GUI로 다이어그램을 그리게 되는데 의외로 많은 시간이 소모됩니다.
+또한 아키텍트마다 아키텍쳐 그리는 패턴도 달라서 같은 아키텍쳐도 서로 다른 그림을 그리게 됩니다.
+최근에는 이런 점을 개선하고자 Diagram as Code 개념이 생겼습니다.
+사실은 오래전부터 있었던 개념이나 일반적인 다이어그램을 그리는데 중심이 되어있었고 클라우드 아키텍쳐를 그리는데 최적화 된것은 아니었습니다.
+그래서 클라우드 아키텍쳐를 그리는데 초점이 맞쳐진 코드도 있습니다.
+바로 한국인 개발자가 개발한 Dirgrams(https://diagrams.mingrammer.com)코드 입니다. 
+https://github.com/mingrammer/diagrams
+이 코드는 오픈소스이고 나름 명성을 가지고 있습니다.
+하지만 주 개발자가 바쁜지 한동안 업데이트가 안되고 있습니다.
+물론 Fork를 해서 이어 개발할수도 있겠지만 공식적으로 아카이빙이 되지 않는 한 포크한 프로젝트도 유지보수가 안될 가능성이 있스ㅡㅂ니다.
+그래서 대안을 살펴보던 중 D2란 코드를 발견했습니다.
+[**D2**](https://d2lang.com)는 더 많은 사용자를 확보했고 golang기반이입니다.
+
+리포지토리: https://github.com/terrastruct/d2
+
+그러나 클라우드 아키텍처에 쓰이는 데는 아직까지 불편함이 있습니다. 
+그래서 D2로 Dirgrams 예제를 똑같이 그려보면서 클라우드 아키텍처 Tool로 적합한지 알아보려고 한다
+
+
+Diagrams의 Quck Start에는 아래 예제가 있습니다.
+
+```python
+from diagrams import Diagram
+from diagrams.aws.compute import EC2
+from diagrams.aws.database import RDS
+from diagrams.aws.network import ELB
   
-  with Diagram("", show=False):
-      ELB("lb") >> EC2("web") >> RDS("userdb") >> S3("store")
-  ```
-- ![web services diagram](https://diagrams.mingrammer.com/img/web_services_diagram.png)
--
-- 이 코드를 아래와 같이 변환해보았다.
--
-  ```d2
-  direction: right
+with Diagram("", show=False):
+    ELB("lb") >> EC2("web") >> RDS("userdb") 
+```
+
+![web services diagram](web_service_diagram.png)
+
+매우 단순한 코드이나 여기서도 하나 눈여겨볼 것은 >> 로  인스턴스간의 관계를 나타낸것입니다.
+이는 연산자 오버로딩이란 기능으로 인스턴스 객체끼리 정의되어 있는 기존 연산자 기능을 바꾸어 정의하는것 입니다.
+">>"는 rshift란 연산자였던 것입니다.
+
+
+이 코드는 D2에서는 아래와 같이 변환하였습니다.
+
+
+```
+direction: right
   
-  lb: "lb" {
-    shape: image
-    icon: https://icon.icepanel.io/AWS/svg/Networking-Content-Delivery/Elastic-Load-Balancing.svg
-    width: 100
-    height: 100
-  }
+lb: "lb" {
+  shape: image
+  icon: https://icon.icepanel.io/AWS/svg/Networking-Content-Delivery/Elastic-Load-Balancing.svg
+  width: 100
+  height: 100
+}
   
-  ec2: "web" {
-    shape: image
-    icon: https://icon.icepanel.io/AWS/svg/Compute/EC2.svg
-    width: 100
-    height: 100
-  }
+ec2: "web" {
+  shape: image
+  icon: https://icon.icepanel.io/AWS/svg/Compute/EC2.svg
+  width: 100
+  height: 100
+}
   
-  db: "db" {
-    shape: image
-    icon: https://icon.icepanel.io/AWS/svg/Database/RDS.svg
-    width: 100
-    height: 100
-  }
+db: "db" {
+  shape: image
+  icon: https://icon.icepanel.io/AWS/svg/Database/RDS.svg
+  width: 100
+  height: 100
+}
   
-  s3: "store" {
-    shape: image
-    icon: https://icon.icepanel.io/AWS/svg/Storage/Simple-Storage-Service.svg
-    width: 100
-    height: 100
-  }
   
-  lb -> ec2 -> db -> s3
+lb -> ec2 -> db 
   
-  ```
-- ![out.png](../assets/out_1694498760997_0.png)
--
-- 유사하게 만들 수 있으나 다소 사용하기 불편함이 있다.
--
--
+```
+
+![web_service_d2.png](example1.png)
+
+간단한 그림이므로 거의 유사하게 만들수 있습니다. 
+>> 연산자가 -> 으로 변경되었습니다.
+인스턴스를 불러오는 대신 직접 그림파일을 이용하여 shape로 지정해야되는 불편함이 있습니다.
+D2는 아직 활발히 개발중인 오픈소스로 이 코드를 단순화하는 것은 어느정도 가능하리라 생각합니다.
+
+
+
+
+
   ```python
   from diagrams import Diagram
   from diagrams.aws.compute import EC2
@@ -70,11 +110,11 @@
                     EC2("worker4"),
                     EC2("worker5")] >> RDS("events")
   ```
-- https://diagrams.mingrammer.com/img/grouped_workers_diagram.png
--
-- ![exmaple2_darge.png](../assets/exmaple2_darge_1694768131276_0.png)
-- ![exmaple2_elk.png](../assets/exmaple2_elk_1694768082454_0.png)
--
+https://diagrams.mingrammer.com/img/grouped_workers_diagram.png
+
+![exmaple2_darge.png](../assets/exmaple2_darge_1694768131276_0.png)
+![exmaple2_elk.png](../assets/exmaple2_elk_1694768082454_0.png)
+
   ```text
   direction: down
   
@@ -130,7 +170,7 @@
   lb -> worker5 -> db
   
   ```
--
+
   ```bash
   d2 -s -t 302 -l elk example2.d2 exmaple2_elk.png
   d2 -s -t 302 -l dagre example2.d2 exmaple2_darge.png
@@ -164,9 +204,7 @@
   
   container2.userdb -- container2.userdb ro
   ```
--
--
--
+
   ```python
   dns: "dns" {
     shape: image
@@ -241,5 +279,3 @@
   container2.userdb -- container2.userdb ro
   container1 -> memcached
   ```
--
--
