@@ -21,21 +21,23 @@ categories:
 최근에는 이런 점을 개선하고자 Diagram as Code 개념이 생겼습니다.
 사실은 오래전부터 있었던 개념이나 일반적인 다이어그램을 그리는데 중심이 되어있었고 클라우드 아키텍쳐를 그리는데 최적화 된것은 아니었습니다.
 그래서 클라우드 아키텍쳐를 그리는데 초점이 맞쳐진 코드도 있습니다.
-바로 한국인 개발자가 개발한 Dirgrams(https://diagrams.mingrammer.com)코드 입니다. 
-https://github.com/mingrammer/diagrams
+바로 한국인 개발자가 개발한 [Dirgrams](https://diagrams.mingrammer.com)코드 입니다. 
+
+리포지토리 : [https://github.com/mingrammer/diagrams](https://github.com/mingrammer/diagrams)
+
 이 코드는 오픈소스이고 나름 명성을 가지고 있습니다.
 하지만 주 개발자가 바쁜지 한동안 업데이트가 안되고 있습니다.
-물론 Fork를 해서 이어 개발할수도 있겠지만 공식적으로 아카이빙이 되지 않는 한 포크한 프로젝트도 유지보수가 안될 가능성이 있스ㅡㅂ니다.
+물론 Fork를 해서 이어 개발할수도 있겠지만 공식적으로 아카이빙이 되지 않는 한 포크한 프로젝트도 유지보수가 안 될 가능성이 있습니다.
 그래서 대안을 살펴보던 중 D2란 코드를 발견했습니다.
 [**D2**](https://d2lang.com)는 더 많은 사용자를 확보했고 golang기반이입니다.
 
-리포지토리: https://github.com/terrastruct/d2
+리포지토리: [https://github.com/terrastruct/d2](https://github.com/terrastruct/d2)
 
 그러나 클라우드 아키텍처에 쓰이는 데는 아직까지 불편함이 있습니다. 
-그래서 D2로 Dirgrams 예제를 똑같이 그려보면서 클라우드 아키텍처 Tool로 적합한지 알아보려고 한다
+그래서 D2로 Dirgrams 예제를 똑같이 그려보면서 클라우드 아키텍처 Tool로 적합한지 알아보려고 합니다.
 
 
-Diagrams의 Quck Start에는 아래 예제가 있습니다.
+Diagrams의 [Quick Start](https://diagrams.mingrammer.com)에는 아래 예제가 있습니다.
 
 ```python
 from diagrams import Diagram
@@ -49,7 +51,7 @@ with Diagram("", show=False):
 
 ![web services diagram](web_service_diagram.png)
 
-매우 단순한 코드이나 여기서도 하나 눈여겨볼 것은 >> 로  인스턴스간의 관계를 나타낸것입니다.
+매우 단순한 코드이나 여기서도 하나 눈여겨볼 것은 ">>" 로  인스턴스간의 관계를 나타낸것입니다.
 이는 연산자 오버로딩이란 기능으로 인스턴스 객체끼리 정의되어 있는 기존 연산자 기능을 바꾸어 정의하는것 입니다.
 ">>"는 rshift란 연산자였던 것입니다.
 
