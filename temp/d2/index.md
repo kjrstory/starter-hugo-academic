@@ -22,10 +22,13 @@ categories:
 최근에는 이런 점을 개선하고자 Diagram as Code 개념이 생겼습니다.
 사실은 오래전부터 있었던 개념이나 일반적인 다이어그램을 그리는데 중심이 되어있었고 클라우드 아키텍쳐를 그리는데 최적화 된것은 아니었습니다.
 그래서 클라우드 아키텍쳐를 그리는데 초점이 맞쳐진 코드도 있습니다.
-바로 한국인 개발자가 개발한 [Dirgrams](https://diagrams.mingrammer.com)코드 입니다. 
+바로 한국인 개발자가 개발한 [Diagrams](https://diagrams.mingrammer.com)코드 입니다. 
 이 코드는 오픈소스이고 나름 명성을 가지고 있습니다.
-하지만 주 개발자가 바쁜지 한동안 업데이트가 안되고 있습니다.
+~하지만 주 개발자가 바쁜지 한동안 업데이트가 안되고 있습니다.~
 물론 Fork를 해서 이어 개발할수도 있겠지만 공식적으로 아카이빙이 되지 않는 한 포크한 프로젝트도 유지보수가 안 될 가능성이 있습니다.
+
+글을 작성하는 중에 오랜만에 업데이트가 됐습니다. 
+
 그래서 대안을 살펴보던 중 D2란 코드를 발견했습니다.
 [D2](https://d2lang.com)는 더 많은 사용자를 확보했고 golang기반이입니다.
 그러나 클라우드 아키텍처에 쓰이는 데는 아직까지 불편함이 있습니다. 
@@ -48,7 +51,7 @@ with Diagram("", show=False):
 
 매우 단순한 코드이나 여기서도 하나 눈여겨볼 것은 >>로  인스턴스간의 관계를 나타낸것입니다.
 이는 연산자 오버로딩이란 기능으로 인스턴스 객체끼리 정의되어 있는 기존 연산자 기능을 바꾸어 정의하는것 입니다.
->>는 rshift란 연산자였던 것입니다.
+\>\>는 rshift란 연산자였던 것입니다.
 
 이 아키텍쳐를 D2에서 그릴려면 아래와 같이 작성하면 됩니다.
 ```
@@ -78,8 +81,8 @@ db: "db" {
 lb -> ec2 -> db 
   
 ```
-
-![web services diagram(d2)](example1.png)
+![web services diagram(d2)](example1.png){: width="600" height="480"}
+web services diagram(d2)
 
 간단한 그림이므로 거의 유사하게 만들수 있습니다. 
 \>\> 연산자가 -> 으로 변경되었습니다.
@@ -148,6 +151,7 @@ Grouped Workers on AWS
                     EC2("worker5")] >> RDS("events")
 ```
 ![grouped_workers_diagram](grouped_workers_diagram.png)
+
 각 항목이 인스턴스이므로 이 인스턴스들을 리스트로 만들수 있고 한번에 연결 명령을 줄 수 있습니다.
 이것을 D2에서는 어떻게 할 수 있을까요? 아쉽게도 D2에는 그룹기능은 없습니다. 비슷한 개념으로 Container라는것이 있지만 그룹과는 조금 다른 개념이므로 다음 예제에서 설명하겠습니다.
 아래 처럼 모든 worker에대해 각각 연결 관계를 작성해야 합니다.
@@ -184,14 +188,17 @@ d2 -s -t 302 -l darge example.d2 example2new_darge.png
 -l 이 layout을 지정하는것으로 darge를 지정한것입니다. 
 그리고 d2파일, 출력파일 순으로 작성하면 됩니다.
 
-먼저 [Darge](https://d2lang.com/tour/dagre)버전으로 그려보았습니다.
-![Darge Layout](example2new_darge.png)
+먼저 [Dagre](https://d2lang.com/tour/dagre)버전으로 그려보았습니다.
+
+![Dagre Layout](example2new_dagre.png){: width="50%"}
 
 [Elk](https://d2lang.com/tour/elk)버전으로 그려보겠습니다.
-![Elk Layout](example2new_elk.png)
+
+![Elk Layout](example2new_elk.png){: width="50%"}
 
 앞의 두 레이아웃은 무료로 사용할 수 있지만 [Tala](https://d2lang.com/tour/tala)는 유료로 사용해야 합니다. 단 평가 목적일 때는 무료로 사용 가능하다고 하니 본 블로그 글 목적으로는 사용해도 무방하리라 판단하였습니다.
-![Tala Layout](example2new_tala.png)
+
+![Tala Layout](example2new_tala.png){: width="50%"}
 
 
 세 레이아웃 중 어떤 것이 가장 좋은가요? 이것은 개인의 호불호에 따라 달라질 것 같습니다. 객관적인 평가는 하지 않고 제 개인적으로는 무료로 사용 가능한 Elk방식이 나은듯 합니다.
@@ -227,8 +234,6 @@ d2 -s -t 302 -l darge example.d2 example2new_darge.png
 ```
 
 
-참고
-
-D2 리포지토리: https://github.com/terrastruct/d2
-
-Diagrams 리포지토리: https://github.com/mingrammer/diagrams
+* 참고
+** D2 리포지토리: https://github.com/terrastruct/d2
+** Diagrams 리포지토리: https://github.com/mingrammer/diagrams
