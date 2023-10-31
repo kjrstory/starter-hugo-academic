@@ -26,11 +26,11 @@ categories:
 이 코드는 오픈소스이고 나름 명성을 가지고 있습니다.
 ~하지만 주 개발자가 바쁜지 한동안 업데이트가 안되고 있습니다.
 물론 Fork를 해서 이어 개발할수도 있겠지만 공식적으로 아카이빙이 되지 않는 한 포크한 프로젝트도 유지보수가 안 될 가능성이 있습니다.~
-*글을 작성하는 중에 오랜만에 업데이트가 됐습니다.* 
+*(글을 작성하는 중에 오랜만에 업데이트가 됐습니다.)* 
 그래서 대안을 살펴보던 중 D2란 코드를 발견했습니다.
 [D2](https://d2lang.com)는 더 많은 사용자를 확보했고 golang기반이입니다.
-그러나 클라우드 아키텍처에 쓰이는 데는 아직까지 불편함이 있습니다. 
-그래서 D2로 Dirgrams 예제를 똑같이 그려보면서 클라우드 아키텍처 Tool로 적합한지 알아보려고 합니다.
+그러나 클라우드 아키텍처에 쓰는 데는 아직까지 불편함이 있습니다. 
+그래서 D2로 Diagrams 예제를 똑같이 그려보면서 클라우드 아키텍처 Tool로 적합한지 알아보려고 합니다.
 
 
 ## 첫번째 예제
@@ -45,12 +45,10 @@ from diagrams.aws.network import ELB
 with Diagram("", show=False):
     ELB("lb") >> EC2("web") >> RDS("userdb") 
 ```
-![web services diagram](web_service_diagram.png)
-{{<figure src="web_service_diagram.png" caption="web service diagram(from Diagrams)" width="100" >}}
-{{<figure src="web_service_diagram.png" caption="web service diagram(from Diagrams)" width="50%" >}}
-{{<figure src="web_service_diagram.png" caption="web service diagram(from Diagrams)" width="200" >}}
-{{<figure src="web_service_diagram.png" caption="web service diagram(from Diagrams)" width="200" height="200" >}}
-매우 단순한 코드이나 여기서도 하나 눈여겨볼 것은 >>로  인스턴스간의 관계를 나타낸것입니다.
+
+{{<figure src="web_service_diagram.png" caption="web service diagram(from Diagrams)" width="70%" >}}
+
+매우 단순한 코드이나 여기서도 하나 눈여겨볼 것은 \>\>로  인스턴스간의 관계를 나타낸것입니다.
 이는 연산자 오버로딩이란 기능으로 인스턴스 객체끼리 정의되어 있는 기존 연산자 기능을 바꾸어 정의하는것 입니다.
 \>\>는 rshift란 연산자였던 것입니다.
 
@@ -82,8 +80,8 @@ db: "db" {
 lb -> ec2 -> db 
   
 ```
-![web services diagram(d2)](example1.png){: width="600" height="480"}
-web services diagram(d2)
+
+{{<figure src="example1.png" caption="web service diagram using D2" width="70%" >}}
 
 간단한 그림이므로 거의 유사하게 만들수 있습니다. 
 \>\> 연산자가 -> 으로 변경되었습니다.
@@ -151,7 +149,7 @@ Grouped Workers on AWS
                     EC2("worker4"),
                     EC2("worker5")] >> RDS("events")
 ```
-![grouped_workers_diagram](grouped_workers_diagram.png)
+{{<figure src="grouped_workers_diagram.png" caption="grouped_workers_diagram(from Diagrams)" width="70%" >}}
 
 각 항목이 인스턴스이므로 이 인스턴스들을 리스트로 만들수 있고 한번에 연결 명령을 줄 수 있습니다.
 이것을 D2에서는 어떻게 할 수 있을까요? 아쉽게도 D2에는 그룹기능은 없습니다. 비슷한 개념으로 Container라는것이 있지만 그룹과는 조금 다른 개념이므로 다음 예제에서 설명하겠습니다.
@@ -191,16 +189,15 @@ d2 -s -t 302 -l darge example.d2 example2new_darge.png
 
 먼저 [Dagre](https://d2lang.com/tour/dagre)버전으로 그려보았습니다.
 
-![Dagre Layout](example2new_dagre.png){: width="50%"}
+{{<figure src="example2new_dagre.png" caption="grouped_workers_diagram: Dagre Layout" width="70%" >}}
 
 [Elk](https://d2lang.com/tour/elk)버전으로 그려보겠습니다.
 
-![Elk Layout](example2new_elk.png){: width="50%"}
+{{<figure src="example2new_elk.png" caption="grouped_workers_diagram: Elk Layout" width="70%" >}}
 
 앞의 두 레이아웃은 무료로 사용할 수 있지만 [Tala](https://d2lang.com/tour/tala)는 유료로 사용해야 합니다. 단 평가 목적일 때는 무료로 사용 가능하다고 하니 본 블로그 글 목적으로는 사용해도 무방하리라 판단하였습니다.
 
-![Tala Layout](example2new_tala.png){: width="50%"}
-
+{{<figure src="example2new_tala.png" caption="grouped_workers_diagram: Tala Layout" width="70%" >}}
 
 세 레이아웃 중 어떤 것이 가장 좋은가요? 이것은 개인의 호불호에 따라 달라질 것 같습니다. 객관적인 평가는 하지 않고 제 개인적으로는 무료로 사용 가능한 Elk방식이 나은듯 합니다.
 
