@@ -46,8 +46,10 @@ with Diagram("", show=False):
     ELB("lb") >> EC2("web") >> RDS("userdb") 
 ```
 ![web services diagram](web_service_diagram.png)
-{{<figure src="web_service_diagram.png" caption="web service diagram(from Diagrams)" >}}
-
+{{<figure src="web_service_diagram.png" caption="web service diagram(from Diagrams)" width="100" >}}
+{{<figure src="web_service_diagram.png" caption="web service diagram(from Diagrams)" width="50%" >}}
+{{<figure src="web_service_diagram.png" caption="web service diagram(from Diagrams)" width="200" >}}
+{{<figure src="web_service_diagram.png" caption="web service diagram(from Diagrams)" width="200" height="200" >}}
 매우 단순한 코드이나 여기서도 하나 눈여겨볼 것은 >>로  인스턴스간의 관계를 나타낸것입니다.
 이는 연산자 오버로딩이란 기능으로 인스턴스 객체끼리 정의되어 있는 기존 연산자 기능을 바꾸어 정의하는것 입니다.
 \>\>는 rshift란 연산자였던 것입니다.
