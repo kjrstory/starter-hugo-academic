@@ -14,6 +14,7 @@ categories:
 ---
 
 
+## 개요
 클라우드의 솔루션 아키텍트는 아키텍쳐 다이어그램을 자주 그리게 됩니다.
 다이어그램을 그리는 도구는 여러가지가 있는데 [Draw.io](https://www.drawio.com)같은 서비스가 대표적입니다.
 이런 도구는 GUI로 다이어그램을 그리게 되는데 의외로 많은 시간이 소모됩니다.
@@ -31,6 +32,7 @@ categories:
 그래서 D2로 Dirgrams 예제를 똑같이 그려보면서 클라우드 아키텍처 Tool로 적합한지 알아보려고 합니다.
 
 
+## 첫번째 예제
 Diagrams의 [Quick Start](https://diagrams.mingrammer.com)에는 아래 예제가 있습니다.
 
 ```python
@@ -80,18 +82,57 @@ lb -> ec2 -> db
 ![web services diagram(d2)](example1.png)
 
 간단한 그림이므로 거의 유사하게 만들수 있습니다. 
-">>" 연산자가 -> 으로 변경되었습니다.
+\>\> 연산자가 -> 으로 변경되었습니다.
 다만 Diagrams에서는 각 항목이 인스턴스객체로 쉽게 불러올 수 있으나 D2에서는 직접 그림파일을 이용하여 shape로 지정해야되는 불편함이 있습니다.
 D2에 Class기능과 Import기능이 있습니다.
 이것들을 이용하여 아래와 같이 바꿔보겠습니다.
 
-먼저 Class역할을 해줄 파일을 만듭니다.
+먼저 Class역할을 해줄 파일을 만듭니다. 이 파일은 models.d2로 이름 붙이겠습니다.
+```
+classes:{
+lb: {
+  shape: image
+  icon: https://icons.terrastruct.com/aws%2FNetworking%20&%20Content%20Delivery%2FElastic-Load-Balancing.svg
+  width: 100
+  height: 100
+}
 
+ec2: {
+  shape: image
+  icon: https://icons.terrastruct.com/aws%2FCompute%2FAmazon-EC2_light-bg.svg
+  width: 100
+  height: 100
+}
+
+db: {
+  shape: image
+  icon: https://icons.terrastruct.com/aws%2FDatabase%2FAmazon-RDS.svg
+  width: 100
+  height: 100
+}
+}
+```
  
-그리고 이렇게 파일을 작성하면 똑같은 결과를 보여줍니다.
+그리고 이렇게 models파일을 import하면 똑같은 결과를 보여줍니다.
+```
+direction: right
 
+...@models.d2
 
+lb.class: lb
+ec2.class: ec2
+ec2.label: web
+db.class: db
+db.label: events
+
+lb -> ec2 -> db
+```
+
+## 두번째 예제
 두번째 예제는 Diagrams에 있는 Examples중 첫번째 예제입니다.
+
+[링크](https://diagrams.mingrammer.com/docs/getting-started/examples#grouped-workers-on-aws)
+
 Grouped Workers on AWS
 ```python
   from diagrams import Diagram
@@ -108,74 +149,55 @@ Grouped Workers on AWS
 ```
 ![grouped_workers_diagram](grouped_workers_diagram.png)
 각 항목이 인스턴스이므로 이 인스턴스들을 리스트로 만들수 있고 한번에 연결 명령을 줄 수 있습니다.
+이것을 D2에서는 어떻게 할 수 있을까요? 아쉽게도 D2에는 그룹기능은 없습니다. 비슷한 개념으로 Container라는것이 있지만 그룹과는 조금 다른 개념이므로 다음 예제에서 설명하겠습니다.
+아래 처럼 모든 worker에대해 각각 연결 관계를 작성해야 합니다.
+
+```
+direction: down
+
+...@models2.d2
+
+lb.class: lb
+worker1.class: ec2
+worker2.class: ec2
+worker3.class: ec2
+worker4.class: ec2
+worker5.class: ec2
+db.class: db
+db.label: events
+
+lb -> worker1 -> db
+lb -> worker2 -> db
+lb -> worker3 -> db
+lb -> worker4 -> db
+lb -> worker5 -> db
+
+```
+
+여기서 하나 더 설명할 개념으로 Layout이란 개념이 있습니다. Layout은 다이어그램을 어떻게 배치할지를 결정하는 엔진입니다. D2에서는 Darge, Elk, TALA 이렇게 3개의 Layout엔진을 지원합니다. Layout이란 개념이 그래도 잘 모르겠다면 직접 그려보면서 눈으로 확인해보십다.
+D2에서 그림을 추출하는 명령은 아래와 같습니다. 
+```bash
+d2 -s -t 302 -l darge example.d2 example2new_darge.png
+```
+여기서 -s는 스케치 버전으로 그리겠다는 것이고 -t 302는 테마를 지정하는것입니다. 
+스케치 버전과 테마는 공식 문서를 참고하시기 바랍니다.
+-l 이 layout을 지정하는것으로 darge를 지정한것입니다. 
+그리고 d2파일, 출력파일 순으로 작성하면 됩니다.
+
+먼저 [Darge](https://d2lang.com/tour/dagre)버전으로 그려보았습니다.
+![Darge Layout](example2new_darge.png)
+
+[Elk](https://d2lang.com/tour/elk)버전으로 그려보겠습니다.
+![Elk Layout](example2new_elk.png)
+
+앞의 두 레이아웃은 무료로 사용할 수 있지만 [Tala](https://d2lang.com/tour/tala)는 유료로 사용해야 합니다. 단 평가 목적일 때는 무료로 사용 가능하다고 하니 본 블로그 글 목적으로는 사용해도 무방하리라 판단하였습니다.
+![Tala Layout](example2new_tala.png)
 
 
+세 레이아웃 중 어떤 것이 가장 좋은가요? 이것은 개인의 호불호에 따라 달라질 것 같습니다. 객관적인 평가는 하지 않고 제 개인적으로는 무료로 사용 가능한 Elk방식이 나은듯 합니다.
 
-![Darge](example2new_darge.png)
-![Elk](example2new_elk.png)
 
-  ```text
-  direction: down
-  
-  lb: "lb" {
-    shape: image
-    icon: https://icons.terrastruct.com/aws%2FNetworking%20&%20Content%20Delivery%2FElastic-Load-Balancing.svg
-    width: 100
-    height: 100
-  }
-  
-  worker1: {
-    shape: image
-    icon: https://icons.terrastruct.com/aws%2FCompute%2FAmazon-EC2_light-bg.svg
-    width: 100
-    height: 100
-  }
-  worker2: {
-    shape: image
-    icon: https://icons.terrastruct.com/aws%2FCompute%2FAmazon-EC2_light-bg.svg
-    width: 100
-    height: 100
-  }
-  worker3: {
-    shape: image
-    icon: https://icons.terrastruct.com/aws%2FCompute%2FAmazon-EC2_light-bg.svg
-    width: 100
-    height: 100
-  }
-  worker4: {
-    shape: image
-    icon: https://icons.terrastruct.com/aws%2FCompute%2FAmazon-EC2_light-bg.svg
-    width: 100
-    height: 100
-  }
-  worker5: {
-    shape: image
-    icon: https://icons.terrastruct.com/aws%2FCompute%2FAmazon-EC2_light-bg.svg
-    width: 100
-    height: 100
-  }
-  
-  db: "events" {
-    shape: image
-    icon: https://icons.terrastruct.com/aws%2FDatabase%2FAmazon-RDS.svg
-    width: 100
-    height: 100
-  }
-  
-  lb -> worker1 -> db
-  lb -> worker2 -> db
-  lb -> worker3 -> db
-  lb -> worker4 -> db
-  lb -> worker5 -> db
-  
-  ```
-
-  ```bash
-  d2 -s -t 302 -l elk example2.d2 exmaple2_elk.png
-  d2 -s -t 302 -l dagre example2.d2 exmaple2_darge.png
-  ```
--
-  ```python
+```python
   direction: right
   container1: "" {
     web1
@@ -202,81 +224,11 @@ Grouped Workers on AWS
   container1.web3 -> memcached
   
   container2.userdb -- container2.userdb ro
-  ```
+```
 
-  ```python
-  dns: "dns" {
-    shape: image
-    icon: https://icons.terrastruct.com/aws%2FNetworking%20&%20Content%20Delivery%2FAmazon-Route-53.svg
-    width: 100
-    height: 100
-  }
-    
-  lb: "lb" {
-    shape: image
-    icon: https://icons.terrastruct.com/aws%2FNetworking%20&%20Content%20Delivery%2FElastic-Load-Balancing.svg
-    width: 100
-    height: 100
-  }
-  
-  memcached : "memcached" {
-    shape: image
-    icon: https://icons.terrastruct.com/aws%2FDatabase%2FAmazon-ElastiCache.svg
-    width: 100
-    height: 100
-  }
-      
-  container1.web1: "web1" {
-    shape: image
-    icon: https://icons.terrastruct.com/aws%2FCompute%2FAmazon-Elastic-Container-Service.svg
-    width: 100
-    height: 100
-  }
-   
-  container1.web2: "web2" {
-    shape: image
-    icon: https://icons.terrastruct.com/aws%2FCompute%2FAmazon-Elastic-Container-Service.svg
-    width: 100
-    height: 100
-  }
-    
-  container1.web3: "web3" {
-    shape: image
-    icon: https://icons.terrastruct.com/aws%2FCompute%2FAmazon-Elastic-Container-Service.svg
-    width: 100
-    height: 100
-  }
-  container2.userdb: "uesrdb" {
-    shape: image
-    icon: https://icons.terrastruct.com/aws%2FDatabase%2FAmazon-RDS.svg
-    width: 100
-    height: 100
-  }
-  
-  container2.userdb ro: "uesrdb ro" {
-    shape: image
-    icon: https://icons.terrastruct.com/aws%2FDatabase%2FAmazon-RDS.svg
-    width: 100
-    height: 100
-  }
-  
-  direction: right
-  container1: "Services" {
-    web1
-    web2
-    web3
-  }
-  
-  container2: "DB Cluster" {
-    userdb
-    userdb ro
-  }
-  
-  dns -> lb
-  lb -> container1
-  container1 -> container2.userdb
-  container2.userdb -- container2.userdb ro
-  container1 -> memcached
-  ```
-Diagrams 리포지토리 : [https://github.com/mingrammer/diagrams](https://github.com/mingrammer/diagrams)
-D2 리포지토리: [https://github.com/terrastruct/d2](https://github.com/terrastruct/d2)
+
+참고
+
+D2 리포지토리: https://github.com/terrastruct/d2
+
+Diagrams 리포지토리: https://github.com/mingrammer/diagrams
