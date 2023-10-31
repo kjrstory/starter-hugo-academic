@@ -203,36 +203,84 @@ d2 -s -t 302 -l darge example.d2 example2new_darge.png
 세 레이아웃 중 어떤 것이 가장 좋은가요? 이것은 개인의 호불호에 따라 달라질 것 같습니다. 객관적인 평가는 하지 않고 제 개인적으로는 무료로 사용 가능한 Elk방식이 나은듯 합니다.
 
 
-```python
-  direction: right
-  container1: "" {
-    web1
-    web2
-    web3
-  }
-  
-  container2: "" {
-    userdb
-    userdb ro
-  }
-  
-  dns -> lb
-  lb -> container1.web1
-  lb -> container1.web2
-  lb -> container1.web3
-  
-  container1.web1 -> container2.userdb
-  container1.web2 -> container2.userdb
-  container1.web3 -> container2.userdb
-  
-  container1.web1 -> memcached
-  container1.web2 -> memcached
-  container1.web3 -> memcached
-  
-  container2.userdb -- container2.userdb ro
+## 세번째 예제
+
+```
+direction: right
+
+...@models.d2
+
+dns.class: dns
+lb.class: lb
+container1.web1.class: ec2
+container1.web2.class: ec2
+container1.web3.class: ec2
+container2.userdb1.class: db
+container2.userdb1.label: userdb
+container2.userdb2.class: db
+container2.userdb2.label: userdb ro
+memcached.class: memcached
+
+container1: "Services" {
+  web1
+  web2
+  web3
+}
+
+container2: "DB Cluster" {
+  userdb1
+  userdb2
+}
+
+dns -> lb
+lb -> container1.web1
+lb -> container1.web2
+lb -> container1.web3
+
+container1.web1 -> container2.userdb1
+container1.web2 -> container2.userdb1
+container1.web3 -> container2.userdb1
+
+container1.web1 -> memcached
+container1.web2 -> memcached
+container1.web3 -> memcached
+
+container2.userdb1 -- container2.userdb2
 ```
 
 
-* 참고
- * D2 리포지토리: https://github.com/terrastruct/d2
- * Diagrams 리포지토리: https://github.com/mingrammer/diagrams
+```
+direction: right
+
+...@models.d2
+
+dns.class: dns
+lb.class: lb
+container1.web1.class: ec2
+container1.web2.class: ec2
+container1.web3.class: ec2
+container2.userdb1.class: db
+container2.userdb1.label: userdb
+container2.userdb2.class: db
+container2.userdb2.label: userdb ro
+memcached.class: memcached
+
+container1: "Services" {
+  web1
+  web2
+  web3
+}
+
+container2: "DB Cluster" {
+  userdb1
+  userdb2
+}
+
+dns -> lb
+lb -> container1
+container1 -> container2
+container1 -> memcached
+
+container2.userdb1 -- container2.userdb2
+```
+
