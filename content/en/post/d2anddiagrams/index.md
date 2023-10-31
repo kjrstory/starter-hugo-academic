@@ -1,6 +1,6 @@
 ---
-title: "클라우드 아키텍쳐 그림 그리기 도구로 D2와 Diagrams 비교"
-date: 2023-10-19T11:52:56+09:00
+title: "Comparing D2 and Diagrams as cloud architecture diagram drawing tools"
+date: 2023-10-31T11:52:56+09:00
 draft: false
 featured: false
 authors:
