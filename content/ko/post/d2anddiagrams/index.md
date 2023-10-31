@@ -10,7 +10,11 @@ tags:
  - cloud
 categories:
  - Cloud
-
+image:  
+  filename: example3_2.png
+  focal_point: Smart
+  preview_only: false
+  caption: "Cloud Architecture using D2" 
 ---
 
 
