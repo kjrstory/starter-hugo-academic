@@ -46,7 +46,7 @@ with Diagram("", show=False):
     ELB("lb") >> EC2("web") >> RDS("userdb") 
 ```
 
-{{<figure src="web_service_diagram.png" caption="web service diagram(from Diagrams)" width="70%" >}}
+{{<figure src="web_service_diagram.png" caption="web service diagram(from Diagrams)" width="75%" >}}
 
 매우 단순한 코드이나 여기서도 하나 눈여겨볼 것은 \>\>로  인스턴스간의 관계를 나타낸것입니다.
 이는 연산자 오버로딩이란 기능으로 인스턴스 객체끼리 정의되어 있는 기존 연산자 기능을 바꾸어 정의하는것 입니다.
@@ -81,7 +81,7 @@ lb -> ec2 -> db
   
 ```
 
-{{<figure src="example1.png" caption="web service diagram using D2" width="70%" >}}
+{{<figure src="example1.png" caption="web service diagram using D2" width="75%" >}}
 
 간단한 그림이므로 거의 유사하게 만들수 있습니다. 
 \>\> 연산자가 -> 으로 변경되었습니다.
@@ -149,7 +149,7 @@ Grouped Workers on AWS
                     EC2("worker4"),
                     EC2("worker5")] >> RDS("events")
 ```
-{{<figure src="grouped_workers_diagram.png" caption="grouped_workers_diagram(from Diagrams)" width="70%" >}}
+{{<figure src="grouped_workers_diagram.png" caption="grouped_workers_diagram(from Diagrams)" width="75%" >}}
 
 각 항목이 인스턴스이므로 이 인스턴스들을 리스트로 만들수 있고 한번에 연결 명령을 줄 수 있습니다.
 이것을 D2에서는 어떻게 할 수 있을까요? 아쉽게도 D2에는 그룹기능은 없습니다. 비슷한 개념으로 Container라는것이 있지만 그룹과는 조금 다른 개념이므로 다음 예제에서 설명하겠습니다.
@@ -189,49 +189,19 @@ d2 -s -t 302 -l darge example.d2 example2new_darge.png
 
 먼저 [Dagre](https://d2lang.com/tour/dagre)버전으로 그려보았습니다.
 
-{{<figure src="example2new_dagre.png" caption="grouped_workers_diagram: Dagre Layout" width="70%" >}}
+{{<figure src="example2new_dagre.png" caption="grouped_workers_diagram: Dagre Layout" width="75%" >}}
 
 [Elk](https://d2lang.com/tour/elk)버전으로 그려보겠습니다.
 
-{{<figure src="example2new_elk.png" caption="grouped_workers_diagram: Elk Layout" width="70%" >}}
+{{<figure src="example2new_elk.png" caption="grouped_workers_diagram: Elk Layout" width="75%" >}}
 
 앞의 두 레이아웃은 무료로 사용할 수 있지만 [Tala](https://d2lang.com/tour/tala)는 유료로 사용해야 합니다. 단 평가 목적일 때는 무료로 사용 가능하다고 하니 본 블로그 글 목적으로는 사용해도 무방하리라 판단하였습니다.
 
-{{<figure src="example2new_tala.png" caption="grouped_workers_diagram: Tala Layout" width="70%" >}}
+{{<figure src="example2new_tala.png" caption="grouped_workers_diagram: Tala Layout" width="75%" >}}
 
 세 레이아웃 중 어떤 것이 가장 좋은가요? 이것은 개인의 호불호에 따라 달라질 것 같습니다. 객관적인 평가는 하지 않고 제 개인적으로는 무료로 사용 가능한 Elk방식이 나은듯 합니다.
 
 
-```python
-  direction: right
-  container1: "" {
-    web1
-    web2
-    web3
-  }
-  
-  container2: "" {
-    userdb
-    userdb ro
-  }
-  
-  dns -> lb
-  lb -> container1.web1
-  lb -> container1.web2
-  lb -> container1.web3
-  
-  container1.web1 -> container2.userdb
-  container1.web2 -> container2.userdb
-  container1.web3 -> container2.userdb
-  
-  container1.web1 -> memcached
-  container1.web2 -> memcached
-  container1.web3 -> memcached
-  
-  container2.userdb -- container2.userdb ro
-```
-
-
 * 참고
- * D2 리포지토리: https://github.com/terrastruct/d2
- * Diagrams 리포지토리: https://github.com/mingrammer/diagrams
+  - D2 리포지토리: https://github.com/terrastruct/d2
+  - Diagrams 리포지토리: https://github.com/mingrammer/diagrams
