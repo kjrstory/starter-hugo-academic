@@ -202,6 +202,139 @@ d2 -s -t 302 -l darge example.d2 example2new_darge.png
 세 레이아웃 중 어떤 것이 가장 좋은가요? 이것은 개인의 호불호에 따라 달라질 것 같습니다. 객관적인 평가는 하지 않고 제 개인적으로는 무료로 사용 가능한 Elk방식이 나은듯 합니다.
 
 
+## 세번째 예제
+
+세번째 예제는 Diagrams에 있는 Examples중 두번째 예제입니다.
+
+[링크](https://diagrams.mingrammer.com/docs/getting-started/examples#clustered-web-services)
+
+
+```python
+from diagrams import Cluster, Diagram
+from diagrams.aws.compute import ECS
+from diagrams.aws.database import ElastiCache, RDS
+from diagrams.aws.network import ELB
+from diagrams.aws.network import Route53
+
+with Diagram("Clustered Web Services", show=False):
+    dns = Route53("dns")
+    lb = ELB("lb")
+
+    with Cluster("Services"):
+        svc_group = [ECS("web1"),
+                     ECS("web2"),
+                     ECS("web3")]
+
+    with Cluster("DB Cluster"):
+        db_primary = RDS("userdb")
+        db_primary - [RDS("userdb ro")]
+
+    memcached = ElastiCache("memcached")
+
+    dns >> lb >> svc_group
+    svc_group >> db_primary
+    svc_group >> memcached
+```
+{{<figure src="clustered_web_services_diagram.png" caption="Clustered Web Services(from Diagrams)" width="75%" >}}
+
+Diagrams의 Cluster 함수는 여러 노드를 그룹핑해서 하나의 상자안에 그려주는 함수입니다.
+이걸 D2로도 그려보겠습니다.
+이번엔 그림부터 보여드리겠습니다.
+
+{{<figure src="example3_1.png" caption="Clustered Web Services(D2 Case 1)" width="75%" >}}
+
+이렇게 하면 유사하게 그린 것인데요. 화살표가 너무 지저분하게 있다는 것이 걸립니다. D2에서는 하나의 상자안에 그리는 기능을 Container라고 하는데 Container와 노드를 연결할 수 있습니다. 사실 그림으로 봐야 이해가 갈겁니다.
+
+{{<figure src="example3_1.png" caption="Clustered Web Services(D2 Case 2)" width="75%" >}}
+
+표현하고 싶은 것에 따라 다르겠지만 저 개인적으로는 후자처럼 그리는 것이 더 깔끔해서 좋은 것 같습니다. Diagrams에서는 아직 상자(Cluster)로 연결시켜주는 기능은 없습니다.
+작성한 코드는 이렇습니다.
+
+```
+classes:{
+lb: {
+  shape: image
+  icon: https://icons.terrastruct.com/aws%2FNetworking%20&%20Content%20Delivery%2FElastic-Load-Balancing.svg
+  width: 100
+  height: 100
+}
+
+ec2: {
+  shape: image
+  icon: https://icons.terrastruct.com/aws%2FCompute%2FAmazon-EC2_light-bg.svg
+  width: 100
+  height: 100
+}
+
+db: {
+  shape: image
+  icon: https://icons.terrastruct.com/aws%2FDatabase%2FAmazon-RDS.svg
+  width: 100
+  height: 100
+}
+
+dns: "dns" {
+  shape: image
+  icon: https://icons.terrastruct.com/aws%2FNetworking%20&%20Content%20Delivery%2FAmazon-Route-53.svg
+  width: 100
+  height: 100
+}
+
+memcached : "memcached" {
+  shape: image
+  icon: https://icons.terrastruct.com/aws%2FDatabase%2FAmazon-ElastiCache.svg
+  width: 100
+  height: 100
+}
+
+}
+```
+
+```
+direction: right
+
+...@models.d2
+
+dns.class: dns
+lb.class: lb
+container1.web1.class: ec2
+container1.web2.class: ec2
+container1.web3.class: ec2
+container2.userdb1.class: db
+container2.userdb1.label: userdb
+container2.userdb2.class: db
+container2.userdb2.label: userdb ro
+memcached.class: memcached
+
+container1: "Services" {
+  web1
+  web2
+  web3
+}
+
+container2: "DB Cluster" {
+  userdb1
+  userdb2
+}
+
+dns -> lb
+lb -> container1
+container1 -> container2
+container1 -> memcached
+
+container2.userdb1 -- container2.userdb2
+```
+
+## 결론
+
+이렇게 Diagrams와 D2를 클라우드 아키텍쳐 그리는 관점으로 비교를 해봤습니다. 사실 아직까지 두 코드 모두 Draw.io같은 그리기 도구를 직접 사용하는 것보다는 예쁘게 그리기는 어렵습니다. 
+다만 Dirgrams as Code의 필요성이 커진다면 두 코드 모두 유용하게 쓰일 수 있을것입니다.
+두 코드 각각 개발이 더 많이 이루어져야 할 것 같은데 D2는 Terrastruct란 회사가 주도하여 개발이 되고 있는 점은 D2의 장점입니다.  
+Diagrams의 장점은 파이썬 코드이기 때문에 다른 파이썬 코드와 통합하여 무언가를 개발하기 좋다는 것입니다.
+D2도 Golang에서 라이브러리 처럼 쓰는 기능을 일부 지원하지만 아직까지는 많은 것을 지원하지는 않고 있습니다. 
+저는 두 코드 모두 미래에 어떻게 발전이 되는지 주시할것입니다.
+
+
 * 참고
   - D2 리포지토리: https://github.com/terrastruct/d2
   - Diagrams 리포지토리: https://github.com/mingrammer/diagrams
