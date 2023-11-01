@@ -167,12 +167,12 @@ lb -> worker5 -> db
 
 ```
 
-Another feature to explain here is D2's [Layout](https://d2lang.com/tour/layouts) feature. Layout is an engine that determines how to arrange the diagram. D2 supports three Layout engines: Darge, ELK, and TALA. If you're not sure about the concept of Layout, let's try drawing diagrams and see the results.
+Another feature to explain here is D2's [Layout](https://d2lang.com/tour/layouts) feature. Layout is an engine that determines how to arrange the diagram. D2 supports three Layout engines: Dagre, ELK, and TALA. If you're not sure about the concept of Layout, let's try drawing diagrams and see the results.
 
 The command to extract the diagram in D2 is as follows. 
 
 ```bash
-d2 -s -t 302 -l darge example.d2 example2new_darge.png
+d2 -s -t 302 -l dagre example.d2 example2new_dagre.png
 ```
 Here, -s indicates that it will be drawn in the sketch version, and -t 302 specifies the theme. Please refer to the official documentation for information about the sketch version and themes. -l is used to specify the layout, and here, Darge is specified. You should list the D2 file and the output file in that order.
 
