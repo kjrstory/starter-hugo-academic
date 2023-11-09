@@ -56,7 +56,7 @@ def get_answer_list(db: Session, question_id: int,
 ### 라우터
 생성 API와 유사하게 question_id가 잘못됐다면 에러를 발생하게 해야 한다. 다른 부분은 질문 목록 API와 같다.
 
-```python{hl_lines=["3-"]}
+```python{hl_lines=["3-14"]}
 (... 생략 ...)
   
 @router.get("/list", response_model=answer_schema.AnswerList)
@@ -83,7 +83,7 @@ API가 완성되었다면 바로 프론트엔드를 작성하기전에 API가 �
 
 또 한가지 해야할 것이 페이징을 적용하기 위해 임시로 테스트 질문을 생성해보자. 
 
-```
+```bash
 >>> from models import Question, Answer
 >>> from datetime import datetime
 >>> from database import SessionLocal
@@ -98,14 +98,13 @@ API가 완성되었다면 바로 프론트엔드를 작성하기전에 API가 �
 ...     language = random.choice(programming_languages)
 ...     a = Answer(question=q, content=f"{i}번째 추천하는 프로그래밍 언어는 {language}입니다.", create_date=datetime.now())
 ...     db.add(a)
-... db.commit()
->>>
+>>> db.commit()
 ```
 
 ## 질문 상세 화면 변경하기
 
 이제 PageDetail.vue파일을 다음과 같이 수정하자.
-```
+```html
 <template>
 (... 생략 ...)
 
@@ -113,10 +112,7 @@ API가 완성되었다면 바로 프론트엔드를 작성하기전에 API가 �
     <h5 class="border-bottom my-3 py-2">{{total}}개의 답변이 있습니다.</h5>
     <div v-for="answer in answerList" :key="answer.id" class="card my-3">
 
-
-
 (... 생략 ...)
-
     <!-- 페이징처리 시작 -->
     <ul class="pagination justify-content-center">
       <li class="page-item" :class="{ disabled: page <= 0 }">
@@ -195,7 +191,7 @@ export default {
 ## 정렬 방법
 여기서부터 질문 목록 API에서 하지 않았던 것이 나온다. 추천순 정렬과 시간순 정렬등의 기능을 추가하는 것이다. 시간순 정렬은 Answer 모델에 create_time을 저장하고 있기 때문에 하는 방법이 간단하다. 하지만 추천순 정렬은 추천수를 저장하고 있지 않다. subquery를 사용하는 방법도 있을 것 같은데 일단 voter_count란 속성을 추가하는 방식으로 구현하려고 한다. models.py를 다음과 같이 voter_count속성을 추가한다.
 
-```python
+```python{hl_lines=["3-4"]}
 class Answer(Base):
 (... 생략 ...)
     voter = relationship('User', secondary=answer_voter, backref='answer_voters')
@@ -222,7 +218,7 @@ alembic upgrade head
 ```
 
 ### 스키마
-```python
+```python{hl_lines=["9"]}
 class Answer(BaseModel):
     id: int
     content: str
@@ -235,7 +231,7 @@ class Answer(BaseModel):
 ```
 
 ### CRUD
-```python
+```python{hl_lines=[3, "6-12"]}
 def get_answer_list(db: Session, question_id: int,
                     skip: int = 0, limit: int = 10,
                     sort_by: str = 'create_date',
@@ -254,7 +250,7 @@ def get_answer_list(db: Session, question_id: int,
 ```
 
 ### 라우터
-```python{linenos=table,hl_lines=[8,"15-17"]}
+```python{hl_lines=[4, 12]}
 @router.get("/list", response_model=answer_schema.AnswerList)
 def answer_list(question_id: int,
                 db: Session = Depends(get_db),
