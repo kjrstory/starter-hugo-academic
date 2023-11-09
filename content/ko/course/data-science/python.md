@@ -56,7 +56,7 @@ def get_answer_list(db: Session, question_id: int,
 ### 라우터
 생성 API와 유사하게 question_id가 잘못됐다면 에러를 발생하게 해야 한다. 다른 부분은 질문 목록 API와 같다.
 
-```python{hl_lines=["3-14"]}
+```python{hl_lines=["3-12"]}
 (... 생략 ...)
   
 @router.get("/list", response_model=answer_schema.AnswerList)
@@ -83,7 +83,7 @@ API가 완성되었다면 바로 프론트엔드를 작성하기전에 API가 �
 
 또 한가지 해야할 것이 페이징을 적용하기 위해 임시로 테스트 질문을 생성해보자. 
 
-```bash
+```python
 >>> from models import Question, Answer
 >>> from datetime import datetime
 >>> from database import SessionLocal
@@ -104,7 +104,7 @@ API가 완성되었다면 바로 프론트엔드를 작성하기전에 API가 �
 ## 질문 상세 화면 변경하기
 
 이제 PageDetail.vue파일을 다음과 같이 수정하자.
-```html
+```html{linenos=table, hl_lines=["3-12"]}
 <template>
 (... 생략 ...)
 
@@ -189,7 +189,7 @@ export default {
 변경점이 많은데 하나씩 보면 질문 목록에서 했던 것과 유사한 것을 알 수 있다. getAnswerList란 함수를 사용하기 위해 page, total, size등의 변수를 만들고 페이징을 질문 목록(PageHome)과 유사하게 템플릿을 작성하였다. 
 
 ## 정렬 방법
-여기서부터 질문 목록 API에서 하지 않았던 것이 나온다. 추천순 정렬과 시간순 정렬등의 기능을 추가하는 것이다. 시간순 정렬은 Answer 모델에 create_time을 저장하고 있기 때문에 하는 방법이 간단하다. 하지만 추천순 정렬은 추천수를 저장하고 있지 않다. subquery를 사용하는 방법도 있을 것 같은데 일단 voter_count란 속성을 추가하는 방식으로 구현하려고 한다. models.py를 다음과 같이 voter_count속성을 추가한다.
+여기서부터 질문 목록 API에서 하지 않았던 것이 나온다. 추천순 정렬과 시간순 정렬등의 기능을 추가하는 것이다. 시간순 정렬은 Answer 모델에 create_time을 저장하고 있기 때문에 하는 방법이 간단하다. 하지만 추천순 정렬은 추천수를 저장하고 있지 않다. subquery를 사용하는 방법도 있을 것 같은데 일단 voter_count란 속성을 추가하는 방식으로 구현하려고 한다. models.py에 다음과 같이 voter_count 속성을 추가한다.
 
 ```python{hl_lines=["3-4"]}
 class Answer(Base):
@@ -218,6 +218,7 @@ alembic upgrade head
 ```
 
 ### 스키마
+스키마에는 voter_count를 추가한다. 초기값은 0이다.
 ```python{hl_lines=["9"]}
 class Answer(BaseModel):
     id: int
@@ -231,6 +232,8 @@ class Answer(BaseModel):
 ```
 
 ### CRUD
+CRUD파일에는 sort_by와 desc 인수를 추가한다. sort_by에는 Answer 모델의 속성값이 들어갈 수 있고 초기값은 create_date로 한다. desc는 오름차순과 내림차순을 정하는 것으로 true일때가 내림차순, false일때가 오름차순이다.
+
 ```python{hl_lines=[3, "6-12"]}
 def get_answer_list(db: Session, question_id: int,
                     skip: int = 0, limit: int = 10,
@@ -250,6 +253,8 @@ def get_answer_list(db: Session, question_id: int,
 ```
 
 ### 라우터
+라우터 파일에는 앞서 추가했던 sort_by와 create_date를 추가한다.
+
 ```python{hl_lines=[4, 12]}
 @router.get("/list", response_model=answer_schema.AnswerList)
 def answer_list(question_id: int,
