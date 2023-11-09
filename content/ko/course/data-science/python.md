@@ -9,16 +9,19 @@ weight: 5
 ### API 명세
 
 답변 페이징을 하기 위해서 질문 목록 API처럼 API를 별도로 만들 필요가 있다. 다음과 같이 API 명세를 작성해보자.
+
 `[답변 목록 API 명세]`
   
 | API명 | URL | 요청 방법 | 설명 |
 |---|---|---|---|
 | 답변 목록 | `/api/answer/list/` | post | 질문(question_id)에 대한 답변 목록을 보여준다. |
 
+
 `[답변 목록 API 입력 항목]`
 - question_id - 보여줄 답변의 질문
 - page - 답변 목록의 페이지
 - size - 한 페이지에 보여줄 목록 크기
+
 `[답변 목록 API 출력 항목]`
 - total - 답변 목록의 전체 수
 - answer_list - 답변 목록
@@ -26,7 +29,7 @@ weight: 5
 ### 스키마
 
 질문 목록을 참고하여 작성한다.
-```python
+```python{hl_lines=["3-5"]}
 (... 생략 ...)
    
 class AnswerList(BaseModel):
@@ -34,11 +37,10 @@ class AnswerList(BaseModel):
     answer_list: list[Answer]= []
 ```
 
-
 ### CRUD
 질문 목록과 다른 것은 question_id 값을 필요로 하는 부분이다. filter기능을 사용해서 한 질문에 해당하는 목록만 리턴하게 하였다.
 
-```python
+```python{hl_lines=["3-10"]}
 (... 생략 ...)
   
 def get_answer_list(db: Session, question_id: int,
@@ -54,7 +56,7 @@ def get_answer_list(db: Session, question_id: int,
 ### 라우터
 생성 API와 유사하게 question_id가 잘못됐다면 에러를 발생하게 해야 한다. 다른 부분은 질문 목록 API와 같다.
 
-```python
+```python{hl_lines=["3-"]}
 (... 생략 ...)
   
 @router.get("/list", response_model=answer_schema.AnswerList)
