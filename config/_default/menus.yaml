@@ -18,7 +18,7 @@ main:
 #    weight: 30
 #    parent: Courses
 #
-  - name: Data science
+  - name: 점프 투 FastAPI with Vue
     PageRef: course/data-science/_index.md
     weight: 10
     parent: courses
