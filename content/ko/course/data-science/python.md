@@ -252,7 +252,7 @@ def get_answer_list(db: Session, question_id: int,
 ```
 
 ### 라우터
-```python
+```python{linenos=table,hl_lines=[8,"15-17"]}
 @router.get("/list", response_model=answer_schema.AnswerList)
 def answer_list(question_id: int,
                 db: Session = Depends(get_db),
