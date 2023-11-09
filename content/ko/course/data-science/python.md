@@ -14,11 +14,11 @@ weight: 5
   
 | API명 | URL | 요청 방법 | 설명 |
 |---|---|---|---|
-| 답변 목록 | `/api/answer/list/` | post | 질문(question_id)에 대한 답변 목록을 보여준다. |
+| 답변 목록 | `/api/answer/list/` | post | 질문의 답변 목록을 보여준다. |
 
 
 `[답변 목록 API 입력 항목]`
-- question_id - 보여줄 답변의 질문
+- question_id - 보여줄 답변의 질문 id
 - page - 답변 목록의 페이지
 - size - 한 페이지에 보여줄 목록 크기
 
@@ -54,9 +54,9 @@ def get_answer_list(db: Session, question_id: int,
 ```
 
 ### 라우터
-생성 API와 유사하게 question_id가 잘못됐다면 에러를 발생하게 해야 한다. 다른 부분은 질문 목록 API와 같다.
+답변 생성 API와 유사하게 question_id가 없다면 에러를 발생하게 해야 한다. 
 
-```python{hl_lines=["3-12"]}
+```python{hl_lines=["3-16"]}
 (... 생략 ...)
   
 @router.get("/list", response_model=answer_schema.AnswerList)
@@ -76,12 +76,12 @@ def answer_list(question_id:,
 ```
 
 ### API 확인
-API가 완성되었다면 바로 프론트엔드를 작성하기전에 API가 잘 작동하는지 봐야한다.  FastAPI의 doc페이지에서 다음과 같이 답변 목옥을 잘 출력해준다.
+API가 완성되었다면 바로 프론트엔드를 작성하기전에 API가 잘 작동하는지 봐야한다.  FastAPI의 doc페이지에서 다음과 같이 답변 목록을 잘 출력해줌을 확인하였다.
 
 
 ## 임시 답변 데이터 생성하기
 
-또 한가지 해야할 것이 페이징을 적용하기 위해 임시로 테스트 질문을 생성해보자. 
+페이징을 적용하기 위해 임시로 테스트 질문을 생성해보자. 
 
 ```python
 >>> from models import Question, Answer
@@ -104,7 +104,7 @@ API가 완성되었다면 바로 프론트엔드를 작성하기전에 API가 �
 ## 질문 상세 화면 변경하기
 
 이제 PageDetail.vue파일을 다음과 같이 수정하자.
-```html{linenos=table, hl_lines=["3-12"]}
+```html{linenos=table, hl_lines=["5-6", "9-23","47-50","55-57","61-72",76]}
 <template>
 (... 생략 ...)
 
@@ -191,7 +191,8 @@ export default {
 ## 정렬 방법
 여기서부터 질문 목록 API에서 하지 않았던 것이 나온다. 추천순 정렬과 시간순 정렬등의 기능을 추가하는 것이다. 시간순 정렬은 Answer 모델에 create_time을 저장하고 있기 때문에 하는 방법이 간단하다. 하지만 추천순 정렬은 추천수를 저장하고 있지 않다. subquery를 사용하는 방법도 있을 것 같은데 일단 voter_count란 속성을 추가하는 방식으로 구현하려고 한다. models.py에 다음과 같이 voter_count 속성을 추가한다.
 
-```python{hl_lines=["3-4"]}
+```python{hl_lines=["4-5"]}
+(... 생략 ...)
 class Answer(Base):
 (... 생략 ...)
     voter = relationship('User', secondary=answer_voter, backref='answer_voters')
@@ -218,8 +219,9 @@ alembic upgrade head
 ```
 
 ### 스키마
-스키마에는 voter_count를 추가한다. 초기값은 0이다.
-```python{hl_lines=["9"]}
+스키마에 voter_count를 추가한다. 초기값은 0이다.
+```python{hl_lines=["10"]}
+(... 생략 ...)
 class Answer(BaseModel):
     id: int
     content: str
@@ -232,9 +234,10 @@ class Answer(BaseModel):
 ```
 
 ### CRUD
-CRUD파일에는 sort_by와 desc 인수를 추가한다. sort_by에는 Answer 모델의 속성값이 들어갈 수 있고 초기값은 create_date로 한다. desc는 오름차순과 내림차순을 정하는 것으로 true일때가 내림차순, false일때가 오름차순이다.
+CRUD파일에는 sort_by와 desc 인수를 추가한다. sort_by는 정렬 방법이고 Answer 모델의 속성값이 들어갈 수 있으며며 초기값은 create_date로 한다. desc는 오름차순과 내림차순을 정하는 것으로 true일때가 내림차순, false일때가 오름차순이다.
 
-```python{hl_lines=[3, "6-12"]}
+```python{hl_lines=[4, "7-13"]}
+(... 생략 ...)
 def get_answer_list(db: Session, question_id: int,
                     skip: int = 0, limit: int = 10,
                     sort_by: str = 'create_date',
@@ -252,10 +255,22 @@ def get_answer_list(db: Session, question_id: int,
     return total, answer_list
 ```
 
+한가지 잊지 않고 추가해줄 것이 있다. 이제 답변에 추천을 하게 되면 voter_count가 증가하게 해야한다.
+
+```python{hl_lines=[4]}
+(... 생략 ...)
+def vote_answer(db: Session, db_answer: Answer, db_user: User):
+    db_answer.voter.append(db_user)
+    db_answer.voter_count = db_answer.voter_count + 1
+    db.commit()
+(... 생략 ...)
+```
+
 ### 라우터
 라우터 파일에는 앞서 추가했던 sort_by와 create_date를 추가한다.
 
-```python{hl_lines=[4, 12]}
+```python{hl_lines=[5, 13]}
+(... 생략 ...)
 @router.get("/list", response_model=answer_schema.AnswerList)
 def answer_list(question_id: int,
                 db: Session = Depends(get_db),
@@ -274,3 +289,214 @@ def answer_list(question_id: int,
             'answer_list': _answer_list
             }
 ```
+
+## 스토어
+여기까지 했지만 한가지 또 빠진게 있다. 바로 스토어 기능이다. 질문 목록의 페이지와 유사하게 답변 목록의 페이지, sort_by, desc들도 스토어 변수로 저장해야만 브라우저가 새로 고침을 하더라도 사용할 수 있다. 단 질문 목록에 쓰였던 변수명과 동일하게 사용하면 안되고 별도로 해야 한다. answer_page란 변수로 만든다. 질문 목록에서도 나중에 정렬 기능이 필요할 것 같지만 나중에 변수명 정리를 하기로 한다.
+
+store/index.js파일을 다음과 같이 수정한다.
+
+```javascript{linenos=table, hl_lines=["5-6"]}
+import { createStore } from 'vuex'
+import persistedstate from 'vuex-persistedstate';
+
+
+const store = createStore({
+  plugins: [persistedstate()],
+  state: {
+    page: 0,
+    access_token: "",
+    username: "",
+    is_login: false,
+    keyword: "",
+    answer_page: 0,
+    sort_by: 'create_date',
+    desc: true,
+  },
+  mutations: {
+    setPage(state, payload) {
+      state.page = payload
+    },
+    setAccessToken(state, token) {
+      state.access_token = token
+    },
+    setUsername(state, username) {
+      state.username = username
+    },
+    setIsLogin(state, is_login) {
+      state.is_login = is_login
+    },
+    setKeyword(state, keyword) {
+      state.keyword = keyword
+    },
+    setAnswerPage(state, answer_page) {
+      state.answer_page = answer_page
+    },
+    setSortBy(state, sort_by) {
+      state.sort_by = sort_by
+    },
+    setDesc(state, desc) {
+      state.desc = desc
+    },
+  },
+  actions: {
+    setPage(context, payload) {
+      context.commit('setPage', payload)
+    },
+    setAccessToken(context, payload) {
+      context.commit('setAccessToken', payload)
+    },
+    setUsername(context, payload) {
+      context.commit('setUsername', payload)
+    },
+    setIsLogin(context, payload) {
+      context.commit('setIsLogin', payload)
+    },
+    setKeyword(context, payload) {
+      context.commit('setKeyword', payload)
+    },
+    setAnswerPage(context, payload) {
+      context.commit('setAnswerPage', payload)
+    },
+    setSortBy(context, payload) {
+      context.commit('setSortBy', payload)
+    },
+    setDesc(context, payload) {
+      context.commit('setDesc', payload)
+    },
+  },
+  getters: {
+    getPage: (state) => state.page,
+  }
+})
+
+export default store
+```
+
+다시 PageDetail.vue파일을 수정해야 한다. 익숙하다면 처음에 로컬 변수를 사용하여 작성하지 않고 스토어 변수를 사용하여 작성할 수 있다. 단 본 글의 목적은 교육에 있으므로 단계별로 작성하는 것을 보여준다.
+
+```html{linenos=table, hl_lines=["5-6", "9-23","47-50","55-57","61-72",76]}
+<template>
+(... 생략 ...)
+    <!-- 답변 목록 -->
+    <div class="row">
+     <div class="col-6">
+      <h5 class="border-bottom my-3 py-2 mb-0">{{total}}개의 답변이 있습니다.</h5>
+     </div>
+     <div class="col-6 d-flex justify-content-end align-items-center">
+      <button class="btn mr-2 btn-outline-primary" 
+              :class="{ active: sort_by === 'voter_count'}"
+              @click="this.$store.dispatch('setSortBy', 'voter_count');
+                      this.$store.dispatch('setDesc', true)">추천순</button>
+      <button class="btn btn-outline-primary" 
+              :class="{ active: sort_by === 'create_date' && desc === true}"
+              @click="this.$store.dispatch('setSortBy', 'create_date');
+                      this.$store.dispatch('setDesc', true)">최신순</button>
+      <button class="btn btn-outline-primary" 
+              :class="{ active: sort_by === 'create_date' && desc === false}"
+              @click="this.$store.dispatch('setSortBy', 'create_date');
+                      this.$store.dispatch('setDesc', false)">오래된순</button>
+     </div>
+    </div>
+    <div v-for="answer in answerList" :key="answer.id" class="card my-3">
+        <div class="card-body">
+            <div class="card-text" v-html="markContent(answer.content)"></div>
+(... 생략 ...)
+
+    <!-- 페이징처리 시작 -->
+    <ul class="pagination justify-content-center">
+      <li class="page-item" :class="{ disabled: answer_page <= 0 }">
+        <button class="page-link" @click="this.$store.dispatch('setAnswerPage', answer_page - 1)">이전</button>
+      </li>
+      <template v-for="(value, index) in Array.from({ length: totalPage })" :key="index">
+        <li class="page-item" v-if="index >= answer_page - 5 && index <= answer_page + 5" :class="{ active: index === answer_page }">
+          <button class="page-link" @click="this.$store.dispatch('setAnswerPage', index)">{{ index + 1 }}</button>
+        </li>
+      </template>
+      <li class="page-item" :class="{ disabled: answer_page >= totalPage - 1 }">
+        <button class="page-link" @click="this.$store.dispatch('setAnswerPage', answer_page + 1)">다음</button>
+      </li>
+    </ul>
+    <!-- 페이징처리 끝 -->
+
+(... 생략 ...)
+  
+</template>
+
+<script>
+import fastapi from '../lib/api';
+import moment from 'moment';
+import 'moment/locale/ko';
+import { parse } from 'marked';
+
+(... 생략 ...)
+
+export default {
+(... 생략 ...)
+  data() {
+    return {
+      question: { answers: [], voter:[], content:''  },
+      content: "",
+      answerList: [],
+      size: 5,
+      total: 0,
+    };
+  },
+  computed: {
+      is_login() {
+        return this.$store.state.is_login;
+      },
+      markContent() {
+        return (content) => parse(content);
+      },
+      totalPage() {
+        return Math.ceil(this.total / this.size);
+      },
+      answer_page() { 
+          return this.$store.state.answer_page 
+      },
+      sort_by() { 
+          return this.$store.state.sort_by 
+      },
+      desc() {
+           return this.$store.state.desc 
+      },
+  },
+  methods: {
+(... 생략 ...)
+    getAnswerList() {
+      let url = "/api/answer/list"
+      let params = { 
+          question_id: this.question_id,
+          page: this.answer_page,
+          size: this.size,
+          sort_by: this.sort_by,
+          desc: this.desc
+      }
+      fastapi('get', url, params, (json) => {
+        this.answerList = json.answer_list;
+        this.total = json.total;
+      });
+    },
+  },  
+  watch: {
+    answer_page() {
+        this.getAnswerList();
+    },
+    sort_by() {
+        this.getAnswerList();
+    },
+    desc() {
+        this.getAnswerList();
+    }
+  },
+  created() {
+    this.getQuestion();
+    this.$store.dispatch('setAnswerPage', 0)
+    this.$store.dispatch('setSortBy', 'create_date');
+    this.$store.dispatch('setDesc', true)
+    this.getAnswerList();
+  }
+}
+```
+
+역시 변경 부분이 많다. 일단 정렬 방법은 추천순, 최신순, 오래된순으로 하여 버튼으로 만들고 버튼을 누르면 버튼이 강조되고 sort_by와 desc 변수가 변경되도록 하였다. 이 변수들은 스토어변수를 사용한다. watch섹션에서는 이 변수가 변경되는것을 지켜보면서 변경되면 답변 목록 함수(API)를 호출한다. created섹션에서는 각 변수의 초기값을 지정해준다. 이러면 한 질문의 상세 페이지를 보다가 다른 화면으로 가고 다시 다른 질문의 상세 페이지를 보면 초기값으로 된다. 단 한 질문 상세 페이지에서는 이전에 바꿨던 것이 스토어에 남으므로 새로 고침을 하더라도 초기값으로 바뀌지 않고 스토어에 있는 값을 사용한다. 
