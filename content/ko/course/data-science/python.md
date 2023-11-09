@@ -1,6 +1,6 @@
 ---
 title: 답변 페이징과 정렬
-date: '2023-11-21'
+date: '2023-11-01'
 type: book
 weight: 5
 ---
