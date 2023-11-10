@@ -1,5 +1,6 @@
 
 * light code syntax bagkground
+* 에러 페이지 vue 2.07-
 * store/index.js
   * 파일 깔끔하게
   * getters 사용여부
