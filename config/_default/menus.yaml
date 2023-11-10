@@ -19,7 +19,7 @@ main:
 #    parent: Courses
 #
   - name: 점프 투 FastAPI with Vue
-    PageRef: course/data-science/_index.md
+    PageRef: course/fastapi_vue/_index.md
     weight: 10
     parent: courses
   - name: Robotics
