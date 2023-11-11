@@ -1,5 +1,5 @@
 
-~~~ * light code syntax bagkground~~~
+~ * light code syntax bagkground~
 
 
 * store/index.js
