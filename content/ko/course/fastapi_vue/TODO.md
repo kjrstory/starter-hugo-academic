@@ -2,9 +2,7 @@
 ~ * light code syntax bagkground~
 
 
-* store/index.js
-  * 파일 깔끔하게
-  * getters 사용여부
+
 
 * 질문 목록 페이징 _, loop_page로 변수명 변경
 
@@ -21,8 +19,13 @@
   * 에러 페이지
 
 * 3.02
-  * <tr v-for="(question,i) in questionList" :key="question.id">
+  * ```<tr v-for="(question,i) in questionList" :key="question.id">```
 
+* 3.03
+  * store/index.js파일 깔끔하게
+  * store/index.jsgetters 사용여부
+ 
+    
 * 3.04
   * method 대신 filter로 구현?
 
