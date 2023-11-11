@@ -28,7 +28,7 @@
     
 * 3.04
   * method 대신 filter로 구현?
-
+  * ```import moment from 'moment/min/moment-with-locales```
     
 * 3.16.1
   * API 확인 캡처
