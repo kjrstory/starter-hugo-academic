@@ -10,14 +10,18 @@
 
 * 2.07
   * 오류 페이지
+
+* 2.09
+  * 만들어야 하나?
  
+    
 * 2.10
   * 오류 페이지
 
 * 3.01
   * 내비게이션 navbarNav-> navbarSupportedContent로 변경
 * 3.02
-  * ```<tr v-for="(question,i) in questionList" :key="question.id">```
+  * 행 수 초과
   * 질문 목록 페이징 _, loop_page로 변수명 변경
 
 * 3.03
