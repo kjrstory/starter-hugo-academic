@@ -1,5 +1,5 @@
 
-~ * light code syntax bagkground~
+~* light code syntax bagkground~
 
 * 용어 설명
   * 바인딩
@@ -30,7 +30,7 @@
   * 오류 페이지
   * 스토어 변수
 
- * 3.10
+* 3.10
   * 모멘트 날짜 필터
     
 * 3.16.1
