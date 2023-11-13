@@ -2,27 +2,31 @@
 ~* light code syntax bagkground~
 
 * 용어 설명
-  * ~디렉티브~
-  * ~DOM~
-  * ~라이프 사이클 홈~
+  ~* 디렉티브~
+  ~* DOM~
+  ~* 라이프 사이클 홈~
 
-*Vue 탭 칸
+* Vue 탭 칸
+* 내비게이션바 파일 경로
 
+* 2.05(2.07까지 완료)
+  * api.js에서 url 설정, api.js 변경
+ 
 * 2.07
-  * 오류 페이지
+  ~* 오류 페이지~
 
 * 2.09
   * 만들어야 하나?
- 
-    
+     
 * 2.10
   * 오류 페이지
 
-* 3.01
-  * 내비게이션 navbarNav-> navbarSupportedContent로 변경
-* 3.02
-  * 행 수 초과
-  * 질문 목록 페이징 _, loop_page로 변수명 변경
+* 3.01(3.12까지 완료)
+  ~* 내비게이션 navbarNav-> navbarSupportedContent로 변경~ 
+  
+* 3.02(이후 챕터 반영 필요)
+  ~* 행 수 초과~
+  ~* 질문 목록 페이징 _, loop_page로 변수명 변경~
 
 * 3.03
   * store/index.js파일 깔끔하게 ES6 문법 적용
