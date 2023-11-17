@@ -62,7 +62,7 @@ locale:
 
 features:
   syntax_highlighter:
-    theme_light: github-light
+    theme_light: github-light-custom
     theme_dark: catppuccin-mocha
   math:
     enable: false
