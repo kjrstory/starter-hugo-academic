@@ -189,9 +189,18 @@ Chief Product Officer {{< figure src="assets/cpo.png" height="40px" width="30px"
 {{% callout info %}}
 <div>
   <p>Chief Product Officer </p>
-  <img src="assets/cpo.png" style="height: 40px; width: 30px">
+  <img src="assets/cpo.png" style="height: 40px; width: 30px; position: relative">
   </div>
 {{% /callout %}}
+
+{{% callout info %}}
+<div>
+  Chief Product Officer
+  <img src="assets/cpo.png" style="height: 40px; width: 30px; position: relative">
+</div>
+{{% /callout %}}
+
+ CPO <img src="assets/cpo.png" style="height: 40px; width: 30px; position: relative">
 
 {{% callout example %}}
 우리는 새로운 사용자의 요구를 충족시키기 위해 다양한 제품 모달리티를 고려해야 합니다. 오목 게임을 만들기 위해서는 시각적인 요소와
