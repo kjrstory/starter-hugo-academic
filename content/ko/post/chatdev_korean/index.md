@@ -10,6 +10,12 @@ tags:
   - chatdev
 categories:
   - AI
+image:
+  filename: chatdev_logo1.png
+  focal_point: Smart
+  preview_only: false
+  caption: "Figure by [ChatDev](https://github.com/OpenBMB/ChatDev)"
+  
 ---
 
 
@@ -49,8 +55,11 @@ python3 run.py --task "Develop a basic Gomoku game."
 
 {{% callout note-admon %}}
 "You are Programmer. we are both working at ChatDev. We share a common interest in collaborating to successfully complete a task assigned by a new customer.",
+
 "You can write/create computer software or applications by providing a specific programming language to the computer. You have extensive computing and coding experience in many varieties of programming languages and platforms, such as Python, Java, C, C++, HTML, CSS, JavaScript, XML, SQL, PHP, etc,.",
+
 "Here is a new customer's task: {task}.",
+
 "To complete the task, you must write a response that appropriately solves the requested instruction based on your expertise and customer's needs."
 {{% /callout %}}
 
@@ -58,8 +67,11 @@ python3 run.py --task "Develop a basic Gomoku game."
 
 {{% callout note-admon %}}
 "We have decided to complete the task through a executable software with multiple files implemented via {language}. As the {assistant_role}, to satisfy the new user's demands, you should write one or multiple files and make sure that every detail of the architecture is, in the end, implemented as code. {gui}",
+
 "Think step by step and reason yourself to the right decisions to make sure we get it right.",
+
 "You will first lay out the names of the core classes, functions, methods that will be necessary, as well as a quick comment on their purpose.",
+
 "Then you will output the content of each file including complete code. Each file must strictly follow a markdown code block format, where the following tokens must be replaced such that \"FILENAME\" is the lowercase file name including the file extension, \"LANGUAGE\" in the programming language, \"DOCSTRING\" is a string literal specified in source code that is used to document a specific segment of code, and \"CODE\" is the original code:",
 {{% /callout %}}
 
@@ -74,9 +86,12 @@ python3 run.py --task "Develop a basic Gomoku game."
 
 {{% callout note-admon %}}
 "당신은 프로그래머입니다. 현재 우리는 ChatDev에서 함께 일하고 있습니다. 새로운 고객이 할당한 작업을 성공적으로 완료하기 위해 협력에 공통적인 관심을 가지고 있습니다.",
+
 "여러분은 컴퓨터에 특정 프로그래밍 언어를 제공하여 컴퓨터 소프트웨어나 애플리케이션을 작성/생성할 수 있습니다. 여러분은 Python, Java, C, C++, HTML, CSS, JavaScript, XML, SQL, PHP 등 여러 가지 프로그
 래밍 언어와 플랫폼에서 광범위한 컴퓨팅 및 코딩 경험을 가지고 있습니다.",
+
 "여기에 새로운 고객의 작업이 있습니다: {task}.",
+
 "작업을 완료하기 위해 여러분은 여러분의 전문 지식과 고객의 요구에 기반하여 요청된 지침을 적절히 해결하는 응답을 작성해야 합니다."
 {{% /callout %}}
 
@@ -103,6 +118,13 @@ python3 run.py --task "오목 게임을 만들어줘" --config "Story"
 ChatDev에서는 진행 과정을 대화 형식으로 볼 수 있습니다. 
 
 ### 단계1
+
+<div class="markdown-body" style="padding: 10px; border: 1px solid rgba(11, 20, 150, 0.3); width: 750px; border-radius: 10px; box-shadow: black 2px 2px 2px; background-color: rgb(19, 49, 83);"><p>우
+리는 새로운 사용자의 요구를 충족시키기 위해 다양한 제품 모달리티를 고려해야 합니다. 오목 게임을 만들기 위해서는 시각적인 요소와
+ 상호작용이 필요합니다. 따라서 Application 모달리티가 가장 적합해 보입니다. 이 모달리티를 통해 사용자는 게임을
+시각적으로 플레이하고 상호작용할 수 있습니다. 이에 대해 의견이 있으신가요?</p>
+</div>
+
 
 ### 단계2
 
@@ -134,7 +156,7 @@ ChatDev를 사용하면서 여러 비판이 있을 수 있습니다.
 그리고 ChatDev는 처음부터 개발하는 기능 외에 이미 있는 코드에 추가 기능을 넣는 기능도 있습니다.
 사실 이 기능을 더 테스트 해보고 싶었습니다.
 깃헙의 오픈소스들을 보면 잘 되는 것도 있지만 버려진 오픈소스들도 많습니다.
-이런 오픈소스중에 쓸만한 것도 있지만 계속 유지보수가 안되는 상황이라면 미래에 문제가 생길 수 있기 때문에 사용하기가 꺼려집니다.
+이런 오픈소스중에 쓸만한 것도 있는데 계속 유지보수가 안되는 상황이라면 미래에 문제가 생길 수 있기 때문에 사용하기가 꺼려집니다.
 ChatDev를 이용해서 그런 버려진 오픈소스에 생명을 불어넣는게 가능하지 않을까 기대를 해봅니다.
 
 다만 ChatDev는 무료로 사용할 수는 없고 ChatGPT의 API가 필요합니다. 
