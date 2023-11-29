@@ -19,8 +19,6 @@ image:
 ---
 
 
-<label style="position: relative;">📃num_code_files</label>
-
 ## ChatDev 소개
 ChatGPT의 출시 이후 코딩을 할 때도 여러모로 도움을 많이 받고 있습니다. 
 처음에는 간단한 기능에 대해 코드를 만들어 달라고 하거나 이미 만든 코드를 깔끔하게 바꿔달라는 식으로 활용했습니다.
@@ -117,20 +115,50 @@ python3 run.py --task "오목 게임을 만들어줘" --config "Story"
 
 ChatDev에서는 진행 과정을 대화 형식으로 볼 수 있습니다. 
 
-### 단계1
+### 단계1 요구분석(Demand Analysis)
+
+첫번째 단계는 CEO(Chief Executive Officer, 최고경영자)와 CPO(Chief Product Officer, 최고상품책임자)가 수행합니다. 대화를 들어봅시다.
+
 
 <link rel="stylesheet" href="github-markdown-dark.css">
 
-<div style="position: relative; display: flex; flex-direction: column; width: 640px;">
-<div style="display: flex; background-color: lightblue; width: fit-content; padding: 5px 20px; margin-bottom: 5px; font-size: 13px; border: 1px solid rgba(11, 20, 150, 0.3); border-radius: 10px; box-shadow: black 2px 2px 2px;">
-<p>Chief Product Officer</p>
-<img src="assets/cpo.png" style="height: 40px; width: 30px; position: relative; margin-left: 10px;">
+<div style="position: relative; display: flex; flex-direction: column; width: 773px;">
+<div style="display: flex; background-color: lightblue; width: fit-content; padding: 5px 20px; margin-bottom: 5px; font-size: 13px; border: 1px solid rgba(11, 20, 150, 0.3); border-radius: 10px; box-shadow: black 2px 2px 2px; position: relative; margin-left: auto;">
+<p>Chief Executive Officer</p>
+<img src="replay_files/ceo.png" style="height: 40px; width: 30px; position: relative; margin-left: 10px;"></div>
+
+<div class="markdown-body" style="padding: 10px; border: 1px solid rgba(11, 20, 150, 0.3); width: 750px; border-radius: 10px; box-shadow: black 2px 2px 2px; background-color: rgb(75, 117, 26);"><p>ChatDev는 이전에 다음과 같은 형식의 제품을 만들었습니다:</p>
+<p>Image: can present information in line chart, bar chart, flow chart, cloud chart, Gantt chart, etc.</p>
+<p>Document: can present information via .docx files.</p>
+<p>PowerPoint: can present information via .pptx files.</p>
+<p>Excel: can present information via .xlsx files.</p>
+<p>PDF: can present information via .pdf files.</p>
+<p>Website: can present personal resume, tutorial, products, or ideas, via .html files.</p>
+<p>Application: can implement visualized game, software, tool, etc, via python.</p>
+<p>Dashboard: can display a panel visualizing real-time information.</p>
+<p>Mind Map: can represent ideas, with related concepts arranged around a core concept.</p>
+<p>Chief Product Officer로서, 새로운 사용자의 요구를 충족시키고 제품이 실현 가능하도록 하기 위해 어떤 제품 모달리티로 만들지에 대해 계속 논의해야 합니다.</p>
+<p>제품 modality에 대해서만 논의해야 합니다! 한 번 우리 모두가 의견을 표명하고 토론 결과에 모두 동의하면, 누구든지
+토론을 한 줄로만 시작하는 단어 &lt;INFO&gt;로 종료해야 합니다. 그 후에는 다른 말 없이 최종 제품 모달리티가 따라와야
+ 합니다. 예., "&lt;INFO&gt; PowerPoint".</p>
 </div>
-<div class="markdown-body" style="padding: 10px; border: 1px solid rgba(11, 20, 150, 0.3); width: 640px; border-radius: 10px; box-shadow: black 2px 2px 2px; background-color: rgb(19, 49, 83);">
-<p>우리는 새로운 사용자의 요구를 충족시키기 위해 다양한 제품 모달리티를 고려해야 합니다. 오목 게임을 만들기 위해서는 시각적인 요소와
+<div style="height: 10px;"></div>
+</div>
+
+
+<div style="position: relative; display: flex; flex-direction: column; width: 640px;">
+ <div style="display: flex; background-color: lightblue; width: fit-content; padding: 5px 20px; margin-bottom: 5px; font-size: 13px; border: 1px solid rgba(11, 20, 150, 0.3); border-radius: 10px; box-shadow: black 2px 2px 2px;">
+  <p>Chief Product Officer
+  <img src="assets/cpo.png" style="height: 40px; width: 30px; position: relative; margin-left: 10px;">
+  </p>
+ </div>
+
+ <div class="markdown-body" style="padding: 10px; border: 1px solid rgba(11, 20, 150, 0.3); width: 640px; border-radius: 10px; box-shadow: black 2px 2px 2px; background-color: rgb(19, 49, 83);">
+   <p>우리는 새로운 사용자의 요구를 충족시키기 위해 다양한 제품 모달리티를 고려해야 합니다. 오목 게임을 만들기 위해서는 시각적인 요소와
  상호작용이 필요합니다. 따라서 Application 모달리티가 가장 적합해 보입니다. 이 모달리티를 통해 사용자는 게임을
 시각적으로 플레이하고 상호작용할 수 있습니다. 이에 대해 의견이 있으신가요?</p>
-</div>
+ </div>
+<div style="height: 10px;"></div>
 </div>
 
 <div style="position: relative; display: flex; flex-direction: column; width: 773px;">
@@ -164,17 +192,32 @@ ChatDev에서는 진행 과정을 대화 형식으로 볼 수 있습니다.
 </div></div>
 
 
-### 단계2
+여기서 모달리티(modality)란 단어가 나옵니다. SW의 형태,양식을 정하는 것으로 Excel, Application, Mind Map 같은 예시를 들어주고 있습니다. 한국어로 번역하기가 애매하여 모달리티라고 표현했는데 적절한 단어가 있다면 바꾸는게 좋을 것 같습니다.
+
+대체로 Application 모달리티가 좋다고 하며 이런저런 기능들을 추천합니다. CEO가 질문 한 상태에서 마무리가 되는데 대화 턴을 2번으로 제한하였기 때문입니다.
 
 
 
+### 단계2 언어 선정(Language Choose)
 
-### 단계3
+프로그래밍 언어를 선정하는 단계입니다.
+
+
+여기서 예시를 드는 분이 잘못들가는 것 같습니다.
+별다른 토론을 하지 않고 Python을 선정합니다.
+이 부분이 잘 못되어 그런것 같은데 나중에 보완하도록 합시다.
+
+
+
+### 단계3 코딩(Coding)
+
+3번째 단계는 코딩 단계입니다.
+CTO(Chief Technology Officer)와 프로그래머(Programmer)가 수행합니다.
 
 <div style="position: relative; display: flex; flex-direction: column; width: 773px;">
 <div style="display: flex; background-color: lightblue; width: fit-content; padding: 5px 20px; margin-bottom: 5px; font-size: 13px; border: 1px solid rgba(11, 20, 150, 0.3); border-radius: 10px; box-shadow: black 2px 2px 2px;">
 <p>Programmer</p>
-<img src="replay_files/programmer.png" style="height: 40px; width: 30px; position: relative; margin-left: 10px;">
+<img src="assets/programmer.png" style="height: 40px; width: 30px; position: relative; margin-left: 10px;">
 </div>
 <div class="markdown-body" style="padding: 10px; border: 1px solid rgba(11, 20, 150, 0.3); width: 750px; border-radius: 10px; box-shadow: black 2px 2px 2px; background-color: rgb(19, 49, 83);">
 <p>main.py</p>
