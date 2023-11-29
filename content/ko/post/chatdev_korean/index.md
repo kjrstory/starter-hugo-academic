@@ -121,13 +121,13 @@ ChatDev에서는 진행 과정을 대화 형식으로 볼 수 있습니다.
 
 <link rel="stylesheet" href="github-markdown-dark.css">
 
-<div style="position: relative; display: flex; flex-direction: column; width: 773px;">
+<div style="position: relative; display: flex; flex-direction: column; width: 640px;">
 <div style="display: flex; background-color: lightblue; width: fit-content; padding: 5px 20px; margin-bottom: 5px; font-size: 13px; border: 1px solid rgba(11, 20, 150, 0.3); border-radius: 10px; box-shadow: black 2px 2px 2px;">
 <p>Chief Product Officer</p>
 <img src="assets/cpo.png" style="height: 40px; width: 30px; position: relative; margin-left: 10px;">
 </div>
-<div class="markdown-body" style="padding: 10px; border: 1px solid rgba(11, 20, 150, 0.3); width: 750px; border-radius: 10px; box-shadow: black 2px 2px 2px; background-color: rgb(19, 49, 83);"><p>우
-리는 새로운 사용자의 요구를 충족시키기 위해 다양한 제품 모달리티를 고려해야 합니다. 오목 게임을 만들기 위해서는 시각적인 요소와
+<div class="markdown-body" style="padding: 10px; border: 1px solid rgba(11, 20, 150, 0.3); width: 640px; border-radius: 10px; box-shadow: black 2px 2px 2px; background-color: rgb(19, 49, 83);">
+<p>우리는 새로운 사용자의 요구를 충족시키기 위해 다양한 제품 모달리티를 고려해야 합니다. 오목 게임을 만들기 위해서는 시각적인 요소와
  상호작용이 필요합니다. 따라서 Application 모달리티가 가장 적합해 보입니다. 이 모달리티를 통해 사용자는 게임을
 시각적으로 플레이하고 상호작용할 수 있습니다. 이에 대해 의견이 있으신가요?</p>
 </div>
@@ -166,7 +166,110 @@ ChatDev에서는 진행 과정을 대화 형식으로 볼 수 있습니다.
 
 ### 단계2
 
+
+
+
 ### 단계3
+
+<div style="position: relative; display: flex; flex-direction: column; width: 773px;">
+<div style="display: flex; background-color: lightblue; width: fit-content; padding: 5px 20px; margin-bottom: 5px; font-size: 13px; border: 1px solid rgba(11, 20, 150, 0.3); border-radius: 10px; box-shadow: black 2px 2px 2px;">
+<p>Programmer</p>
+<img src="replay_files/programmer.png" style="height: 40px; width: 30px; position: relative; margin-left: 10px;">
+</div>
+<div class="markdown-body" style="padding: 10px; border: 1px solid rgba(11, 20, 150, 0.3); width: 750px; border-radius: 10px; box-shadow: black 2px 2px 2px; background-color: rgb(19, 49, 83);">
+<p>main.py</p>
+<pre><code class="language-python">'''
+This is the main file of the Gomoku game.
+'''
+
+import tkinter as tk
+from game import Game
+
+def main():
+    root = tk.Tk()
+    game = Game(root)
+    game.start()
+    root.mainloop()
+
+if __name__ == "__main__":
+    main()
+</code></pre>
+<p>game.py</p>
+<pre><code class="language-python">'''
+This file contains the Game class which represents the Gomoku game.
+'''
+
+import tkinter as tk
+
+class Game:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Gomoku")
+        self.canvas = tk.Canvas(self.root, width=600, height=600)
+        self.canvas.pack()
+        self.canvas.bind("&lt;Button-1&gt;", self.on_click)
+        self.board = [[0] * 15 for _ in range(15)]
+        self.current_player = 1
+
+    def start(self):
+        self.draw_board()
+
+    def draw_board(self):
+        self.canvas.delete("all")
+        for i in range(15):
+            self.canvas.create_line(0, i * 40, 600, i * 40)
+            self.canvas.create_line(i * 40, 0, i * 40, 600)
+
+    def on_click(self, event):
+        x = event.x // 40
+        y = event.y // 40
+        if self.board[y][x] == 0:
+            self.board[y][x] = self.current_player
+            self.draw_piece(x, y)
+            if self.check_win(x, y):
+                self.show_winner()
+            else:
+                self.current_player = 3 - self.current_player
+
+    def draw_piece(self, x, y):
+        if self.current_player == 1:
+            color = "black"
+        else:
+            color = "white"
+        self.canvas.create_oval(x * 40 + 5, y * 40 + 5, x * 40 + 35, y * 40 + 35, fill=color)
+
+    def check_win(self, x, y):
+        directions = [(1, 0), (0, 1), (1, 1), (1, -1)]
+        for dx, dy in directions:
+            count = 1
+            for i in range(1, 5):
+                nx = x + dx * i
+                ny = y + dy * i
+                if nx &lt; 0 or nx &gt;= 15 or ny &lt; 0 or ny &gt;= 15 or self.board[ny][nx] != self.current_player:
+                    break
+                count += 1
+            for i in range(1, 5):
+                nx = x - dx * i
+                ny = y - dy * i
+                if nx &lt; 0 or nx &gt;= 15 or ny &lt; 0 or ny &gt;= 15 or self.board[ny][nx] != self.current_player:
+                    break
+                count += 1
+            if count &gt;= 5:
+                return True
+        return False
+
+    def show_winner(self):
+        if self.current_player == 1:
+            winner = "Black"
+        else:
+            winner = "White"
+        self.canvas.create_text(300, 300, text=f"{winner} wins!", font=("Arial", 30), fill="red")
+</code></pre>
+<p>이제 코드를 실행하면 Python으로 구현된 오목 게임이 실행됩니다. GUI를 통해 게임을 플레이할 수 있으며, 검은색과
+흰색 돌을 번갈아가며 놓을 수 있습니다. 승리 조건은 5개의 돌을 연속으로 놓는 것입니다. 승리한 플레이어는 화면에 표시됩니다.</p>
+</div>
+</div>
+
 
 ### 단계4
 
