@@ -183,11 +183,14 @@ ChatDev에서는 진행 과정을 대화 형식으로 볼 수 있습니다.
 
 
 {{% callout info %}}
-Chief Product Officer {{< figure src="assets/cpo.png" style="height: 40px; width: 30px">}}
+Chief Product Officer {{< figure src="assets/cpo.png" height="40px" width="30px">}}
 {{% /callout %}}
 
 {{% callout info %}}
-Chief Product Officer <img src="assets/cpo.png" style="height: 40px; width: 30px">
+<div>
+  <p>Chief Product Officer </p>
+  <img src="assets/cpo.png" style="height: 40px; width: 30px">
+  </div>
 {{% /callout %}}
 
 {{% callout example %}}
