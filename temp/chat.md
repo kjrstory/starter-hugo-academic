@@ -23,7 +23,7 @@ ChatDev에서는 한줄로 실행 가능한 코드 전체를 제공하는 것을
 ```
 python3 run.py --task "Develop a basic Gomoku game." 
 ```
-라는 명령을 주면 "Develop a basic Gomoku game." 에 해당하는 코드가 만들어지는겁니다.
+라는 명령을 주면 정말로 오목(Gomoku)게임을 할 수 있는 코드가 만들어지는겁니다.
 
 세부적인 단계를 살펴보면 각각 여러명의 가상인물에게 역할을 부여하고 단계를 정의하여 마치 가상의 회사에서 SW개발을 하는 것처럼 진행이 됩니다.
 이런 설정들은 모두 ChatGPT와의 대화인 것이고 기본으로 주어지는 설정(대화)들은 영어로 되어있습니다.
@@ -34,7 +34,7 @@ python3 run.py --task "Develop a basic Gomoku game."
 "Here is a new customer's task: {task}.",
 "To complete the task, you must write a response that appropriately solves the requested instruction based on your expertise and customer's needs."
     
-코드 생성 단계에서는 다음과 같이 단계를 정의합니다. 역시 ChatGPT와 대화하는 것입니다.
+코드 생성 단계에서는 다음과 같이 단계를 정의합니다. 역시 ChatGPT와 대화하는 것이며 기본으로 주어지는 설정은 영어로 되어있습니다.
 
 "We have decided to complete the task through a executable software with multiple files implemented via {language}. As the {assistant_role}, to satisfy the new user's demands, you should write one or multiple files and make sure that every detail of the architecture is, in the end, implemented as code. {gui}",
 "Think step by step and reason yourself to the right decisions to make sure we get it right.",
@@ -99,11 +99,10 @@ ChatDev에서는 진행 과정을 대화 형식으로 볼 수 있습니다.
 
 ## 결론
 ChatDev를 사용하면서 여러 비판이 있을 수 있습니다. 
-ChatDev에서 현재까지의 예제는 간단한 SW밖에 없습니다. 
-어차피 이런 간단한 SW가 실제 사용되는 일은 없을겁니다.
+하지만 ChatDev에서 현재까지의 예제는 간단한 SW밖에 없고 이런 간단한 SW가 실제 사용되는 일은 없을겁니다.
 다만 ChatDev는 출시된지 2개월밖에 안되는 오픈소스이기 때문에 충분히 발전 가능한 도구라고 기대할 수 있습니다.
 
-그리고 ChatDev는 처음부터 개발하는 기능외에 이미 있는 코드에 추가 기능을 넣는 기능도 있습니다.
+그리고 ChatDev는 처음부터 개발하는 기능 외에 이미 있는 코드에 추가 기능을 넣는 기능도 있습니다.
 사실 이 기능을 더 테스트 해보고 싶었습니다.
 깃헙의 오픈소스들을 보면 잘 되는 것도 있지만 버려진 오픈소스들도 많습니다.
 이런 오픈소스중에 쓸만한 것도 있지만 계속 유지보수가 안되는 상황이라면 미래에 문제가 생길 수 있기 때문에 사용하기가 꺼려집니다.
@@ -112,9 +111,9 @@ ChatDev를 이용해서 그런 버려진 오픈소스에 생명을 불어넣는�
 다만 ChatDev는 무료로 사용할 수는 없고 ChatGPT의 API가 필요합니다. 
 이 API를 호출하는데 약간의 돈이 들어가게 됩니다. 
 위의 결과를 테스트하는데 실제로는 한번의 테스트로 되진 않았고 여러번 실행을 했었습니다.
-이런 저럼 설정 테스트를 하려면 비용이 더 발생할 것이므로 신중하게 하려고 합니다.
-참고로 Local LLM이나 ChatGPT가 아닌 생성형 AI도 곧 ChatDev에 기능이 들어갈수도 있습니다.
-궁극적으로는 여러 LLM을 활용하여 에이전트(=가상의 회사직원이라고 생각하면 됩니다)를 활용하려고 하는것입니다.
+이런 저런 설정 테스트를 하려면 비용이 더 발생할 것이므로 신중하게 하려고 합니다.
+참고로 Local LLM이나 ChatGPT가 아닌 생성형 AI도 곧 ChatDev에 지원이 가능할 수도 있습니다.
+궁극적으로 여러 LLM을 활용하여 에이전트(ChatDev에서는 가상의 회사직원이라고 생각하면 됩니다)를 활용하려고 하는것입니다.
 
 
 
@@ -122,4 +121,4 @@ ChatDev를 이용해서 그런 버려진 오픈소스에 생명을 불어넣는�
 
 1. ChatDev 프레임워크는 여러 LLM 에이전트를 활용하여 SW개발을 하는 도구입니다.
 2. ChatDev에서는 가상의 SW 개발 회사를 만드는 것처럼 직원과 개발 단계를 정의할 수 있습니다.
-3. ChatDev를 한국어로 소통하는 한국회사로 커스텀하였고 간단한 오목 게임을 만드는 것을 성공하였습니다. 
+3. ChatDev에서 한국어로 소통하는 한국 회사를 커스텀하였고 간단한 오목 게임을 만드는 것을 성공하였습니다. 
