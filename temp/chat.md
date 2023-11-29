@@ -1,18 +1,25 @@
+
+## ChatDev 소개
 ChatGPT의 출시 이후 코딩을 할 때도 여러모로 도움을 많이 받고 있습니다. 
-처음에는 간단한 기능에 대해 코드를 만들어 달라고 했고, 이미 만든 코드를 깔끔하게 바꿔달라는 식으로 활용했습니다.
-그러다 github copilot라고 하여 IDE에 플러그인으로 사용 가능한 도구도 사용해보았습니다. 
+처음에는 간단한 기능에 대해 코드를 만들어 달라고 하거나 이미 만든 코드를 깔끔하게 바꿔달라는 식으로 활용했습니다.
+그러다 github copilot라고 하여 IDE에 플러그인으로 사용 가능한 도구를 사용해보았습니다. 
 저에게는 너무 좋은 도구였는데 유료이다 보니 마지막에 스퍼트를 내야할 때만 사용하고 있습니다.
 
-여기서 [ChatDev](https://github.com/OpenBMB/ChatDev)라고 해서 최근에 나온 도구를 사용해본 시도를 소개합니다.
-ChatDev는 한마디로 정의하면 멀티 에이전트 SW 개발 도구라고 할 수 있습니다. 
-이 정의를 이해하려면 생성 AI에서 에이전트가 무엇인지를 알아야 합니다.
+여기서 또 다른 AI를 활용한 SW 개발도구인 [ChatDev](https://github.com/OpenBMB/ChatDev)를 소개합니다.
+ChatDev는 한마디로 정의하면 **멀티 에이전트 SW 개발 도구**라고 할 수 있습니다. 
+이 정의를 이해하려면 생성 AI에서 **에이전트**가 무엇인지를 알아야 합니다.
 다만 이 글에서는 ChatDev에 대한 학문적인 설명은 하지 않으려고 합니다.
-저는 ChatDev의 사용자로서 사용해본 사례를 소개함과 동시에 한국어로도 사용가능한가에 대해 관심을 가지게 되었습니다.
+아래 논문과 리뷰들을 통해 정보를 얻기 바랍니다.
+[논문](https://arxiv.org/abs/2307.07924)
+[리뷰](https://blog.firstpenguine.school/108)
 
+
+## ChatDev 사용법 및 세부 설정
+저는 ChatDev의 사용자로서 사용해본 사례를 소개함과 동시에 한국어로도 사용가능한가에 대해 관심을 가지게 되었습니다.
 ChatDev에서는 한줄로 실행 가능한 코드 전체를 제공하는 것을 목표로 합니다.
 예를 들어
-python3 run.py --task "[description_of_your_idea]" 
-라는 명령을 주면 "" 에 해당하는 코드가 만들어지는겁니다.
+python3 run.py --task "Develop a basic Gomoku game." 
+라는 명령을 주면 "Develop a basic Gomoku game." 에 해당하는 코드가 만들어지는겁니다.
 
 세부적인 단계를 살펴보면 각각 여러명의 가상인물에게 역할을 부여하고 단계를 정의하여 마치 가상의 회사에서 SW개발을 하는 것처럼 진행이 됩니다.
 이런 설정들은 모두 ChatGPT와의 대화인 것이고 기본으로 주어지는 설정(대화)들은 영어로 되어있습니다.
@@ -31,6 +38,7 @@ python3 run.py --task "[description_of_your_idea]"
 "Then you will output the content of each file including complete code. Each file must strictly follow a markdown code block format, where the following tokens must be replaced such that \"FILENAME\" is the lowercase file name including the file extension, \"LANGUAGE\" in the programming language, \"DOCSTRING\" is a string literal specified in source code that is used to document a specific segment of code, and \"CODE\" is the original code:",
 
 
+## ChatDev 한국어 커스텀
 이런 역할과 단계들은 사용자가 커스텀할 수도 있습니다.
 그래서 저도 커스텀을 시도하면서 영어가 아닌 한국어로 해보려고 합니다. 
 
@@ -39,6 +47,9 @@ python3 run.py --task "[description_of_your_idea]"
 사실 위의 영어 문장들을 거의 그대로 번역한 것입니다.
 다만 코드에 사용되어 번역하면 안되는 단어들도 있습니다. 이런 단어들은 수동으로 걸러내는 등의 약간의 수정을 가했습니다.
 
+
+
+## ChatDev 한국어 커스텀 결과
 
 이제 한국어로 명령을 주겠습니다.
 python3 run.py --task "오목 게임을 만들어줘" 
@@ -69,6 +80,8 @@ ChatDev에서는 진행 과정을 대화 형식으로 볼 수 있습니다.
 
 다만 매뉴얼을 영어로 작성했습니다. 물론 어떻게 작성하라고 정확히 지시하지 못한 저의 잘못일수도 있고요.
 
+
+## 결론
 ChatDev를 사용하면서 여러 비판이 있을 수 있습니다. 
 ChatDev에서 현재까지의 예제는 간단한 SW밖에 없습니다. 
 어차피 이런 간단한 SW가 실제 사용되는 일은 없을겁니다.
