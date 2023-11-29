@@ -1,6 +1,6 @@
 ---
 title: "생성형 AI를 이용한 SW 개발: ChatDev 한국어 커스텀 사례"
-date: 2023-11-30T11:52:56+09:00
+date: 2021-11-30T11:52:56+09:00
 draft: false
 featured: false
 authors:
