@@ -119,12 +119,18 @@ ChatDev에서는 진행 과정을 대화 형식으로 볼 수 있습니다.
 
 ### 단계1
 
+<link rel="stylesheet" href="github-markdown-dark.css">
+<div style="position: relative; display: flex; flex-direction: column; width: 773px;">
+<div style="display: flex; background-color: lightblue; width: fit-content; padding: 5px 20px; margin-bottom: 5px; font-size: 13px; border: 1px solid rgba(11, 20, 150, 0.3); border-radius: 10px; box-shadow: black 2px 2px 2px;">
+<p>Chief Product Officer</p>
+<img src="replay_files/cpo.png" style="height: 40px; width: 30px; position: relative; margin-left: 10px;">
+</div>
 <div class="markdown-body" style="padding: 10px; border: 1px solid rgba(11, 20, 150, 0.3); width: 750px; border-radius: 10px; box-shadow: black 2px 2px 2px; background-color: rgb(19, 49, 83);"><p>우
 리는 새로운 사용자의 요구를 충족시키기 위해 다양한 제품 모달리티를 고려해야 합니다. 오목 게임을 만들기 위해서는 시각적인 요소와
  상호작용이 필요합니다. 따라서 Application 모달리티가 가장 적합해 보입니다. 이 모달리티를 통해 사용자는 게임을
 시각적으로 플레이하고 상호작용할 수 있습니다. 이에 대해 의견이 있으신가요?</p>
 </div>
-
+</div>
 
 ### 단계2
 
