@@ -120,39 +120,29 @@ ChatDev에서는 진행 과정을 대화 형식으로 볼 수 있습니다.
 첫번째 단계는 CEO(Chief Executive Officer, 최고경영자)와 CPO(Chief Product Officer, 최고상품책임자)가 수행합니다. 대화를 들어봅시다.
 
 
-<link rel="stylesheet" href="github-markdown-dark.css">
+<iframe src="https://kjrstory.netlify.app/ko/post/test"></iframe>
 
-<div id="show" style="display: grid;">
-  <div id="dialogBody" style="top:20px;display: flex;flex-direction: column;">
-    <div style="position: relative; display: flex; flex-direction: column; width: 773px;">
-	</div>
-<div style="position: relative; display: flex; flex-direction: column; width: 773px;">
-<div style="display: flex; background-color: lightblue; width: fit-content; padding: 5px 20px; margin-bottom: 5px; font-size: 13px; border: 1px solid rgba(11, 20, 150, 0.3); border-radius: 10px; box-shadow: black 2px 2px 2px;"><p>Chief Product Officer</p>
-<img src="assets/cpo.png" style="height: 40px; width: 30px; position: relative; margin-left: 10px;"></div>
-<div class="markdown-body" style="padding: 10px; border: 1px solid rgba(11, 20, 150, 0.3); width: 750px; border-radius: 10px; box-shadow: black 2px 2px 2px; background-color: rgb(19, 49, 83);"><p>우
-리는 새로운 사용자의 요구를 충족시키기 위해 다양한 제품 모달리티를 고려해야 합니다. 오목 게임을 만들기 위해서는 시각적인 요소와
- 상호작용이 필요합니다. 따라서 Application 모달리티가 가장 적합해 보입니다. 이 모달리티를 통해 사용자는 게임을 
-시각적으로 플레이하고 상호작용할 수 있습니다. 이에 대해 의견이 있으신가요?</p>
-</div><div style="height: 10px;"></div></div><div style="position: relative; display: flex; flex-direction: column; width: 773px;"><div style="display: flex; background-color: lightblue; width: fit-content; padding: 5px 20px; margin-bottom: 5px; font-size: 13px; border: 1px solid rgba(11, 20, 150, 0.3); border-radius: 10px; box-shadow: black 2px 2px 2px;"><p>Chief Executive Officer</p>
-<img src="replay_files/ceo.png" style="height: 40px; width: 30px; position: relative; margin-left: 10px;"></div><div class="markdown-body" style="padding: 10px; border: 1px solid rgba(11, 20, 150, 0.3); width: 750px; border-radius: 10px; box-shadow: black 2px 2px 2px; background-color: rgb(19, 49, 83);"><p>Application
- 모달리티는 오목 게임을 만들기에 적합한 선택입니다. 이 모달리티를 통해 사용자는 게임을 시각적으로 플레이하고 상호작용할 수 
-있습니다. 게임 보드를 표시하고 사용자가 돌을 놓을 수 있도록 인터페이스를 구성할 수 있습니다. 또한, 게임 규칙을 구현하고 승리
- 조건을 확인하는 기능도 포함할 수 있습니다. Application 모달리티를 사용하여 오목 게임을 만들면 사용자가 게임을 즐기는
- 동안 시각적으로 흥미로운 경험을 제공할 수 있습니다. 이에 대한 의견이 있으신가요?</p>
-</div><div style="height: 10px;"></div></div><div style="position: relative; display: flex; flex-direction: column; width: 773px;"><div style="display: flex; background-color: lightblue; width: fit-content; padding: 5px 20px; margin-bottom: 5px; font-size: 13px; border: 1px solid rgba(11, 20, 150, 0.3); border-radius: 10px; box-shadow: black 2px 2px 2px;"><p>Chief Product Officer</p>
-<img src="replay_files/cpo.png" style="height: 40px; width: 30px; position: relative; margin-left: 10px;"></div><div class="markdown-body" style="padding: 10px; border: 1px solid rgba(11, 20, 150, 0.3); width: 750px; border-radius: 10px; box-shadow: black 2px 2px 2px; background-color: rgb(19, 49, 83);"><p>Application
- 모달리티를 사용하여 오목 게임을 만드는 것은 좋은 선택입니다. 사용자는 게임을 시각적으로 플레이하고 상호작용할 수 있으며, 게임
- 규칙과 승리 조건을 구현할 수 있습니다. 또한, 사용자에게 흥미로운 경험을 제공하기 위해 다양한 기능과 시각적 요소를 추가할 수
- 있습니다. 예를 들어, 사용자에게 현재 상태를 시각적으로 보여주는 기능이나 AI 상대와의 대전 기능을 추가할 수 있습니다. 
-이러한 기능을 통해 사용자는 게임을 더욱 즐길 수 있을 것입니다. 이에 대한 의견이 있으신가요?</p>
-</div><div style="height: 10px;"></div></div><div style="position: relative; display: flex; flex-direction: column; width: 773px;"><div style="display: flex; background-color: lightblue; width: fit-content; padding: 5px 20px; margin-bottom: 5px; font-size: 13px; border: 1px solid rgba(11, 20, 150, 0.3); border-radius: 10px; box-shadow: black 2px 2px 2px;"><p>Chief Executive Officer</p>
-<img src="assets/ceo.png" style="height: 40px; width: 30px; position: relative; margin-left: 10px;"></div><div class="markdown-body" style="padding: 10px; border: 1px solid rgba(11, 20, 150, 0.3); width: 750px; border-radius: 10px; box-shadow: black 2px 2px 2px; background-color: rgb(19, 49, 83);"><p>제
-안하신 기능들은 오목 게임에 흥미로운 요소를 추가할 수 있는 좋은 아이디어입니다. 사용자에게 현재 상태를 시각적으로 보여주는 
-기능은 게임 진행 상황을 파악하는 데 도움이 될 것입니다. 또한, AI 상대와의 대전 기능은 사용자가 싱글 플레이뿐만 아니라 다른
- 상대와의 대전을 즐길 수 있는 기회를 제공할 것입니다. 이러한 기능들은 게임의 재미와 다양성을 높여줄 것입니다. 이에 대한 
-의견이 있으신가요?</p>
-</div><div style="height: 10px;"></div></div>
-    </div>
+Chief Product Officer
+
+
+우 리는 새로운 사용자의 요구를 충족시키기 위해 다양한 제품 모달리티를 고려해야 합니다. 오목 게임을 만들기 위해서는 시각적인 요소와 상호작용이 필요합니다. 따라서 Application 모달리티가 가장 적합해 보입니다. 이 모달리티를 통해 사용자는 게임을 시각적으로 플레이하고 상호작용할 수 있습니다. 이에 대해 의견이 있으신가요?
+
+Chief Executive Officer
+
+
+Application 모달리티는 오목 게임을 만들기에 적합한 선택입니다. 이 모달리티를 통해 사용자는 게임을 시각적으로 플레이하고 상호작용할 수 있습니다. 게임 보드를 표시하고 사용자가 돌을 놓을 수 있도록 인터페이스를 구성할 수 있습니다. 또한, 게임 규칙을 구현하고 승리 조건을 확인하는 기능도 포함할 수 있습니다. Application 모달리티를 사용하여 오목 게임을 만들면 사용자가 게임을 즐기는 동안 시각적으로 흥미로운 경험을 제공할 수 있습니다. 이에 대한 의견이 있으신가요?
+
+Chief Product Officer
+
+
+Application 모달리티를 사용하여 오목 게임을 만드는 것은 좋은 선택입니다. 사용자는 게임을 시각적으로 플레이하고 상호작용할 수 있으며, 게임 규칙과 승리 조건을 구현할 수 있습니다. 또한, 사용자에게 흥미로운 경험을 제공하기 위해 다양한 기능과 시각적 요소를 추가할 수 있습니다. 예를 들어, 사용자에게 현재 상태를 시각적으로 보여주는 기능이나 AI 상대와의 대전 기능을 추가할 수 있습니다. 이러한 기능을 통해 사용자는 게임을 더욱 즐길 수 있을 것입니다. 이에 대한 의견이 있으신가요?
+
+Chief Executive Officer
+
+
+제 안하신 기능들은 오목 게임에 흥미로운 요소를 추가할 수 있는 좋은 아이디어입니다. 사용자에게 현재 상태를 시각적으로 보여주는 기능은 게임 진행 상황을 파악하는 데 도움이 될 것입니다. 또한, AI 상대와의 대전 기능은 사용자가 싱글 플레이뿐만 아니라 다른 상대와의 대전을 즐길 수 있는 기회를 제공할 것입니다. 이러한 기능들은 게임의 재미와 다양성을 높여줄 것입니다. 이에 대한 의견이 있으신가요?
+
+
 
 
 여기서 모달리티(modality)란 단어가 나옵니다. SW의 형태,양식을 정하는 것으로 Excel, Application, Mind Map 같은 예시를 들어주고 있습니다. 한국어로 번역하기가 애매하여 모달리티라고 표현했는데 적절한 단어가 있다면 바꾸는게 좋을 것 같습니다.
