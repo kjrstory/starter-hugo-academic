@@ -120,15 +120,13 @@ ChatDev에서는 진행 과정을 대화 형식으로 볼 수 있습니다.
 첫번째 단계는 CEO(Chief Executive Officer, 최고경영자)와 CPO(Chief Product Officer, 최고상품책임자)가 수행합니다. 대화를 들어봅시다.
 
 
+<body style="display: flex;flex: auto; ">
 <link rel="stylesheet" href="github-markdown-dark.css">
 
- <div id="show" style="display: grid;">
-
-        <div id="dialogBody" style="top:20px;display: flex;flex-direction: column;">
-        <div style="position: relative; display: flex; flex-direction: column; width: 773px;">
-		<div>
-        </div>
-		</div>
+<div id="show" style="display: grid;">
+  <div id="dialogBody" style="top:20px;display: flex;flex-direction: column;">
+    <div style="position: relative; display: flex; flex-direction: column; width: 773px;">
+	</div>
 <div style="position: relative; display: flex; flex-direction: column; width: 773px;">
 <div style="display: flex; background-color: lightblue; width: fit-content; padding: 5px 20px; margin-bottom: 5px; font-size: 13px; border: 1px solid rgba(11, 20, 150, 0.3); border-radius: 10px; box-shadow: black 2px 2px 2px;"><p>Chief Product Officer</p>
 <img src="assets/cpo.png" style="height: 40px; width: 30px; position: relative; margin-left: 10px;"></div>
@@ -157,7 +155,7 @@ ChatDev에서는 진행 과정을 대화 형식으로 볼 수 있습니다.
 </div><div style="height: 10px;"></div></div>
     </div>
 
-
+</body>
 
 여기서 모달리티(modality)란 단어가 나옵니다. SW의 형태,양식을 정하는 것으로 Excel, Application, Mind Map 같은 예시를 들어주고 있습니다. 한국어로 번역하기가 애매하여 모달리티라고 표현했는데 적절한 단어가 있다면 바꾸는게 좋을 것 같습니다.
 
