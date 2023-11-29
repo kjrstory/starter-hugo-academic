@@ -122,98 +122,41 @@ ChatDev에서는 진행 과정을 대화 형식으로 볼 수 있습니다.
 
 <link rel="stylesheet" href="github-markdown-dark.css">
 
+ <div id="show" style="display: grid;">
+
+        <div id="dialogBody" style="top:20px;display: flex;flex-direction: column;">
+        <div style="position: relative; display: flex; flex-direction: column; width: 773px;">
+		<div>
+        </div>
+		</div>
 <div style="position: relative; display: flex; flex-direction: column; width: 773px;">
-<div style="display: flex; background-color: lightblue; width: fit-content; padding: 5px 20px; margin-bottom: 5px; font-size: 13px; border: 1px solid rgba(11, 20, 150, 0.3); border-radius: 10px; box-shadow: black 2px 2px 2px; position: relative; margin-left: auto;">
-<p>Chief Executive Officer</p>
-<img src="assets/ceo.png" style="height: 40px; width: 30px; position: relative; margin-left: 10px;"></div>
-
-<div class="markdown-body" style="padding: 10px; border: 1px solid rgba(11, 20, 150, 0.3); width: 750px; border-radius: 10px; box-shadow: black 2px 2px 2px; background-color: rgb(75, 117, 26);"><p>ChatDev는 이전에 다음과 같은 형식의 제품을 만들었습니다:</p>
-<p>Image: can present information in line chart, bar chart, flow chart, cloud chart, Gantt chart, etc.</p>
-<p>Document: can present information via .docx files.</p>
-<p>PowerPoint: can present information via .pptx files.</p>
-<p>Excel: can present information via .xlsx files.</p>
-<p>PDF: can present information via .pdf files.</p>
-<p>Website: can present personal resume, tutorial, products, or ideas, via .html files.</p>
-<p>Application: can implement visualized game, software, tool, etc, via python.</p>
-<p>Dashboard: can display a panel visualizing real-time information.</p>
-<p>Mind Map: can represent ideas, with related concepts arranged around a core concept.</p>
-<p>Chief Product Officer로서, 새로운 사용자의 요구를 충족시키고 제품이 실현 가능하도록 하기 위해 어떤 제품 모달리티로 만들지에 대해 계속 논의해야 합니다.</p>
-<p>제품 modality에 대해서만 논의해야 합니다! 한 번 우리 모두가 의견을 표명하고 토론 결과에 모두 동의하면, 누구든지
-토론을 한 줄로만 시작하는 단어 &lt;INFO&gt;로 종료해야 합니다. 그 후에는 다른 말 없이 최종 제품 모달리티가 따라와야
- 합니다. 예., "&lt;INFO&gt; PowerPoint".</p>
-</div>
-<div style="height: 10px;"></div>
-</div>
-
-<div style="position: relative; display: flex; flex-direction: column; width: 640px;">
- <div style="display: flex; background-color: lightblue; width: fit-content; padding: 5px 20px; margin-bottom: 5px; font-size: 13px; border: 1px solid rgba(11, 20, 150, 0.3); border-radius: 10px; box-shadow: black 2px 2px 2px;">
-  <p>Chief Product Officer  </p>
-  <img src="assets/cpo.png" style="height: 40px; width: 30px; position: relative; margin-left: 10px; align-self: center;">
- </div>
-
- <div class="markdown-body" style="padding: 10px; border: 1px solid rgba(11, 20, 150, 0.3); width: 640px; border-radius: 10px; box-shadow: black 2px 2px 2px; background-color: rgb(19, 49, 83);">
-   <p>우리는 새로운 사용자의 요구를 충족시키기 위해 다양한 제품 모달리티를 고려해야 합니다. 오목 게임을 만들기 위해서는 시각적인 요소와
- 상호작용이 필요합니다. 따라서 Application 모달리티가 가장 적합해 보입니다. 이 모달리티를 통해 사용자는 게임을
+<div style="display: flex; background-color: lightblue; width: fit-content; padding: 5px 20px; margin-bottom: 5px; font-size: 13px; border: 1px solid rgba(11, 20, 150, 0.3); border-radius: 10px; box-shadow: black 2px 2px 2px;"><p>Chief Product Officer</p>
+<img src="assets/cpo.png" style="height: 40px; width: 30px; position: relative; margin-left: 10px;"></div>
+<div class="markdown-body" style="padding: 10px; border: 1px solid rgba(11, 20, 150, 0.3); width: 750px; border-radius: 10px; box-shadow: black 2px 2px 2px; background-color: rgb(19, 49, 83);"><p>우
+리는 새로운 사용자의 요구를 충족시키기 위해 다양한 제품 모달리티를 고려해야 합니다. 오목 게임을 만들기 위해서는 시각적인 요소와
+ 상호작용이 필요합니다. 따라서 Application 모달리티가 가장 적합해 보입니다. 이 모달리티를 통해 사용자는 게임을 
 시각적으로 플레이하고 상호작용할 수 있습니다. 이에 대해 의견이 있으신가요?</p>
- </div>
-<div style="height: 10px;"></div>
-</div>
-
-<div style="position: relative; display: flex; flex-direction: column; width: 773px;">
-<div style="display: flex; background-color: lightblue; width: fit-content; padding: 5px 20px; margin-bottom: 5px; font-size: 13px; border: 1px solid rgba(11, 20, 150, 0.3); border-radius: 10px; box-shadow: black 2px 2px 2px;"><p>Chief Executive Officer</p>
-<img src="assets/ceo.png" style="height: 40px; width: 30px; position: relative; margin-left: 10px;">
-</div>
-<div class="markdown-body" style="padding: 10px; border: 1px solid rgba(11, 20, 150, 0.3); width: 750px; border-radius: 10px; box-shadow: black 2px 2px 2px; background-color: rgb(19, 49, 83);"><p>Application 모달리티는 오목 게임을 만들기에 적합한 선택입니다. 이 모달리티를 통해 사용자는 게임을 시각적으로 플레이하고 상호작용할 수 있습니다. 게임 보드를 표시하고 사용자가 돌을 놓을 수 있도록 인터페이스를 구성할 수 있습니다. 또한, 게임 규칙을 구현하고 승리
+</div><div style="height: 10px;"></div></div><div style="position: relative; display: flex; flex-direction: column; width: 773px;"><div style="display: flex; background-color: lightblue; width: fit-content; padding: 5px 20px; margin-bottom: 5px; font-size: 13px; border: 1px solid rgba(11, 20, 150, 0.3); border-radius: 10px; box-shadow: black 2px 2px 2px;"><p>Chief Executive Officer</p>
+<img src="replay_files/ceo.png" style="height: 40px; width: 30px; position: relative; margin-left: 10px;"></div><div class="markdown-body" style="padding: 10px; border: 1px solid rgba(11, 20, 150, 0.3); width: 750px; border-radius: 10px; box-shadow: black 2px 2px 2px; background-color: rgb(19, 49, 83);"><p>Application
+ 모달리티는 오목 게임을 만들기에 적합한 선택입니다. 이 모달리티를 통해 사용자는 게임을 시각적으로 플레이하고 상호작용할 수 
+있습니다. 게임 보드를 표시하고 사용자가 돌을 놓을 수 있도록 인터페이스를 구성할 수 있습니다. 또한, 게임 규칙을 구현하고 승리
  조건을 확인하는 기능도 포함할 수 있습니다. Application 모달리티를 사용하여 오목 게임을 만들면 사용자가 게임을 즐기는
  동안 시각적으로 흥미로운 경험을 제공할 수 있습니다. 이에 대한 의견이 있으신가요?</p>
-</div>
-</div>
-
-<div style="position: relative; display: flex; flex-direction: column; width: 773px;"><div style="display: flex; background-color: lightblue; width: fit-content; padding: 5px 20px; margin-bottom: 5px; font-size: 13px; border: 1px solid rgba(11, 20, 150, 0.3); border-radius: 10px; box-shadow: black 2px 2px 2px;"><p>Chief Product Officer</p>
-<img src="assets/cpo.png" style="height: 40px; width: 30px; position: relative; margin-left: 10px;">
-</div>
-<div class="markdown-body" style="padding: 10px; border: 1px solid rgba(11, 20, 150, 0.3); width: 750px; border-radius: 10px; box-shadow: black 2px 2px 2px; background-color: rgb(19, 49, 83);"><p>Application 모달리티를 사용하여 오목 게임을 만드는 것은 좋은 선택입니다. 사용자는 게임을 시각적으로 플레이하고 상호작용할 수 있으며, 게임 규칙과 승리 조건을 구현할 수 있습니다. 또한, 사용자에게 흥미로운 경험을 제공하기 위해 다양한 기능과 시각적 요소를 추가할 수
- 있습니다. 예를 들어, 사용자에게 현재 상태를 시각적으로 보여주는 기능이나 AI 상대와의 대전 기능을 추가할 수 있습니다.
+</div><div style="height: 10px;"></div></div><div style="position: relative; display: flex; flex-direction: column; width: 773px;"><div style="display: flex; background-color: lightblue; width: fit-content; padding: 5px 20px; margin-bottom: 5px; font-size: 13px; border: 1px solid rgba(11, 20, 150, 0.3); border-radius: 10px; box-shadow: black 2px 2px 2px;"><p>Chief Product Officer</p>
+<img src="replay_files/cpo.png" style="height: 40px; width: 30px; position: relative; margin-left: 10px;"></div><div class="markdown-body" style="padding: 10px; border: 1px solid rgba(11, 20, 150, 0.3); width: 750px; border-radius: 10px; box-shadow: black 2px 2px 2px; background-color: rgb(19, 49, 83);"><p>Application
+ 모달리티를 사용하여 오목 게임을 만드는 것은 좋은 선택입니다. 사용자는 게임을 시각적으로 플레이하고 상호작용할 수 있으며, 게임
+ 규칙과 승리 조건을 구현할 수 있습니다. 또한, 사용자에게 흥미로운 경험을 제공하기 위해 다양한 기능과 시각적 요소를 추가할 수
+ 있습니다. 예를 들어, 사용자에게 현재 상태를 시각적으로 보여주는 기능이나 AI 상대와의 대전 기능을 추가할 수 있습니다. 
 이러한 기능을 통해 사용자는 게임을 더욱 즐길 수 있을 것입니다. 이에 대한 의견이 있으신가요?</p>
-</div></div>
+</div><div style="height: 10px;"></div></div><div style="position: relative; display: flex; flex-direction: column; width: 773px;"><div style="display: flex; background-color: lightblue; width: fit-content; padding: 5px 20px; margin-bottom: 5px; font-size: 13px; border: 1px solid rgba(11, 20, 150, 0.3); border-radius: 10px; box-shadow: black 2px 2px 2px;"><p>Chief Executive Officer</p>
+<img src="assets/ceo.png" style="height: 40px; width: 30px; position: relative; margin-left: 10px;"></div><div class="markdown-body" style="padding: 10px; border: 1px solid rgba(11, 20, 150, 0.3); width: 750px; border-radius: 10px; box-shadow: black 2px 2px 2px; background-color: rgb(19, 49, 83);"><p>제
+안하신 기능들은 오목 게임에 흥미로운 요소를 추가할 수 있는 좋은 아이디어입니다. 사용자에게 현재 상태를 시각적으로 보여주는 
+기능은 게임 진행 상황을 파악하는 데 도움이 될 것입니다. 또한, AI 상대와의 대전 기능은 사용자가 싱글 플레이뿐만 아니라 다른
+ 상대와의 대전을 즐길 수 있는 기회를 제공할 것입니다. 이러한 기능들은 게임의 재미와 다양성을 높여줄 것입니다. 이에 대한 
+의견이 있으신가요?</p>
+</div><div style="height: 10px;"></div></div>
+    </div>
 
-<div style="position: relative; display: flex; flex-direction: column; width: 773px;"><div style="display: flex; background-color: lightblue; width: fit-content; padding: 5px 20px; margin-bottom: 5px; font-size: 13px; border: 1px solid rgba(11, 20, 150, 0.3); border-radius: 10px; box-shadow: black 2px 2px 2px;"><p>Chief Executive Officer</p>
-<img src="assets/ceo.png" style="height: 40px; width: 30px; position: relative; margin-left: 10px;"></div><div class="markdown-body" style="padding: 10px; border: 1px solid rgba(11, 20, 150, 0.3); width: 750px; border-radius: 10px; box-shadow: black 2px 2px 2px; background-color: rgb(19, 49, 83);"><p>제안하신 기능들은 오목 게임에 흥미로운 요소를 추가할 수 있는 좋은 아이디어입니다. 사용자에게 현재 상태를 시각적으로 보여주는 기능은 게임 진행 상황을 파악하는 데 도움이 될 것입니다. 또한, AI 상대와의 대전 기능은 사용자가 싱글 플레이뿐만 아니라 다른 상대와의 대전을 즐길 수 있는 기회를 제공할 것입니다. 이러한 기능들은 게임의 재미와 다양성을 높여줄 것입니다. 이에 대한 의견이 있으신가요?</p>
-</div></div>
-
-
-{{% callout info %}}
-Chief Product Officer {{< figure src="assets/cpo.png" height="40px" width="30px">}}
-{{% /callout %}}
-
-{{% callout info %}}
-<div>
-  <p>Chief Product Officer </p>
-  <img src="assets/cpo.png" style="height: 40px; width: 30px; position: relative">
-  </div>
-{{% /callout %}}
-
-{{% callout info %}}
-<div>
-  Chief Product Officer
-  <img src="assets/cpo.png" style="height: 40px; width: 30px; position: relative">
-</div>
-{{% /callout %}}
-
- CPO <img src="assets/cpo.png" style="height: 40px; width: 30px; position: relative">
-
-{{% callout example %}}
-우리는 새로운 사용자의 요구를 충족시키기 위해 다양한 제품 모달리티를 고려해야 합니다. 오목 게임을 만들기 위해서는 시각적인 요소와
- 상호작용이 필요합니다. 따라서 Application 모달리티가 가장 적합해 보입니다. 이 모달리티를 통해 사용자는 게임을
-시각적으로 플레이하고 상호작용할 수 있습니다. 이에 대해 의견이 있으신가요?
-{{% /callout %}}
-
-{{% callout info %}}
-<div>
-  Chief Product Officer
-  <img src="assets/cpo.png" style="height: 40px; width: 30px; position: relative"> CCCCCCCCC
-</div>
-{{% /callout %}}
 
 
 여기서 모달리티(modality)란 단어가 나옵니다. SW의 형태,양식을 정하는 것으로 Excel, Application, Mind Map 같은 예시를 들어주고 있습니다. 한국어로 번역하기가 애매하여 모달리티라고 표현했는데 적절한 단어가 있다면 바꾸는게 좋을 것 같습니다.
