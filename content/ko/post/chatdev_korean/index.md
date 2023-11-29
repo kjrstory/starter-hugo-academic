@@ -208,6 +208,14 @@ Chief Product Officer {{< figure src="assets/cpo.png" height="40px" width="30px"
 시각적으로 플레이하고 상호작용할 수 있습니다. 이에 대해 의견이 있으신가요?
 {{% /callout %}}
 
+{{% callout info %}}
+<div>
+  Chief Product Officer
+  <img src="assets/cpo.png" style="height: 40px; width: 30px; position: relative"> CCCCCCCCC
+</div>
+{{% /callout %}}
+
+
 여기서 모달리티(modality)란 단어가 나옵니다. SW의 형태,양식을 정하는 것으로 Excel, Application, Mind Map 같은 예시를 들어주고 있습니다. 한국어로 번역하기가 애매하여 모달리티라고 표현했는데 적절한 단어가 있다면 바꾸는게 좋을 것 같습니다.
 
 대체로 Application 모달리티가 좋다고 하며 이런저런 기능들을 추천합니다. CEO가 질문 한 상태에서 마무리가 되는데 대화 턴을 2번으로 제한하였기 때문입니다.
