@@ -120,7 +120,6 @@ ChatDev에서는 진행 과정을 대화 형식으로 볼 수 있습니다.
 첫번째 단계는 CEO(Chief Executive Officer, 최고경영자)와 CPO(Chief Product Officer, 최고상품책임자)가 수행합니다. 대화를 들어봅시다.
 
 
-<body style="display: flex;flex: auto; ">
 <link rel="stylesheet" href="github-markdown-dark.css">
 
 <div id="show" style="display: grid;">
@@ -155,7 +154,6 @@ ChatDev에서는 진행 과정을 대화 형식으로 볼 수 있습니다.
 </div><div style="height: 10px;"></div></div>
     </div>
 
-</body>
 
 여기서 모달리티(modality)란 단어가 나옵니다. SW의 형태,양식을 정하는 것으로 Excel, Application, Mind Map 같은 예시를 들어주고 있습니다. 한국어로 번역하기가 애매하여 모달리티라고 표현했는데 적절한 단어가 있다면 바꾸는게 좋을 것 같습니다.
 
