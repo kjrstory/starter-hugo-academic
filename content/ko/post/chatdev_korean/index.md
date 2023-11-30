@@ -211,7 +211,7 @@ ChatGPT에서도 한국어로 질문을 해도 영어로 답변하는 경우가 
 다음과 같은 부분이 잘못 작성되었고 수정하면 정상적으로 수행이 됩니다.
 
 game.py파일 make_move함수에서 self.current_player = 3 - self.current_player 를 주석처리합니다.
-```
+```python
     def make_move(self, row, col):
         """
         Make a move on the board.
@@ -229,7 +229,7 @@ game.py파일 make_move함수에서 self.current_player = 3 - self.current_playe
 ```
 
 main.py파일의 on_click함수 밑에 앞에서 주석처리 했던 문장을 추가합니다.
-```
+```python
     def on_click(self, event):
         col = (event.x - 20) // 40
         row = (event.y - 20) // 40
