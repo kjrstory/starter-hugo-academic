@@ -147,6 +147,9 @@ CTO(Chief Technology Officer)와 프로그래머(Programmer)가 수행합니다.
 
 <iframe src="./step3.html" width="640" height="500"></iframe>
 
+main.py와 game.py 두 파일로 SW를 작성하였습니다. 운이 좋다면 지금 이 코드들로도 실행이 가능할수도 있습니다.
+
+
 ### 단계4
 
 ### 단계5
