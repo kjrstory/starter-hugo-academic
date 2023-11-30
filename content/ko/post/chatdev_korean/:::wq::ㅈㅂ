@@ -144,7 +144,7 @@ ChatDev의 기본 설정에 1단계와 2단계가 있어서 그대로 사용했�
 3번째 단계는 코딩 단계입니다.
 최고기술책임자(CTO)와 프로그래머(Programmer)가 수행합니다.
 
-<iframe src="./step3.html" width="680" height="500"></iframe>
+<iframe src="./step3.html" width="640" height="500"></iframe>
 
 main.py와 game.py 두 파일로 SW를 작성하였습니다. 운이 좋다면 지금 이 코드들로도 실행이 가능할수도 있습니다.
 
@@ -159,7 +159,7 @@ ChatGPT는 매번 같은 답변을 해주지 않으므로 같은 Task를 하더�
 ### 단계 5 코드 리뷰(Code Review)
 
 이 단계는 코드 리뷰를 하는 단계로 프로그래머와 코드 리뷰어가 번갈아가면서 진행합니다.
-<iframe src="./step5.html" width="680" height="500"></iframe>
+<iframe src="./step5.html" width="640" height="500"></iframe>
 
 리뷰어가 갑자기 영어로 리뷰를 하네요. 마지막에는 정신이 돌아왔는지 한글로 작성을 하고요.
 ChatGPT에서도 한국어로 질문을 해도 영어로 답변하는 경우가 있습니다.
@@ -176,7 +176,7 @@ ChatGPT에서도 한국어로 질문을 해도 영어로 답변하는 경우가 
 
 종속 패키지를 설정하는 부분입니다. 이것도 프로그래머가 해주어야 하네요.
 
-<iframe src="./step7.html" width="680" height="500"></iframe>
+<iframe src="./step7.html" width="640" height="500"></iframe>
 
 
 지금은 tkinter만 필요하다고 하네요.
@@ -185,7 +185,7 @@ ChatGPT에서도 한국어로 질문을 해도 영어로 답변하는 경우가 
 
 매뉴얼을 작성하는 단계입니다. 이것은 다행히 CPO(상품책임자)의 역할이네요.
 
-<iframe src="./step8.html" width="680" height="500"></iframe>
+<iframe src="./step8.html" width="640" height="500"></iframe>
 
 모든 단계가 끝났고 파일이 다 만들어졌습니다.
 
