@@ -120,9 +120,9 @@ ChatDev에서는 진행 과정을 대화 형식으로 볼 수 있습니다.
 첫번째 단계는 CEO(Chief Executive Officer, 최고경영자)와 CPO(Chief Product Officer, 최고상품책임자)가 수행합니다. 대화를 들어봅시다.
 
 
-<iframe src="/log.html" width="640" height="500"></iframe>
+<iframe src="./log.html" width="640" height="500"></iframe>
 
-<iframe src="/step1.html" width="640" height="500"></iframe>
+<iframe src="./step1.html" width="640" height="500"></iframe>
 
 
 
