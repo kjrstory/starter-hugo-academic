@@ -120,9 +120,7 @@ ChatDev에서는 진행 과정을 대화 형식으로 볼 수 있습니다.
 첫번째 단계는 CEO(Chief Executive Officer, 최고경영자)와 CPO(Chief Product Officer, 최고상품책임자)가 수행합니다. 대화를 들어봅시다.
 
 
-<iframe src="./log.html" width="640" height="500"></iframe>
-
-<iframe src="./step1.html" width="640" height="500"></iframe>
+<iframe src="./step1.html" width="680" height="500"></iframe>
 
 
 먼저 녹색 창은 회사 설정 시 미리 작성한 프롬프트이고 짙은 파란색 창은 수행 할 때 마다 새롭게 생성되는 대화를 의미합니다.
@@ -135,20 +133,19 @@ Application 모달리티가 선택되었습니다.
 
 ### 단계2 언어 선정(Language Choose)
 
-프로그래밍 언어를 선정하는 단계입니다.
+프로그래밍 언어를 선정하는 단계입니다. CEO(Chief Executive Officer, 최고경영자)와 CTO(Chief Technology Officer, 최고기술책임자)가 수행합니다.
 
-<iframe src="./step2.html" width="640" height="500"></iframe>
+<iframe src="./step2.html" width="680" height="500"></iframe>
 
-여기서 예시를 드는 분이 잘못들가는 것 같습니다.
-별다른 토론을 하지 않고 Python을 선정합니다.
-이 부분이 잘 못되어 그런것 같은데 나중에 보완하도록 합시다.
-
+큰 토론 없이 파이썬으로 선정되었습니다.
 
 
 ### 단계3 코딩(Coding)
 
 3번째 단계는 코딩 단계입니다.
 CTO(Chief Technology Officer)와 프로그래머(Programmer)가 수행합니다.
+
+<iframe src="./step3.html" width="640" height="500"></iframe>
 
 ### 단계4
 
