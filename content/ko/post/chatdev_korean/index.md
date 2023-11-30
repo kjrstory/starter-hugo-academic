@@ -125,17 +125,19 @@ ChatDev에서는 진행 과정을 대화 형식으로 볼 수 있습니다.
 <iframe src="./step1.html" width="640" height="500"></iframe>
 
 
+먼저 녹색 창은 회사 설정 시 미리 작성한 프롬프트이고 짙은 파란색 창은 수행 할 때 마다 새롭게 생성되는 대화를 의미합니다.
+
 
 여기서 모달리티(modality)란 단어가 나옵니다. SW의 형태,양식을 정하는 것으로 Excel, Application, Mind Map 같은 예시를 들어주고 있습니다. 한국어로 번역하기가 애매하여 모달리티라고 표현했는데 적절한 단어가 있다면 바꾸는게 좋을 것 같습니다.
 
-대체로 Application 모달리티가 좋다고 하며 이런저런 기능들을 추천합니다. CEO가 질문 한 상태에서 마무리가 되는데 대화 턴을 2번으로 제한하였기 때문입니다.
-
+Application 모달리티가 선택되었습니다.
 
 
 ### 단계2 언어 선정(Language Choose)
 
 프로그래밍 언어를 선정하는 단계입니다.
 
+<iframe src="./step2.html" width="640" height="500"></iframe>
 
 여기서 예시를 드는 분이 잘못들가는 것 같습니다.
 별다른 토론을 하지 않고 Python을 선정합니다.
@@ -147,106 +149,6 @@ ChatDev에서는 진행 과정을 대화 형식으로 볼 수 있습니다.
 
 3번째 단계는 코딩 단계입니다.
 CTO(Chief Technology Officer)와 프로그래머(Programmer)가 수행합니다.
-
-<div style="position: relative; display: flex; flex-direction: column; width: 773px;">
-<div style="display: flex; background-color: lightblue; width: fit-content; padding: 5px 20px; margin-bottom: 5px; font-size: 13px; border: 1px solid rgba(11, 20, 150, 0.3); border-radius: 10px; box-shadow: black 2px 2px 2px;">
-<p>Programmer</p>
-<img src="assets/programmer.png" style="height: 40px; width: 30px; position: relative; margin-left: 10px;">
-</div>
-<div class="markdown-body" style="padding: 10px; border: 1px solid rgba(11, 20, 150, 0.3); width: 750px; border-radius: 10px; box-shadow: black 2px 2px 2px; background-color: rgb(19, 49, 83);">
-<p>main.py</p>
-<pre><code class="language-python">'''
-This is the main file of the Gomoku game.
-'''
-
-import tkinter as tk
-from game import Game
-
-def main():
-    root = tk.Tk()
-    game = Game(root)
-    game.start()
-    root.mainloop()
-
-if __name__ == "__main__":
-    main()
-</code></pre>
-<p>game.py</p>
-<pre><code class="language-python">'''
-This file contains the Game class which represents the Gomoku game.
-'''
-
-import tkinter as tk
-
-class Game:
-    def __init__(self, root):
-        self.root = root
-        self.root.title("Gomoku")
-        self.canvas = tk.Canvas(self.root, width=600, height=600)
-        self.canvas.pack()
-        self.canvas.bind("&lt;Button-1&gt;", self.on_click)
-        self.board = [[0] * 15 for _ in range(15)]
-        self.current_player = 1
-
-    def start(self):
-        self.draw_board()
-
-    def draw_board(self):
-        self.canvas.delete("all")
-        for i in range(15):
-            self.canvas.create_line(0, i * 40, 600, i * 40)
-            self.canvas.create_line(i * 40, 0, i * 40, 600)
-
-    def on_click(self, event):
-        x = event.x // 40
-        y = event.y // 40
-        if self.board[y][x] == 0:
-            self.board[y][x] = self.current_player
-            self.draw_piece(x, y)
-            if self.check_win(x, y):
-                self.show_winner()
-            else:
-                self.current_player = 3 - self.current_player
-
-    def draw_piece(self, x, y):
-        if self.current_player == 1:
-            color = "black"
-        else:
-            color = "white"
-        self.canvas.create_oval(x * 40 + 5, y * 40 + 5, x * 40 + 35, y * 40 + 35, fill=color)
-
-    def check_win(self, x, y):
-        directions = [(1, 0), (0, 1), (1, 1), (1, -1)]
-        for dx, dy in directions:
-            count = 1
-            for i in range(1, 5):
-                nx = x + dx * i
-                ny = y + dy * i
-                if nx &lt; 0 or nx &gt;= 15 or ny &lt; 0 or ny &gt;= 15 or self.board[ny][nx] != self.current_player:
-                    break
-                count += 1
-            for i in range(1, 5):
-                nx = x - dx * i
-                ny = y - dy * i
-                if nx &lt; 0 or nx &gt;= 15 or ny &lt; 0 or ny &gt;= 15 or self.board[ny][nx] != self.current_player:
-                    break
-                count += 1
-            if count &gt;= 5:
-                return True
-        return False
-
-    def show_winner(self):
-        if self.current_player == 1:
-            winner = "Black"
-        else:
-            winner = "White"
-        self.canvas.create_text(300, 300, text=f"{winner} wins!", font=("Arial", 30), fill="red")
-</code></pre>
-<p>이제 코드를 실행하면 Python으로 구현된 오목 게임이 실행됩니다. GUI를 통해 게임을 플레이할 수 있으며, 검은색과
-흰색 돌을 번갈아가며 놓을 수 있습니다. 승리 조건은 5개의 돌을 연속으로 놓는 것입니다. 승리한 플레이어는 화면에 표시됩니다.</p>
-</div>
-</div>
-
 
 ### 단계4
 
