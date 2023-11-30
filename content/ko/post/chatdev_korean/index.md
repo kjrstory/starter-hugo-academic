@@ -187,9 +187,14 @@ ChatGPT에서도 한국어로 질문을 해도 영어로 답변하는 경우가 
 
 <iframe src="./step8.html" width="680" height="500"></iframe>
 
+
+## 결과 확인
+
 모든 단계가 끝났고 파일이 다 만들어졌습니다.
 
 다음과 같이 실행해보겠습니다.
+
+
 
 정말 놀랍게도 잘 실행이 됩니다.
 그런데 한가지 버그가 있었습니다.
@@ -197,8 +202,39 @@ ChatGPT에서도 한국어로 질문을 해도 영어로 답변하는 경우가 
 
 다음과 같은 부분이 잘못 작성되었고 수정하면 정상적으로 수행이 됩니다.
 
+game.py파일 make_move함수에서 self.current_player = 3 - self.current_player 를 주석처리합니다.
+```
+    def make_move(self, row, col):
+        """
+        Make a move on the board.
+        Parameters:
+        - row (int): The row index of the move.
+        - col (int): The column index of the move.
+        Returns:
+        - bool: True if the move is valid and made successfully, False otherwise.
+        """
+        if self.board[row][col] == 0:
+            self.board[row][col] = self.current_player
+            #self.current_player = 3 - self.current_player
+            return True
+        return False
+```
 
+main.py파일의 on_click함수 밑에 앞에서 주석처리 했던 문장을 추가합니다.
+```
+    def on_click(self, event):
+        col = (event.x - 20) // 40
+        row = (event.y - 20) // 40
+        if self.game.make_move(row, col):
+            self.draw_piece(row, col)
+            if self.game.check_winner(row, col):
+                self.show_winner()
+            else :
+                self.game.current_player = 3 - self.game.current_player
+```
 
+승리 체크 후 플레이어를 바꿔야 하는데 플레이어부터 바꾸고 승리 체크를 해서 버그가 생긴 것입니다.
+에러는 간단하지만 파일이 나누어져있어서 바로 알아차리기는 쉽지 않습니다.
 버그를 잡지 못하고 배포한 것이 아쉽네요.
 
 ## 결론
