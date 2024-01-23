@@ -34,12 +34,12 @@ image:
 
 awesom 프로젝트는 생각보다 많은 사람들이 사용하는 것 같습니다. 아마 관심있는 주제로 awesome-{주제}로 검색하면 이미 누가 만들어 놓은 리스트가 있을 것입니다. 이미 있는 리스트 리포지토리에 기여해도 되고 맘에 드는 리스트가 없다면 개인이 만들어도 좋을 것 같습니다. 아래는 제가 관심있게 보는 awesome list입니다. 최근에도 업데이트 되고 있는 리스트들입니다. 
 
-[awesome-high-performance-computing](https://github.com/trevor-vincent/awesome-high-performance-computing)
-[awesome-hpc](https://github.com/dstdev/awesome-hpc)
-[awesome-fluid-dynamics](https://github.com/lento234/awesome-fluid-dynamics)
-[awesome-python](https://github.com/vinta/awesome-python)
-[awesome-linux](https://github.com/inputsh/awesome-linux)
-[awesome-aws](https://github.com/donnemartin/awesome-aws)
+* [awesome-high-performance-computing](https://github.com/trevor-vincent/awesome-high-performance-computing)
+* [awesome-hpc](https://github.com/dstdev/awesome-hpc)
+* [awesome-fluid-dynamics](https://github.com/lento234/awesome-fluid-dynamics)
+* [awesome-python](https://github.com/vinta/awesome-python)
+* [awesome-linux](https://github.com/inputsh/awesome-linux)
+* [awesome-aws](https://github.com/donnemartin/awesome-aws)
 
 
 
