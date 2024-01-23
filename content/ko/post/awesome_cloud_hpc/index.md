@@ -1,5 +1,5 @@
 ---
-title: Awesom Cloud HPC 리포지토리 생성
+title: Awesom Cloud HPC 소개
 date: 2024-01-25T07:22:43.471Z
 draft: false
 featured: false
