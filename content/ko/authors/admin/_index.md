@@ -53,7 +53,7 @@ social:
     link: https://github.com/kjrstory
   - icon: hb/linkedin
     link: https://www.linkedin.com/in/kjrstory/
-  - icon: hb/github
+  - icon: hero/sparkles
     link: https://github.com/kjrstory
 
 ---
