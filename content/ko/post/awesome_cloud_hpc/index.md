@@ -1,6 +1,6 @@
 ---
 title: Awesom Cloud HPC 소개
-date: 2024-01-24T08:00Z
+date: 2024-01-24T08:00:00.000Z
 draft: false
 featured: false
 authors:
@@ -17,7 +17,7 @@ image:
 ---
 
 
-6개월 전에 Cloud HPC 주제로 여러 상품들을 정리한 글([link])(https://kjrstory.netlify.app/ko/post/cloud_hpc_list/)을 작성 했습니다. 이런 즐겨찾기 목록을 정리한 포스트의 문제는 지속적으로 변화가 있다는 것입니다. 블로그의 글도 수정이 가능하지만 블로그 글을 배포할 때 publish라는 단어를 쓰는 것처럼 수정이 자주 이루어지는 것을 고려한 것은 아닙니다.
+6개월 전에 Cloud HPC 주제로 여러 상품들을 정리한 글([link](https://kjrstory.netlify.app/ko/post/cloud_hpc_list/))을 작성 했습니다. 이런 즐겨찾기 목록을 정리한 포스트의 문제는 지속적으로 변화가 있다는 것입니다. 블로그의 글도 수정이 가능하지만 블로그 글을 배포할 때 publish라는 단어를 쓰는 것처럼 수정이 자주 이루어지는 것을 고려한 것은 아닙니다.
 
 그래서 큐레이션(curation)에 적합한 것을 찾다가 [awesome list](https://github.com/sindresorhus/awesome)라는 프로젝트를 찾았습니다.
 이 프로젝트는 특정 주제로 큐레이팅하여 모아놓은 리스트 프로젝트입니다.
