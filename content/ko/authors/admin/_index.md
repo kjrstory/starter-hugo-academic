@@ -51,6 +51,12 @@ social:
   - icon: github
     icon_pack: fab
     link: https://github.com/kjrstory
+  - icon: linkedin
+    icon_pack: hb
+    link: https://www.linkedin.com/in/kjrstory/
+  - icon: github
+    icon_pack: hb
+    link: https://github.com/kjrstory
 
 ---
 
