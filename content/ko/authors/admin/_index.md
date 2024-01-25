@@ -45,9 +45,8 @@ skills:
   - name: Technical
     items:
       - name: Python
-        description: ''
+        description: 'Python'
         percent: 80
-        color: '#eeac02'
         icon: python
         icon_pack: fab
       - name: Data Science
@@ -90,11 +89,20 @@ social:
   - icon: github
     icon_pack: fab
     link: https://github.com/kjrstory
-  - icon: hb/linkedin
-    link: https://www.linkedin.com/in/kjrstory/
-  - icon: hero/sparkles
-    link: https://github.com/kjrstory
-
+  
 ---
 
+### 📚 Tech Stack 📚
+
+![Python](https://img.shields.io/badge/Python-3670A0?style=flat-square&logo=Python&logoColor=ffdd54)
+
+
+### 🌈 Follow Me 🌈
+
+[![Tech Blog Badge](http://img.shields.io/badge/Tech%20blog-%23000000.svg?style=flat-square&logo=netlify&logoColor=#00C7B7&link=https://kjrstory.netlify.app)](https://kjrstory.netlify.app) 
+[![Linkedin Badge](https://img.shields.io/badge/LinkedIn-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/kjrstory/)](https://www.linkedin.com/in/kjrstory/) 
+[![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=flat-square&logo=github&logoColor=white)](https://github.com/kjrstory)
+
+
+[![Solved.ac](http://mazassumnida.wtf/api/mini/generate_badge?boj=kjrstory)](https://solved.ac/kjrstory)
 
