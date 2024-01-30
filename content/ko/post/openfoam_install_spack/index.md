@@ -1,6 +1,6 @@
 ---
 title: "OpenFOAM 설치 with Spack"
-date: 2024-01-0708:00:00Z
+date: 2024-01-04T08:00:00.000Z
 draft: false
 featured: false
 authors:
