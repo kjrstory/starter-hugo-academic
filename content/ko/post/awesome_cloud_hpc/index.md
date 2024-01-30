@@ -1,5 +1,5 @@
 ---
-title: Awesom Cloud HPC 소개
+title: Awesome Cloud HPC 소개
 date: 2024-01-24T08:00:00.000Z
 draft: false
 featured: false
@@ -36,6 +36,5 @@ awesome 프로젝트는 생각보다 많은 사람들이 사용하는 것 같습
 * [awesome-hpc](https://github.com/dstdev/awesome-hpc)
 * [awesome-fluid-dynamics](https://github.com/lento234/awesome-fluid-dynamics)
 * [awesome-python](https://github.com/vinta/awesome-python)
-* [awesome-linux](https://github.com/inputsh/awesome-linux)
 * [awesome-aws](https://github.com/donnemartin/awesome-aws)
-
+* [awesome-cli-apps](https://github.com/agarrharr/awesome-cli-apps)
