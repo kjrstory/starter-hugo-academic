@@ -2,7 +2,7 @@
 title: 오픈소스 설치매니저 Spack에서 OpenFOAM 활용
 date: '2023-10-01'
 draft: false
-publishDate: '2024-01-31T08:00:00.000Z'
+publishDate: '2024-01-11T08:00:00.000Z'
 authors:
 - ' 김종록'
 publication_types:
