@@ -8,7 +8,7 @@ image:
   caption: Test
   focal_point: Smart
 
-link:
+links:
   - icon: github
     icon_pack: fab
     name: Github
