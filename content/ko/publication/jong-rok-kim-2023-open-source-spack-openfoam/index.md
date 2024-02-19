@@ -12,11 +12,7 @@ publication: '*10th OKUCC*'
 gallery_item:
   - album: okucc2023_spack
     image: fig-01.png
-    caption: OpenFOAM의 진입장벽 중 하나는 설치가 어렵다는 것입니다. 
-    설치가 어려운 이유는 OpenFOAM에 필요한 패키지들이 매우 복잡하게 얽혀있기 때문입니다. 
-    컨테이너가 해결사가 될 것이라고 기대를 했지만 아직까지는 HPC 분야의 모든 어플리케이션을 컨테이너로 대체할 수는 없는 상황입니다.
-    하지만 저는 컨테이너 for HPC도 관심있게 보고 있습니다. 
-    HPC용 컨테이너에는 Apptainer(Singularity)가 가장 유명하지만 ChalieCloud,Shifter,Sarus,Podman 등 여러 컨테이너가 있으며 이들간의 차이점을 비교하는 것도 재미있을 것 같습니다.
+    caption: OpenFOAM의 진입장벽 중 하나는 설치가 어렵다는 것입니다. 설치가 어려운 이유는 OpenFOAM에 필요한 패키지들이 매우 복잡하게 얽혀있기 때문입니다.  컨테이너가 해결사가 될 것이라고 기대를 했지만 아직까지는 HPC 분야의 모든 어플리케이션을 컨테이너로 대체할 수는 없는 상황입니다.
   - album: okucc2023_spack
     image: fig-02.jpg
     caption: Write your image 2 caption here
@@ -118,12 +114,29 @@ OpenFOAM레시피에서는 매 버전마다 url을 작성했습니다.
 그래서 버전마다 url을 작성하지 않고 함수로 만들어서 코드를 간단히 하려고 합니다.
 spack에서는 url_for_version이란 함수로 패키지의 특별한 규칙을 정할수 있습니다.
 
-
 12장: 
-
 
 처음에는 바뀐 부분이 매우 단순했기 때문에 매수 쉽게 통과될것으로 디기대했ㅆ지만 리뷰에서 부정적인 읜견이 있었습니다.
 이 패키지의 가장 첫번째 버전인 2.3은 github의 url을 사용하지 않고 소스포지의 url을 사용하게 되는데 이것이 함수에 담겨있지 않아써입니다.
 제대로 하려면 소스포지의 버전을 github의 버전으로 바꾸는게 맞습니다.
 그러나 그것까지 테스트하기에는 힘듭니다.
+
+13장:
+두번째는 정밀도에 관한것입니다. OpenFOAM은 기본적은로 Single Precision, Double Precision을 제공하고 있습니다.
+어느 이후 부터는 두 정밀도외의 방법도 개발이 되고 ㅣㅇㅆ습니다. 
+하나는 Mixed Precision이라고 하여 Singpler pRecision과 Double Precision을 결합한 방버빕니다.
+정밀도를 고려해ㅑ야하는 부분에만 쓰고 아닌 부분에는 안써서 파일 용량과 계산시간들을 효율적으로 하는 방법입니다.
+두번쨰는 Long Double Precision입니다. 이는 더블 프리시젼보다 더 정밀도를 추구하는 방법입니다.
+배포판마다 이런 설정들이 다를라서 정리를 해보았습니다.
+OpenCFD 배포판에는 Mixed Precision이 1906버전에 들어가있고 Spack에 ㅗ 등록되어있습니다.
+Foundation 배포판에는 Long DOuble Precision이 들어가있고 Spack에는 안들어가있습니다.
+Foam-extend 배포판에노도 들어가있지만 역시 spackdㅔ는 안들어가 있습니다.
+
+14장:
+이것을 코드에 반영하는 것은 어렵지는 않습니다. 
+단 이런 옵션들이 어떤 버전부터 적용되어있는 것을 알아내는 것이 더 중요합니다.
+Commit 내역을 검색하거나 일일이 보면서 보는 방법도 있지만 번거롭습니다.
+그것보다는 Github의 Blame기능을 쓰면 알아낼 수 있스니다.
+OpenFOAM에 precision은 bashrc파일에 지정하게 되어있스비다. 
+이를 Blame기능을 쓰면 LPsk ㅣ예 같은 커밋이 ㅇ무엇인지 정확이 알아낼수 있습니다.
 
