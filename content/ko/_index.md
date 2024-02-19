@@ -59,19 +59,17 @@ sections:
       buttons:
         - name: All
           tag: '*'
-        - name: Deep Learning
-          tag: Deep Learning
-        - name: Other
-          tag: Demo
+        - name: Cloud
+          tag: Cloud
     design:
       # Choose how many columns the section has. Valid values: '1' or '2'.
       columns: '1'
       view: showcase
       # For Showcase view, flip alternate rows?
       flip_alt_rows: false      
-  - block: tag_cloud
-    content:
-      title: Popular Topics
-    design:
-      columns: '2'
+#  - block: tag_cloud
+#    content:
+#      title: Popular Topics
+#    design:
+#      columns: '2'
 ---
