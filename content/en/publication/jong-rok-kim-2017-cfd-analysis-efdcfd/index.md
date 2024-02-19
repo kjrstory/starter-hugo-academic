@@ -21,7 +21,8 @@ abstract: Computational fluid dynamics analysis was performed for the case 3 of 
   much time to converge.
 featured: false
 publication: '*Journal of the Korean Society for Aeronautical & Space Sciences 45(3)*'
-tags:
+---
+
 - CFD
 - CFX
 - EFD-CFD
@@ -29,7 +30,6 @@ tags:
 - RAE-A
 - Star-CCM+
 - SU2
----
 
 Paper Link: https://scienceon.kisti.re.kr/commons/util/originalView.do?cn=JAKO201713842134307&oCn=JAKO201713842134307&dbt=JAKO&journal=NJOU00290662
 

@@ -11,7 +11,8 @@ publication_types:
 abstract: ''
 featured: false
 publication: '*한국항공우주학회 학술발표회 초록집*'
-tags:
+---
+
 - CFD(전산유체역학)
 - CFX
 - EFD-CFD
@@ -19,5 +20,3 @@ tags:
 - RAE-A
 - Star-CCM+
 - SU2
----
-

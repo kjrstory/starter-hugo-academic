@@ -15,8 +15,7 @@ publication_types:
 abstract: ''
 featured: false
 publication: '*한국항공우주학회 학술발표회 초록집*'
-tags:
-- Elastic Force(탄성력)
-- Fluid-Structure Interaction(유체-구조 연계)
 ---
 
+- Elastic Force(탄성력)
+- Fluid-Structure Interaction(유체-구조 연계)

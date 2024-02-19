@@ -14,9 +14,8 @@ publication_types:
 abstract: ''
 featured: false
 publication: '*대한기계학회 춘추학술대회*'
-tags:
+---
+
 - Flapping (날갯짓)
 - Micro Air Vehicle (소형 무인기)
 - Ornithopter (날갯짓 비행체)
----
-
