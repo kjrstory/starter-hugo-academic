@@ -15,7 +15,7 @@ publication_types:
 abstract: ''
 featured: false
 publication: '*International Journal of Aeronautical and Space Sciences*'
-tags:
+keywords:
 - 30P30N multi-element airfoil
 - Computational aeroacoustics
 - Longitudinal vortex
