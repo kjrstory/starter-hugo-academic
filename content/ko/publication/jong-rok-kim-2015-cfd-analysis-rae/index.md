@@ -10,9 +10,8 @@ publication_types:
 abstract: ''
 featured: false
 publication: '*한국항공우주학회 학술발표회 초록집*'
-tags:
+---
+
 - EFD-CFD(풍동시험-전산유체역학)
 - Fluent(플런트)
 - Transonic(천음속)
----
-
