@@ -11,14 +11,37 @@ featured: false
 publication: '*10th OKUCC*'
 gallery_item:
   - album: okucc2023_spack
-    image: fig_test1.png
-    caption: Write your image 1 caption here
+    image: fig-01.png
+    caption: OpenFOAM의 진입장벽 중 하나는 설치가 어렵다는 것입니다. 
+    설치가 어려운 이유는 OpenFOAM에 필요한 패키지들이 매우 복잡하게 얽혀있기 때문입니다. 
+    컨테이너가 해결사가 될 것이라고 기대를 했지만 아직까지는 HPC 분야의 모든 어플리케이션을 컨테이너로 대체할 수는 없는 상황입니다.
+    하지만 저는 컨테이너 for HPC도 관심있게 보고 있습니다. 
+    HPC용 컨테이너에는 Apptainer(Singularity)가 가장 유명하지만 ChalieCloud,Shifter,Sarus,Podman 등 여러 컨테이너가 있으며 이들간의 차이점을 비교하는 것도 재미있을 것 같습니다.
   - album: okucc2023_spack
-    image: fig_test2.jpg
+    image: fig-02.jpg
+    caption: Write your image 2 caption here
+  - album: okucc2023_spack
+    image: fig-03.jpg
+    caption: Write your image 2 caption here
+  - album: okucc2023_spack
+    image: fig-04.jpg
+    caption: Write your image 2 caption here
+  - album: okucc2023_spack
+    image: fig-05.jpg
+    caption: Write your image 2 caption here
+  - album: okucc2023_spack
+    image: fig-06.jpg
+    caption: Write your image 2 caption here
+  - album: okucc2023_spack
+    image: fig-07.jpg
+    caption: Write your image 2 caption here
+  - album: okucc2023_spack
+    image: fig-08.jpg
+    caption: Write your image 2 caption here
+  - album: okucc2023_spack
+    image: fig-09.jpg
     caption: Write your image 2 caption here
 ---
-
-
 OKUCC는 OpenFOAM Korea Users’ Community Conference로 넥스트폼에서 주최하는 한국의 오픈폼 커뮤니티 행사입니다.
 OpenFOAM을 이전 회사인 한화에서부터 열심히 써봤지만 정작 한화에 다닐때는 가지 못하였고 정작 많이 사용할 수 없는 삼성 SDS에서 발표를 하게 되었습니다.
 한화에 있을 때는 OKUCC는 아니지만 매년 학회에 참석했었는데 삼성SDS에 와서는 그러지 못하였습니다.
