@@ -15,12 +15,11 @@ publication_types:
 abstract: ''
 featured: false
 publication: '*International Journal of Aeronautical and Space Sciences*'
-keywords:
+doi: 10.5139/IJASS.2017.18.2.197
+---
+
 - 30P30N multi-element airfoil
 - Computational aeroacoustics
 - Longitudinal vortex
 - Simple source modeling
 - Slat noise
-doi: 10.5139/IJASS.2017.18.2.197
----
-

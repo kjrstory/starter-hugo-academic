@@ -31,10 +31,9 @@ abstract: Flight test of flapping micro air vehicles (FMAVs) is carried out usin
   of general flapping MAVs.
 featured: false
 publication: '*International Journal of Aeronautical and Space Sciences*'
-tags:
+---
+
 - Flapping Wing
 - Flight Test and Assessment
 - Micro Air Vehicle (MAV)
 - Motion Capture Tracking System
----
-
