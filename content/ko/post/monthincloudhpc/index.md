@@ -44,3 +44,11 @@ categories:
 * HPC클러스터에서 매주 동적으로 예산 관리하는 방법 소개
 * AWS의 Cost Explorer 기능과 Slurm의 License management method를 이용
 * [Dynamic EC2 budget control](https://github.com/aws-samples/dynamic-ec2-budget-control)에 샘플 코드를 공개
+
+### Amazon’s renewable energy forecasting: continuous delivery with Jupyter Notebooks
+
+[Link](https://aws.amazon.com/ko/blogs/hpc/amazons-renewable-energy-forecasting-continuous-delivery-with-jupyter-notebooks/)
+
+* 일자: 2/13
+* 신재생 에너지 예측을 위해 주피터 노트북으로 지속적 배포(continuous delivery)를 구현한 방법을 소개
+* 주피터 노트북을 다양하게 활용하기 위한 툴(본 글에서는 [Papermill](https://github.com/nteract/papermill)에 주목할 필요가 있음
