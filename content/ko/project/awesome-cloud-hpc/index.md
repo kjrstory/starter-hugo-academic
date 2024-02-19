@@ -5,10 +5,10 @@ tags:
   - Cloud
 date: '2024-01-20T08:00:00Z'
 image:
-  caption: Test
+  caption: Awesome Cloud HPC
   focal_point: Smart
 
-link:
+links:
   - icon: github
     icon_pack: fab
     name: Github
