@@ -9,34 +9,8 @@ publication_types:
 - '1'
 featured: false
 publication: '*10th OKUCC*'
-gallery_item:
-  - album: okucc2023_spack
-    image: fig-01.png
-    caption: OpenFOAM의 진입장벽 중 하나는 설치가 어렵다는 것입니다. 설치가 어려운 이유는 OpenFOAM에 필요한 패키지들이 매우 복잡하게 얽혀있기 때문입니다.  컨테이너가 해결사가 될 것이라고 기대를 했지만 아직까지는 HPC 분야의 모든 어플리케이션을 컨테이너로 대체할 수는 없는 상황입니다.
-  - album: okucc2023_spack
-    image: fig-02.jpg
-    caption: Write your image 2 caption here
-  - album: okucc2023_spack
-    image: fig-03.jpg
-    caption: Write your image 2 caption here
-  - album: okucc2023_spack
-    image: fig-04.jpg
-    caption: Write your image 2 caption here
-  - album: okucc2023_spack
-    image: fig-05.jpg
-    caption: Write your image 2 caption here
-  - album: okucc2023_spack
-    image: fig-06.jpg
-    caption: Write your image 2 caption here
-  - album: okucc2023_spack
-    image: fig-07.jpg
-    caption: Write your image 2 caption here
-  - album: okucc2023_spack
-    image: fig-08.jpg
-    caption: Write your image 2 caption here
-  - album: okucc2023_spack
-    image: fig-09.jpg
-    caption: Write your image 2 caption here
+urd_pdf: https://nextfoam.co.kr/proc/DownloadProc.php?fName=231101150741_stiSq0tEeT.pdf&realfName=10thOKUCC_%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4%20%EC%84%A4%EC%B9%98%EB%A7%A4%EB%8B%88%EC%A0%80%20Spack%EC%97%90%EC%84%9C%20OpenFOAM%20%ED%99%9C%EC%9A%A9.pdf
+
 ---
 OKUCC는 OpenFOAM Korea Users’ Community Conference로 넥스트폼에서 주최하는 한국의 오픈폼 커뮤니티 행사입니다.
 OpenFOAM을 이전 회사인 한화에서부터 열심히 써봤지만 정작 한화에 다닐때는 가지 못하였고 정작 많이 사용할 수 없는 삼성 SDS에서 발표를 하게 되었습니다.
@@ -49,16 +23,16 @@ OKUCC는 일반적인 학회보다는 가벼운 분위기였지만 그렇다고 
 
 그래서 이 포스트에 각 슬라이드에 대한 설명을 담으려고 합니다.
 
-{{< gallery album="okucc2023_spack" >}}
-2장: OpenFOAM의 진입장벽 중 하나는 설치가 어렵다는 것입니다. 설치가 어려운 이유는 OpenFOAM에 필요한 패키지들이 매우 복잡하게 얽혀있기 때문입니다.
+#### 2장
+OpenFOAM의 진입장벽 중 하나는 설치가 어렵다는 것입니다. 설치가 어려운 이유는 OpenFOAM에 필요한 패키지들이 매우 복잡하게 얽혀있기 때문입니다.
 컨테이너가 해결사가 될 것이라고 기대를 했지만 아직까지는 HPC 분야의 모든 어플리케이션을 컨테이너로 대체할 수는 없는 상황입니다.
 
 하지만 저는 컨테이너 for HPC도 관심있게 보고 있습니다. 
-HPC용 컨테이너에는 Apptainer(Singularity)가 가장 유명하지만 ChalieCloud,Shifter,Sarus,Podman 등 여러 컨테이너가 있으며 이들간의 차이점을 비교하는 것도 재미있을 것 같습니다.
+HPC용 컨테이너에는 Apptainer(Singularity)가 가장 유명하지만 ChalieCloud, Shifter, Sarus, Podman 등 여러 컨테이너가 있으며 이들간의 차이점을 비교하는 것도 재미있을 것 같습니다.
 
-3장: 설치를 할 때 유의할 것은 컴파일 옵션에 따라 성능이 크게 변할 수 있다는 것입니다.
+#### 3장
+설치를 할 때 유의할 것은 컴파일 옵션에 따라 성능이 크게 변할 수 있다는 것입니다.
 그림은 GROMACS란 오픈소스인데 Intel Cascade Lake에서 각각 다른 옵션으로 컴파일 했을때 성능 차이가 70% 가까이 발생한다는 것입니다.
-
 
 개인적으로 OpenFOAM에서도 그림과 유사한 테스트를 진행하였지만 큰 차이가 발생하지 않았습니다. 이는 코드의 차이로 인한 것으로 판단했습니다.
 단 오픈소스에 따라 성능 차이가 큰 것도 있고 작은 것도 있는데 그 차이가 어디서 발생하는지 분석하는 것도 좋은 주제가 될 것 같습니다. 
@@ -68,37 +42,42 @@ HPC용 컨테이너에는 Apptainer(Singularity)가 가장 유명하지만 Chali
 최근에는 OpenFOAM의 설치 방법을 최대한 쉽게 제공하는 곳이 많습니다.
 단 그림 처럼 성능 측정을 해보면 잘 나오지 않을 가능성이 크고 대부분 mpi설정 문제일 수 있습니다.
 
-4장: 다만 이런 어려움들은 비단 OpenFOAM만 겪었던 것은 아니고 많은 오픈소스 시뮬레이션 SW들이 겪고 있었던 문제입니다.
+#### 4장
+다만 이런 어려움들은 비단 OpenFOAM만 겪었던 것은 아니고 많은 오픈소스 시뮬레이션 SW들이 겪고 있었던 문제입니다.
 그래서 Spack이란 오픈소스 패키지 매니저가 미국의 LLNL 연구소에서 개발되었습니다.
-Spack은 현재 굉장히 활발한 개발을 하고 있으며 약 7000개의 패키지가 등록되어있습니다.
+Spack은 현재 굉장히 활발한 개발이 이루어지고 있으며 7000개 이상의 패키지가 등록되어있습니다.
 해외에서는 여러 유수의 슈퍼컴퓨터 센터에서 사용되고 있지만 한국에서는 많이 사용하고 있지 않은 것 같습니다.
 
-
-5장: 그래서 간단한 Spack 사용법을 담아보았습니다.
-Spack은 깃 클론에 의해서 설치할 수 있고 설치 방법은 생략합니다.
-Spack의 설치가 되었다면 Spack에서 OpenFOAM을 설치하는 것은 한줄로 가능합니다. 
+#### 5장
+그래서 간단한 Spack 사용법을 먼저 설명하겠습니다.
+Spack은 `git clone`명령으로 설치할 수 있고 설치 방법은 생략합니다.
+Spack의 설치를 했다면 OpenFOAM을 설치하는 것은 한 줄로 가능합니다. 
 @, %, +, ^와 같은 식별자를 통해 상세 옵션을 설정할 수도 있습니다.
 
-6~7장: 이런 옵션들은 `spack info openfoam`명령으로 확인할 수 있습니다.
+#### 6~7장
+이런 옵션들은 `spack info openfoam`명령으로 확인할 수 있습니다.
 명령어를 실행하면 OpenFOAM에 대한 간단한 설명이 나오고 지원하는 버전이 보여집니다.
 Variants는 설치 옵션에 관한 것은 현재 OpenFOAM에서는 10개 이상의 세부 옵션이 있습니다.
-Dependencies에서는 필요한 사전 패키지들이 보여집니다. boost, cgal, paraview, mpi 같은 익숙한 써드파티 코드들을 볼 수 있습니다.
+Dependencies항목에서는 필요한 사전 패키지들이 보여집니다. boost, cgal, paraview, mpi 같은 익숙한 써드파티 코드들을 볼 수 있습니다.
 즉 이런 써드파티툴도 `spack install`명령에 의해 한번에 설치됩니다.
 
-8장: 그렇다면 이런 일련의 과정들을 어떻게 Spack은 백그라운드에서 처리하는걸까요?
-Spack은 패키지마다 레시피파일이 있어서 이 레시피 파일에서 디펜던시, 설치 로직등을 설정합니다.
+#### 8장
+그렇다면 이런 일련의 과정들을 어떻게 Spack은 백그라운드에서 처리하는걸까요?
+Spack은 패키지마다 레시피 파일이 있어서 이 레시피 파일에서 디펜던시, 설치 로직등을 설정합니다.
 이 패키지 레시피 파일은 파이썬으로 되었고 주요 문법들은 DSL(Domain Specific Language)라고 하여 별도의 언어라고 볼 수 있습니다.
-이 패키지 레시피 파일의 작성을 위해서는 Spack의 공식문서를 참고로 공부가 필요합니다.
+레시피 파일의 작성을 위해서는 Spack의 공식문서를 참고로 공부가 필요합니다.
 
 
-9장: 오픈폼의 레시피파일은 어떻게 작성이 되었는지 살펴봅시다.
-그전에 오픈폼의 배포판은 크게 OpenCFD에서 제공하는 배포판과 OpenFOAM Foundation에서 배포하는 배포판, Jasak?에서 배포하는 Foam-extend배포판이 있습니다.
-spack에서는 2017년경에 OpenCFD배포판을 기준으로 다른 배포판의 파일들이 작성되었습니다.
+#### 9장
+오픈폼의 레시피파일은 어떻게 작성이 되었는지 살펴봅시다.
+그 전에 오픈폼의 배포판은 크게 OpenCFD에서 제공하는 배포판과 OpenFOAM Foundation에서 배포하는 배포판, Hrvoje Jasak이 주도하여 배포하는 Foam-extend 배포판이 있습니다.
+Spack에서는 2017년경에 OpenCFD 배포판을 기준으로 다른 배포판의 파일들이 작성되었습니다.
 OpenCFD배포판은 유지보수가 잘되고 있었지만 다른 배포판은 유지보수가 잘되고 있지 않았습니다.
 
 
-10장: 그래서는 저는 다른 OpenFOAM Foundation 배포판을 기준으로 개선을 하려고 했습니다.
-기여하는 방법에는 여러가지가 있고 모두 의미가 있다고 생각한ㅂ니다만 저는 여기서 PR(Pull Request)을 하여 직접 소스코드에 기여하고자 하였습니다.
+#### 10장
+그래서 저는 다른 OpenFOAM Foundation 배포판을 개선 하려고 했습니다.
+기여하는 방법에는 여러가지가 있는데 저는 여기서 PR(Pull Request)을 하여 직접 소스코드에 기여하고자 하였습니다.
 PR 사례는 총 5가지이고 다음과 같습니다.
 1. Version URL Function
 2. Precision Options
@@ -106,37 +85,41 @@ PR 사례는 총 5가지이고 다음과 같습니다.
 4. New Solver
 5. Etc.
 
-11장: 처음으로 간단한 예즈를 보여드리려고 합니다.
-Spack에서는 패키지의 버전마다 url을 작성합니다. 대부분 이 url은 규칙적으로 정해지게 되나 특별한 경우에는 그 규칙을 일반화 할 수 었을수도 있습니다.
-OpenFOAM레시피에서는 매 버전마다 url을 작성했습니다.
-슬라이드의 왼쪽을 보면 일정한 규칙이 있는 것을 살 수 있습니다.
-단 한가지 규칙이 달라지는 것은 5.0이하의 버전에는 5.x 와같은 x라는 규칙을 씁니다. 
-그래서 버전마다 url을 작성하지 않고 함수로 만들어서 코드를 간단히 하려고 합니다.
-spack에서는 url_for_version이란 함수로 패키지의 특별한 규칙을 정할수 있습니다.
+#### 11~12장
+처음으로 간단한 사례를 보여드리려고 합니다.
+Spack에서는 패키지의 버전마다 그 패키지를 다운로드 할 수 있는 url을 작성합니다.
+OpenFOAM레시피에서도 매 버전마다 url을 작성했습니다.
+슬라이드의 왼쪽을 보면 일정한 규칙이 있는 것을 알 수 있습니다.
+단 한가지 규칙이 달라지는 것은 5.0이하의 버전에는 5.x 와 같이 x라는 규칙을 씁니다. 
+버전마다 url을 작성하지 않고 함수로 만들어서 코드를 간단히 하려고 합니다.
+Spack에서는 url_for_version이란 함수로 패키지의 특별한 규칙을 정할수 있습니다.
 
-12장: 
+처음에는 바뀐 부분이 매우 단순했기 때문에 매우 쉽게 통과할 것으로 기대했지만 리뷰에서 부정적인 의견을 받았습니다.
+이 패키지의 가장 첫번째 버전인 2.3.1은 github의 url을 사용하지 않고 소스포지의 url을 사용하게 되는데 이것이 함수에 담겨있지 않았기 때문입니다.
+그래서 2.3.1에서는 소스포지의 url, 5.0이하에서는 x 규칙이 들어가게 규칙을 추가하였습니다.
+ 
 
-처음에는 바뀐 부분이 매우 단순했기 때문에 매수 쉽게 통과될것으로 디기대했ㅆ지만 리뷰에서 부정적인 읜견이 있었습니다.
-이 패키지의 가장 첫번째 버전인 2.3은 github의 url을 사용하지 않고 소스포지의 url을 사용하게 되는데 이것이 함수에 담겨있지 않아써입니다.
-제대로 하려면 소스포지의 버전을 github의 버전으로 바꾸는게 맞습니다.
-그러나 그것까지 테스트하기에는 힘듭니다.
+#### 13장
 
-13장:
-두번째는 정밀도에 관한것입니다. OpenFOAM은 기본적은로 Single Precision, Double Precision을 제공하고 있습니다.
-어느 이후 부터는 두 정밀도외의 방법도 개발이 되고 ㅣㅇㅆ습니다. 
-하나는 Mixed Precision이라고 하여 Singpler pRecision과 Double Precision을 결합한 방버빕니다.
-정밀도를 고려해ㅑ야하는 부분에만 쓰고 아닌 부분에는 안써서 파일 용량과 계산시간들을 효율적으로 하는 방법입니다.
-두번쨰는 Long Double Precision입니다. 이는 더블 프리시젼보다 더 정밀도를 추구하는 방법입니다.
-배포판마다 이런 설정들이 다를라서 정리를 해보았습니다.
-OpenCFD 배포판에는 Mixed Precision이 1906버전에 들어가있고 Spack에 ㅗ 등록되어있습니다.
-Foundation 배포판에는 Long DOuble Precision이 들어가있고 Spack에는 안들어가있습니다.
-Foam-extend 배포판에노도 들어가있지만 역시 spackdㅔ는 안들어가 있습니다.
+두 번째는 정밀도에 관한 것입니다.
+OpenFOAM은 기본적은로 단정밀도(single precision), 배정밀도(double precision)을 제공하고 있습니다.
+어느 이후부터는 두 정밀도외의 방법도 개발이 되고 있습니다. 
+하나는 mixed precision이라고 하여 단정밀도와 배정밀도를 결합한 방법입니다.
+정밀도를 고려해야하는 부분에만 배정밀도 방법을 쓰고 그렇지 않은 부분에는 단정밀도를 써서 파일 용량과 계산 시간들을 효율적으로 하는 방법입니다.
+두 번째는 long double precision입니다. 이는 배정밀도보다 더 정밀도를 확장한 방법입니다.
+배포판마다 이런 설정들이 달라서 표로 정리를 해보았습니다.
+OpenCFD 배포판에는 mixed precision이 1906버전에 들어가있고 Spack에 등록되어있습니다.
+Foundation 배포판에는 long double precision이 2018년도에 배포된 6.0버전부터 들어가 있지만 Spack에는 미등록되어 있습니다.
+Foam-extend 배포판에도 long double precision이 2015년도에 배포된 3.2버전부터 들어가 있지만 역시 Spack에는 미등록되어 있습니다. 
 
-14장:
+#### 14장
 이것을 코드에 반영하는 것은 어렵지는 않습니다. 
 단 이런 옵션들이 어떤 버전부터 적용되어있는 것을 알아내는 것이 더 중요합니다.
-Commit 내역을 검색하거나 일일이 보면서 보는 방법도 있지만 번거롭습니다.
-그것보다는 Github의 Blame기능을 쓰면 알아낼 수 있스니다.
-OpenFOAM에 precision은 bashrc파일에 지정하게 되어있스비다. 
-이를 Blame기능을 쓰면 LPsk ㅣ예 같은 커밋이 ㅇ무엇인지 정확이 알아낼수 있습니다.
+Commit 내역을 검색하거나 일일이 보면서 찾아내는 방법도 있지만 번거롭습니다.
+그것보다는 Github의 Blame기능을 쓰면 좀 더 쉽게 알아낼 수 있습니다.
+OpenFOAM에서 precision은 bashrc파일에 지정하게 되어있고 이 파일에 Blame기능을 쓰면 어떤 커밋에 의해 변경되었는지 정확히 알 수 있습니다.
+이 커밋으로 새로운 정밀도 방법이 어느 버전부터 적용되었는지 알 수 있습니다.
+만약 예를 들어 Foundation 배포판의 OpenFOAM에서 5.0에 long double precision을 적용하려고 한다면 설치전에 에러메세지를 출력하게 됩니다.
+
+
 
