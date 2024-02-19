@@ -9,7 +9,15 @@ publication_types:
 - '1'
 featured: false
 publication: '*10th OKUCC*'
+gallery_item:
+  - album: okucc2023_spack
+    image: fig_test1.png
+    caption: Write your image 1 caption here
+  - album: okucc2023_spack
+    image: fig_test2.jpg
+    caption: Write your image 2 caption here
 ---
+
 
 OKUCC는 OpenFOAM Korea Users’ Community Conference로 넥스트폼에서 주최하는 한국의 오픈폼 커뮤니티 행사입니다.
 OpenFOAM을 이전 회사인 한화에서부터 열심히 써봤지만 정작 한화에 다닐때는 가지 못하였고 정작 많이 사용할 수 없는 삼성 SDS에서 발표를 하게 되었습니다.
@@ -72,4 +80,27 @@ OpenCFD배포판은 유지보수가 잘되고 있었지만 다른 배포판은 �
 
 10장: 그래서는 저는 다른 OpenFOAM Foundation 배포판을 기준으로 개선을 하려고 했습니다.
 기여하는 방법에는 여러가지가 있고 모두 의미가 있다고 생각한ㅂ니다만 저는 여기서 PR(Pull Request)을 하여 직접 소스코드에 기여하고자 하였습니다.
+PR 사례는 총 5가지이고 다음과 같습니다.
+1. Version URL Function
+2. Precision Options
+3. Decomposition Method(Zoltan)
+4. New Solver
+5. Etc.
+
+11장: 처음으로 간단한 예즈를 보여드리려고 합니다.
+Spack에서는 패키지의 버전마다 url을 작성합니다. 대부분 이 url은 규칙적으로 정해지게 되나 특별한 경우에는 그 규칙을 일반화 할 수 었을수도 있습니다.
+OpenFOAM레시피에서는 매 버전마다 url을 작성했습니다.
+슬라이드의 왼쪽을 보면 일정한 규칙이 있는 것을 살 수 있습니다.
+단 한가지 규칙이 달라지는 것은 5.0이하의 버전에는 5.x 와같은 x라는 규칙을 씁니다. 
+그래서 버전마다 url을 작성하지 않고 함수로 만들어서 코드를 간단히 하려고 합니다.
+spack에서는 url_for_version이란 함수로 패키지의 특별한 규칙을 정할수 있습니다.
+
+
+12장: 
+
+
+처음에는 바뀐 부분이 매우 단순했기 때문에 매수 쉽게 통과될것으로 디기대했ㅆ지만 리뷰에서 부정적인 읜견이 있었습니다.
+이 패키지의 가장 첫번째 버전인 2.3은 github의 url을 사용하지 않고 소스포지의 url을 사용하게 되는데 이것이 함수에 담겨있지 않아써입니다.
+제대로 하려면 소스포지의 버전을 github의 버전으로 바꾸는게 맞습니다.
+그러나 그것까지 테스트하기에는 힘듭니다.
 
