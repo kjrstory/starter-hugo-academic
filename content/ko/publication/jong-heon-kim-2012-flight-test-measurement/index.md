@@ -19,10 +19,9 @@ publication_types:
 abstract: ''
 featured: false
 publication: '*International Journal of Aeronautical and Space Sciences*'
-tags:
+---
+
 - Flapping Wing
 - Flight Test and Assessment
 - Micro Air Vehicle (MAV)
 - Motion Capture Tracking System
----
-

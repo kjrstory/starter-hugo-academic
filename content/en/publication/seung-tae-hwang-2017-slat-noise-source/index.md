@@ -27,12 +27,11 @@ abstract: We investigate the slat noise generation mechanism by using large-eddy
   especially the broadband part of the spectrum with a decaying slope $∝$ f textsuperscript-3.
 featured: false
 publication: '*International Journal of Aeronautical and Space Sciences*'
-tags:
+doi: 10.5139/IJASS.2017.18.2.197
+---
+
 - 30P30N multi-element airfoil
 - Computational aeroacoustics
 - Longitudinal vortex
 - Simple source modeling
 - Slat noise
-doi: 10.5139/IJASS.2017.18.2.197
----
-

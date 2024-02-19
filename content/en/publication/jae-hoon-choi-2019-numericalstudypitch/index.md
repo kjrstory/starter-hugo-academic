@@ -26,11 +26,10 @@ abstract: This paper presents the computations of the pitch dynamic stability de
   rotating speed of tail fins in the subsonic and transonic regimes.
 featured: false
 publication: '*Journal of Computational Fluids Engineering*'
-tags:
+doi: 10.6112/kscfe.2019.24.4.008
+---
+
 - 동안정미계수(Dynamic Stability Derivative)
 - 비정상유동(Unsteady Flow)
 - 전산유체역학(CFD)
 - 회전꼬리날개(Spinning Tail Fin)
-doi: 10.6112/kscfe.2019.24.4.008
----
-
