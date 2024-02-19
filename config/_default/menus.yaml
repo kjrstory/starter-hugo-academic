@@ -18,7 +18,10 @@ main:
 #    weight: 30
 #    parent: Courses
 #
-  - name: 점프 투 FastAPI에서 시작하는 VueJS 기초 
-    PageRef: course/fastapi_vue/_index.md
-    weight: 10
-    parent: Courses
+  - name: Projects
+    url: '#projects'
+    weight: 25
+#  - name: 점프 투 FastAPI에서 시작하는 VueJS 기초 
+#    PageRef: course/fastapi_vue/_index.md
+#    weight: 10
+#    parent: Courses
