@@ -55,7 +55,16 @@ categories:
 ### Salk Institute scientists scale brain research on Google Cloud with SkyPilot
 
 * [Link](https://cloud.google.com/blog/topics/hpc/salk-institute-brain-mapping-on-google-cloud-with-skypilot?hl=en)
+* Salk 연구소는 Google Cloud와의 협력을 통해 컴퓨팅 비용을 20% 절감하고 전체 쥐 뇌를 분자 수준에서 매핑하는 대규모 생물학적 데이터 분석을 수행
+* Spot VMs, Cloud Storage, Filestore 등 Google Cloud 서비스와 UC 버클리의 [SkyPilot](https://skypilot.readthedocs.io/en/latest/) 프로젝트를 활용하여 데이터 처리 워크플로우를 간소화하고 비용을 절감
+* SkyPilot은 클라우드 작업의 복잡성을 자동화하고 데이터 분석 환경을 표준화하여 과학자들이 연구에 더 집중할 수 있도록 지원
 
 ### UM-Bridge: leveraging Kubernetes for scalable Uncertainty Quantification in the cloud
 
 * [Link](https://cloud.google.com/blog/topics/hpc/researchers-run-uncertainty-quantification-models-on-gke?hl=en)
+* [UM-Bridge](https://um-bridge-benchmarks.readthedocs.io/en/docs/)는 수치 모델을 위한 통합 인터페이스로, 다양한 프로그래밍 언어나 프레임워크에서 접근 가능하며, 불확실성 정량화(UQ)와 모델 코드를 독립적인 애플리케이션으로 분리하여 HTTP 기반 프로토콜을 통해 모델 평가 요청을 전달
+* 이 아키텍처는 UQ 알고리즘을 단일 기계에서 실행하고 무거운 모델 계산을 클라우드 클러스터로 오프로드할 수 있게 해, 복잡한 UQ 문제를 해결하고 개발 시간을 단축시킬 수 있음
+* UM-Bridge와 Kubernetes를 사용하여, 대규모 GKE 클러스터에서의 확장성을 성공적으로 시연한 사례를 소개
+
+
+
