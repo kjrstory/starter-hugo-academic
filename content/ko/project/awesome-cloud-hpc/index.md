@@ -13,7 +13,6 @@ links:
     icon_pack: fab
     name: Github
     url: https://github.com/kjrstory/awesome-cloud-hpc
-url_code: 'https://github.com/kjrstory/awesome-cloud-hpc'
 ---
 
 이 리스트는 클라우드 HPC(고성능 컴퓨팅)에 대한 다양한 솔루션과 도구들을 정리한 것입니다. 

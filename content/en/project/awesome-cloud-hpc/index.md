@@ -5,7 +5,7 @@ tags:
   - Cloud
 date: '2024-01-20T08:00:00Z'
 image:
-  caption: Test
+  caption: Awesome Cloud HPC
   focal_point: Smart
 
 links:
@@ -13,7 +13,6 @@ links:
     icon_pack: fab
     name: Github
     url: https://github.com/kjrstory/awesome-cloud-hpc
-url_code: 'https://github.com/kjrstory/awesome-cloud-hpc'
 ---
 
 This curated list is a comprehensive collection of various solutions and tools for cloud High-Performance Computing (HPC).
