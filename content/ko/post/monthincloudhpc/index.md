@@ -49,3 +49,13 @@ categories:
 * 일자: 2/13
 * 신재생 에너지 예측을 위해 주피터 노트북으로 지속적 배포(continuous delivery)를 구현한 방법을 소개
 * 주피터 노트북을 다양하게 활용하기 위한 툴(본 글에서는 [Papermill](https://github.com/nteract/papermill))에 주목할 필요가 있음
+
+## GCP
+
+### Salk Institute scientists scale brain research on Google Cloud with SkyPilot
+
+* [Link](https://cloud.google.com/blog/topics/hpc/salk-institute-brain-mapping-on-google-cloud-with-skypilot?hl=en)
+
+### UM-Bridge: leveraging Kubernetes for scalable Uncertainty Quantification in the cloud
+
+* [Link](https://cloud.google.com/blog/topics/hpc/researchers-run-uncertainty-quantification-models-on-gke?hl=en)
