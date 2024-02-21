@@ -4,7 +4,7 @@ date: '2023-10-01'
 draft: false
 publishDate: '2024-01-31T08:00:00Z'
 authors:
-- ' 김종록'
+- ' Jong Rok Kim'
 publication_types:
 - '1'
 featured: false
