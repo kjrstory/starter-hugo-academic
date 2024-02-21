@@ -11,10 +11,9 @@ publication_types:
 abstract: ''
 featured: false
 publication: '*한국항공우주학회 학술발표회 초록집*'
-tags:
+---
+
 - CFD(전산유체역학)
 - Delta Wing(삼각날개)
 - EFD-CFD
 - Grid Generation(격자 생성)
----
-

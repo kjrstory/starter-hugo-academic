@@ -16,11 +16,10 @@ publication_types:
 abstract: ''
 featured: false
 publication: '*한국전산유체공학회지*'
-tags:
+doi: 10.6112/kscfe.2019.24.4.008
+---
+
 - 동안정미계수(Dynamic Stability Derivative)
 - 비정상유동(Unsteady Flow)
 - 전산유체역학(CFD)
 - 회전꼬리날개(Spinning Tail Fin)
-doi: 10.6112/kscfe.2019.24.4.008
----
-

@@ -15,12 +15,12 @@ publication_types:
 abstract: ''
 featured: false
 publication: '*한국전산유체공학회지, 25(1)*'
-tags:
-- 날개 전개
-- 유체-구조 연계
 doi: 10.6112/kscfe.2020.25.1.001
 abstract: Fluid-structure interaction analysis was performed to predict a time of wing deployment using eleatic force and centrifugal force. The Fluent for flow domain and ANSYS-Mechanical for structure domain were applied for fluid-structure interaction simulations. The loosely coupling method exchange force and displacement between two solvers each other at every coupling iteration. The structure alone analysis results showed that the wing’s elastic force, inertia and centrifugal force were well reflected. Fluid structure interaction analysis results showed that the shock wave generated at cavity in front of wings affected the wing deployment time. In addition, pressure field on each wing varied depending on the angle of attack, which caused each wing to have different deployment time.
 ---
+
+- 날개 전개
+- 유체-구조 연계
 
 논문에서는 성공한 사례만 담고 실패하거나 어려웠던 경험 들은 싣지 않는 경우가 많습니다. 이 논문을 쓸 때 어려운 난관이 있었는데 그런 난관에 대해서는 차마 논문에 싣지 못하였고 원활하게 해석을 한 것처럼 작성을 하였습니다. 그래서 이 글에서는 논문에 미처 쓰지 못한 이야기를 하려고 합니다.
 

@@ -24,12 +24,11 @@ abstract: Fluid-structure interaction analysis was performed to predict a time o
   caused each wing to have different deployment time.
 featured: false
 publication: '*Journal of Computational Fluids Engineering, 25(1)*'
-tags:
-- Wing Deployment
-- Fluid-Structure Interaction
 doi: 10.6112/kscfe.2020.25.1.001
 ---
 
+- Wing Deployment
+- Fluid-Structure Interaction
 In academic papers, it is common to only highlight successful cases and omit mentioning failures or difficulties encountered. When I was writing this paper, I faced a challenging obstacle that I couldn't include in the paper, and I had to write it as if I had smoothly resolved and interpreted it. Therefore, I would like to share the untold story from this paper.
 
 One of the differences between a missile and an aircraft is that missiles lack space for wings. Consequently, wing size needs to be minimized, and they often need to be stowed somewhere. If they are stowed, the wings must unfold or deploy. The deployment mechanism often involves the use of elastic forces, such as springs, or the utilization of centrifugal forces. In this paper, the wings utilize the concept of elasticity, where they are folded like a spring during storage and then unfold due to the stored elastic energy. To achieve such wings, they need to be thin yet robust, possessing high strength. Additionally, they undergo rotation, subjecting them to centrifugal forces. Aerodynamics play a role in dampening these forces. The diagram below is an excerpt from a referenced paper in this study. The following figure is an excerpt from reference[^1] cited in this paper.

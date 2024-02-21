@@ -16,7 +16,8 @@ abstract: EFD-CFD 워크샵 중 Case3인 RAE Wing A 형상에 대해 전산유�
 featured: false
 publication: '*한국항공우주학회지, 45(3)*'
 doi: 10.5139/JKSAS.2017.45.3.241
-tags:
+---
+
 - CFD(전산유체역학)
 - CFX
 - EFD-CFD
@@ -24,8 +25,6 @@ tags:
 - RAE-A
 - Star-CCM+
 - SU2
----
-
 논문 링크: https://scienceon.kisti.re.kr/commons/util/originalView.do?cn=JAKO201713842134307&oCn=JAKO201713842134307&dbt=JAKO&journal=NJOU00290662
 
 [EFD-CFD 워크샵](https://efd-cfd.gitbook.io/efd-cfd-workshop/)은 교수님들과 항공우주연구원의 연구자분들이 주도하에 개최가 된것입니다.

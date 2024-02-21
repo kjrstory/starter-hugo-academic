@@ -12,10 +12,9 @@ publication_types:
 abstract: ''
 featured: false
 publication: '*한국추진공학회 학술대회논문집*'
-tags:
+---
+
 - Base Bleeding(기저유출)
 - Non-Reacting Gas(비반응기체)
 - Reacting Gas(반응기체)
 - Secondary Combustion(2차 연소)
----
-
