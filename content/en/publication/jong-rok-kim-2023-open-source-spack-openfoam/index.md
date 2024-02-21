@@ -2,7 +2,7 @@
 title: Using OpenFoam with Open Source Package Manager Spack
 date: '2023-10-01'
 draft: false
-publishDate: '2024-02-22T08:00:00Z'
+publishDate: '2024-02-20T08:00:00Z'
 authors:
 - ' Jong Rok Kim'
 publication_types:
