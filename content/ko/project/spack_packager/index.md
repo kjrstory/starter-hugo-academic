@@ -4,11 +4,6 @@ summary: Spack
 tags:
   - HPC
 date: '2024-02-20T08:00:00Z'
-image:
-  filename: 'spack-logo-white-text.svg'
-  focal_point: Smart
-  preview_onlt: false
-  
 ---
 
 
