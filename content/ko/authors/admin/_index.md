@@ -54,12 +54,17 @@ social:
   - icon: envelope
     icon_pack: fas
     link: '/#contact'
-  - icon: linkedin
-    icon_pack: fab
-    link: https://www.linkedin.com/in/kjrstory/
-  - icon: github
-    icon_pack: fab
+  - display:
+      header: true
     link: https://github.com/kjrstory
-  
+    icon_pack: fab
+    icon: github
+    label: github
+  - display:
+      header: true
+    link: https://linkedin.com/in/kjrstory
+    icon: linkedin
+    icon_pack: fab
+    label: linkedin  
 ---
 
