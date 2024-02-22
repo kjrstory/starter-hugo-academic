@@ -5,7 +5,7 @@ tags:
   - HPC
 date: '2024-02-20T08:00:00Z'
 image:
-  filename: spack_logo.png
+  filename: spack_featured.png
   focal_point: Smart
   preview_only: false
 
