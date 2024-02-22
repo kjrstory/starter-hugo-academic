@@ -11,9 +11,9 @@ image:
 
 ---
 
-오픈소스 패키지 매니저인 [Spack](https://spack.io)에 디벨롭퍼로 기여하고 있습니다.
-Spack에는 7000개 이상의 패키지가 있으며 각 패키지마다 메인테이너가 있습니다.
-6개의 패키지에서 메인테이너로 기여하고 있습니다.
+I am contributing as a developer to [Spack](https://spack.io), an open-source package manager. 
+Spack contains over 7000 packages, each with its own maintainer. 
+I am contributing as the maintainer for six of these packages.
 
 |Package|Homepage|Repository|Spack_Package|Spack_Recipe|
 |--|--|--|--|--|
