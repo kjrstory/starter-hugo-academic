@@ -59,6 +59,8 @@ sections:
       buttons:
         - name: All
           tag: '*'
+        - name: HPC
+          tag: HPC
         - name: Cloud
           tag: Cloud
     design:
