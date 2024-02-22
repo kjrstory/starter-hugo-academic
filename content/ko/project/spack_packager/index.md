@@ -1,6 +1,6 @@
 ---
 title: Spack Packager
-summary: Spack
+summary: Contribution as Spack Package Maintainer
 tags:
   - HPC
 date: '2024-02-20T08:00:00Z'
