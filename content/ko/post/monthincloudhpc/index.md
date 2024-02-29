@@ -34,6 +34,14 @@ categories:
 * 일자 : 2/09
 * [Nvidia GTC](https://www.nvidia.com/gtc/)(3/18~21)에 Microsoft 세션 소개
 
+### Scaling Up in the Cloud: The WEKA Data Platform and Azure HPC Windows Grid Integration
+
+![WEKA Architecture(from Azure Blog)](KentAltena_0-1701365998954.png)
+* [Link](https://techcommunity.microsoft.com/t5/azure-high-performance-computing/scaling-up-in-the-cloud-the-weka-data-platform-and-azure-hpc/ba-p/3997491)
+* WEKA Data Platform을 Azure에서 6개의 스토리지 노드와 3개의 프로토콜 노드로 21TB의 볼륨을 구축하여 성능 검증
+* WEKA는 고성능 스토리지 플랫폼으로 HPC 워크로드를 처리하는데 탁월하며 가장 성능이 좋은 SMB 공유를 처리하는데 가장 적합함
+
+
 ## AWS
 ### Dynamic HPC budget control using a core-limit approach with AWS ParallelCluster
 
