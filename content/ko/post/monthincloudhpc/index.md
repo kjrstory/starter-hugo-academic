@@ -13,6 +13,20 @@ categories:
 
 
 ## Azure
+
+### Learn how to power your AI transformation with the Microsoft Cloud at NVIDIA GTC
+
+* [Link](https://techcommunity.microsoft.com/t5/azure-high-performance-computing/learn-how-to-power-your-ai-transformation-with-the-microsoft/ba-p/4043868)
+* 일자 : 2/09
+* [Nvidia GTC](https://www.nvidia.com/gtc/)(3/18~21)에 Microsoft 세션 소개
+
+### Accelerating OpenFOAM Integration with Azure CycleCloud
+
+![](vinilv_0-1707820735784.png "From Azure Blog")
+* [Link](https://techcommunity.microsoft.com/t5/azure-high-performance-computing/accelerating-openfoam-integration-with-azure-cyclecloud/ba-p/4055616)
+* 일자: 2/13
+* 오픈소스 CFD 코드인 [OpenFOAM](https://www.openfoam.com)을 Azure에서 설치하고 간단한 예제를 수행하는 스크립트를 제공
+
 ### Choosing the Right Azure Spot VM for Rendering Workloads Using MoonRay 
 
 * [Link](https://techcommunity.microsoft.com/t5/azure-high-performance-computing/choosing-the-right-azure-spot-vm-for-rendering-workloads-using/ba-p/4056551)
@@ -22,22 +36,11 @@ categories:
 * 단 가성비는 이전 세대인 HBv3(AMD EPYC Milan-X)가 가장 우수하며 HBv4에 비해 4~6배의 큰 차이가 있음. 이는 Spot 가격으로 인한 것으로 HBv4는 물량에 제한이 있어 Spot 가격이 HBv3보다 상대적으로 비싸기 때문
 * Spot 가격은 시기마다 변동이 됨을 인지하고 사용자의 시뮬레이션이 Spot 인스턴스의 정책(시작 시점 불분명하고 갑자기 종료 될 수 있는 특징)에 맞게 변경 가능해야함
 
-### Accelerating OpenFOAM Integration with Azure CycleCloud
-
-* [Link](https://techcommunity.microsoft.com/t5/azure-high-performance-computing/accelerating-openfoam-integration-with-azure-cyclecloud/ba-p/4055616)
-* 일자: 2/13
-* 오픈소스 CFD 코드인 [OpenFOAM](https://www.openfoam.com)을 Azure에서 설치하고 간단한 예제를 수행하는 스크립트를 제공
-
-### Learn how to power your AI transformation with the Microsoft Cloud at NVIDIA GTC
-
-* [Link](https://techcommunity.microsoft.com/t5/azure-high-performance-computing/learn-how-to-power-your-ai-transformation-with-the-microsoft/ba-p/4043868)
-* 일자 : 2/09
-* [Nvidia GTC](https://www.nvidia.com/gtc/)(3/18~21)에 Microsoft 세션 소개
-
 ### Scaling Up in the Cloud: The WEKA Data Platform and Azure HPC Windows Grid Integration
 
-![WEKA Architecture(from Azure Blog)](KentAltena_0-1701365998954.png)
+![WEKA Architecture](KentAltena_0-1701365998954.png "WKEA Architecture(from Azure Blog)")
 * [Link](https://techcommunity.microsoft.com/t5/azure-high-performance-computing/scaling-up-in-the-cloud-the-weka-data-platform-and-azure-hpc/ba-p/3997491)
+* 일자: 2/27
 * WEKA Data Platform을 Azure에서 6개의 스토리지 노드와 3개의 프로토콜 노드로 21TB의 볼륨을 구축하여 성능 검증
 * WEKA는 고성능 스토리지 플랫폼으로 HPC 워크로드를 처리하는데 탁월하며 가장 성능이 좋은 SMB 공유를 처리하는데 가장 적합함
 
