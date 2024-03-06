@@ -83,7 +83,9 @@ categories:
 
 * [Link](https://aws.amazon.com/blogs/hpc/improve-the-speed-and-cost-of-hpc-deployment-with-mountpoint-for-amazon-s3/)
 * 일자: 2/27
-
+*  Mountpoint for Amazon S3는 오브젝트 스토리지인 S3버킷을 로컬 파일 시스템처럼 마운트할 수 있게 하는 서비스
+*  AWS의 Parallel Cluster와 통합 및 IOR 벤치 마크를 수행하는 스크립트를 제공
+  
 ## GCP
 
 ### Salk Institute scientists scale brain research on Google Cloud with SkyPilot
