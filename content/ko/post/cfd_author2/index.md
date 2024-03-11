@@ -14,5 +14,5 @@ tags:
 ---
 
 Welcome to my new block!
-{{< bookshelf src="StructureMeshing_samllpreview.png" title="StructureMeshing_smallpreview.png" author="AAAA" >}}
+{{< bookshelf cover_img="StructureMeshing_samllpreview.png" cover_link="https://daum.net" title="StructureMeshing_smallpreview.png" author="AAAA" >}}
 
