@@ -220,7 +220,7 @@ $callout-color-map: (
     /* Patterns from: https://projects.verou.me/css3patterns/ */
     /* background-image: var(--spline-tartan); */
     background-color: maroon;
-    transform: rotateY(0deg) translateZ(0px);
+    transform: rotateY(0deg) translateZ(0px) translateX(-95%);
     clip-path: inset(0 90% 0 0); /* 이미지의 왼쪽 10%만 보여줍니다. */
     background-image: url('https://picsum.photos/190/280');
   }
