@@ -12,7 +12,7 @@ let spines = Object.values(document.getElementsByClassName("spine"));
 let covers = Object.values(document.getElementsByClassName("cover"));
 let tops = Object.values(document.getElementsByClassName("top"));
 
-let availablePatterns = ["spine-pyramid", "spine-stairs", "spine-argyle", "spine-tartan"];
+let availablePatterns = ["--spine-pyramid", "--spine-stairs", "--spine-argyle", "--spine-tartan"];
 
 let availableColors = [
   "maroon",
