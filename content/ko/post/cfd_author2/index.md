@@ -22,6 +22,11 @@ bookshelf_item:
     cover_link: "https://daum.net"
     title: 2222
     author: IS
+  - album: 2024
+    cover_img: StructureMeshing_smallpreview.png
+    cover_link: "https://daum.net"
+    title: 나는 바보다
+    authro: 최대천  
 ---
 
 Welcome to my new block!
