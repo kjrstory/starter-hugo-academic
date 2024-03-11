@@ -14,4 +14,5 @@ tags:
 ---
 
 Welcome to my new block!
-{{< bookshelf src="StructureMeshing_smallpreview.png" caption="AAAA"}}
+{{< bookshelf src="StructureMeshing_smallpreview.png" caption="AAAA" >}}
+
