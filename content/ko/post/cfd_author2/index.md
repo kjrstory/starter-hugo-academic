@@ -13,12 +13,17 @@ tags:
 
 bookshelf_item:
   - album: 2024
-    cover_img: StructureMeshing_smallpreview.pn
+    cover_img: StructureMeshing_smallpreview.png
     cover_link: "https://daum.net"
-    title: dassdasdasdasd
+    title: 11111
     author: IV
+  - album: 2024
+    cover_img: StructureMeshing_smallpreview.png
+    cover_link: "https://daum.net"
+    title: 2222
+    author: IS
 ---
 
 Welcome to my new block!
-{{< bookshelf cover_img="StructureMeshing_smallpreview.png" cover_link="https://daum.net" title="StructureMeshing_smallpreview.png" author="AAAA" >}}
+{{< bookshelf  >}}
 

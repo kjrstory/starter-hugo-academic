@@ -1,30 +1,3 @@
-{{ $destination := .Get "src" }}
-{{ $caption := .Get "caption" | default (.Get "title") | default "" }}{{/* Support legacy `title` option. */}}
-{{ $link := .Get "link" }}
-
-{{ $title := .Get "title" | default "Title" }}
-{{ $author := .Get "author" | default "Author" }}
-{{ $cover_img := .Get "cover_img" | default "" }}
-{{ $cover_link := .Get "cover_link" | default "" }}
-
-<div class="bookshelf">
-  <div class="book">
-     <div class="side spine">
-        <span class="spine-title"> {{ $title }} </span>
-              <span class="spine-author">
-                {{ $author }}
-              </span>
-     </div>
-     <div class="side top"></div>
-     <div
-              class="side cover"
-              style="background-image: url({{ $cover_img }}); cursor:pointer;"
-              onclick="location.href='{{ $cover_link | safeURL }}'"
-      ></div>
-  </div>
-</div>
-
-
 <div class="bookshelf">
   {{ range.Page.Params.bookshelf_item }}
   <div class="book">
@@ -37,8 +10,8 @@
      <div class="side top"></div>
      <div
               class="side cover"
-              style="background-image: url({{.cover_img }}); cursor:pointer;"
-              onclick="location.href='{{.cover_link | safeURL }}'"
+              style="background-image: url({{ .cover_img }}); cursor:pointer;"
+              onclick="location.href='{{ .cover_link | safeURL }}'"
       ></div>
   </div>
   {{ end }}
