@@ -1,4 +1,5 @@
-<script src="/js/booksehlf.js" > </script>
+{{ $js := resources.Get "js/bookshelf.js" | js.Build (dict "format" "esm" "minify" true) }}
+<script src="{{ $js.RelPermalink }}" type="module"></script>
 
 <div class="bookshelf">
   {{ range.Page.Params.bookshelf_item }}
