@@ -43,8 +43,8 @@ spines.map(function (s, i) {
   let randomPattern = randomChoice(availablePatterns);
   s.style.backgroundImage = `var(${randomPattern})`;
 
-  let randomColor = randomChoice(availableColors);
-  s.style.backgroundColor = randomColor;
+  //let randomColor = randomChoice(availableColors);
+  //s.style.backgroundColor = randomColor;
 
   covers[i].style.height = `${randomHeight}px`;
   covers[i].style.top = `${280 - randomHeight}px`;
