@@ -22,6 +22,16 @@ let availableColors = [
   "saddlebrown",
   "sienna",
   "midnightblue",
+      "turquoise",
+    "lavender",
+    "coral",
+    "peachpuff",
+    "thistle",
+    "lightseagreen",
+    "plum",
+    "cornflowerblue",
+    "lightsalmon",
+    "palegreen"
 ];
 
 // assign a random height, pattern and colour to each book
