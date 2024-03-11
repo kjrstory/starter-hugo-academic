@@ -1,19 +1,41 @@
-<div style="margin-top: 32px">
-    <div class="bookshelf">
-      <div class="book">
-        <div class="side spine">
-          <span class="spine-title"> {{ .Params.title }} </span>
-          <span class="spine-author">
-            {{ .Params.author }}
-          </span>
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <div style="margin-top: 32px">
+        <div class="bookshelf">
+          <div class="book">
+            <div class="side spine">
+              <span class="spine-title"> {{ .Params.title }} </span>
+              <span class="spine-author">
+                {{ .Params.author }}
+              </span>
+            </div>
+            <div class="side top"></div>
+            <div
+              class="side cover"
+              style="background-image: url({{ .Params.cover }}); cursor:pointer;"
+              onclick="location.href='{{ .Params.link }}'"
+            ></div>
+           </div>
         </div>
-        <div class="side top"></div>
-        <div
-          class="side cover"
-          style="background-image: url({{ .Params.cover }}); cursor:pointer;"
-          onclick="location.href='{{ .Params.link }}'"
-        ></div>
+        <hr/>
       </div>
-    </div>
-    <hr/>
+
+      <div class="body-footer">
+        <p>{{ i18n "last_updated" }} {{ $.Lastmod | time.Format site.Params.locale.date_format }}</p>
+
+        {{ partial "page_edit". }}
+
+        {{ partial "comments". }}
+
+        {{ partial "page_related". }}
+      </div>
+
+      {{ partial "site_footer". }}
+
+
+    </main>
+  </div>
 </div>
