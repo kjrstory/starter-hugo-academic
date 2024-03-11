@@ -4,7 +4,7 @@
 <div class="bookshelf">
   {{ range.Page.Params.bookshelf_item }}
   <div class="book">
-     <div class="side spine">
+     <div class="side spine" style="background-color:{{ .color }};">
         <span class="spine-title"> {{.title }} </span>
               <span class="spine-author">
                 {{.author }}
@@ -13,7 +13,7 @@
      <div class="side top"></div>
      <div
               class="side cover"
-              style="background-image: url({{ .cover_img }}); cursor:pointer; background-color:{{ .color }}"
+              style="background-image: url({{ .cover_img }}); cursor:pointer;"
               onclick="location.href='{{ .cover_link | safeURL }}'"
       ></div>
   </div>
