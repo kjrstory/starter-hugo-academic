@@ -218,7 +218,8 @@ $callout-color-map: (
     width: 50px;
     height: 280px;
     /* Patterns from: https://projects.verou.me/css3patterns/ */
-    background-image: var(--tartan);
+    background-image: var(--spline-tartan);
+    background-color: maroon;
     transform: rotateY(0deg) translateZ(0px);
   }
   
