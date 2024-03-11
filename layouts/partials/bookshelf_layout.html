@@ -18,23 +18,10 @@
               style="background-image: url({{ .Params.cover }}); cursor:pointer;"
               onclick="location.href='{{ .Params.link }}'"
             ></div>
-           </div>
+          </div>
         </div>
         <hr/>
       </div>
-
-      <div class="body-footer">
-        <p>{{ i18n "last_updated" }} {{ $.Lastmod | time.Format site.Params.locale.date_format }}</p>
-
-        {{ partial "page_edit". }}
-
-        {{ partial "comments". }}
-
-        {{ partial "page_related". }}
-      </div>
-
-      {{ partial "site_footer". }}
-
 
     </main>
   </div>
