@@ -230,9 +230,9 @@ $callout-color-map: (
     top: 0px;
     left: 0px;
     font-size: 20px;
-    color: black;
+    color: gold;
     writing-mode: vertical-rl;
-    text-orientation: mixed;
+    text-orientation: sideways;
   }
   
   .spine-author {
@@ -271,10 +271,10 @@ $callout-color-map: (
   
 
 .book-wrapper {
-  width: 900px;
+  width: 100%;
   position: relative;
   margin: 0 auto;
-  column-count: 3;
+  column-count: 4;
   column-gap: 12px;
   padding: 4px;
 }
@@ -370,12 +370,4 @@ $callout-color-map: (
 
 .book-image:hover .effect{
     margin-left: 14px;
-}
-
-.realvjy{
-  width: 900px;
-  padding: 20px;
-  margin: 0 auto;
-  font-family: sans-serif;
-  text-align: center
 }

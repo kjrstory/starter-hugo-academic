@@ -4,18 +4,17 @@
 <div class="bookshelf">
   {{ range.Page.Params.bookshelf_item }}
   <div class="book">
-     <div class="side spine" style="background-color:{{ .color }};">
-        <span class="spine-title"> {{.title }} </span>
-              <span class="spine-author">
-                {{.author }}
-              </span>
-     </div>
-     <div class="side top"></div>
-     <div
-              class="side cover"
-              style="background-image: url({{ .cover_img }}); cursor:pointer;"
-              onclick="location.href='{{ .cover_link | safeURL }}'"
-      ></div>
+    <div class="side spine" style="background-color:{{ .color }};">
+      <span class="spine-title"> {{.title }} </span>
+         <span class="spine-author">
+           {{ .author }}
+         </span>
+    </div>
+    <div class="side top"></div>
+    <div class="side cover"
+         style="background-image: url({{ .cover_img }}); cursor:pointer;"
+         onclick="location.href='{{ .cover_link | safeURL }}'">
+    </div>
   </div>
   {{ end }}
 </div>
