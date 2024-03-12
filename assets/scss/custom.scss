@@ -218,18 +218,19 @@ $callout-color-map: (
     width: 50px;
     height: 280px;
     /* Patterns from: https://projects.verou.me/css3patterns/ */
-    background-image: var(--spline-tartan);
+    background-image: var(--spline-tartan); 
     background-color: maroon;
-    transform: rotateY(0deg) translateZ(0px);
+    transform: rotateY(0deg) translateZ(0px) ;
   }
+
   
   .spine-title {
     margin: 2px;
     position: absolute;
     top: 0px;
     left: 0px;
-    font-size: 12px;
-    color: gold;
+    font-size: 20px;
+    color: black;
     writing-mode: vertical-rl;
     text-orientation: mixed;
   }
