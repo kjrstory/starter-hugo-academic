@@ -191,6 +191,7 @@ $callout-color-map: (
     margin-top: 32px;
     display: flex;
     flex-wrap: wrap;
+    background:url(https://www.transparenttextures.com/patterns/wood-pattern.png);
   }
   
   .book {
@@ -279,6 +280,7 @@ $callout-color-map: (
   column-count: 4;
   column-gap: 12px;
   padding: 4px;
+  background:url(https://www.transparenttextures.com/patterns/wood-pattern.png);
 }
 .book-items {
   position: relative;
