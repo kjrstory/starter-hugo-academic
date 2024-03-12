@@ -239,7 +239,9 @@ $callout-color-map: (
     position: absolute;
     color: goldenrod;
     bottom: 0px;
-    left: 20%; /* no idea why 20% centers it */
+    left: 30%; /* no idea why 20% centers it */
+    writing-mode: vertical-rl;
+    text-orientation: sideways;
   }
   
   .top {
