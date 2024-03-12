@@ -40,8 +40,8 @@ spines.map(function (s, i) {
 //  s.style.height = `${randomHeight}px`;
 //  s.style.top = `${280 - randomHeight}px`;
 
-  let randomPattern = randomChoice(availablePatterns);
-  s.style.backgroundImage = `var(${randomPattern})`;
+//  let randomPattern = randomChoice(availablePatterns);
+//  s.style.backgroundImage = `var(${randomPattern})`;
 
   //let randomColor = randomChoice(availableColors);
   //s.style.backgroundColor = randomColor;
