@@ -31,10 +31,15 @@ bookshelf_item:
     author: S.M
     color: white
   - album: 2024
-    cover_img: 9791162247679
+    cover_img: 9791162247679.webp
     cover_link: https://ridibooks.com/books/443000807
     author: B. W. 커니헨
     title: 유닉스의 탄생   
+  - album: 2024
+    cover_img: dune_cover.webp
+    cover_link: https://ridibooks.com/books/682001434
+    author: 프랭크 허버트
+    title: 듄 시리즈 1권   
 ---
 
 Welcome to my new block!
