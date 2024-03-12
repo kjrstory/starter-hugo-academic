@@ -18,21 +18,21 @@ bookshelf_item:
     title: 11111
     author: IV
     color: coral
-    spine_pattern: --spine-pyramid
+    spine_pattern: "--spine-pyramid"
   - album: 2024
     cover_img: fig1.webp
     cover_link: "https://daum.net"
     title: 퇴마록
     author: 이우혁
     color: coral
-    spine_pattern: --spine-stairs
+    spine_pattern: "--spine-stairs"
   - album: 2024
     cover_img: fig2.webp
     cover_link: "https://ridibooks.com/books/754016528"
     title: 소프트웨어 장인
     author: S.M
     color: white
-    spine_pattern: --spine-argyle
+    spine_pattern: "--spine-argyle"
 ---
 
 Welcome to my new block!

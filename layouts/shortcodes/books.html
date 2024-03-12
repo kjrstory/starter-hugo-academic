@@ -5,7 +5,9 @@
       <div class="book-cover">
         <div class="book-inside"></div>
         <div class="book-image">
-          <img src="{{ .cover_img }}" />
+          <a href="{{ .cover_link | safeURL}}">
+            <img src="{{ .cover_img }}" />
+          </a>
           <div class="effect"></div>
           <div class="light"></div>
         </div>
