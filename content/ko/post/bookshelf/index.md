@@ -18,21 +18,23 @@ bookshelf_item:
     title: 11111
     author: IV
     color: coral
-    spine_pattern: "--spine-pyramid"
   - album: 2024
     cover_img: fig1.webp
     cover_link: "https://daum.net"
     title: 퇴마록
     author: 이우혁
     color: coral
-    spine_pattern: "--spine-stairs"
   - album: 2024
     cover_img: fig2.webp
     cover_link: "https://ridibooks.com/books/754016528"
     title: 소프트웨어 장인
     author: S.M
     color: white
-    spine_pattern: "--spine-argyle"
+  - album: 2024
+    cover_img: 9791162247679
+    cover_link: https://ridibooks.com/books/443000807
+    author: B. W. 커니헨
+    title: 유닉스의 탄생   
 ---
 
 Welcome to my new block!
