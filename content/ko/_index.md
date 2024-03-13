@@ -74,4 +74,41 @@ sections:
 #      title: Popular Topics
 #    design:
 #      columns: '2'
+  - block: portfolio
+    id: projects2
+    content:
+      title: Projects
+      filters:
+        folders:
+          - project
+      default_button_index: 0
+      buttons:
+        - name: All
+          tag: '*'
+        - name: HPC
+          tag: HPC
+        - name: Cloud
+          tag: Cloud
+    design:
+      columns: '1'
+      view: masonry
+  - block: portfolio
+    id: projects3
+    content:
+      title: Projects
+      filters:
+        folders:
+          - project
+      default_button_index: 0
+      buttons:
+        - name: All
+          tag: '*'
+        - name: HPC
+          tag: HPC
+        - name: Cloud
+          tag: Cloud
+    design:
+      columns: '1'
+      view: card
+---
 ---
