@@ -53,9 +53,8 @@ bookshelf_item:
 Shortcodes는 Hugo에서 제공하는 강력한 기능으로, 사용자가 웹사이트에 복잡한 HTML, CSS, 혹은 JavaScript 없이도 다양한 커스텀 요소를 쉽게 삽입할 수 있게 해줍니다. 
 이미지 갤러리, 비디오, 탭 등을 마크다운 파일에 직접 삽입하고 싶을 때 Shortcode를 사용하면 매우 편리합니다.
 예를 들어 유튜브를 삽입하고 싶으면 마크다운에서 다음과 같이 작성하면 됩니다.
-```md
-\{\{< youtube id="w7Ft2ymGmfc" autoplay="true" >\}\}
-```
+
+    {{</* youtube id="w7Ft2ymGmfc" autoplay="true" */>}}
 
 저는 이러한 Shortcode의 장점을 활용하여, 책장(Bookshelf)에 관한 새로운 Shortcode를 개발했습니다.
 제가 개발한 이 Shortcode는 사용자가 읽은 책이나 앞으로 읽을 책들을 웹사이트에서 보기 좋게 디스플레이 할 수 있도록 도와줍니다.
@@ -88,11 +87,10 @@ Shortcode를 구현하기 위해 필요한 HTML, CSS, JavaScript 파일들을 �
 
 구현한 Shortcode는 Hugo에서 매우 간단하게 사용할 수 있습니다. 마크다운 파일의 Front Matter에 몇 줄의 코드를 추가하고 본문에 원하는 위치에 Shortcode를 다음과 같이 사용하면 책장을 디스플레이 할 수 있게 됩니다.
 
-```md
-\{\{< bookshelf >\}\}
+    {{</* bookshelf */>}}
 
-\{\{< front-bookshelf >\}\}
-```
+    {{</* front-bookshelf */>}}
+
 
 {{< bookshelf >}}
 
