@@ -50,7 +50,7 @@ let availableColors = [
   "brown",
   "saddlebrown",
   "sienna",
-  "midnightblue",
+  "midnightblue"
 ];
 
 // assign a random height, pattern and colour to each book
