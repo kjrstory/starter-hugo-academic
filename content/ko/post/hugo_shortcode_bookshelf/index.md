@@ -88,6 +88,13 @@ Shortcode를 구현하기 위해 필요한 HTML, CSS, JavaScript 파일들을 �
 
 구현한 Shortcode는 Hugo에서 매우 간단하게 사용할 수 있습니다. 마크다운 파일의 Front Matter에 몇 줄의 코드를 추가하고 본문에 원하는 위치에  {{< bookshelf >}}와 {{< front-bookshelf >}}을 사용하면 책장을 디스플레이 할 수 있게 됩니다.
 
+
+두 Shortcodes의 리포지토리는 다음과 같습니다.
+
+🤩 [Hugo Bookshelf Shortcode](https://github.com/kjrstory/hugo-shortcode-bookshelf)
+
+😎 [Hugo Front Bookshelf Shortcode](https://github.com/kjrstory/hugo-shortcode-front-bookshelf)
+
 또한, 이러한 Shortcode들은 MIT 라이선스 하에 배포되어 있으며, 출처를 밝히는 것 외에는 사용에 제한이 없습니다. 
 
 이 프로젝트를 진행하며, [Goodreads](https://www.goodreads.com)와 같은 유명 도서 서비스 사이트의 존재도 알게 되었습니다. 
