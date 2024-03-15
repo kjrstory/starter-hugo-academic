@@ -1,0 +1,20 @@
+{{ $js := resources.Get "js/bookshelf.js" | js.Build (dict "format" "esm" "minify" true) }}
+<script src="{{ $js.RelPermalink }}" type="module"></script>
+
+<div class="bookshelf">
+  {{ range.Page.Params.bookshelf_item }}
+  <div class="book">
+    <div class="side spine">
+      <span class="spine-title"> {{.title }} </span>
+         <span class="spine-author">
+           {{ .author }}
+         </span>
+    </div>
+    <div class="side top"></div>
+    <div class="side cover"
+         style="background-image: url({{ .cover_img }}); cursor:pointer;"
+         onclick="location.href='{{ .cover_link | safeURL }}'">
+    </div>
+  </div>
+  {{ end }}
+</div>

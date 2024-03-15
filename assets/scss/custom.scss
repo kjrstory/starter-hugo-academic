@@ -52,4 +52,334 @@ $callout-color-map: (
     content: $icon;
   }
 }
-  
+
+:root {
+  --spine-pyramid: linear-gradient(
+    315deg,
+    transparent 75%,
+    rgba(255, 255, 255, 0.1) 0
+    ),
+    linear-gradient(
+      45deg,
+       transparent 75%,
+        rgba(255, 255, 255, 0.1) 0
+    ),
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.2) 166px,
+      transparent 0
+    ),
+    linear-gradient(
+      45deg,
+      rgba(0, 0, 0, 0.1) 75%,
+      transparent 0
+    );
+    background-size: 20px 20px;
+  --spine-stairs: repeating-linear-gradient(
+      63deg,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.1) 1px,
+      transparent 3px,
+      transparent 0
+    ),
+    linear-gradient(
+      127deg,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.1) 90px,
+      transparent 55%,
+      transparent 0
+    ),
+    linear-gradient(
+      transparent 51%,
+      rgba(0, 0, 0, 0.1) 170px
+    );
+    background-size: 70px 120px;
+  --spine-argyle: repeating-linear-gradient(
+      120deg,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.1) 1px,
+      transparent 1px,
+      transparent 60px
+    ),
+    repeating-linear-gradient(
+      60deg,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.1) 1px,
+      transparent 1px,
+      transparent 60px
+    ),
+    linear-gradient(
+      60deg,
+      rgba(0, 0, 0, 0.1) 25%,
+      transparent 25%,
+      transparent 75%,
+      rgba(0, 0, 0, 0.1) 75%,
+      rgba(0, 0, 0, 0.1)
+    ),
+    linear-gradient(
+      120deg,
+      rgba(0, 0, 0, 0.1) 25%,
+      transparent 25%,
+      transparent 75%,
+      rgba(0, 0, 0, 0.1) 75%,
+      rgba(0, 0, 0, 0.1)
+    );
+  background-size: 70px 120px;
+  --spine-tartan: repeating-linear-gradient(
+      transparent,
+      transparent 50px,
+      rgba(0, 0, 0, 0.4) 50px,
+      rgba(0, 0, 0, 0.4) 53px,
+      transparent 53px,
+      transparent 63px,
+      rgba(0, 0, 0, 0.4) 63px,
+      rgba(0, 0, 0, 0.4) 66px,
+      transparent 66px,
+      transparent 116px,
+      rgba(0, 0, 0, 0.5) 116px,
+      rgba(0, 0, 0, 0.5) 166px,
+      rgba(255, 255, 255, 0.2) 166px,
+      rgba(255, 255, 255, 0.2) 169px,
+      rgba(0, 0, 0, 0.5) 169px,
+      rgba(0, 0, 0, 0.5) 179px,
+      rgba(255, 255, 255, 0.2) 179px,
+      rgba(255, 255, 255, 0.2) 182px,
+      rgba(0, 0, 0, 0.5) 182px,
+      rgba(0, 0, 0, 0.5) 232px,
+      transparent 232px
+    ),
+    repeating-linear-gradient(
+      270deg,
+      transparent,
+      transparent 50px,
+      rgba(0, 0, 0, 0.4) 50px,
+      rgba(0, 0, 0, 0.4) 53px,
+      transparent 53px,
+      transparent 63px,
+      rgba(0, 0, 0, 0.4) 63px,
+      rgba(0, 0, 0, 0.4) 66px,
+      transparent 66px,
+      transparent 116px,
+      rgba(0, 0, 0, 0.5) 116px,
+      rgba(0, 0, 0, 0.5) 166px,
+      rgba(255, 255, 255, 0.2) 166px,
+      rgba(255, 255, 255, 0.2) 169px,
+      rgba(0, 0, 0, 0.5) 169px,
+      rgba(0, 0, 0, 0.5) 179px,
+      rgba(255, 255, 255, 0.2) 179px,
+      rgba(255, 255, 255, 0.2) 182px,
+      rgba(0, 0, 0, 0.5) 182px,
+      rgba(0, 0, 0, 0.5) 232px,
+      transparent 232px
+    ),
+    repeating-linear-gradient(
+      125deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.2) 2px,
+      rgba(0, 0, 0, 0.2) 3px,
+      transparent 3px,
+      transparent 5px,
+      rgba(0, 0, 0, 0.2) 5px
+    );
+}
+
+.bookshelf {
+  width: 100%;
+  height: 320px;
+  margin-top: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #826c59;
+  background-image: url("https://www.transparenttextures.com/patterns/wood-pattern.png");
+}
+
+.book {
+  width: 50px;
+  height: 280px;
+  position: relative;
+  margin-left: 5px;
+  top: 30px;
+  transform-style: preserve-3d;
+  transform: translateZ(0) rotateY(0);
+  transition: transform 1s;
+}
+
+.side {
+  position: absolute;
+  border: 2px solid black;
+  border-radius: 3px;
+  font-weight: bold;
+  color: black;
+  text-align: center;
+  transform-origin: center left;
+}
+
+.spine {
+  position: relative;
+  width: 50px;
+  height: 280px;
+  /* Patterns from: https://projects.verou.me/css3patterns/ */
+  background-image: var(--spine-tartan);
+  transform: rotateY(0deg) translateZ(0px);
+}
+
+.spine-title {
+  margin: 2px;
+  position: absolute;
+  top: 5px;
+  left: 0px;
+  font-size: 15px;
+  color: gold;
+  writing-mode: vertical-rl;
+  text-orientation: sideways;
+}
+
+.spine-author {
+  position: absolute;
+  color: goldenrod;
+  bottom: 0px;
+  left: 0%; /* no idea why 20% centers it */
+  font-size: 10px;
+}
+
+.top {
+  width: 50px;
+  height: 190px;
+  top: -2px;  /* hmm, why -2 and not 0? */
+  background-image: linear-gradient(90deg, white 90%, gray 10%);
+  background-size: 5px 5px;
+  transform: rotateX(90deg) translateZ(95px) translateY(-95px);
+}
+
+.cover {
+  width: 190px;
+  height: 280px;
+  top: 0px;
+  background-image: url("https://picsum.photos/190/280");
+  background-size: contain;
+  background-repeat: round;
+  left: 50px;
+  transform: rotateY(90deg) translateZ(0);
+  transition: transform 1s;
+}
+
+.book:hover {
+  z-index: 1;
+  transform: rotateX(-25deg) rotateY(-40deg) rotateZ(-15deg) translateY(50px)
+    translateX(-30px);
+}
+
+.book-wrapper {
+width: 100%;
+position: relative;
+margin: 0 auto;
+column-count: 4;
+column-gap: 12px;
+padding: 4px;
+background-color: #826c59;
+background-image: url("https://www.transparenttextures.com/patterns/wood-pattern.png");
+}
+
+.book-items {
+position: relative;
+cursor: default;
+padding: 16px;
+margin: 0;
+display: grid;
+break-inside: avoid;
+}
+
+.main-book-wrap {
+position: relative;
+}
+
+.book-cover {
+position: relative;
+}
+
+.book-cover .book-inside {
+position: absolute;
+width: 90%;
+height: 96%;
+top: 1%;
+left: 16px;
+border: 1px solid grey;
+border-radius: 2px 6px 6px 2px;
+background: white;
+box-shadow: 10px 40px 40px -10px #00000030, inset -2px 0 0 grey,
+  inset -3px 0 0 #dbdbdb, inset -4px 0 0 white, inset -5px 0 0 #dbdbdb,
+  inset -6px 0 0 white, inset -7px 0 0 #dbdbdb, inset -8px 0 0 white,
+  inset -9px 0 0 #dbdbdb;
+}
+
+.book-cover .book-image {
+line-height: 0;
+position: relative;
+border-radius: 2px 6px 6px 2px;
+box-shadow: 6px 6px 18px -2px rgba(0, 0, 0, 0.2), 24px 28px 40px -6px rgba(0, 0, 0, 0.1);
+transition: all 0.3s ease-in-out;
+transform: perspective(2000px) rotateY(-15deg) translateX(-10px) scaleX(0.94);
+cursor: pointer;
+overflow: hidden;
+}
+
+.book-cover .book-image::before {
+content: "";
+display: block;
+padding-top: 150%;  
+}
+
+.book-image img {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+border-radius: 2px 6px 6px 2px;
+margin-top: 0;
+}
+
+.book-image:hover {
+transform: perspective(2000px) rotateY(0deg) translateX(0px) scaleX(1);
+transform-style: preserve-3d;
+box-shadow: 6px 6px 12px -1px rgba(0, 0, 0, 0.1),
+  20px 14px 16px -6px rgba(0, 0, 0, 0.1);
+}
+
+.effect {
+position: absolute;
+width: 20px;
+height: 100%;
+margin-left: 16px;
+top: 0;
+border-left: 2px solid #00000010;
+background-image: linear-gradient(
+  90deg,
+  rgba(255, 255, 255, 0.2) 0%,
+  rgba(255, 255, 255, 0) 100%
+);
+transition: all 0.5s ease;
+z-index: 5;
+}
+
+.light {
+width: 90%;
+height: 100%;
+position: absolute;
+border-radius: 3px;
+background-image: linear-gradient(
+  90deg,
+  rgba(255, 255, 255, 0) 0%,
+  rgba(255, 255, 255, 0.2) 100%
+);
+top: 0;
+right: 0;
+opacity: 0.1;
+transition: all 0.5s ease;
+z-index: 4;
+}
+
+.book-image:hover .effect{
+  margin-left: 14px;
+}
