@@ -54,7 +54,7 @@ Shortcodes는 Hugo에서 제공하는 강력한 기능으로, 사용자가 웹�
 이미지 갤러리, 비디오, 탭 등을 마크다운 파일에 직접 삽입하고 싶을 때 Shortcode를 사용하면 매우 편리합니다.
 예를 들어 유튜브를 삽입하고 싶으면 마크다운에서 다음과 같이 작성하면 됩니다.
 ```md
-{{< youtube id="w7Ft2ymGmfc" autoplay="true" >}}
+\{\{< youtube id="w7Ft2ymGmfc" autoplay="true" >\}\}
 ```
 
 저는 이러한 Shortcode의 장점을 활용하여, 책장(Bookshelf)에 관한 새로운 Shortcode를 개발했습니다.
@@ -63,9 +63,9 @@ Shortcodes는 Hugo에서 제공하는 강력한 기능으로, 사용자가 웹�
 
 이러한 동기에서 출발하여, 저는 두 개의 다른 사이트를 참고하였습니다.
 
-![petargyurov' site](petargyurov_bookshelf.jpg)
+![petargyurov' site](petargyurov_bookshelf.jpg "petargyurov' site")
 
-![vijay verma' site](vjy_bookshelf.jpg)
+![vijay verma' site](vjy_bookshelf.jpg "vijay verma' site")
 
 이들 사이트는 자신들의 코드를 공유하고 있었으며, HTML을 직접 사용할 수 있는 경우에는 쉽게 따라 할 수 있었습니다.
 그러나 Hugo 사용자들이 보다 편리하게 이 기능을 사용할 수 있도록 Shortcode로 구현하는 것을 목표로 했습니다.
@@ -73,14 +73,14 @@ Shortcodes는 Hugo에서 제공하는 강력한 기능으로, 사용자가 웹�
 Shortcode를 구현하기 위해 필요한 HTML, CSS, JavaScript 파일들을 만들면서, 저는 [코드펜(CodePen)](https://codepen.io/)에 예제를 만들었습니다.
 코드펜은 웹사이트를 공부하기 매우 좋은 사이트로 웹사이트안에 에디터가 있어 코드를 변경할 때 마다 실시간으로 렌더링되므로 개발할 때 매우 용이합니다.
 
-<iframe height="600" style="width: 100%;" scrolling="no" title="Virtual-Bookshelf" src="https://codepen.io/Jong-Rok-Kim/embed/NWEWepo?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+<iframe height="400" style="width: 100%;" scrolling="no" title="Virtual-Bookshelf" src="https://codepen.io/Jong-Rok-Kim/embed/NWEWepo?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
   See the Pen <a href="https://codepen.io/Jong-Rok-Kim/pen/NWEWepo">
   Virtual-Bookshelf</a> by Jong Rok Kim (<a href="https://codepen.io/Jong-Rok-Kim">@Jong-Rok-Kim</a>)
   on <a href="https://codepen.io">CodePen</a>.
 </iframe>
 
 
-<iframe height="600" style="width: 100%;" scrolling="no" title="Front-Bookeshelf" src="https://codepen.io/Jong-Rok-Kim/embed/vYMKVMP?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+<iframe height="400" style="width: 100%;" scrolling="no" title="Front-Bookeshelf" src="https://codepen.io/Jong-Rok-Kim/embed/vYMKVMP?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
   See the Pen <a href="https://codepen.io/Jong-Rok-Kim/pen/vYMKVMP">
   Front-Bookeshelf</a> by Jong Rok Kim (<a href="https://codepen.io/Jong-Rok-Kim">@Jong-Rok-Kim</a>)
   on <a href="https://codepen.io">CodePen</a>.
@@ -89,15 +89,14 @@ Shortcode를 구현하기 위해 필요한 HTML, CSS, JavaScript 파일들을 �
 구현한 Shortcode는 Hugo에서 매우 간단하게 사용할 수 있습니다. 마크다운 파일의 Front Matter에 몇 줄의 코드를 추가하고 본문에 원하는 위치에 Shortcode를 다음과 같이 사용하면 책장을 디스플레이 할 수 있게 됩니다.
 
 ```md
-{{< bookshelf >}}
+\{\{< bookshelf >\}\}
 
-{{< front-bookshelf >}}
+\{\{< front-bookshelf >\}\}
 ```
 
 {{< bookshelf >}}
 
 {{< front-bookshelf >}}
-
 두 Shortcodes의 리포지토리는 다음과 같습니다.
 
 🤩 [Hugo Bookshelf Shortcode](https://github.com/kjrstory/hugo-shortcode-bookshelf)
