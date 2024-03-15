@@ -45,4 +45,4 @@ bookshelf_item:
 Welcome to my new block!
 {{< bookshelf  >}}
 
-{{< books >}}
+{{< front-bookshelf >}}
