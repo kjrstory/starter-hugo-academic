@@ -111,4 +111,3 @@ sections:
       columns: '1'
       view: card
 ---
----
