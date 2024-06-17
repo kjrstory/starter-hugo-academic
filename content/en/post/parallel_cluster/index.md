@@ -21,7 +21,7 @@ If you have used AWS, you are likely familiar with popular services like EC2 and
 Most of the tasks can be managed within the console. For instance, if you are using EC2, you can perform all configurations from creation to detailed settings within the console. 
 Nowadays, web terminals are provided, so you can do everything necessary without using SSH connection programs like Putty or MobaXterm. Cloud terminology and processes are well-defined in this way.
 
-However, while the web interface is excellent, it is not suitable for repetitive tasks or creating reproducible interfaces. This is where developer tools like APIs, CLI, and SDKs come in. Additionally, the concept of IaC (Infrastructure as Code) emerged, with HashiCorp's [Terraform](https://www.terraform.io) being the most famous IaC code for the cloud. AWS also offers its own IaC service called [Cloudformation](https://aws.amazon.com/cloudformation/). Tasks previously performed on the web can now be executed via terminal commands or code.
+However, while the web interface is excellent, it is not suitable for repetitive tasks or creating reproducible interfaces. This is where developer tools like APIs, CLI, and SDKs come in. Additionally, the concept of IaC (Infrastructure as Code) emerged, with HashiCorp's [Terraform](https://www.terraform.io) being the most famous IaC code for the cloud. AWS also offers its own IaC service called [CloudFormation](https://aws.amazon.com/cloudformation/). Tasks previously performed on the web can now be executed via terminal commands or code.
 
 If you have used AWS or similar cloud services, the above explanation might seem tedious. Why am I explaining it in such detail? 
 Because Parallel Cluster is a service that is entirely different from the above. 
@@ -63,7 +63,7 @@ It's like financial products where basic products like savings, stocks, and bond
 Parallel Cluster allows customers to combine various products freely.
 
 There is a counterargument that combined products should not be hidden from the console. 
-[Lightsail](https://aws.amazon.com/Lightsail/), for example, combines services like EC2, EBS, VPC, Route 53, DynamoDB, and ECS, making it easier to use web services. 
+[Lightsail](https://aws.amazon.com/lightsail/), for example, combines services like EC2, EBS, VPC, Route 53, DynamoDB, and ECS, making it easier to use web services. 
 However, Lightsail is available in the console with a more intuitive web interface. Similarly, services like OpenSearch and Hadoop (EMR) are provided in the console. The complexity and purpose of the combination seem to influence the decision not to show HPC products in the console.
 Therefore, AWS initially provided this product only via CLI, without an API or web interface, but now they have started to provide them.
 
