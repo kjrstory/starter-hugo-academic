@@ -64,41 +64,29 @@ It's like financial products where basic products like savings, stocks, and bond
 Parallel Cluster allows customers to combine various products freely.
 
 There is a counterargument that combined products should not be hidden from the console. 
-[Lightsail](https://aws.amazon.com/Lightsail/), for example, combines services like EC2, EBS, VPC, Route 53, DynamoDB, and ECS, making it easier to use web services. However, Lightsail is available in the console with a more intuitive web interface. Similarly, services like OpenSearch and Hadoop (EMR) are provided in the console. The complexity and purpose of the combination seem to influence the decision not to show HPC products in the console.
-
-
+[Lightsail](https://aws.amazon.com/Lightsail/), for example, combines services like EC2, EBS, VPC, Route 53, DynamoDB, and ECS, making it easier to use web services. 
+However, Lightsail is available in the console with a more intuitive web interface. Similarly, services like OpenSearch and Hadoop (EMR) are provided in the console. The complexity and purpose of the combination seem to influence the decision not to show HPC products in the console.
 Therefore, AWS initially provided this product only via CLI, without an API or web interface, but now they have started to provide them.
 
 ![](ui-image.png "Parallel Cluster UI(from AWS)")
 
-The above screen shows the Parallel Cluster UI, which has a very similar interface to the AWS console. 
-However, the way this web interface is provided is quite unique. 
-Instead of being offered directly in the console, users need to implement it themselves using serverless web applications. 
-All the code and infrastructure for implementing this serverless web application are open-source, [available on GitHub])(https://github.com/aws/aws-parallelcluster-ui), allowing users to set it up with just a few inputs and clicks. The same approach applies to the API; instead of using AWS's default API, users create their own APIs using API Gateway and Lambda.
+The above screen shows the Parallel Cluster UI, which has a UI very similar to the AWS console. The similarity likely stems from the fact that the developers of this code are affiliated with AWS. 
+If you look at the [repository](https://github.com/aws/aws-parallelcluster-ui) contributors, you’ll see that the developers are indeed working at AWS, with minimal contributions from outside. 
+Although this repository is open-source, it feels more like a restaurant with a transparent kitchen where you can see the cooking process, rather than an open marketplace where everyone can participate.
+Parallel Cluster and Parallel Cluster UI repositories are separate, but both codes are exclusively for use with AWS, suggesting a commitment to transparency in their development process.
 
-위 화면은 Parallel Cluster UI의 화면으로 AWS 콘솔과 매우 유사한 UI를 가졌습니다. 
-그런데 이 웹 인터페이스를 제공하는 방식이 매우 특이합니다. 
-콘솔에서 제공해주는 방식이 아니라 사용자가 직접 서버리스 웹을 구현하는 형태입니다. 
-이 서버리스 웹을 구현할 때의 코드와 인프라 코드들을 모두 [오픈소스](https://github.com/aws/aws-parallelcluster-ui) 로 공개하고 있기 때문에 사용자는 거의 입력 몇 번과 클릭 몇 번으로 서버리스 웹을 만들 수 있습니다. 
-API도 마찬가지로 AWS의 기본 API를 쓰지 않고 API Gateway및 Lambda란 자신들의 상품을 사용하여 사용자 별로 API를 만드는 형태입니다.
-이쯤 되면 AWS의 고집이 느껴집니다.
-Parallel Cluster를 절대로 콘솔에 보여주지 않겠다 라는 것입니다. 심지어 웹 화면을 위한 프론트엔드, 백엔드 코드를 모두 만들었음에도 직접 사용자가 그 웹 서비스를 올려서 쓰라는 것입니다.
+However, the way this web interface is provided is quite unique. 
+Instead of being available directly in the console, users need to implement it themselves using serverless web applications. 
+All the frontend, backend, and infrastructure codes needed to implement this serverless web application are open-source, allowing users to set it up with just a few inputs and clicks. 
+The same approach applies to the API; instead of using AWS's default API, users create their own APIs using API Gateway and Lambda.
+
+At this point, it feels like AWS is adamant about not showing Parallel Cluster in the console. Even though they have created both frontend and backend code for the web interface, they insist that users host the web service themselves.
 
 ![](pcm-architecture.png "Parallel Cluster Architecture(from AWS)")
 
-Azure와 Google Cloug의 HPC 서비스도 마찬가지입니다.
-Google Cloud는 현재 CLI 툴만 제공하고 있습니다.
-Azure는 CLI 툴과 함께 웹을 제공해주는데 자신들의 마켓플레이스에 있습니다.
-대부분의 사람들은 마켓플레이스에는 CSP 자사의 상품이 아니라 써드 파티/파트너 회사들의 솔루션 상품을 올리는 것으로 인식을 합니다.
-마켓플레이스에 자사의 솔루션을 올리는 것을 이해하지 못하는 사람들도 있습니다.
-Paralell Cluster도 일종의 마켓플레이스 형 상품으로 생각해야 할 것 같습니다.
-클라우드에서의 HPC를 다들 고성능 CPU, GPU장비, 또는 인피니밴드 같은 하드웨어만을 생각합니다.
-하지만 이런 하드웨어들도 HPC의 컴퍼넌트일 뿐 그 자체로 HPC가 되지 않습니다.
-결합형 상품임을 인식하여 어떤 형태로 제공해줄 것인가(또는 사용할 것인가)부터가 클라우드 HPC를 시작하는 첫 단계라고 생각합니다.
-아쉽게도 제가 만난 사람들은 이런 인식의 전환이 막혀있는 사람들이 많았습니다.
-그래서 저는 이런 마켓플레이스 형 상품을 CSP에서 직접 만들고 본인들의 마켓플레이스에 올리는가로 클라우드의 성숙도를 평가할 수 있다고 생각합니다.
-기회가 된다면 Parallel Cluster와 Parallel Cluster UI 코드이 기반이 되는 Cloudformation, SDK, CDK, Lambda, API Gateway, Cognito같은 코드/서비스들드도 분석하고 코드에 대해서도 뜯어보는 글을 쓰고 싶네요. 
 
+Azure and Google Cloud's HPC services are similar. Google Cloud currently only provides a CLI tool called [HPC Toolkit](https://github.com/GoogleCloudPlatform/hpc-toolkit). Azure offers a product called [CycleCloud](https://learn.microsoft.com/en-us/azure/cyclecloud/overview?view=cyclecloud-8) that provides both CLI tools and a web interface, but it is also available in their marketplace rather than the console. Using this marketplace product involves running a web server on a virtual machine. Therefore, Azure and Google Cloud also do not have HPC services available directly in the console.
 
+Most people perceive the marketplace as a platform for third-party/partner solutions rather than CSP's own products. Some do not understand why CSP would list their solutions in the marketplace. Parallel Cluster should be considered a marketplace-type product as well.
 
-
+In the cloud, HPC is often thought of only in terms of high-performance CPUs, GPUs, or InfiniBand hardware. However, these are just components of HPC, not HPC itself. Recognizing it as a combined product and determining how to provide or use it is the first step in cloud HPC. Unfortunately, many people I’ve met are not open to this change in perspective. Therefore, I believe the maturity of a cloud can be evaluated by whether the CSP creates and lists marketplace-type products in their marketplace. If given the chance, I would love to delve into the CloudFormation, SDK, CDK, Lambda, API Gateway, and Cognito codes/services that underpin Parallel Cluster and its UI.
