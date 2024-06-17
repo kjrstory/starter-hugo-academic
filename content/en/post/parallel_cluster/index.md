@@ -1,5 +1,5 @@
 ---
-title: Exploring AWS Parallel Cluster: A Unique Approach to HPC
+title: Exploring AWS Parallel Cluster - A Unique Approach to HPC
 date: 2024-06-15T08:00:00.000Z
 draft: false
 featured: false
@@ -12,7 +12,6 @@ tags:
 categories:
   - HPC
 ---
-
 
 AWS [Parallel Cluster](https://aws.amazon.com/hpc/parallelcluster/) is one of the services in AWS's HPC (High-Performance Computing) portfolio. I believe this product is highly unique compared to other services, and I intend to discuss the reasons in this post. This post is not a guide on how to use Parallel Cluster; for that, you can refer to the official guide or workshops provided by AWS. Instead, we will explore the development approach of Parallel Cluster.
 
