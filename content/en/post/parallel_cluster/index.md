@@ -1,6 +1,6 @@
 ---
 title: AWS Parallel Cluster 코드에 대한 고찰
-date: 2024-06-17T08:00:00.000Z
+date: 2024-06-15T08:00:00.000Z
 draft: false
 featured: false
 authors:
