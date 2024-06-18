@@ -115,5 +115,5 @@ ParalellCluster도 일종의 마켓플레이스 형 상품으로 생각해야 �
 결합형 상품임을 인식하여 어떤 형태로 제공해줄 것인가(또는 사용할 것인가)부터가 클라우드 HPC를 시작하는 첫 단계라고 생각합니다.
 아쉽게도 제가 만난 사람들은 이런 인식의 전환이 막혀있는 사람들이 많았습니다.
 그래서 저는 이런 마켓플레이스 형 상품을 CSP에서 직접 만들고 본인들의 마켓플레이스에 올리는가로 클라우드의 성숙도를 평가할 수 있다고 생각합니다.
-기회가 된다면 ParallelCluster와 ParallelCluster UI 코드이 기반이 되는 Cloudformation, SDK, CDK, Lambda, API Gateway, Cognito같은 코드/서비스들드도 분석하고 코드에 대해서도 뜯어보는 글을 쓰고 싶네요. 
+기회가 된다면 ParallelCluster와 ParallelCluster UI 코드이 기반이 되는 Cloudformation, SDK, CDK, Lambda, API Gateway, Cognito같은 서비스와 코드에 대해서도 상세히 분석하는 글을 쓰고 싶네요. 
 
