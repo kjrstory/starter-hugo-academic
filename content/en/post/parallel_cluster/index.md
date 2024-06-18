@@ -24,7 +24,7 @@ Nowadays, web terminals are provided, so you can do everything necessary without
 However, while the web interface is excellent, it is not suitable for repetitive tasks or creating reproducible interfaces. This is where developer tools like APIs, CLI, and SDKs come in. Additionally, the concept of IaC (Infrastructure as Code) emerged, with HashiCorp's [Terraform](https://www.terraform.io) being the most famous IaC code for the cloud. AWS also offers its own IaC service called [CloudFormation](https://aws.amazon.com/cloudformation/). Tasks previously performed on the web can now be executed via terminal commands or code.
 
 If you have used AWS or similar cloud services, the above explanation might seem tedious. Why am I explaining it in such detail? 
-Because Parallel Cluster is a service that is entirely different from the above. 
+Because ParallelCluster is a service that is entirely different from the above. 
 The most noticeable difference is that ParallelCluster does not exist in the console! 
 Analysts who compare various cloud services based on the service list in the console often miss out on ParallelCluster, thinking it might not be an official product despite its documentation on the AWS website.
 
