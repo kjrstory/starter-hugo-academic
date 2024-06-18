@@ -39,12 +39,12 @@ AWS는 자체적으로 [CloudFormation](https://aws.amazon.com/cloudformation/)�
 AWS와 여러 클라우드의 서비스들을 분석하고 비교하는 사람들은 콘솔에서 보여지는 서비스 리스트를 토대로 서비스들을 목록화하고 각 서비스들을 비교하게 되는데 여기에 ParallelCluster는 없으므로 종종 공식적인 상품은 아니지 않나라는 생각을 갖게 됩니다. 
 그래서 AWS 홈페이지내에 공식 문서가 있음에도 불구하고 많은 사람들이 기본 서비스로서 인식을 못하고 있는 듯합니다.
 
-ParalleCluster는 파이썬 라이브러리로 만들어진 CLI 코드이며 오픈소스로 [공개](https://github.com/aws/aws-parallelcluster)되어 있습니다.
+ParallelCluster는 파이썬 라이브러리로 만들어진 CLI 코드이며 오픈소스로 [공개](https://github.com/aws/aws-parallelcluster)되어 있습니다.
 여기서 드는 의문은 이미 AWS  CLI라고 하여서 기본 CLI프로그램이 있는데 왜 별도의 CLI 프로그램을 따로 만들었을까 입니다. 
 이것을 알기 위해서는 HPC에 대한 지식이 필요합니다. 
 HPC를 쉽게 설명할 때는 아주 간단하게 계산용 클러스터라고 표현하기도 하지만 실제로 그 클러스터를 만들기 위해서는 굉장히 많은 SW와 자원들이 있어야 합니다. 
 이런 것들을 클라우드에서는 하나의 작은 서비스가 되기도 합니다. 
-아래는 현재 ParalelleCluster에서 사용되는 서비스들의 목록입니다.
+아래는 현재 ParallelCluster에서 사용되는 서비스들의 목록입니다.
 
 * Amazon API Gateway
 * AWS Batch
