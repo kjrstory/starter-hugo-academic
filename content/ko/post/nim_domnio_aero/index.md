@@ -14,16 +14,40 @@ categories:
 
 ---
 
-최근 CFD 분야에서는 머신러닝을 활용한 연구가 활발히 진행되고 있다. 이런 연구 중 NVIDIA에서 오픈소스로 공개한 [PhysicNeMo](https://github.com/NVIDIA/physicsnemo) 프레임워크는 Physics ML 기법을 이용해 물리 기반 AI 모델을 빠르게 학습 배포할 수 있게 해준다. 그 중 [DoMINO](https://docs.nvidia.com/deeplearning/physicsnemo/physicsnemo-core/examples/cfd/external_aerodynamics/domino/readme.html) 예제는 DrivAer 형상을 대상으로 국소 스케일, 포인트 클라우드 기반 신경 연산자를 학습하는 외부 차량 공력 모델의 워크플로우를 제공한다. 추가로 NVIDIA는 [NIM for DoMINO-Automotive-Aero](https://docs.nvidia.com/nim/physicsnemo/domino-automotive-aero/latest/overview.html)도 공개하여, 수십 TB 데이터와 대규모 GPU 없이도 자체 추론 파이프라인을 구축할 수 있다.
+최근 CFD(Computational Fluid Dynamics) 분야에서는 머신러닝을 접목한 연구가 활발히 진행되고 있다. 이런 연구 중 NVIDIA에서 오픈소스로 공개한 [PhysicNeMo](https://github.com/NVIDIA/physicsnemo) 프레임워크는 Physics ML 기법을 이용해 물리 기반 AI 모델을 빠르게 학습 배포할 수 있게 해준다. 그 중 [DoMINO](https://docs.nvidia.com/deeplearning/physicsnemo/physicsnemo-core/examples/cfd/external_aerodynamics/domino/readme.html) 예제는 DrivAer 형상을 대상으로 국소 스케일, 포인트 클라우드 기반 신경 연산자를 학습하는 외부 차량 공력 모델의 워크플로우를 제공한다. 추가로 NVIDIA는 [NIM for DoMINO-Automotive-Aero](https://docs.nvidia.com/nim/physicsnemo/domino-automotive-aero/latest/overview.html)도 공개하여, 수십 TB 데이터와 대규모 GPU 없이도 자체 추론 파이프라인을 구축할 수 있다.
 
-이 글에서는 NIM 서비스를 사용하고 분석한 결과를 공유하려고 한다. [홈페이지](https://docs.nvidia.com/nim/physicsnemo/domino-automotive-aero/latest/overview.html)에서 공개한 기본 예제는 형상 1개를 추론하는 경우를 보여줬었는데 여기서는 공개된 데이터세트를 모두 추론해보는 자동화 스크립트를 만들어서 분석하려고 한다.
-[DrivAerML](https://caemldatasets.org/drivaerml/)은 500가지 모핑 변형을 포함한 고해상도 공력 데이터셋으로, [Hugging Face](https://huggingface.co/datasets/neashton/drivaerml)와 AWS에서 공개 중이다. 기본 예제는 AWS의 S3에서 다운로드는 하는 것을 보여줬었는데 여기서는 허깅페이스에서 다운로드 하는 것을 보여주기로 한다. 사전에 허깅페이스의 회원 가입 및 토큰 발급이 필요한데 본 글에서는 생략한다. 먼저 허깅페이스 동작을 python에서 하기 위해 아래 패키지를 다운로드한다.
+이 글에서는 NIM 서비스를 사용하고 분석한 결과를 공유하려고 한다. [홈페이지](https://docs.nvidia.com/nim/physicsnemo/domino-automotive-aero/latest/overview.html)에서 공개한 기본 예제는 형상 1개를 추론하는 경우를 보여주는데 여기서는 공개된 데이터세트를 한 번에 추론하고, 예측한 공력이 실제 CFD 값과 얼마나 일치하는 분석한 기록이다.
+
+## 1. 준비 사항
+이 글의 실험을 시작하려면 GPU가 있는 리눅스 서버가 필요하다. 저자는 A100 80G GPU로 테스트 하였지만 20G이하의 메모리가 달린 GPU로도 가능할 것으로 보인다. 스케쥴러는 없어도 되지만 저자는 Slurm이 설치된 환경에서 테스트 하였다. 컨테이너를 띄우기 위해 [enroot](https://github.com/NVIDIA/enroot)와 [pyxis](https://github.com/NVIDIA/pyxis)를 설치해야 한다. 또 [NGC](https://catalog.ngc.nvidia.com)와 [허깅페이스](https://huggingface.co)에 접속할 수 있는 API 토큰이 있어야 한다.
+
+
+
+## 2. 데이터 다운로드
+[DrivAerML](https://caemldatasets.org/drivaerml/)은 500가지 모핑 변형을 포함한 고해상도 공력 데이터셋으로, [Hugging Face](https://huggingface.co/datasets/neashton/drivaerml)와 AWS에서 공개 중이다. 기본 예제는 AWS의 S3에서 다운로드는 하는 방법이 있는데 여기서는 허깅페이스에서 직접 내려받는 방법을 사용한다. 허깅페이스 계정과 토큰이 필요하지만, 가입 및 발급 과정은 생략한다. 
+
+먼저 Python에서 Hugging Face API를 다루기 위해 `huggingface_hub[cli]` 패키지를 설치한다.
 
 ```
 pip install huggingface_hub[cli]
 ```
 
-다음으로 아래 파일을 이용하여 허깅페이스에서 데이터를 다운로드 한다. 데이터에는 학습에 필요한 데이터 및 후처리 데이터가 모두 포함되어 있어 수십 테라에 달하는 방대한 데이터이다. 추론 과정에서는 모든 파일이 필요하지 않고 형상 파일인 `boundary.stl` 파일만이 필요하다. 추가로 추론결과의 검증에 필요한 공력 계수 파일(csv파일들)과 이미지 파일(images폴더)들도 다운로드 할 수 있다. 데이터가 무척 많으므로 이를 선택할 수 있게 옵션을 만들었다. `csv`, `images`, `boundary`를 입력하면 각각 해당하는 파일 형식만 다운로드하게 하였다. 
+데이터셋의 전체 용량은 수십 테라바이트에 이르기 때문에 추론에 꼭 필요한 파일만 선택적으로 받을 수 있게 했다. 실제로 추론에 필요한 건 `boundary.vtp` 파일 하나뿐이고, 예측 결과를 검증하려면 추가로 공력 계수 `csv` 파일들과 이미지 폴더가 필요하다.
+
+이를 위해 `download_hf.py` 스크립트를 만들었다. 이 스크립트는 `--download-type` 옵션으로 받을 파일 종류를 지정할 수 있게 되어 있다. 예를 들어 다음과 같이 쓸 수 있다:
+
+
+- 형상 파일만 받을 경우:
+```
+python download_hf.py --download-type boundary
+```
+
+- 형상 + 공력 계수 + 이미지까지 전부 받을 경우 (기본값):
+```
+python download_hf.py
+```
+
+옵션에는 csv, boundary, images, all이 있으며, 원하는 조합을 선택할 수 있다. 각 파일은 run_1부터 run_500까지 순차적으로 다운로드된다. 
 
 <details>
 <summary>download_hf.py</summary>
@@ -38,7 +62,7 @@ REPO_ID    = "neashton/drivaerml"
 REPO_TYPE  = "dataset"
 HF_TOKEN   = ""
 LOCAL_DIR  = "./drivAer_data_full"
-RUN_RANGE  = range(101, 501)
+RUN_RANGE  = range(1, 501)
 CSV_PREFIXES = [
     "force_mom_",
     "force_mom_constref_",
@@ -50,7 +74,7 @@ def download_csv(run_dir, index):
     for prefix in CSV_PREFIXES:
         filename = f"{run_dir}/{prefix}{index}.csv"
         try:
-            print(f"  ▒~F~S CSV: {filename}")
+            print(f"[CSV] {filename}")
             hf_hub_download(
                 repo_id   = REPO_ID,
                 repo_type = REPO_TYPE,
@@ -64,7 +88,7 @@ def download_csv(run_dir, index):
 def download_boundary(run_dir, index):
     filename = f"{run_dir}/boundary_{index}.vtp"
     try:
-        print(f"  ▒~F~S VTP: {filename}")
+        print(f"[VTP] {filename}")
         hf_hub_download(
             repo_id   = REPO_ID,
             repo_type = REPO_TYPE,
@@ -90,7 +114,7 @@ def download_images(run_dir):
     for entry in tree:
         path = entry.path if hasattr(entry, "path") else entry["path"]
         try:
-            print(f"  ▒~F~S IMG: {path}")
+            print(f"[IMG] {path}")
             hf_hub_download(
                 repo_id   = REPO_ID,
                 repo_type = REPO_TYPE,
@@ -117,7 +141,7 @@ def main():
 
     for i in RUN_RANGE:
         run_dir = f"run_{i}"
-        print(f"\n▒~V▒ Processing {run_dir}")
+        print(f"\nProcessing {run_dir}")
 
         if do_csv:
             download_csv(run_dir, i)
@@ -138,17 +162,6 @@ if __name__ == "__main__":
 
 
 
-- 예제 1. boundary.stl 파일만 받을 경우
-```
-python download_script.py --download-type stl
-```
-  
-- 예제 2. boundary.stl, *.csv, images 폴더를 받을 경우  
-```
-python download_script.py 
-```
-
-다운로드 받은 `stl`파일을 바로 사용하지 않고 간단히? 변환해서 사용해야 한다. 아래와 같은 파일로 한꺼번에 변환할 수 있다.
 
 
 <details>
