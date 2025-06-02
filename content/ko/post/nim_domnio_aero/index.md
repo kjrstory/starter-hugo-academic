@@ -1,5 +1,5 @@
 ---
-title: "오픈소스 Spack의 설치 레시피 기여 사례: Openfoam (1)"
+title: "NIM For Aero"
 date: 2025-06-01T10:00:00+09:00
 draft: false
 featured: false
@@ -16,16 +16,18 @@ categories:
 
 최근 CFD 분야에서는 머신러닝을 활용한 연구가 활발히 진행되고 있다. 이런 연구 중 NVIDIA에서 오픈소스로 공개한 [PhysicNeMo](https://github.com/NVIDIA/physicsnemo) 프레임워크는 Physics ML 기법을 이용해 물리 기반 AI 모델을 빠르게 학습 배포할 수 있게 해준다. 그 중 [DoMINO](https://docs.nvidia.com/deeplearning/physicsnemo/physicsnemo-core/examples/cfd/external_aerodynamics/domino/readme.html) 예제는 DrivAer 형상을 대상으로 국소 스케일, 포인트 클라우드 기반 신경 연산자를 학습하는 외부 차량 공력 모델의 워크플로우를 제공한다. 추가로 NVIDIA는 [NIM for DoMINO-Automotive-Aero](https://docs.nvidia.com/nim/physicsnemo/domino-automotive-aero/latest/overview.html)도 공개하여, 수십 TB 데이터와 대규모 GPU 없이도 자체 추론 파이프라인을 구축할 수 있다.
 
-이 글에서는 NIM 서비스를 사용하고 분석한 결과를 공유하려고 한다. [홈페이지](https://docs.nvidia.com/nim/physicsnemo/domino-automotive-aero/latest/overview.html에서 공개한 기본 예제는 형상 1개를 추론하는 경우를 보여줬었는데 여기서는 공개된 데이터세트를 모두 추론해보는 자동화 스크립트를 만들어서 분석하려고 한다.
+이 글에서는 NIM 서비스를 사용하고 분석한 결과를 공유하려고 한다. [홈페이지](https://docs.nvidia.com/nim/physicsnemo/domino-automotive-aero/latest/overview.html)에서 공개한 기본 예제는 형상 1개를 추론하는 경우를 보여줬었는데 여기서는 공개된 데이터세트를 모두 추론해보는 자동화 스크립트를 만들어서 분석하려고 한다.
 [DrivAerML](https://caemldatasets.org/drivaerml/)은 500가지 모핑 변형을 포함한 고해상도 공력 데이터셋으로, [Hugging Face](https://huggingface.co/datasets/neashton/drivaerml)와 AWS에서 공개 중이다. 기본 예제는 AWS의 S3에서 다운로드는 하는 것을 보여줬었는데 여기서는 허깅페이스에서 다운로드 하는 것을 보여주기로 한다. 사전에 허깅페이스의 회원 가입 및 토큰 발급이 필요한데 본 글에서는 생략한다. 먼저 허깅페이스 동작을 python에서 하기 위해 아래 패키지를 다운로드한다.
 
 ```
 pip install huggingface_hub[cli]
 ```
-다음은 아래 파일을 이용하여 허깅페이스에서 데이터를 다운로드 한다. 데이터에는 학습에 필요한 데이터 및 후처리 데이터가 모두 포함되어 있어 수십테라에 달하는 방대한 데이터이다. 추론 과정에서는 모든 파일이 필요하지 않고 형상 파일인 `boundary.stl` 파일만이 필요하다. 추가로 추론결과의 검증에 필요한 공력 계수 파일(csv파일들) 이미지 파일(img폴더)들도 다운로드 할 수 있다. 데이터가 무척 많으므로 이를 선택할 수 있게 옵션을 만들었다. `csv`, `images`, `boundary`를 입력하면 각각 해당하는 파일 형식만 다운로드하게 하였다. 
+
+다음으로 아래 파일을 이용하여 허깅페이스에서 데이터를 다운로드 한다. 데이터에는 학습에 필요한 데이터 및 후처리 데이터가 모두 포함되어 있어 수십 테라에 달하는 방대한 데이터이다. 추론 과정에서는 모든 파일이 필요하지 않고 형상 파일인 `boundary.stl` 파일만이 필요하다. 추가로 추론결과의 검증에 필요한 공력 계수 파일(csv파일들)과 이미지 파일(images폴더)들도 다운로드 할 수 있다. 데이터가 무척 많으므로 이를 선택할 수 있게 옵션을 만들었다. `csv`, `images`, `boundary`를 입력하면 각각 해당하는 파일 형식만 다운로드하게 하였다. 
 
 <details>
 <summary>download_hf.py</summary>
+
 ```python
 import argparse
 from huggingface_hub import HfApi, hf_hub_download
@@ -136,12 +138,12 @@ if __name__ == "__main__":
 
 
 
-예제 1. boundary.stl 파일만 받을 경우
-```python
+- 예제 1. boundary.stl 파일만 받을 경우
+```
 python download_script.py --download-type stl
 ```
   
-예제 2. boundary.stl, *.csv, images 폴더를 받을 경우  
+- 예제 2. boundary.stl, *.csv, images 폴더를 받을 경우  
 ```
 python download_script.py 
 ```
@@ -151,6 +153,7 @@ python download_script.py
 
 <details>
 <summary>convert_stl.py</summary>
+
 ```python
 #!/usr/bin/env python3
 import os
@@ -185,12 +188,15 @@ for i in range(1, 101):
 
 필요한 입력 파일들을 모두 받았으면 GPU 장비가 필요하다. 또 컨테이너 사용을 위햇 컨테이터 툴킷같은 것들이 필요한데 여기서는 NVIDIA에서 개발한 [enroot](https://github.com/NVIDIA/enroot), [pyxis](https://github.com/NVIDIA/pyxis) 조합을 사용하였다. 이 두 개의 패키지 설치에 대한 자세한 설명은 다른 곳을 참고하기 바란다. 
 NIM 이미지를 사용하기위해서는 [NGC](https://catalog.ngc.nvidia.com)의 키가 필요하다. 키를 발급받고 enroot에서 import할 수 있다.
+
 ```
 enroot import -o nim_domino.sqsh 'docker://$oauthtoken:[API_KEY]@nvcr.io#nim/nvidia/domino-automotive-aero:1.0.0' 
 ```
+
 [API_KEY]란에 NGC에서 받은 토큰을 사용해야 한다.  
 
 이제 아래 Slurm 스크립트로 NIM을 로컬 GPU 장비에서 띄울 수 있다. 
+
 ```
 #!/bin/bash
 #SBATCH --job-name=nim_infer
@@ -222,8 +228,12 @@ domino이미지는 도커의 ENTRYPOINT기능으로 NIM API 서버를 띄우게 
 ```
 curl -X 'GET' 'http://worker-1:8000/v1/health/ready' -H 'accept: application/json' 
 ```
+
 이 출력결과가 다음과 같이 나오면 성공이다. 
 
+```
+ready
+```
 
 
 NIM for DoMINO-Automotive-Aero는 크게 두가지 예측을 해준다. 하나는 양력과 항력같은 공력이고 다른 하나는 압력, 속도등의 유동장이다. 본 글에서는 먼저 공력에 대해 비교를 하기로 한다. DoMINO 세트에는 실제 학습에 쓰인 CFD 데이터를 제공해주므로 이 값을 리얼 값이라고 생각하였다.
@@ -232,6 +242,9 @@ NIM for DoMINO-Automotive-Aero는 크게 두가지 예측을 해준다. 하나�
 
 500개의 데이터를 한번에 추론하기위해 다음과 같은 post 파일을 만들었다.
 
+
+<details>
+<summary>post_process.py</summary>
 
 ```
 import numpy as np
@@ -318,11 +331,13 @@ else:
     print("No results to save.")
 ```
 
+</details>
+
+
 출력은 다음과 같이 출력 된다.
 ```
 
 ```
-
 
 
 여기까지 길게 왔지만 내가 진짜 하고 싶은 것은 500개의 데이터를 한번에 분석하는 것이었다. 아직까지 ML for Surrogate 모델은 업계에서 많은 의문을 갖고 있는 것이 사실이다. 여기서 예시로 든 공력 같은 경우 내가 주로 했었던 에어포일을 기준으로 하면 양력, 항력계수는 비교적 잘 맞히지만 비선형성이 큰 모멘트 계수같은 경우는 정확도를 크게 벗어났었다. 
