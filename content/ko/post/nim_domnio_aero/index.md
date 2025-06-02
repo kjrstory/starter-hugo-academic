@@ -206,20 +206,23 @@ for i in range(1, 501):
 이제 이 변환된 STL 파일을 그대로 추론에 사용할 수 있다.
 
 
-## 4 이미지 준비
+## 4. NIM 실행 환경 구성
 
-필요한 입력 파일들을 모두 받았으면 GPU 장비가 필요하다. 또 컨테이너 사용을 위햇 컨테이터 툴킷같은 것들이 필요한데 여기서는 NVIDIA에서 개발한 [enroot](https://github.com/NVIDIA/enroot), [pyxis](https://github.com/NVIDIA/pyxis) 조합을 사용하였다. 이 두 개의 패키지 설치에 대한 자세한 설명은 다른 곳을 참고하기 바란다. 
-NIM 이미지를 사용하기위해서는 [NGC](https://catalog.ngc.nvidia.com)의 키가 필요하다. 키를 발급받고 enroot에서 import할 수 있다.
+필요한 STL 파일과 CSV 파일을 모두 준비했다면, 이제 NIM을 실행할 환경을 구성해야 한다. 추론에는 GPU 장비가 필요하고, 컨테이너 기반으로 NIM을 실행해야 하므로 관련 도구도 설치되어 있어야 한다.
 
+여기서는 NVIDIA에서 제공하는 [enroot](https://github.com/NVIDIA/enroot)와 [pyxis](https://github.com/NVIDIA/pyxis)를 조합해서 컨테이너를 실행했다. 설치 방법은 공식 문서를 참고하면 된다.
+
+NIM 이미지를 받기 위해서는 [NGC (NVIDIA GPU Cloud)](https://catalog.ngc.nvidia.com)에서 API 키를 발급받아야 한다. 키를 발급받은 후 아래 명령어를 사용해 enroot 형식으로 이미지를 불러올 수 있다.
+
+```bash
+enroot import -o nim_domino.sqsh 'docker://$oauthtoken:[API_KEY]@nvcr.io#nim/nvidia/domino-automotive-aero:1.0.0'
 ```
-enroot import -o nim_domino.sqsh 'docker://$oauthtoken:[API_KEY]@nvcr.io#nim/nvidia/domino-automotive-aero:1.0.0' 
-```
 
-[API_KEY]란에 NGC에서 받은 토큰을 사용해야 한다.  
+위 명령에서 `[API_KEY]` 자리에 발급받은 API 키를 입력하면 된다.
 
-이제 아래 Slurm 스크립트로 NIM을 로컬 GPU 장비에서 띄울 수 있다. 
+이미지를 준비한 후에는 아래처럼 Slurm 배치 스크립트를 작성해 NIM 서버를 실행할 수 있다.
 
-```
+```bash
 #!/bin/bash
 #SBATCH --job-name=nim_infer
 #SBATCH --output=nim_%j.log
@@ -243,43 +246,40 @@ declare -a SLURM_ARGS=(
 srun -l "${SLURM_ARGS[@]}" true
 ```
 
-domino이미지는 도커의 ENTRYPOINT기능으로 NIM API 서버를 띄우게 되있어서 별도의 명령이 필요하지 않다. 그런데 srun은 항상 명령어가 필요하다. 그래서 `true`란 명령을 줘서 이미지의 entrypoint에서 실행하도록 하였다. 
+여기서 사용하는 NIM 이미지는 도커의 ENTRYPOINT 기능으로 API 서버가 자동으로 실행되도록 되어 있기 때문에 별도의 실행 명령이 필요 없다. 다만 `srun`은 명령어를 필수로 요구하므로 `true`를 전달해 컨테이너 내부의 ENTRYPOINT가 실행되도록 했다.
 
-이제 간단한 명령으로 접속이 되는지 확인할 수 있다.
+서버가 정상적으로 뜨면 아래 명령으로 상태를 확인할 수 있다.
 
-```
-curl -X 'GET' 'http://worker-1:8000/v1/health/ready' -H 'accept: application/json' 
-```
-
-이 출력결과가 다음과 같이 나오면 성공이다. 
-
-```
-ready
+```bash
+curl -X 'GET' 'http://[gpu-node01]:8000/v1/health/ready' -H 'accept: application/json'
 ```
 
+여기서 `[gpu-node01]`대신 실제 Slurm 잡이 실행된 노드를 적어야 한다. 응답으로 `ready`라는 문자열이 출력되면 정상적으로 기동된 것이다.
 
-NIM for DoMINO-Automotive-Aero는 크게 두가지 예측을 해준다. 하나는 양력과 항력같은 공력이고 다른 하나는 압력, 속도등의 유동장이다. 본 글에서는 먼저 공력에 대해 비교를 하기로 한다. DoMINO 세트에는 실제 학습에 쓰인 CFD 데이터를 제공해주므로 이 값을 리얼 값이라고 생각하였다.
 
-또 비교를 위해 U=38.89m/s를 적용하였고 rho는 1kg/m3를 사용하였다. 공력계수는 두 가지를 제공하는데 aRefRef값과 force_mom_constref의 파일을 적용하였다.
+## 5. 공력 계수 추론 및 결과 분석
 
-500개의 데이터를 한번에 추론하기위해 다음과 같은 post 파일을 만들었다.
+NIM for DoMINO-Automotive-Aero는 크게 두 가지 예측을 수행한다. 하나는 양력과 항력 같은 공력 계수 예측이고, 다른 하나는 압력과 속도 분포 등 유동장 예측이다. 이 글에서는 먼저 공력 계수에 집중해서, 예측값이 실제 CFD 결과와 얼마나 일치하는지를 비교했다. DoMINO에서 제공하는 데이터셋에는 실제 학습에 사용된 CFD 결과도 포함되어 있어 이를 기준값으로 삼았다.
 
+추론 조건으로는 유입 속도 𝑈=38.89m/s
+밀도 𝜌=1.0kg/m3를 적용했고, 공력 계수 계산에는 geo_ref.csv에 있는 𝑎ref 값과 force_mom_constref.csv의 참조 계수(Cd, Cl)를 사용했다. 500개의 데이터를 한꺼번에 추론하기 위해 `post_process.py`라는 스크립트를 작성했고, 이 스크립트는 각 STL 파일을 API 서버에 전송해 예측된 힘 값을 받아온 뒤, 이를 공력 계수로 환산하고 CSV 기준값과 비교해 정리하는 작업을 수행한다.
 
 <details>
 <summary>post_process.py</summary>
-
-```
+import os
+import io
+import httpx
 import numpy as np
 import pandas as pd
 
-# --- ▒~D▒▒| ~U ---
-URL         = "http://worker-1:8000/v1/infer"                # ▒~T▒|  API ▒~W~T▒~S~\▒~O▒▒~]▒▒~J▒
-STREAM_VEL  = 38.89                                            # ▒~\| ▒~F~M (m/s)
-RHO         = 1.0                                             # ▒~\| 체 ▒~@▒~O~D (kg/m^3), ▒~U~D▒~Z~T▒~K~\ ▒~H~X▒| ~U
-STL_DIR     = "./drivAer_single_solid_stls"               # STL ▒~L~L▒~]▒ ▒~O▒▒~M~T
-DATA_DIR    = "./drivAer_data_full"                         # CSV ▒~L~L▒~]▒▒~S▒▒~]▒ ▒~^~H▒~J~T ▒~\▒~C~A▒~\~D ▒~O▒▒~M~T
-RUN_START   = 1                                               # ▒~K~\▒~^~Q run
-RUN_END     = 100                                             # ▒~E▒~L run
+# --- Configuration ---
+URL         = "http://worker-1:8000/v1/infer"     # NIM API endpoint
+STREAM_VEL  = 38.89                               # Free-stream velocity (m/s)
+RHO         = 1.0                                 # Fluid density (kg/m^3)
+STL_DIR     = "./drivAer_single_solid_stls"       # Directory containing converted STL files
+DATA_DIR    = "./drivAer_data_full"               # Directory containing CSV reference data
+RUN_START   = 1                                   # Starting run index
+RUN_END     = 100                                 # Ending run index
 
 results = []
 
@@ -291,7 +291,7 @@ for i in range(RUN_START, RUN_END+1):
         print(f"[SKIP] STL not found for run_{i}: {stl_path}")
         continue
 
-    # --- API ▒~X▒▒~\ ---
+    # --- Send STL to API ---
     files = {"design_stl": (os.path.basename(stl_path), open(stl_path, "rb"))}
     data = {
         "stream_velocity": str(STREAM_VEL),
@@ -305,15 +305,14 @@ for i in range(RUN_START, RUN_END+1):
         print(f"[ERROR] API failed for run_{i}: {e}")
         continue
 
-    # --- 결과 ▒~]▒기 ---
+    # --- Read inference results ---
     with np.load(io.BytesIO(r.content)) as npz:
         output = {key: npz[key] for key in npz.files}
 
-    # ▒~B▒ ▒~]▒▒~D▒~W~P ▒~T▒▒~]▒ ▒| ~A▒| ~H▒~^~H ▒~H~X▒| ~U▒~U~X▒~D▒▒~Z~T
     drag = output.get("drag_force")
     lift = output.get("lift_force")
 
-    # --- 참조▒~R ▒~\▒~S~\ ---
+    # --- Load reference data ---
     geo_csv   = os.path.join(DATA_DIR, run_name, f"geo_ref_{i}.csv")
     force_csv = os.path.join(DATA_DIR, run_name, f"force_mom_constref_{i}.csv")
 
@@ -324,12 +323,12 @@ for i in range(RUN_START, RUN_END+1):
         print(f"[SKIP] CSV not found for run_{i}: {e}")
         continue
 
-    # aRef 칼▒~_▒▒~]~D 기▒~@ 면▒| ~A▒~\▒▒~\ ▒~B▒▒~Z▒
+    # Extract reference area and coefficients
     aRef     = float(geo_df.loc[0, "aRefRef"])
     Cd_ref   = float(force_df.loc[0, "Cd"])
     Cl_ref   = float(force_df.loc[0, "Cl"])
 
-    # --- ▒~D▒~H~X ▒~D▒~B▒ ---
+    # --- Compute predicted coefficients ---
     q_inf   = 0.5 * RHO * STREAM_VEL**2
     Cd_pred = drag / (q_inf * aRef)
     Cl_pred = lift / (q_inf * aRef)
@@ -343,7 +342,7 @@ for i in range(RUN_START, RUN_END+1):
     })
     print(f"[OK] run_{i}: Cd_pred={Cd_pred:.4f}, Cd_ref={Cd_ref:.4f}, Cl_pred={Cl_pred:.4f}, Cl_ref={Cl_ref:.4f}")
 
-# --- 결과 ▒~\▒| ▒ ---
+# --- Save results to CSV ---
 if results:
     df = pd.DataFrame(results)
     out_csv = "summary_coefficients.csv"
@@ -351,27 +350,16 @@ if results:
     print(f"\nComplete! Results saved to {out_csv}")
 else:
     print("No results to save.")
-```
-
 </details>
 
 
-출력은 다음과 같이 출력 된다.
-```
-
-```
+예측값과 참값의 산점도:
 
 
-여기까지 길게 왔지만 내가 진짜 하고 싶은 것은 500개의 데이터를 한번에 분석하는 것이었다. 아직까지 ML for Surrogate 모델은 업계에서 많은 의문을 갖고 있는 것이 사실이다. 여기서 예시로 든 공력 같은 경우 내가 주로 했었던 에어포일을 기준으로 하면 양력, 항력계수는 비교적 잘 맞히지만 비선형성이 큰 모멘트 계수같은 경우는 정확도를 크게 벗어났었다. 
-500개의 데이터를 scattrer plot으로 나타내었다. 
-
-![alt text](Cd_scatter.png)
-![alt text](Cl_scatter.png)
-![alt text](Cd_error_hist.png)
-![alt text](Cl_error_hist.png)
+예측 오차 분포 (히스토그램):
 
 
 
 
 
-
+결과적으로, 양력(Cl)과 항력(Cd)은 대체로 잘 맞았지만, 이전에도 자주 경험했던 것처럼 모멘트 계수와 같은 비선형성이 큰 항목은 오차가 클 가능성이 높다. 아직까지 ML 기반 Surrogate 모델에 대해 업계의 신뢰는 완전하지 않지만, 이런 대규모 실험을 통해 점차 검증해 나갈 수 있을 것으로 기대된다.
