@@ -160,9 +160,12 @@ if __name__ == "__main__":
 
 </details>
 
+## 3. STL 변환
+다운로드 받은 STL 파일은 바로 사용할 수 없고, 간단한 전처리가 필요하다. 기존에는 하나의 STL 파일만 변환할 수 있었지만, 지금은 여러 파일을 한꺼번에 처리할 수 있도록 스크립트를 수정했다.
 
-
-
+```
+python convert_stl.py
+```
 
 <details>
 <summary>convert_stl.py</summary>
@@ -176,7 +179,7 @@ INPUT_ROOT = 'drivAer_data_full'
 OUTPUT_DIR = 'drivAer_single_solid_stls'
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-for i in range(1, 101):
+for i in range(1, 501):
     run_dir = f"run_{i}"
     input_path = os.path.join(INPUT_ROOT, run_dir, f"drivaer_{i}.stl")
     output_path = os.path.join(OUTPUT_DIR, run_dir, f"drivaer_{i}_single_solid.stl")
@@ -198,6 +201,12 @@ for i in range(1, 101):
 ```
 
 </details>
+
+이 스크립트를 실행하면 drivAer_data_full 안에 있는 STL 파일들을 모두 읽어서, 각 파일을 하나의 solid로 병합한 후 drivAer_single_solid_stls 디렉토리에 저장한다.
+이제 이 변환된 STL 파일을 그대로 추론에 사용할 수 있다.
+
+
+## 4 이미지 준비
 
 필요한 입력 파일들을 모두 받았으면 GPU 장비가 필요하다. 또 컨테이너 사용을 위햇 컨테이터 툴킷같은 것들이 필요한데 여기서는 NVIDIA에서 개발한 [enroot](https://github.com/NVIDIA/enroot), [pyxis](https://github.com/NVIDIA/pyxis) 조합을 사용하였다. 이 두 개의 패키지 설치에 대한 자세한 설명은 다른 곳을 참고하기 바란다. 
 NIM 이미지를 사용하기위해서는 [NGC](https://catalog.ngc.nvidia.com)의 키가 필요하다. 키를 발급받고 enroot에서 import할 수 있다.
