@@ -1,7 +1,7 @@
 ---
 title: "NIM For Aero"
 date: 2025-06-01T10:00:00+09:00
-draft: false
+draft: true
 featured: false
 authors:
   - admin
