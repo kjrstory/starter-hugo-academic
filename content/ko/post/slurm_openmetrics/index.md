@@ -1,6 +1,6 @@
 ---
 title: "Slurm 네이티브 OpenMetrics로 클러스터 모니터링하기"
-date: 2026-03-06T12:00:00+09:00
+date: 2026-03-09T22:00:00+09:00
 draft: false
 featured: false
 authors:
