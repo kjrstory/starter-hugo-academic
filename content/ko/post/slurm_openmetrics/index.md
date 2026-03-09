@@ -1,5 +1,5 @@
 ---
-title: "Slurm 25.11의 네이티브 OpenMetrics: 별도 Exporter 없이 Prometheus로 클러스터 모니터링하기"
+title: "Slurm 네이티브 OpenMetrics로 클러스터 모니터링하기"
 date: 2026-03-06T12:00:00+09:00
 draft: false
 featured: false

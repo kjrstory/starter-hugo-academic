@@ -1,7 +1,7 @@
 ---
-title: "Native OpenMetrics in Slurm 25.11: Monitor Your Cluster with Prometheus Without a Separate Exporter"
+title: "Cluster Monitoring with Slurm Native OpenMetrics"
 date: 2026-03-06T12:00:00+09:00
-draft: true
+draft: false
 featured: false
 authors:
   - admin
